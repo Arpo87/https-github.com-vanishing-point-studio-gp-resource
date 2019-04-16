@@ -1,0 +1,1607 @@
+type AggregateNRO {
+  count: Int!
+}
+
+type AggregateOperationalExpenses {
+  count: Int!
+}
+
+type AggregateOperationalIncome {
+  count: Int!
+}
+
+type AggregateProgrammeBalance {
+  count: Int!
+}
+
+type AggregateProgrammeBudget {
+  count: Int!
+}
+
+type AggregateProgrammeStaff {
+  count: Int!
+}
+
+type AggregateProject {
+  count: Int!
+}
+
+type AggregateProjectInfo {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+scalar Long
+
+type Mutation {
+  createNRO(data: NROCreateInput!): NRO!
+  updateNRO(data: NROUpdateInput!, where: NROWhereUniqueInput!): NRO
+  updateManyNRoes(data: NROUpdateInput!, where: NROWhereInput): BatchPayload!
+  upsertNRO(where: NROWhereUniqueInput!, create: NROCreateInput!, update: NROUpdateInput!): NRO!
+  deleteNRO(where: NROWhereUniqueInput!): NRO
+  deleteManyNRoes(where: NROWhereInput): BatchPayload!
+  createOperationalExpenses(data: OperationalExpensesCreateInput!): OperationalExpenses!
+  updateOperationalExpenses(data: OperationalExpensesUpdateInput!, where: OperationalExpensesWhereUniqueInput!): OperationalExpenses
+  updateManyOperationalExpenseses(data: OperationalExpensesUpdateInput!, where: OperationalExpensesWhereInput): BatchPayload!
+  upsertOperationalExpenses(where: OperationalExpensesWhereUniqueInput!, create: OperationalExpensesCreateInput!, update: OperationalExpensesUpdateInput!): OperationalExpenses!
+  deleteOperationalExpenses(where: OperationalExpensesWhereUniqueInput!): OperationalExpenses
+  deleteManyOperationalExpenseses(where: OperationalExpensesWhereInput): BatchPayload!
+  createOperationalIncome(data: OperationalIncomeCreateInput!): OperationalIncome!
+  updateOperationalIncome(data: OperationalIncomeUpdateInput!, where: OperationalIncomeWhereUniqueInput!): OperationalIncome
+  updateManyOperationalIncomes(data: OperationalIncomeUpdateInput!, where: OperationalIncomeWhereInput): BatchPayload!
+  upsertOperationalIncome(where: OperationalIncomeWhereUniqueInput!, create: OperationalIncomeCreateInput!, update: OperationalIncomeUpdateInput!): OperationalIncome!
+  deleteOperationalIncome(where: OperationalIncomeWhereUniqueInput!): OperationalIncome
+  deleteManyOperationalIncomes(where: OperationalIncomeWhereInput): BatchPayload!
+  createProgrammeBalance(data: ProgrammeBalanceCreateInput!): ProgrammeBalance!
+  updateProgrammeBalance(data: ProgrammeBalanceUpdateInput!, where: ProgrammeBalanceWhereUniqueInput!): ProgrammeBalance
+  updateManyProgrammeBalances(data: ProgrammeBalanceUpdateInput!, where: ProgrammeBalanceWhereInput): BatchPayload!
+  upsertProgrammeBalance(where: ProgrammeBalanceWhereUniqueInput!, create: ProgrammeBalanceCreateInput!, update: ProgrammeBalanceUpdateInput!): ProgrammeBalance!
+  deleteProgrammeBalance(where: ProgrammeBalanceWhereUniqueInput!): ProgrammeBalance
+  deleteManyProgrammeBalances(where: ProgrammeBalanceWhereInput): BatchPayload!
+  createProgrammeBudget(data: ProgrammeBudgetCreateInput!): ProgrammeBudget!
+  updateProgrammeBudget(data: ProgrammeBudgetUpdateInput!, where: ProgrammeBudgetWhereUniqueInput!): ProgrammeBudget
+  updateManyProgrammeBudgets(data: ProgrammeBudgetUpdateInput!, where: ProgrammeBudgetWhereInput): BatchPayload!
+  upsertProgrammeBudget(where: ProgrammeBudgetWhereUniqueInput!, create: ProgrammeBudgetCreateInput!, update: ProgrammeBudgetUpdateInput!): ProgrammeBudget!
+  deleteProgrammeBudget(where: ProgrammeBudgetWhereUniqueInput!): ProgrammeBudget
+  deleteManyProgrammeBudgets(where: ProgrammeBudgetWhereInput): BatchPayload!
+  createProgrammeStaff(data: ProgrammeStaffCreateInput!): ProgrammeStaff!
+  updateProgrammeStaff(data: ProgrammeStaffUpdateInput!, where: ProgrammeStaffWhereUniqueInput!): ProgrammeStaff
+  updateManyProgrammeStaffs(data: ProgrammeStaffUpdateInput!, where: ProgrammeStaffWhereInput): BatchPayload!
+  upsertProgrammeStaff(where: ProgrammeStaffWhereUniqueInput!, create: ProgrammeStaffCreateInput!, update: ProgrammeStaffUpdateInput!): ProgrammeStaff!
+  deleteProgrammeStaff(where: ProgrammeStaffWhereUniqueInput!): ProgrammeStaff
+  deleteManyProgrammeStaffs(where: ProgrammeStaffWhereInput): BatchPayload!
+  createProject(data: ProjectCreateInput!): Project!
+  updateProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project
+  updateManyProjects(data: ProjectUpdateInput!, where: ProjectWhereInput): BatchPayload!
+  upsertProject(where: ProjectWhereUniqueInput!, create: ProjectCreateInput!, update: ProjectUpdateInput!): Project!
+  deleteProject(where: ProjectWhereUniqueInput!): Project
+  deleteManyProjects(where: ProjectWhereInput): BatchPayload!
+  createProjectInfo(data: ProjectInfoCreateInput!): ProjectInfo!
+  updateProjectInfo(data: ProjectInfoUpdateInput!, where: ProjectInfoWhereUniqueInput!): ProjectInfo
+  updateManyProjectInfoes(data: ProjectInfoUpdateInput!, where: ProjectInfoWhereInput): BatchPayload!
+  upsertProjectInfo(where: ProjectInfoWhereUniqueInput!, create: ProjectInfoCreateInput!, update: ProjectInfoUpdateInput!): ProjectInfo!
+  deleteProjectInfo(where: ProjectInfoWhereUniqueInput!): ProjectInfo
+  deleteManyProjectInfoes(where: ProjectInfoWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type NRO {
+  id: ID!
+  name: String!
+  coordinates: String!
+  context: String!
+  about: String!
+}
+
+type NROConnection {
+  pageInfo: PageInfo!
+  edges: [NROEdge]!
+  aggregate: AggregateNRO!
+}
+
+input NROCreateInput {
+  name: String!
+  coordinates: String!
+  context: String!
+  about: String!
+}
+
+input NROCreateOneInput {
+  create: NROCreateInput
+  connect: NROWhereUniqueInput
+}
+
+type NROEdge {
+  node: NRO!
+  cursor: String!
+}
+
+enum NROOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  coordinates_ASC
+  coordinates_DESC
+  context_ASC
+  context_DESC
+  about_ASC
+  about_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type NROPreviousValues {
+  id: ID!
+  name: String!
+  coordinates: String!
+  context: String!
+  about: String!
+}
+
+type NROSubscriptionPayload {
+  mutation: MutationType!
+  node: NRO
+  updatedFields: [String!]
+  previousValues: NROPreviousValues
+}
+
+input NROSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: NROWhereInput
+  AND: [NROSubscriptionWhereInput!]
+  OR: [NROSubscriptionWhereInput!]
+  NOT: [NROSubscriptionWhereInput!]
+}
+
+input NROUpdateDataInput {
+  name: String
+  coordinates: String
+  context: String
+  about: String
+}
+
+input NROUpdateInput {
+  name: String
+  coordinates: String
+  context: String
+  about: String
+}
+
+input NROUpdateOneRequiredInput {
+  create: NROCreateInput
+  update: NROUpdateDataInput
+  upsert: NROUpsertNestedInput
+  connect: NROWhereUniqueInput
+}
+
+input NROUpsertNestedInput {
+  update: NROUpdateDataInput!
+  create: NROCreateInput!
+}
+
+input NROWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  coordinates: String
+  coordinates_not: String
+  coordinates_in: [String!]
+  coordinates_not_in: [String!]
+  coordinates_lt: String
+  coordinates_lte: String
+  coordinates_gt: String
+  coordinates_gte: String
+  coordinates_contains: String
+  coordinates_not_contains: String
+  coordinates_starts_with: String
+  coordinates_not_starts_with: String
+  coordinates_ends_with: String
+  coordinates_not_ends_with: String
+  context: String
+  context_not: String
+  context_in: [String!]
+  context_not_in: [String!]
+  context_lt: String
+  context_lte: String
+  context_gt: String
+  context_gte: String
+  context_contains: String
+  context_not_contains: String
+  context_starts_with: String
+  context_not_starts_with: String
+  context_ends_with: String
+  context_not_ends_with: String
+  about: String
+  about_not: String
+  about_in: [String!]
+  about_not_in: [String!]
+  about_lt: String
+  about_lte: String
+  about_gt: String
+  about_gte: String
+  about_contains: String
+  about_not_contains: String
+  about_starts_with: String
+  about_not_starts_with: String
+  about_ends_with: String
+  about_not_ends_with: String
+  AND: [NROWhereInput!]
+  OR: [NROWhereInput!]
+  NOT: [NROWhereInput!]
+}
+
+input NROWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type OperationalExpenses {
+  id: ID!
+  name: String!
+  nro: NRO!
+  orgSupport: Int!
+  campaignSupport: Int!
+  campaigns: Int!
+  contribution: Int!
+  fundraisingExpenditure: Int!
+}
+
+type OperationalExpensesConnection {
+  pageInfo: PageInfo!
+  edges: [OperationalExpensesEdge]!
+  aggregate: AggregateOperationalExpenses!
+}
+
+input OperationalExpensesCreateInput {
+  name: String!
+  nro: NROCreateOneInput!
+  orgSupport: Int!
+  campaignSupport: Int!
+  campaigns: Int!
+  contribution: Int!
+  fundraisingExpenditure: Int!
+}
+
+type OperationalExpensesEdge {
+  node: OperationalExpenses!
+  cursor: String!
+}
+
+enum OperationalExpensesOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  orgSupport_ASC
+  orgSupport_DESC
+  campaignSupport_ASC
+  campaignSupport_DESC
+  campaigns_ASC
+  campaigns_DESC
+  contribution_ASC
+  contribution_DESC
+  fundraisingExpenditure_ASC
+  fundraisingExpenditure_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type OperationalExpensesPreviousValues {
+  id: ID!
+  name: String!
+  orgSupport: Int!
+  campaignSupport: Int!
+  campaigns: Int!
+  contribution: Int!
+  fundraisingExpenditure: Int!
+}
+
+type OperationalExpensesSubscriptionPayload {
+  mutation: MutationType!
+  node: OperationalExpenses
+  updatedFields: [String!]
+  previousValues: OperationalExpensesPreviousValues
+}
+
+input OperationalExpensesSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: OperationalExpensesWhereInput
+  AND: [OperationalExpensesSubscriptionWhereInput!]
+  OR: [OperationalExpensesSubscriptionWhereInput!]
+  NOT: [OperationalExpensesSubscriptionWhereInput!]
+}
+
+input OperationalExpensesUpdateInput {
+  name: String
+  nro: NROUpdateOneRequiredInput
+  orgSupport: Int
+  campaignSupport: Int
+  campaigns: Int
+  contribution: Int
+  fundraisingExpenditure: Int
+}
+
+input OperationalExpensesWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  nro: NROWhereInput
+  orgSupport: Int
+  orgSupport_not: Int
+  orgSupport_in: [Int!]
+  orgSupport_not_in: [Int!]
+  orgSupport_lt: Int
+  orgSupport_lte: Int
+  orgSupport_gt: Int
+  orgSupport_gte: Int
+  campaignSupport: Int
+  campaignSupport_not: Int
+  campaignSupport_in: [Int!]
+  campaignSupport_not_in: [Int!]
+  campaignSupport_lt: Int
+  campaignSupport_lte: Int
+  campaignSupport_gt: Int
+  campaignSupport_gte: Int
+  campaigns: Int
+  campaigns_not: Int
+  campaigns_in: [Int!]
+  campaigns_not_in: [Int!]
+  campaigns_lt: Int
+  campaigns_lte: Int
+  campaigns_gt: Int
+  campaigns_gte: Int
+  contribution: Int
+  contribution_not: Int
+  contribution_in: [Int!]
+  contribution_not_in: [Int!]
+  contribution_lt: Int
+  contribution_lte: Int
+  contribution_gt: Int
+  contribution_gte: Int
+  fundraisingExpenditure: Int
+  fundraisingExpenditure_not: Int
+  fundraisingExpenditure_in: [Int!]
+  fundraisingExpenditure_not_in: [Int!]
+  fundraisingExpenditure_lt: Int
+  fundraisingExpenditure_lte: Int
+  fundraisingExpenditure_gt: Int
+  fundraisingExpenditure_gte: Int
+  AND: [OperationalExpensesWhereInput!]
+  OR: [OperationalExpensesWhereInput!]
+  NOT: [OperationalExpensesWhereInput!]
+}
+
+input OperationalExpensesWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type OperationalIncome {
+  id: ID!
+  name: String!
+  nro: NRO!
+  grants: Int!
+  fundraising: Int!
+  other: Int!
+  total: Int!
+}
+
+type OperationalIncomeConnection {
+  pageInfo: PageInfo!
+  edges: [OperationalIncomeEdge]!
+  aggregate: AggregateOperationalIncome!
+}
+
+input OperationalIncomeCreateInput {
+  name: String!
+  nro: NROCreateOneInput!
+  grants: Int!
+  fundraising: Int!
+  other: Int!
+  total: Int!
+}
+
+type OperationalIncomeEdge {
+  node: OperationalIncome!
+  cursor: String!
+}
+
+enum OperationalIncomeOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  grants_ASC
+  grants_DESC
+  fundraising_ASC
+  fundraising_DESC
+  other_ASC
+  other_DESC
+  total_ASC
+  total_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type OperationalIncomePreviousValues {
+  id: ID!
+  name: String!
+  grants: Int!
+  fundraising: Int!
+  other: Int!
+  total: Int!
+}
+
+type OperationalIncomeSubscriptionPayload {
+  mutation: MutationType!
+  node: OperationalIncome
+  updatedFields: [String!]
+  previousValues: OperationalIncomePreviousValues
+}
+
+input OperationalIncomeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: OperationalIncomeWhereInput
+  AND: [OperationalIncomeSubscriptionWhereInput!]
+  OR: [OperationalIncomeSubscriptionWhereInput!]
+  NOT: [OperationalIncomeSubscriptionWhereInput!]
+}
+
+input OperationalIncomeUpdateInput {
+  name: String
+  nro: NROUpdateOneRequiredInput
+  grants: Int
+  fundraising: Int
+  other: Int
+  total: Int
+}
+
+input OperationalIncomeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  nro: NROWhereInput
+  grants: Int
+  grants_not: Int
+  grants_in: [Int!]
+  grants_not_in: [Int!]
+  grants_lt: Int
+  grants_lte: Int
+  grants_gt: Int
+  grants_gte: Int
+  fundraising: Int
+  fundraising_not: Int
+  fundraising_in: [Int!]
+  fundraising_not_in: [Int!]
+  fundraising_lt: Int
+  fundraising_lte: Int
+  fundraising_gt: Int
+  fundraising_gte: Int
+  other: Int
+  other_not: Int
+  other_in: [Int!]
+  other_not_in: [Int!]
+  other_lt: Int
+  other_lte: Int
+  other_gt: Int
+  other_gte: Int
+  total: Int
+  total_not: Int
+  total_in: [Int!]
+  total_not_in: [Int!]
+  total_lt: Int
+  total_lte: Int
+  total_gt: Int
+  total_gte: Int
+  AND: [OperationalIncomeWhereInput!]
+  OR: [OperationalIncomeWhereInput!]
+  NOT: [OperationalIncomeWhereInput!]
+}
+
+input OperationalIncomeWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type ProgrammeBalance {
+  id: ID!
+  name: String!
+  nro: NRO!
+  staff: Int!
+  direct: Int!
+  total: Int!
+}
+
+type ProgrammeBalanceConnection {
+  pageInfo: PageInfo!
+  edges: [ProgrammeBalanceEdge]!
+  aggregate: AggregateProgrammeBalance!
+}
+
+input ProgrammeBalanceCreateInput {
+  name: String!
+  nro: NROCreateOneInput!
+  staff: Int!
+  direct: Int!
+  total: Int!
+}
+
+type ProgrammeBalanceEdge {
+  node: ProgrammeBalance!
+  cursor: String!
+}
+
+enum ProgrammeBalanceOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  staff_ASC
+  staff_DESC
+  direct_ASC
+  direct_DESC
+  total_ASC
+  total_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProgrammeBalancePreviousValues {
+  id: ID!
+  name: String!
+  staff: Int!
+  direct: Int!
+  total: Int!
+}
+
+type ProgrammeBalanceSubscriptionPayload {
+  mutation: MutationType!
+  node: ProgrammeBalance
+  updatedFields: [String!]
+  previousValues: ProgrammeBalancePreviousValues
+}
+
+input ProgrammeBalanceSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProgrammeBalanceWhereInput
+  AND: [ProgrammeBalanceSubscriptionWhereInput!]
+  OR: [ProgrammeBalanceSubscriptionWhereInput!]
+  NOT: [ProgrammeBalanceSubscriptionWhereInput!]
+}
+
+input ProgrammeBalanceUpdateInput {
+  name: String
+  nro: NROUpdateOneRequiredInput
+  staff: Int
+  direct: Int
+  total: Int
+}
+
+input ProgrammeBalanceWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  nro: NROWhereInput
+  staff: Int
+  staff_not: Int
+  staff_in: [Int!]
+  staff_not_in: [Int!]
+  staff_lt: Int
+  staff_lte: Int
+  staff_gt: Int
+  staff_gte: Int
+  direct: Int
+  direct_not: Int
+  direct_in: [Int!]
+  direct_not_in: [Int!]
+  direct_lt: Int
+  direct_lte: Int
+  direct_gt: Int
+  direct_gte: Int
+  total: Int
+  total_not: Int
+  total_in: [Int!]
+  total_not_in: [Int!]
+  total_lt: Int
+  total_lte: Int
+  total_gt: Int
+  total_gte: Int
+  AND: [ProgrammeBalanceWhereInput!]
+  OR: [ProgrammeBalanceWhereInput!]
+  NOT: [ProgrammeBalanceWhereInput!]
+}
+
+input ProgrammeBalanceWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type ProgrammeBudget {
+  id: ID!
+  name: String!
+  nro: NRO!
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeBudgetConnection {
+  pageInfo: PageInfo!
+  edges: [ProgrammeBudgetEdge]!
+  aggregate: AggregateProgrammeBudget!
+}
+
+input ProgrammeBudgetCreateInput {
+  name: String!
+  nro: NROCreateOneInput!
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeBudgetEdge {
+  node: ProgrammeBudget!
+  cursor: String!
+}
+
+enum ProgrammeBudgetOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  campaigns_ASC
+  campaigns_DESC
+  campaignCoordination_ASC
+  campaignCoordination_DESC
+  campaignUnallocated_ASC
+  campaignUnallocated_DESC
+  mediaComms_ASC
+  mediaComms_DESC
+  publicInfoOutreach_ASC
+  publicInfoOutreach_DESC
+  operations_ASC
+  operations_DESC
+  engagement_ASC
+  engagement_DESC
+  political_ASC
+  political_DESC
+  total_ASC
+  total_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProgrammeBudgetPreviousValues {
+  id: ID!
+  name: String!
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeBudgetSubscriptionPayload {
+  mutation: MutationType!
+  node: ProgrammeBudget
+  updatedFields: [String!]
+  previousValues: ProgrammeBudgetPreviousValues
+}
+
+input ProgrammeBudgetSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProgrammeBudgetWhereInput
+  AND: [ProgrammeBudgetSubscriptionWhereInput!]
+  OR: [ProgrammeBudgetSubscriptionWhereInput!]
+  NOT: [ProgrammeBudgetSubscriptionWhereInput!]
+}
+
+input ProgrammeBudgetUpdateInput {
+  name: String
+  nro: NROUpdateOneRequiredInput
+  campaigns: Int
+  campaignCoordination: Int
+  campaignUnallocated: Int
+  mediaComms: Int
+  publicInfoOutreach: Int
+  operations: Int
+  engagement: Int
+  political: Int
+  total: Int
+}
+
+input ProgrammeBudgetWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  nro: NROWhereInput
+  campaigns: Int
+  campaigns_not: Int
+  campaigns_in: [Int!]
+  campaigns_not_in: [Int!]
+  campaigns_lt: Int
+  campaigns_lte: Int
+  campaigns_gt: Int
+  campaigns_gte: Int
+  campaignCoordination: Int
+  campaignCoordination_not: Int
+  campaignCoordination_in: [Int!]
+  campaignCoordination_not_in: [Int!]
+  campaignCoordination_lt: Int
+  campaignCoordination_lte: Int
+  campaignCoordination_gt: Int
+  campaignCoordination_gte: Int
+  campaignUnallocated: Int
+  campaignUnallocated_not: Int
+  campaignUnallocated_in: [Int!]
+  campaignUnallocated_not_in: [Int!]
+  campaignUnallocated_lt: Int
+  campaignUnallocated_lte: Int
+  campaignUnallocated_gt: Int
+  campaignUnallocated_gte: Int
+  mediaComms: Int
+  mediaComms_not: Int
+  mediaComms_in: [Int!]
+  mediaComms_not_in: [Int!]
+  mediaComms_lt: Int
+  mediaComms_lte: Int
+  mediaComms_gt: Int
+  mediaComms_gte: Int
+  publicInfoOutreach: Int
+  publicInfoOutreach_not: Int
+  publicInfoOutreach_in: [Int!]
+  publicInfoOutreach_not_in: [Int!]
+  publicInfoOutreach_lt: Int
+  publicInfoOutreach_lte: Int
+  publicInfoOutreach_gt: Int
+  publicInfoOutreach_gte: Int
+  operations: Int
+  operations_not: Int
+  operations_in: [Int!]
+  operations_not_in: [Int!]
+  operations_lt: Int
+  operations_lte: Int
+  operations_gt: Int
+  operations_gte: Int
+  engagement: Int
+  engagement_not: Int
+  engagement_in: [Int!]
+  engagement_not_in: [Int!]
+  engagement_lt: Int
+  engagement_lte: Int
+  engagement_gt: Int
+  engagement_gte: Int
+  political: Int
+  political_not: Int
+  political_in: [Int!]
+  political_not_in: [Int!]
+  political_lt: Int
+  political_lte: Int
+  political_gt: Int
+  political_gte: Int
+  total: Int
+  total_not: Int
+  total_in: [Int!]
+  total_not_in: [Int!]
+  total_lt: Int
+  total_lte: Int
+  total_gt: Int
+  total_gte: Int
+  AND: [ProgrammeBudgetWhereInput!]
+  OR: [ProgrammeBudgetWhereInput!]
+  NOT: [ProgrammeBudgetWhereInput!]
+}
+
+input ProgrammeBudgetWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type ProgrammeStaff {
+  id: ID!
+  name: String!
+  nro: NRO!
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeStaffConnection {
+  pageInfo: PageInfo!
+  edges: [ProgrammeStaffEdge]!
+  aggregate: AggregateProgrammeStaff!
+}
+
+input ProgrammeStaffCreateInput {
+  name: String!
+  nro: NROCreateOneInput!
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeStaffEdge {
+  node: ProgrammeStaff!
+  cursor: String!
+}
+
+enum ProgrammeStaffOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  campaigns_ASC
+  campaigns_DESC
+  campaignCoordination_ASC
+  campaignCoordination_DESC
+  campaignUnallocated_ASC
+  campaignUnallocated_DESC
+  mediaComms_ASC
+  mediaComms_DESC
+  publicInfoOutreach_ASC
+  publicInfoOutreach_DESC
+  operations_ASC
+  operations_DESC
+  engagement_ASC
+  engagement_DESC
+  political_ASC
+  political_DESC
+  total_ASC
+  total_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProgrammeStaffPreviousValues {
+  id: ID!
+  name: String!
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeStaffSubscriptionPayload {
+  mutation: MutationType!
+  node: ProgrammeStaff
+  updatedFields: [String!]
+  previousValues: ProgrammeStaffPreviousValues
+}
+
+input ProgrammeStaffSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProgrammeStaffWhereInput
+  AND: [ProgrammeStaffSubscriptionWhereInput!]
+  OR: [ProgrammeStaffSubscriptionWhereInput!]
+  NOT: [ProgrammeStaffSubscriptionWhereInput!]
+}
+
+input ProgrammeStaffUpdateInput {
+  name: String
+  nro: NROUpdateOneRequiredInput
+  campaigns: Int
+  campaignCoordination: Int
+  campaignUnallocated: Int
+  mediaComms: Int
+  publicInfoOutreach: Int
+  operations: Int
+  engagement: Int
+  political: Int
+  total: Int
+}
+
+input ProgrammeStaffWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  nro: NROWhereInput
+  campaigns: Int
+  campaigns_not: Int
+  campaigns_in: [Int!]
+  campaigns_not_in: [Int!]
+  campaigns_lt: Int
+  campaigns_lte: Int
+  campaigns_gt: Int
+  campaigns_gte: Int
+  campaignCoordination: Int
+  campaignCoordination_not: Int
+  campaignCoordination_in: [Int!]
+  campaignCoordination_not_in: [Int!]
+  campaignCoordination_lt: Int
+  campaignCoordination_lte: Int
+  campaignCoordination_gt: Int
+  campaignCoordination_gte: Int
+  campaignUnallocated: Int
+  campaignUnallocated_not: Int
+  campaignUnallocated_in: [Int!]
+  campaignUnallocated_not_in: [Int!]
+  campaignUnallocated_lt: Int
+  campaignUnallocated_lte: Int
+  campaignUnallocated_gt: Int
+  campaignUnallocated_gte: Int
+  mediaComms: Int
+  mediaComms_not: Int
+  mediaComms_in: [Int!]
+  mediaComms_not_in: [Int!]
+  mediaComms_lt: Int
+  mediaComms_lte: Int
+  mediaComms_gt: Int
+  mediaComms_gte: Int
+  publicInfoOutreach: Int
+  publicInfoOutreach_not: Int
+  publicInfoOutreach_in: [Int!]
+  publicInfoOutreach_not_in: [Int!]
+  publicInfoOutreach_lt: Int
+  publicInfoOutreach_lte: Int
+  publicInfoOutreach_gt: Int
+  publicInfoOutreach_gte: Int
+  operations: Int
+  operations_not: Int
+  operations_in: [Int!]
+  operations_not_in: [Int!]
+  operations_lt: Int
+  operations_lte: Int
+  operations_gt: Int
+  operations_gte: Int
+  engagement: Int
+  engagement_not: Int
+  engagement_in: [Int!]
+  engagement_not_in: [Int!]
+  engagement_lt: Int
+  engagement_lte: Int
+  engagement_gt: Int
+  engagement_gte: Int
+  political: Int
+  political_not: Int
+  political_in: [Int!]
+  political_not_in: [Int!]
+  political_lt: Int
+  political_lte: Int
+  political_gt: Int
+  political_gte: Int
+  total: Int
+  total_not: Int
+  total_in: [Int!]
+  total_not_in: [Int!]
+  total_lt: Int
+  total_lte: Int
+  total_gt: Int
+  total_gte: Int
+  AND: [ProgrammeStaffWhereInput!]
+  OR: [ProgrammeStaffWhereInput!]
+  NOT: [ProgrammeStaffWhereInput!]
+}
+
+input ProgrammeStaffWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type Project {
+  id: ID!
+  project: ProjectInfo!
+  staff: Int!
+  budget: Int!
+}
+
+type ProjectConnection {
+  pageInfo: PageInfo!
+  edges: [ProjectEdge]!
+  aggregate: AggregateProject!
+}
+
+input ProjectCreateInput {
+  project: ProjectInfoCreateOneInput!
+  staff: Int!
+  budget: Int!
+}
+
+type ProjectEdge {
+  node: Project!
+  cursor: String!
+}
+
+type ProjectInfo {
+  id: ID!
+  name: String!
+  description: String!
+}
+
+type ProjectInfoConnection {
+  pageInfo: PageInfo!
+  edges: [ProjectInfoEdge]!
+  aggregate: AggregateProjectInfo!
+}
+
+input ProjectInfoCreateInput {
+  name: String!
+  description: String!
+}
+
+input ProjectInfoCreateOneInput {
+  create: ProjectInfoCreateInput
+  connect: ProjectInfoWhereUniqueInput
+}
+
+type ProjectInfoEdge {
+  node: ProjectInfo!
+  cursor: String!
+}
+
+enum ProjectInfoOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProjectInfoPreviousValues {
+  id: ID!
+  name: String!
+  description: String!
+}
+
+type ProjectInfoSubscriptionPayload {
+  mutation: MutationType!
+  node: ProjectInfo
+  updatedFields: [String!]
+  previousValues: ProjectInfoPreviousValues
+}
+
+input ProjectInfoSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProjectInfoWhereInput
+  AND: [ProjectInfoSubscriptionWhereInput!]
+  OR: [ProjectInfoSubscriptionWhereInput!]
+  NOT: [ProjectInfoSubscriptionWhereInput!]
+}
+
+input ProjectInfoUpdateDataInput {
+  name: String
+  description: String
+}
+
+input ProjectInfoUpdateInput {
+  name: String
+  description: String
+}
+
+input ProjectInfoUpdateOneRequiredInput {
+  create: ProjectInfoCreateInput
+  update: ProjectInfoUpdateDataInput
+  upsert: ProjectInfoUpsertNestedInput
+  connect: ProjectInfoWhereUniqueInput
+}
+
+input ProjectInfoUpsertNestedInput {
+  update: ProjectInfoUpdateDataInput!
+  create: ProjectInfoCreateInput!
+}
+
+input ProjectInfoWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  AND: [ProjectInfoWhereInput!]
+  OR: [ProjectInfoWhereInput!]
+  NOT: [ProjectInfoWhereInput!]
+}
+
+input ProjectInfoWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+enum ProjectOrderByInput {
+  id_ASC
+  id_DESC
+  staff_ASC
+  staff_DESC
+  budget_ASC
+  budget_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProjectPreviousValues {
+  id: ID!
+  staff: Int!
+  budget: Int!
+}
+
+type ProjectSubscriptionPayload {
+  mutation: MutationType!
+  node: Project
+  updatedFields: [String!]
+  previousValues: ProjectPreviousValues
+}
+
+input ProjectSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProjectWhereInput
+  AND: [ProjectSubscriptionWhereInput!]
+  OR: [ProjectSubscriptionWhereInput!]
+  NOT: [ProjectSubscriptionWhereInput!]
+}
+
+input ProjectUpdateInput {
+  project: ProjectInfoUpdateOneRequiredInput
+  staff: Int
+  budget: Int
+}
+
+input ProjectWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  project: ProjectInfoWhereInput
+  staff: Int
+  staff_not: Int
+  staff_in: [Int!]
+  staff_not_in: [Int!]
+  staff_lt: Int
+  staff_lte: Int
+  staff_gt: Int
+  staff_gte: Int
+  budget: Int
+  budget_not: Int
+  budget_in: [Int!]
+  budget_not_in: [Int!]
+  budget_lt: Int
+  budget_lte: Int
+  budget_gt: Int
+  budget_gte: Int
+  AND: [ProjectWhereInput!]
+  OR: [ProjectWhereInput!]
+  NOT: [ProjectWhereInput!]
+}
+
+input ProjectWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  nRO(where: NROWhereUniqueInput!): NRO
+  nRoes(where: NROWhereInput, orderBy: NROOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [NRO]!
+  nRoesConnection(where: NROWhereInput, orderBy: NROOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NROConnection!
+  operationalExpenses(where: OperationalExpensesWhereUniqueInput!): OperationalExpenses
+  operationalExpenseses(where: OperationalExpensesWhereInput, orderBy: OperationalExpensesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OperationalExpenses]!
+  operationalExpensesesConnection(where: OperationalExpensesWhereInput, orderBy: OperationalExpensesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OperationalExpensesConnection!
+  operationalIncome(where: OperationalIncomeWhereUniqueInput!): OperationalIncome
+  operationalIncomes(where: OperationalIncomeWhereInput, orderBy: OperationalIncomeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OperationalIncome]!
+  operationalIncomesConnection(where: OperationalIncomeWhereInput, orderBy: OperationalIncomeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OperationalIncomeConnection!
+  programmeBalance(where: ProgrammeBalanceWhereUniqueInput!): ProgrammeBalance
+  programmeBalances(where: ProgrammeBalanceWhereInput, orderBy: ProgrammeBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProgrammeBalance]!
+  programmeBalancesConnection(where: ProgrammeBalanceWhereInput, orderBy: ProgrammeBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProgrammeBalanceConnection!
+  programmeBudget(where: ProgrammeBudgetWhereUniqueInput!): ProgrammeBudget
+  programmeBudgets(where: ProgrammeBudgetWhereInput, orderBy: ProgrammeBudgetOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProgrammeBudget]!
+  programmeBudgetsConnection(where: ProgrammeBudgetWhereInput, orderBy: ProgrammeBudgetOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProgrammeBudgetConnection!
+  programmeStaff(where: ProgrammeStaffWhereUniqueInput!): ProgrammeStaff
+  programmeStaffs(where: ProgrammeStaffWhereInput, orderBy: ProgrammeStaffOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProgrammeStaff]!
+  programmeStaffsConnection(where: ProgrammeStaffWhereInput, orderBy: ProgrammeStaffOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProgrammeStaffConnection!
+  project(where: ProjectWhereUniqueInput!): Project
+  projects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Project]!
+  projectsConnection(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectConnection!
+  projectInfo(where: ProjectInfoWhereUniqueInput!): ProjectInfo
+  projectInfoes(where: ProjectInfoWhereInput, orderBy: ProjectInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectInfo]!
+  projectInfoesConnection(where: ProjectInfoWhereInput, orderBy: ProjectInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectInfoConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  nRO(where: NROSubscriptionWhereInput): NROSubscriptionPayload
+  operationalExpenses(where: OperationalExpensesSubscriptionWhereInput): OperationalExpensesSubscriptionPayload
+  operationalIncome(where: OperationalIncomeSubscriptionWhereInput): OperationalIncomeSubscriptionPayload
+  programmeBalance(where: ProgrammeBalanceSubscriptionWhereInput): ProgrammeBalanceSubscriptionPayload
+  programmeBudget(where: ProgrammeBudgetSubscriptionWhereInput): ProgrammeBudgetSubscriptionPayload
+  programmeStaff(where: ProgrammeStaffSubscriptionWhereInput): ProgrammeStaffSubscriptionPayload
+  project(where: ProjectSubscriptionWhereInput): ProjectSubscriptionPayload
+  projectInfo(where: ProjectInfoSubscriptionWhereInput): ProjectInfoSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  name: String!
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateInput {
+  name: String
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+}

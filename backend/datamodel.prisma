@@ -1,0 +1,85 @@
+type User {
+  id: ID! @unique
+  name: String!
+}
+
+type NRO {
+  id: ID! @unique
+  name: String! @unique
+  coordinates: String!
+  context: String!
+  about: String!
+}
+
+type OperationalIncome{
+  id: ID! @unique
+  name: String! @unique
+  nro: NRO! # relationship to NRO
+  grants: Int!
+  fundraising: Int!
+  other: Int!
+  total: Int!
+}
+
+type OperationalExpenses{
+  id: ID! @unique
+  name: String! @unique
+  nro: NRO! # relationship to NRO
+  orgSupport: Int!
+  campaignSupport: Int!
+  campaigns: Int!
+  contribution: Int!
+  fundraisingExpenditure: Int!
+}
+
+type ProgrammeStaff {
+  id: ID! @unique
+  name: String! @unique
+  nro: NRO! # relationship to NRO
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeBudget {
+  id: ID! @unique
+  name: String! @unique
+  nro: NRO! # relationship to NRO
+  campaigns: Int!
+  campaignCoordination: Int!
+  campaignUnallocated: Int!
+  mediaComms: Int!
+  publicInfoOutreach: Int!
+  operations: Int!
+  engagement: Int!
+  political: Int!
+  total: Int!
+}
+
+type ProgrammeBalance {
+  id: ID! @unique
+  name: String! @unique
+  nro: NRO! # relationship to NRO
+  staff: Int!
+  direct: Int!
+  total: Int!
+}
+
+type ProjectInfo {
+  id: ID! @unique
+  name: String! @unique
+  description: String!
+}
+
+type Project {
+  id: ID! @unique
+  project: ProjectInfo!
+  staff: Int!
+  budget: Int!
+}
