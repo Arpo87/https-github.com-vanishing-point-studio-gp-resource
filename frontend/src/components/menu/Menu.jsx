@@ -19,7 +19,7 @@ const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className 
 })
 
 const Menu = ({ location }) => {
-  const nroPage = location.pathname === '/' || location.pathname === '/breakdowns'
+  const isNroPage = location.pathname === '/' || location.pathname === '/breakdowns'
   return (
     <div className="menu">
       <div className="page-selection">
@@ -27,7 +27,7 @@ const Menu = ({ location }) => {
         <LinkWithIcon to="/program" text="Program" icon="programme" />
         <LinkWithIcon to="/projects" text="Projects" icon="project" />
       </div>
-      {nroPage && (
+      {isNroPage && (
         <React.Fragment>
           <div className="view-selection">
             <div className="title">View</div>
@@ -49,6 +49,17 @@ const Menu = ({ location }) => {
           </div>
           <div className="data-selection">
             <div className="title">Data to show</div>
+            <div className="data-links">
+              <Link className="plain" to={location.pathname}>
+                Income
+              </Link>
+              <Link className="plain" to={location.pathname + '?data=expenses'}>
+                Expenses
+              </Link>
+              <Link className="plain" to={location.pathname + '?data=staff'}>
+                Staff
+              </Link>
+            </div>
           </div>
         </React.Fragment>
       )}
