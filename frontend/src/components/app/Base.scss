@@ -15,3 +15,14 @@ button {
 a {
   outline: none;
 }
+
+a.plain {
+  text-decoration: none;
+  color: $text-1;
+}
+
+// Typography
+
+.light {
+  color: $text-2;
+}

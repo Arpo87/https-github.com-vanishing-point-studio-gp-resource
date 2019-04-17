@@ -5,18 +5,17 @@ import Menu from '../menu/Menu'
 import './Frame.scss'
 
 const Frame = () => (
-  <React.Fragment>
-    <div className="left-bar">
+  <Router>
+    <div className="title-bar">
       <div className="logo">RI</div>
     </div>
-    <Router>
-      <Switch>
-        <Route path="/" component={Map} />
-        <Route path="/breakdowns" render={() => null} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route path="/" exact component={Map} />
+      <Route path="/breakdowns" render={() => null} />
+    </Switch>
+    <div className="frame-grower" />
     <Menu />
-  </React.Fragment>
+  </Router>
 )
 
 export default Frame

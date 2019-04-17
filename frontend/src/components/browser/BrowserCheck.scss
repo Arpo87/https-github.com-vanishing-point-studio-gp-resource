@@ -1,4 +1,4 @@
-@import './Variables.scss';
+@import '../app/Variables.scss';
 
 .unsupported-browser {
   width: 100%;
@@ -8,5 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+
+  a {
+    color: tomato;
+    font-weight: 700;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
 }

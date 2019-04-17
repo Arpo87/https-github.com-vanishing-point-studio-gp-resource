@@ -1,7 +1,7 @@
 import React from 'react'
 import WebFont from 'webfontloader'
-import BrowserCheck from './BrowserCheck'
-import Frame from './Frame'
+import BrowserCheck from '../browser/BrowserCheck'
+import Frame from '../frame/Frame'
 import './App.scss'
 
 WebFont.load({
