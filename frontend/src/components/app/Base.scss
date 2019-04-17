@@ -1,0 +1,17 @@
+@import './Variables.scss';
+
+// Misc
+*::-moz-focus-inner {
+  border: 0;
+}
+
+// Buttons
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+// Links
+a {
+  outline: none;
+}

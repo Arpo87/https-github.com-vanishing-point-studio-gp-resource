@@ -1,0 +1,31 @@
+@import './Variables.scss';
+@import './Base.scss';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-1;
+  color: $text-1;
+  background-color: $bg-1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+}
+
+html.wf-loading {
+  #root {
+    display: none;
+  }
+}
