@@ -22,7 +22,12 @@ a.plain {
 }
 
 // Typography
-
 .light {
   color: $text-2;
+}
+
+//Icons
+i {
+  background-size: contain;
+  background-repeat: no-repeat;
 }
