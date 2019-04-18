@@ -11,7 +11,7 @@ import './Map.scss'
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-const averageRadius = 3 // Radius of average value as percentage of svg width.
+const averageRadius = 2 // Radius of average value as percentage of svg width.
 const scaleFunction = null // E.g. Math.log, Math.log10, or null for linear scale (x => x).
 const dataWithCoordinates = data
   .filter(d => mapCoordinates[d.location])
