@@ -1,11 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { getDataSelection } from '../../utils/routeUtils'
 import Map from '../map/Map'
 import Menu from '../menu/Menu'
 import './Frame.scss'
 
 const NroView = ({ location }) => {
-  const dataSelection = new URLSearchParams(location.search).get('data') || 'income'
+  const dataSelection = getDataSelection(location)
   const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
   const breakdowns = location.pathname === '/breakdowns'
   return (

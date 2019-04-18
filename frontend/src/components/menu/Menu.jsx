@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { getDataSelection } from '../../utils/routeUtils'
 import './Menu.scss'
 
 const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className }) => {
@@ -21,7 +22,7 @@ const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className 
 
 const Menu = ({ location }) => {
   const isNroPage = location.pathname === '/' || location.pathname === '/breakdowns'
-  const dataSelection = new URLSearchParams(location.search).get('data') || 'income'
+  const dataSelection = getDataSelection(location)
   return (
     <div className="menu">
       <div className="page-selection">
