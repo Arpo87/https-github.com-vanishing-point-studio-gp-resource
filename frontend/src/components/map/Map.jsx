@@ -8,8 +8,8 @@ import './Map.scss'
 transition() // Need to import transition to be able to call it on a selection for some reason..
 
 const data = [
-  { location: 'North America', coordinates: [0.2, 0.3], value: 140 },
-  { location: 'Australia', coordinates: [0.7, 0.8], value: 50 },
+  { location: 'North America', coordinates: [0.17, 0.31], value: 100 },
+  { location: 'Australia', coordinates: [0.89, 0.74], value: 50 },
 ]
 
 class Map extends React.PureComponent {
@@ -46,7 +46,7 @@ class Map extends React.PureComponent {
     circles.attr('cx', d => width * d.coordinates[0]).attr('cy', d => height * d.coordinates[1])
     circles
       .transition()
-      .duration(500)
+      .duration(400)
       .attr('r', d => d.value)
   }
 }
