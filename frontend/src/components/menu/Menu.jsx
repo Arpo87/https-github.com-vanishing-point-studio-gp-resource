@@ -3,7 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 import './Menu.scss'
 
 const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className }) => {
-  const active = location.pathname === to || (matches && matches.some(m => m === location.pathname))
+  const toPath = to.split('?')[0]
+  const active = location.pathname === toPath || (matches && matches.some(m => m === location.pathname))
   return (
     <Link
       to={to}
@@ -33,9 +34,9 @@ const Menu = ({ location }) => {
           <div className="view-selection">
             <div className="title">View</div>
             <div className="view-switch">
-              <LinkWithIcon to="/" text="Overview" icon="map" className="overview" />
+              <LinkWithIcon to={'/' + location.search} text="Overview" icon="map" className="overview" />
               <LinkWithIcon
-                to="/breakdowns"
+                to={'/breakdowns' + location.search}
                 text="Breakdowns"
                 icon={
                   <div>
