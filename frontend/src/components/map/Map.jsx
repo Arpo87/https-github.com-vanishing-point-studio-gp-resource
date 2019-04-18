@@ -4,6 +4,7 @@ import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelectionIndex } from '../../utils/selectionUtils'
+import { data, mapCoordinates } from './fakeData'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
@@ -12,13 +13,9 @@ transition()
 
 const averageRadius = 3 // Radius of average value as percentage of svg width.
 const scaleFunction = null // E.g. Math.log, Math.log10, or null for linear scale (x => x).
-
-const data = [
-  // Values are: [ income, expenses, staff ]
-  { location: 'North America', coordinates: [0.17, 0.31], values: [100, 70, 85] },
-  { location: 'Australia', coordinates: [0.89, 0.74], values: [50, 60, 40] },
-  { location: 'Germany', coordinates: [0.51, 0.24], values: [520, 610, 280] },
-]
+const dataWithCoordinates = data
+  .filter(d => mapCoordinates[d.location])
+  .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
 
 const valueToRadius = (value, i, svgWidth) => {
   const values = data.map(d => d.values[i])
@@ -47,7 +44,18 @@ class Map extends React.PureComponent {
         <div className="map-container">
           <ResizeDetector handleWidth handleHeight onResize={this.draw} />
           <img src={map} width="100%" alt="" />
-          <svg className="data-svg" ref={e => (this.svgElement = e)} />
+          <svg
+            className="data-svg"
+            ref={e => (this.svgElement = e)}
+            onClick={e => {
+              const r = this.svgElement.getBoundingClientRect()
+              const x = (e.pageX - r.left) / r.width
+              const y = (e.pageY - r.top) / r.height
+
+              console.log(x, y)
+            }}
+          />
+          <div className="tooltip" ref={e => (this.tooltipElement = e)} />
         </div>
       </div>
     )
@@ -68,10 +76,12 @@ class Map extends React.PureComponent {
     circles
       .transition()
       .duration(400)
-      .attr('r', d => valueToRadius(d.values[i], i, width))
+      .attr('r', d => (d.values[i] ? valueToRadius(d.values[i], i, width) : 0))
   }
 }
 
-const MapWithFakeData = ({ location }) => <Map data={data} dataSelectionIndex={getDataSelectionIndex(location)} />
+const MapWithFakeData = ({ location }) => (
+  <Map data={dataWithCoordinates} dataSelectionIndex={getDataSelectionIndex(location)} />
+)
 
 export default withRouter(MapWithFakeData)
