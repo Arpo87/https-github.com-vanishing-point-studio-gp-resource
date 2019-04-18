@@ -27,7 +27,7 @@ const Frame = () => (
       <div className="logo">RI</div>
     </div>
     <Switch>
-      <Route path={/(^\/$|^\/breakdowns$)/} exact component={NroView} />
+      <Route path="(|/breakdowns)" exact component={NroView} />
     </Switch>
     <div className="frame-grower" />
     <Menu />

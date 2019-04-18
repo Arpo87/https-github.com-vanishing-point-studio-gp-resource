@@ -5,6 +5,7 @@
   flex-direction: column;
   border-left: 1px solid $border-1;
   width: 310px;
+  min-width: 310px;
 
   .page-selection {
     padding: 10px 25px;
