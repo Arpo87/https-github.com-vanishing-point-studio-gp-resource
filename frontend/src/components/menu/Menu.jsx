@@ -20,6 +20,7 @@ const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className 
 
 const Menu = ({ location }) => {
   const isNroPage = location.pathname === '/' || location.pathname === '/breakdowns'
+  const dataSelection = new URLSearchParams(location.search).get('data') || 'income'
   return (
     <div className="menu">
       <div className="page-selection">
@@ -49,7 +50,7 @@ const Menu = ({ location }) => {
           </div>
           <div className="data-selection">
             <div className="title">Data to show</div>
-            <div className="data-links">
+            <div className={'data-links ' + dataSelection}>
               <Link className="plain" to={location.pathname}>
                 Income
               </Link>
@@ -59,6 +60,7 @@ const Menu = ({ location }) => {
               <Link className="plain" to={location.pathname + '?data=staff'}>
                 Staff
               </Link>
+              <span className="selection-indicator" />
             </div>
           </div>
         </React.Fragment>
