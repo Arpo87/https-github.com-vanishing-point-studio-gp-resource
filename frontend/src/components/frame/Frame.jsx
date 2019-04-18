@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { getDataSelection } from '../../utils/routeUtils'
+import { getDataSelection } from '../../utils/selectionUtils'
 import Map from '../map/Map'
 import Menu from '../menu/Menu'
 import './Frame.scss'

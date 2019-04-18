@@ -2,14 +2,18 @@ import React from 'react'
 import ResizeDetector from 'react-resize-detector'
 import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
+import { withRouter } from 'react-router-dom'
+import { getDataSelectionIndex } from '../../utils/selectionUtils'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
-transition() // Need to import transition to be able to call it on a selection for some reason..
+// Need to import transition to be able to call it on a selection for some reason.
+transition()
 
 const data = [
-  { location: 'North America', coordinates: [0.17, 0.31], value: 100 },
-  { location: 'Australia', coordinates: [0.89, 0.74], value: 50 },
+  // Values are: [ income, expenses, staff ]
+  { location: 'North America', coordinates: [0.17, 0.31], values: [100, 70, 85] },
+  { location: 'Australia', coordinates: [0.89, 0.74], values: [50, 60, 40] },
 ]
 
 class Map extends React.PureComponent {
@@ -47,10 +51,10 @@ class Map extends React.PureComponent {
     circles
       .transition()
       .duration(400)
-      .attr('r', d => d.value)
+      .attr('r', d => d.values[this.props.dataSelectionIndex])
   }
 }
 
-const MapWithFakeData = () => <Map data={data} />
+const MapWithFakeData = ({ location }) => <Map data={data} dataSelectionIndex={getDataSelectionIndex(location)} />
 
-export default MapWithFakeData
+export default withRouter(MapWithFakeData)

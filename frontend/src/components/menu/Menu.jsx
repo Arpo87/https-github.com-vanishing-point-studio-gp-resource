@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { getDataSelection } from '../../utils/routeUtils'
+import { getDataSelection } from '../../utils/selectionUtils'
 import './Menu.scss'
 
 const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className }) => {
