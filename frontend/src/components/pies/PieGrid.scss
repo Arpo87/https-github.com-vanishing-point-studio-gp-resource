@@ -1,0 +1,10 @@
+.pie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+
+  .pie-grid-item {
+    padding: 5%;
+    width: 25%; // 4 per row, will need to change this with media queries later.
+  }
+}

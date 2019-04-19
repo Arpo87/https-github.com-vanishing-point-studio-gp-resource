@@ -1,6 +1,7 @@
 import React from 'react'
 import { getDataSelection } from '../../utils/selectionUtils'
 import Map from '../map/Map'
+import PieGrid from '../pies/PieGrid'
 import './NroPage.scss'
 
 const NroPage = ({ location }) => {
@@ -15,7 +16,7 @@ const NroPage = ({ location }) => {
         <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
         <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
       </h1>
-      {breakdowns ? null : <Map />}
+      {breakdowns ? <PieGrid /> : <Map />}
     </div>
   )
 }
