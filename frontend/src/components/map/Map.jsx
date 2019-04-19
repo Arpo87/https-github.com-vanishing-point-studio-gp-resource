@@ -18,7 +18,7 @@ const dataWithCoordinates = data
   .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
 
 const valueToRadius = (value, dataSelection, svgWidth) => {
-  const values = data.map(d => d[dataSelection].total)
+  const values = data.map(d => d[dataSelection].reduce((a, b) => a + b, 0))
   const averageValue = values.reduce((a, b) => a + b, 0) / values.length
 
   const scaledValue = scaleFunction ? scaleFunction(value) : value
@@ -76,7 +76,13 @@ class Map extends React.PureComponent {
     circles
       .transition()
       .duration(400)
-      .attr('r', d => (d[dataSelection] ? valueToRadius(d[dataSelection].total, dataSelection, width) : 0))
+      .attr('r', d => {
+        if (!d[dataSelection]) {
+          return 0
+        }
+        const total = d[dataSelection].reduce((a, b) => a + b, 0)
+        return valueToRadius(total, dataSelection, width)
+      })
   }
 }
 
