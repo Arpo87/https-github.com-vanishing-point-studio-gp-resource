@@ -8,7 +8,7 @@ import './PieGrid.scss'
 const PieGrid = ({ data, labels, dataSelection }) => (
   <div className="pie-grid">
     {data.map(d => (
-      <div className="pie-grid-item">
+      <div className="pie-grid-item" key={d.location}>
         <PieChart
           title={d.location}
           data={d[dataSelection].map((d, i) => ({
