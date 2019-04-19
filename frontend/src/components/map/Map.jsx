@@ -48,10 +48,10 @@ class Map extends React.PureComponent {
             className="data-svg"
             ref={e => (this.svgElement = e)}
             onClick={e => {
+              // Temporary thing - logs the coordinates of the click, used for creating mapCoordinates.
               const r = this.svgElement.getBoundingClientRect()
               const x = (e.pageX - r.left) / r.width
               const y = (e.pageY - r.top) / r.height
-
               console.log(x, y)
             }}
           />
