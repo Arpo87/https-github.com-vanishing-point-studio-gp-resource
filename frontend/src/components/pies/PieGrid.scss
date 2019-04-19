@@ -1,3 +1,5 @@
+@import '../app/Variables.scss';
+
 .pie-grid {
   display: flex;
   flex-wrap: wrap;
@@ -6,5 +8,14 @@
   .pie-grid-item {
     padding: 3%;
     width: 25%; // 4 per row, will need to change this with media queries later.
+
+    .title {
+      color: $green-1;
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 10px;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

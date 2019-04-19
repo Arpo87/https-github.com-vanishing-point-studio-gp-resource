@@ -10,12 +10,12 @@ const PieGrid = ({ data, labels, dataSelection }) => (
     {data.map(d => (
       <div className="pie-grid-item" key={d.location}>
         <PieChart
-          title={d.location}
           data={d[dataSelection].map((d, i) => ({
             label: labels[dataSelection][i],
             value: d,
           }))}
         />
+        <div className="title">{d.location}</div>
       </div>
     ))}
   </div>
