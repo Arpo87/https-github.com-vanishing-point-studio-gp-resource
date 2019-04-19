@@ -32,12 +32,16 @@ export const data = [
 
 export const mapCoordinates = {
   Africa: [0.551, 0.542],
+  Andino: [0.272, 0.805],
   'Aus Pac': [0.903, 0.723],
   Brazil: [0.322, 0.687],
   Canada: [0.181, 0.175],
+  CEE: [0.598, 0.279],
+  'Fr-Lux': [0.466, 0.235],
   Germany: [0.513, 0.243],
   Japan: [0.893, 0.293],
   Mexico: [0.174, 0.479],
+  MENA: [0.528, 0.407],
   Nordic: [0.517, 0.133],
   'New Zealand': [0.985, 0.79],
   Russia: [0.596, 0.155],
