@@ -8,29 +8,6 @@ import './PieChart.scss'
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-const data = [
-  {
-    label: 'Blah',
-    value: 20,
-  },
-  {
-    label: 'Bleep',
-    value: 30,
-  },
-  {
-    label: 'Blorp',
-    value: 10,
-  },
-  {
-    label: 'Bloop',
-    value: 40,
-  },
-  {
-    label: 'Barf',
-    value: 50,
-  },
-]
-
 class PieChart extends React.PureComponent {
   componentDidMount() {
     this.draw()
@@ -75,6 +52,4 @@ class PieChart extends React.PureComponent {
   }
 }
 
-const PieChartWithFakeData = () => <PieChart data={data} />
-
-export default PieChartWithFakeData
+export default PieChart
