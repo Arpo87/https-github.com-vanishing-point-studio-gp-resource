@@ -3,8 +3,8 @@ import ResizeDetector from 'react-resize-detector'
 import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
-import { getDataSelectionIndex } from '../../utils/selectionUtils'
-import { data, mapCoordinates } from './fakeData'
+import { getDataSelection } from '../../utils/selectionUtils'
+import { data, mapCoordinates } from '../../utils/fakeData'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
@@ -17,8 +17,8 @@ const dataWithCoordinates = data
   .filter(d => mapCoordinates[d.location])
   .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
 
-const valueToRadius = (value, i, svgWidth) => {
-  const values = data.map(d => d.values[i])
+const valueToRadius = (value, dataSelection, svgWidth) => {
+  const values = data.map(d => d[dataSelection].total)
   const averageValue = values.reduce((a, b) => a + b, 0) / values.length
 
   const scaledValue = scaleFunction ? scaleFunction(value) : value
@@ -62,7 +62,7 @@ class Map extends React.PureComponent {
   }
 
   draw = () => {
-    const i = this.props.dataSelectionIndex
+    const dataSelection = this.props.dataSelection
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
@@ -76,12 +76,10 @@ class Map extends React.PureComponent {
     circles
       .transition()
       .duration(400)
-      .attr('r', d => (d.values[i] ? valueToRadius(d.values[i], i, width) : 0))
+      .attr('r', d => (d[dataSelection] ? valueToRadius(d[dataSelection].total, dataSelection, width) : 0))
   }
 }
 
-const MapWithFakeData = ({ location }) => (
-  <Map data={dataWithCoordinates} dataSelectionIndex={getDataSelectionIndex(location)} />
-)
+const MapWithFakeData = ({ location }) => <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} />
 
 export default withRouter(MapWithFakeData)
