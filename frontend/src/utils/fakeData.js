@@ -1,5 +1,15 @@
+const createRandomArray = (length, min, max) => {
+  const array = []
+  for (let i = 0; i < length; i++) {
+    array.push(min + Math.floor((max - min) * Math.random()))
+  }
+  return array
+}
+
 export const labels = {
   income: ['Grants', 'Fundraising', 'Other'],
+  expenses: ['Campaigns', 'Campaign Support', 'Contributions', 'Organisational Support'],
+  staff: ['Campaigns', 'Campaign Support', 'Fundraising', 'Organisational Support'],
 }
 
 export const data = [
@@ -28,7 +38,7 @@ export const data = [
   { location: 'Switzerland', income: [0, 13934, 24] },
   { location: 'UK', income: [0, 17400, 0] },
   { location: 'USA', income: [971, 19563, 263] },
-]
+].map(d => ({ ...d, expenses: createRandomArray(4, 0, 20000), staff: createRandomArray(4, 0, 100) }))
 
 export const mapCoordinates = {
   Africa: [0.551, 0.542],
