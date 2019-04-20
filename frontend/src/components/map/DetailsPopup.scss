@@ -5,27 +5,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 240px;
+  width: 260px;
   padding: 15px 20px 20px 20px;
   background-color: $white-transparent;
   box-shadow: $shadow-1;
   border-radius: 4px;
+  $anchor-width: 10px;
 
   &::before {
     content: '';
     position: absolute;
     border-style: solid;
     border-color: transparent $white-transparent transparent transparent;
-    border-width: 15px 15px 15px 0;
+    border-width: $anchor-width $anchor-width $anchor-width 0;
     top: 20px;
-    left: -15px;
+    left: -$anchor-width;
   }
 
   &.anchor-right::before {
     border-color: transparent transparent transparent $white-transparent;
-    border-width: 15px 0 15px 15px;
+    border-width: $anchor-width 0 $anchor-width $anchor-width;
     left: unset;
-    right: -15px;
+    right: -$anchor-width;
+  }
+
+  &.anchor-bottom::before {
+    top: unset;
+    bottom: 20px;
   }
 
   .pie-container {

@@ -9,10 +9,13 @@ import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
+const POPUP_WIDTH = 260
+const POPUP_ANCHOR_WIDTH = 10
+const AVERAGE_RADIUS = 2 // Radius of average value as percentage of svg width.
+
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-const averageRadius = 2 // Radius of average value as percentage of svg width.
 const scaleFunction = null // E.g. Math.log, Math.log10, or null for linear scale (x => x).
 const dataWithCoordinates = data
   .filter(d => mapCoordinates[d.location])
@@ -24,7 +27,7 @@ const valueToRadius = (value, dataSelection, svgWidth) => {
 
   const scaledValue = scaleFunction ? scaleFunction(value) : value
   const scaledAverageValue = scaleFunction ? scaleFunction(averageValue) : averageValue
-  const averageAreaInPx = Math.PI * Math.pow((svgWidth * averageRadius) / 100, 2)
+  const averageAreaInPx = Math.PI * Math.pow((svgWidth * AVERAGE_RADIUS) / 100, 2)
   const areaInPx = (scaledValue / scaledAverageValue) * averageAreaInPx
 
   return Math.sqrt(areaInPx / Math.PI)
@@ -74,13 +77,12 @@ class Map extends React.PureComponent {
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
-    const circles = select(this.svgElement)
+    select(this.svgElement)
       .selectAll('circle')
       .data(this.props.data)
-
-    circles.join('circle')
-    circles.attr('cx', d => width * d.coordinates[0]).attr('cy', d => height * d.coordinates[1])
-    circles
+      .join('circle')
+      .attr('cx', d => width * d.coordinates[0])
+      .attr('cy', d => height * d.coordinates[1])
       .transition()
       .duration(400)
       .attr('r', d => {
@@ -95,15 +97,23 @@ class Map extends React.PureComponent {
     const nroX = nroData.coordinates[0] * width
     const nroY = nroData.coordinates[1] * height
 
-    let anchorX
-    if (nroX + 240 < width) {
-      anchorX = nroX + 15
+    let anchorX, anchorY
+    if (nroX + POPUP_WIDTH < width) {
+      anchorX = nroX + POPUP_ANCHOR_WIDTH
       this.popupElement.classList.remove('anchor-right')
     } else {
-      anchorX = nroX - 255
+      anchorX = nroX - POPUP_WIDTH - POPUP_ANCHOR_WIDTH
       this.popupElement.classList.add('anchor-right')
     }
-    const anchorY = nroY - 35
+
+    const popupBounds = this.popupElement.getBoundingClientRect()
+    if (popupBounds.bottom < window.innerHeight - 10) {
+      anchorY = nroY - 20 - POPUP_ANCHOR_WIDTH
+      this.popupElement.classList.remove('anchor-bottom')
+    } else {
+      anchorY = nroY - popupBounds.height + 20 + POPUP_ANCHOR_WIDTH
+      this.popupElement.classList.add('anchor-bottom')
+    }
 
     select(this.popupElement).attr('style', 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;')
   }
@@ -112,7 +122,7 @@ class Map extends React.PureComponent {
 }
 
 const MapWithFakeData = ({ location }) => (
-  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} nro="New Zealand" />
+  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} nro="USA" />
 )
 
 export default withRouter(MapWithFakeData)
