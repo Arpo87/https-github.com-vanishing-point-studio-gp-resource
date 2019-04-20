@@ -5,23 +5,23 @@ import { formatCurrency } from '../../utils'
 import { labels } from '../../utils/fakeData'
 import './DetailsPopup.scss'
 
+const FADE_TIME = 150
+
 const formatValue = (value, dataSelection) => (dataSelection === 'staff' ? value : formatCurrency(value))
 
 class DetailsPopup extends React.Component {
-  state = { fadedIn: false }
+  state = { fadedIn: false, fadedOut: false }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ fadedIn: true }), 50)
+    setTimeout(() => this.setState({ fadedIn: true }), 1)
   }
 
-  componentWillUnmount() {}
-
   render() {
-    const { data, dataSelection, popupRef, handleClose } = this.props
-    const { fadedIn } = this.state
+    const { data, dataSelection, popupRef } = this.props
+    const { fadedIn, fadedOut } = this.state
     return (
       <div className="details-popup" ref={popupRef}>
-        <div className={'fade-container' + (fadedIn ? ' faded-in' : '')}>
+        <div className={'fade-container' + (fadedIn && !fadedOut ? ' faded-in' : '')}>
           <div className="pie-container">
             <PieChart
               data={data[dataSelection].map((d, i) => ({
@@ -30,7 +30,7 @@ class DetailsPopup extends React.Component {
               }))}
             />
           </div>
-          <button className="close-button plain" type="button" onClick={handleClose}>
+          <button className="close-button plain" type="button" onClick={this.handleCloseButtonClick}>
             <CloseIcon />
           </button>
           <h2>{data.location}</h2>
@@ -47,6 +47,11 @@ class DetailsPopup extends React.Component {
         </div>
       </div>
     )
+  }
+
+  handleCloseButtonClick = () => {
+    this.setState({ fadedOut: true })
+    setTimeout(() => this.props.onCloseRequested(), FADE_TIME)
   }
 }
 

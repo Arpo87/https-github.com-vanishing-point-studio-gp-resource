@@ -68,7 +68,7 @@ class Map extends React.PureComponent {
               data={nroData}
               dataSelection={dataSelection}
               popupRef={e => (this.popupElement = e)}
-              handleClose={this.closePopup}
+              onCloseRequested={this.closePopup}
             />
           )}
         </div>
