@@ -1,6 +1,6 @@
 import React from 'react'
 import ResizeDetector from 'react-resize-detector'
-import { select } from 'd3-selection'
+import { select, event } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
@@ -48,7 +48,7 @@ class Map extends React.PureComponent {
     const { dataSelection } = this.props
     const nroData = this.getSelectedNroData()
     return (
-      <div className="map-view" ref={e => (this.viewElement = e)}>
+      <div className="map-view" ref={e => (this.viewElement = e)} onClick={() => this.setState({ selectedNro: null })}>
         <div className="map-container">
           <ResizeDetector handleWidth handleHeight onResize={this.draw} />
           <img src={map} width="100%" alt="" />
@@ -82,7 +82,10 @@ class Map extends React.PureComponent {
       .join('circle')
       .attr('cx', d => width * d.coordinates[0])
       .attr('cy', d => height * d.coordinates[1])
-      .on('click', d => this.setState({ selectedNro: d.location }))
+      .on('click', d => {
+        event.stopPropagation()
+        this.setState({ selectedNro: d.location })
+      })
       .transition()
       .duration(400)
       .attr('r', d => {

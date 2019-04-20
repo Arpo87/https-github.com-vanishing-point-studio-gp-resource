@@ -17,7 +17,7 @@ class DetailsPopup extends React.Component {
     const { data, dataSelection, popupRef } = this.props
     const { fadedIn } = this.state
     return (
-      <div className="details-popup" ref={popupRef}>
+      <div className="details-popup" ref={popupRef} onClick={e => e.stopPropagation()}>
         <div className={'fade-container' + (fadedIn ? ' faded-in' : '')}>
           <div className="pie-container">
             <PieChart
