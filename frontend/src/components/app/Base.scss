@@ -9,6 +9,12 @@
 button {
   cursor: pointer;
   outline: none;
+
+  &.plain {
+    background: none;
+    border: none;
+    padding: 5px;
+  }
 }
 
 // Links
@@ -30,6 +36,15 @@ a.plain {
 i {
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.icon .fill {
+  fill: $text-2;
+  transition: fill 200ms;
+}
+
+button:hover .icon .fill {
+  fill: darken($text-2, 20%);
 }
 
 // Scroll

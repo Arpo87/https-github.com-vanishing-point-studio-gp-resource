@@ -1,6 +1,6 @@
 import React from 'react'
 import ResizeDetector from 'react-resize-detector'
-import { select, event } from 'd3-selection'
+import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
@@ -33,13 +33,11 @@ class Map extends React.PureComponent {
 
   componentDidMount() {
     window.addEventListener('wheel', this.handleMouseWheel)
-    document.addEventListener('click', this.handleDocumentClick)
     this.draw()
   }
 
   componentWillUnmount() {
     window.removeEventListener('wheel', this.handleMouseWheel)
-    document.removeEventListener('click', this.handleDocumentClick)
   }
 
   componentDidUpdate() {
@@ -66,7 +64,12 @@ class Map extends React.PureComponent {
             }}
           />
           {nroData && (
-            <DetailsPopup data={nroData} dataSelection={dataSelection} popupRef={e => (this.popupElement = e)} />
+            <DetailsPopup
+              data={nroData}
+              dataSelection={dataSelection}
+              popupRef={e => (this.popupElement = e)}
+              handleClose={this.closePopup}
+            />
           )}
         </div>
       </div>
@@ -84,10 +87,7 @@ class Map extends React.PureComponent {
       .join('circle')
       .attr('cx', d => width * d.coordinates[0])
       .attr('cy', d => height * d.coordinates[1])
-      .on('click', d => {
-        event.stopPropagation()
-        this.setState({ selectedNro: d.location })
-      })
+      .on('click', d => this.setState({ selectedNro: d.location }))
       .transition()
       .duration(400)
       .attr('r', d => {
@@ -138,6 +138,8 @@ class Map extends React.PureComponent {
     }
   }
 
+  closePopup = () => this.setState({ selectedNro: null })
+
   getSelectedNroData = () => this.props.data.filter(d => d.location === this.state.selectedNro)[0]
 
   handleMouseWheel = e => {
@@ -156,14 +158,6 @@ class Map extends React.PureComponent {
       }
     }
   }
-
-  handleDocumentClick = e => {
-    if (!document.getElementById('mainMenu').contains(e.target)) {
-      this.setState({ selectedNro: null })
-    }
-  }
-
-  handlePopupClick = e => e.stopPropagation()
 }
 
 const MapWithFakeData = ({ location }) => <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} />

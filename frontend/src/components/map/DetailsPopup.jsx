@@ -1,5 +1,6 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
+import CloseIcon from '../../assets/icons/Close'
 import { formatCurrency } from '../../utils'
 import { labels } from '../../utils/fakeData'
 import './DetailsPopup.scss'
@@ -11,19 +12,16 @@ class DetailsPopup extends React.Component {
 
   componentDidMount() {
     setTimeout(() => this.setState({ fadedIn: true }), 50)
-    this.fadeElement.addEventListener('click', this.stopPropagation)
   }
 
-  componentWillUnmount() {
-    this.fadeElement.removeEventListener('click', this.stopPropagation)
-  }
+  componentWillUnmount() {}
 
   render() {
-    const { data, dataSelection, popupRef } = this.props
+    const { data, dataSelection, popupRef, handleClose } = this.props
     const { fadedIn } = this.state
     return (
       <div className="details-popup" ref={popupRef}>
-        <div className={'fade-container' + (fadedIn ? ' faded-in' : '')} ref={e => (this.fadeElement = e)}>
+        <div className={'fade-container' + (fadedIn ? ' faded-in' : '')}>
           <div className="pie-container">
             <PieChart
               data={data[dataSelection].map((d, i) => ({
@@ -32,6 +30,9 @@ class DetailsPopup extends React.Component {
               }))}
             />
           </div>
+          <button className="close-button plain" type="button" onClick={handleClose}>
+            <CloseIcon />
+          </button>
           <h2>{data.location}</h2>
           <div className="total">{formatValue(data[dataSelection].reduce((a, b) => a + b, 0), dataSelection)}</div>
           <div className="line" />
@@ -47,8 +48,6 @@ class DetailsPopup extends React.Component {
       </div>
     )
   }
-
-  stopPropagation = e => e.stopPropagation()
 }
 
 export default DetailsPopup
