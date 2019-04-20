@@ -1,4 +1,5 @@
 @import '../app/Variables.scss';
+@import '../app/Mixins.scss';
 
 .pie-grid {
   display: flex;
@@ -16,6 +17,18 @@
       margin-top: 10px;
       width: 100%;
       text-align: center;
+    }
+
+    @include desktop-small {
+      width: 33%;
+    }
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include phone {
+      width: 100%;
     }
   }
 }
