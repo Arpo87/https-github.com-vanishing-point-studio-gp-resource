@@ -5,19 +5,6 @@ export const getDataSelection = location => {
   return types.includes(value) ? value : types[0]
 }
 
-export const getSelectedNro = location => {
-  return new URLSearchParams(location.search).get('nro')
-}
-
-export const selectNro = (nro, location, history) => {
-  const newSearch = new URLSearchParams(location.search)
-  newSearch.set('nro', nro)
-  history.replace({
-    pathname: location.pathname,
-    search: newSearch.toString(),
-  })
-}
-
 // Copied from StackOverflow.
 export const formatCurrency = amount => {
   const negativeSign = amount < 0 ? '-' : ''

@@ -26,6 +26,11 @@
 
     circle {
       fill: $green-5-transparent;
+      transition: fill 300ms;
+
+      &:hover {
+        fill: $green-3;
+      }
     }
   }
 }

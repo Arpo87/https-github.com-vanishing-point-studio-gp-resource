@@ -3,7 +3,7 @@ import ResizeDetector from 'react-resize-detector'
 import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
-import { getDataSelection, getSelectedNro, selectNro } from '../../utils'
+import { getDataSelection } from '../../utils'
 import { data, mapCoordinates } from '../../utils/fakeData'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
@@ -29,6 +29,8 @@ const valueToRadius = (value, dataSelection, svgWidth) => {
 }
 
 class Map extends React.PureComponent {
+  state = { selectedNro: null }
+
   componentDidMount() {
     window.addEventListener('wheel', this.handleWheel)
     this.draw()
@@ -70,7 +72,7 @@ class Map extends React.PureComponent {
   }
 
   draw = () => {
-    const dataSelection = this.props.dataSelection
+    const { dataSelection } = this.props
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
@@ -80,6 +82,7 @@ class Map extends React.PureComponent {
       .join('circle')
       .attr('cx', d => width * d.coordinates[0])
       .attr('cy', d => height * d.coordinates[1])
+      .on('click', d => this.setState({ selectedNro: d.location }))
       .transition()
       .duration(400)
       .attr('r', d => {
@@ -114,20 +117,22 @@ class Map extends React.PureComponent {
         anchorY = nroY - popupHeight + 20 + POPUP_ANCHOR_WIDTH
         this.popupElement.classList.add('anchor-bottom')
       }
+      const style = 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;'
 
       select(this.popupElement)
         .transition()
         .duration(400)
-        .attr('style', 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;')
+        .attr('style', style)
     }
   }
 
-  getSelectedNroData = () => this.props.data.filter(d => d.location === this.props.nro)[0]
+  getSelectedNroData = () => this.props.data.filter(d => d.location === this.state.selectedNro)[0]
 
   handleWheel = e => {
     if (e.deltaY !== 0) {
-      const { data, nro, location, history } = this.props
-      const currentIndex = data.findIndex(d => d.location === nro)
+      const { data } = this.props
+      const { selectedNro } = this.state
+      const currentIndex = data.findIndex(d => d.location === selectedNro)
       let nextIndex = currentIndex + (e.deltaY > 0 ? 1 : -1)
       if (nextIndex < 0) {
         nextIndex = data.length - 1
@@ -135,20 +140,12 @@ class Map extends React.PureComponent {
         nextIndex = 0
       }
       if (data[nextIndex]) {
-        selectNro(data[nextIndex].location, location, history)
+        this.setState({ selectedNro: data[nextIndex].location })
       }
     }
   }
 }
 
-const MapWithFakeData = ({ location, history }) => (
-  <Map
-    data={dataWithCoordinates}
-    dataSelection={getDataSelection(location)}
-    nro={getSelectedNro(location)}
-    location={location}
-    history={history}
-  />
-)
+const MapWithFakeData = ({ location }) => <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} />
 
 export default withRouter(MapWithFakeData)
