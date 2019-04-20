@@ -93,28 +93,35 @@ class Map extends React.PureComponent {
         return valueToRadius(total, dataSelection, width)
       })
 
+    this.positionPopup(width, height)
+  }
+
+  positionPopup = (width, height) => {
+    const { dataSelection } = this.props
     const nroData = this.getSelectedNroData()
     if (nroData) {
-      const nroX = nroData.coordinates[0] * width
-      const nroY = nroData.coordinates[1] * height
+      const x = nroData.coordinates[0] * width
+      const y = nroData.coordinates[1] * height
+      const total = nroData[dataSelection].reduce((a, b) => a + b, 0)
+      const radius = valueToRadius(total, dataSelection, width)
 
       let anchorX
-      if (nroX + POPUP_WIDTH < width) {
-        anchorX = nroX + POPUP_ANCHOR_WIDTH
+      if (x + POPUP_WIDTH < width) {
+        anchorX = x + POPUP_ANCHOR_WIDTH + (radius - 5)
         this.popupElement.classList.remove('anchor-right')
       } else {
-        anchorX = nroX - POPUP_WIDTH - POPUP_ANCHOR_WIDTH
+        anchorX = x - POPUP_WIDTH - POPUP_ANCHOR_WIDTH - (radius - 5)
         this.popupElement.classList.add('anchor-right')
       }
 
       let anchorY
       const svgOffsetY = this.svgElement.getBoundingClientRect().top
       const popupHeight = this.popupElement.getBoundingClientRect().height
-      if (svgOffsetY + nroY + popupHeight < window.innerHeight - 10) {
-        anchorY = nroY - 20 - POPUP_ANCHOR_WIDTH
+      if (svgOffsetY + y + popupHeight < window.innerHeight - 10) {
+        anchorY = y - 20 - POPUP_ANCHOR_WIDTH
         this.popupElement.classList.remove('anchor-bottom')
       } else {
-        anchorY = nroY - popupHeight + 20 + POPUP_ANCHOR_WIDTH
+        anchorY = y - popupHeight + 20 + POPUP_ANCHOR_WIDTH
         this.popupElement.classList.add('anchor-bottom')
       }
       const style = 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;'

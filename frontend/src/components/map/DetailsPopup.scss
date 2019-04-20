@@ -14,7 +14,7 @@
     box-shadow: $shadow-1;
     border-radius: 4px;
     opacity: 0;
-    transition: opacity 100ms 100ms;
+    transition: opacity 250ms;
 
     &.faded-in {
       opacity: 1;
