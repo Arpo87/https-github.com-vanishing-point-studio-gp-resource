@@ -24,7 +24,7 @@ const Menu = ({ location }) => {
   const isNroPage = location.pathname === '/' || location.pathname === '/breakdowns'
   const dataSelection = getDataSelection(location)
   return (
-    <div className="menu">
+    <div id="mainMenu" className="menu">
       <div className="page-selection">
         <LinkWithIcon to="/" text="NROs" icon="nro" matches={['/breakdowns']} />
         <LinkWithIcon to="/program" text="Program" icon="programme" />

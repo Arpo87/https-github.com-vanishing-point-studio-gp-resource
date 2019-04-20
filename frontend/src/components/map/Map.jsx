@@ -32,12 +32,14 @@ class Map extends React.PureComponent {
   state = { selectedNro: null }
 
   componentDidMount() {
-    window.addEventListener('wheel', this.handleWheel)
+    window.addEventListener('wheel', this.handleMouseWheel)
+    document.addEventListener('click', this.handleDocumentClick)
     this.draw()
   }
 
   componentWillUnmount() {
-    window.addEventListener('wheel', this.handleWheel)
+    window.removeEventListener('wheel', this.handleMouseWheel)
+    document.removeEventListener('click', this.handleDocumentClick)
   }
 
   componentDidUpdate() {
@@ -48,7 +50,7 @@ class Map extends React.PureComponent {
     const { dataSelection } = this.props
     const nroData = this.getSelectedNroData()
     return (
-      <div className="map-view" ref={e => (this.viewElement = e)} onClick={() => this.setState({ selectedNro: null })}>
+      <div className="map-view" ref={e => (this.viewElement = e)}>
         <div className="map-container">
           <ResizeDetector handleWidth handleHeight onResize={this.draw} />
           <img src={map} width="100%" alt="" />
@@ -138,7 +140,7 @@ class Map extends React.PureComponent {
 
   getSelectedNroData = () => this.props.data.filter(d => d.location === this.state.selectedNro)[0]
 
-  handleWheel = e => {
+  handleMouseWheel = e => {
     if (e.deltaY !== 0) {
       const { data } = this.props
       const { selectedNro } = this.state
@@ -154,6 +156,14 @@ class Map extends React.PureComponent {
       }
     }
   }
+
+  handleDocumentClick = e => {
+    if (!document.getElementById('mainMenu').contains(e.target)) {
+      this.setState({ selectedNro: null })
+    }
+  }
+
+  handlePopupClick = e => e.stopPropagation()
 }
 
 const MapWithFakeData = ({ location }) => <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} />

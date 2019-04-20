@@ -11,14 +11,19 @@ class DetailsPopup extends React.Component {
 
   componentDidMount() {
     setTimeout(() => this.setState({ fadedIn: true }), 50)
+    this.fadeElement.addEventListener('click', this.stopPropagation)
+  }
+
+  componentWillUnmount() {
+    this.fadeElement.removeEventListener('click', this.stopPropagation)
   }
 
   render() {
     const { data, dataSelection, popupRef } = this.props
     const { fadedIn } = this.state
     return (
-      <div className="details-popup" ref={popupRef} onClick={e => e.stopPropagation()}>
-        <div className={'fade-container' + (fadedIn ? ' faded-in' : '')}>
+      <div className="details-popup" ref={popupRef}>
+        <div className={'fade-container' + (fadedIn ? ' faded-in' : '')} ref={e => (this.fadeElement = e)}>
           <div className="pie-container">
             <PieChart
               data={data[dataSelection].map((d, i) => ({
@@ -42,6 +47,8 @@ class DetailsPopup extends React.Component {
       </div>
     )
   }
+
+  stopPropagation = e => e.stopPropagation()
 }
 
 export default DetailsPopup
