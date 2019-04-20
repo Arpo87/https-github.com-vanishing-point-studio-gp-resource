@@ -3,7 +3,7 @@ import ResizeDetector from 'react-resize-detector'
 import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
-import { getDataSelection } from '../../utils'
+import { getDataSelection, getSelectedNro, selectNro } from '../../utils'
 import { data, mapCoordinates } from '../../utils/fakeData'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
@@ -16,7 +16,6 @@ const AVERAGE_RADIUS = 2 // Radius of average value as percentage of svg width.
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-const scaleFunction = null // E.g. Math.log, Math.log10, or null for linear scale (x => x).
 const dataWithCoordinates = data
   .filter(d => mapCoordinates[d.location])
   .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
@@ -24,18 +23,19 @@ const dataWithCoordinates = data
 const valueToRadius = (value, dataSelection, svgWidth) => {
   const values = data.map(d => d[dataSelection].reduce((a, b) => a + b, 0))
   const averageValue = values.reduce((a, b) => a + b, 0) / values.length
-
-  const scaledValue = scaleFunction ? scaleFunction(value) : value
-  const scaledAverageValue = scaleFunction ? scaleFunction(averageValue) : averageValue
   const averageAreaInPx = Math.PI * Math.pow((svgWidth * AVERAGE_RADIUS) / 100, 2)
-  const areaInPx = (scaledValue / scaledAverageValue) * averageAreaInPx
-
+  const areaInPx = (value / averageValue) * averageAreaInPx
   return Math.sqrt(areaInPx / Math.PI)
 }
 
 class Map extends React.PureComponent {
   componentDidMount() {
+    window.addEventListener('wheel', this.handleWheel)
     this.draw()
+  }
+
+  componentWillUnmount() {
+    window.addEventListener('wheel', this.handleWheel)
   }
 
   componentDidUpdate() {
@@ -43,7 +43,8 @@ class Map extends React.PureComponent {
   }
 
   render() {
-    const { dataSelection, nro } = this.props
+    const { dataSelection } = this.props
+    const nroData = this.getSelectedNroData()
     return (
       <div className="map-view" ref={e => (this.viewElement = e)}>
         <div className="map-container">
@@ -60,12 +61,8 @@ class Map extends React.PureComponent {
               console.log(x, y)
             }}
           />
-          {nro && (
-            <DetailsPopup
-              data={this.nroSelection()}
-              dataSelection={dataSelection}
-              popupRef={e => (this.popupElement = e)}
-            />
+          {nroData && (
+            <DetailsPopup data={nroData} dataSelection={dataSelection} popupRef={e => (this.popupElement = e)} />
           )}
         </div>
       </div>
@@ -93,36 +90,65 @@ class Map extends React.PureComponent {
         return valueToRadius(total, dataSelection, width)
       })
 
-    const nroData = this.nroSelection()
-    const nroX = nroData.coordinates[0] * width
-    const nroY = nroData.coordinates[1] * height
+    const nroData = this.getSelectedNroData()
+    if (nroData) {
+      const nroX = nroData.coordinates[0] * width
+      const nroY = nroData.coordinates[1] * height
 
-    let anchorX, anchorY
-    if (nroX + POPUP_WIDTH < width) {
-      anchorX = nroX + POPUP_ANCHOR_WIDTH
-      this.popupElement.classList.remove('anchor-right')
-    } else {
-      anchorX = nroX - POPUP_WIDTH - POPUP_ANCHOR_WIDTH
-      this.popupElement.classList.add('anchor-right')
+      let anchorX
+      if (nroX + POPUP_WIDTH < width) {
+        anchorX = nroX + POPUP_ANCHOR_WIDTH
+        this.popupElement.classList.remove('anchor-right')
+      } else {
+        anchorX = nroX - POPUP_WIDTH - POPUP_ANCHOR_WIDTH
+        this.popupElement.classList.add('anchor-right')
+      }
+
+      let anchorY
+      const svgOffsetY = this.svgElement.getBoundingClientRect().top
+      const popupHeight = this.popupElement.getBoundingClientRect().height
+      if (svgOffsetY + nroY + popupHeight < window.innerHeight - 10) {
+        anchorY = nroY - 20 - POPUP_ANCHOR_WIDTH
+        this.popupElement.classList.remove('anchor-bottom')
+      } else {
+        anchorY = nroY - popupHeight + 20 + POPUP_ANCHOR_WIDTH
+        this.popupElement.classList.add('anchor-bottom')
+      }
+
+      select(this.popupElement)
+        .transition()
+        .duration(400)
+        .attr('style', 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;')
     }
-
-    const popupBounds = this.popupElement.getBoundingClientRect()
-    if (popupBounds.bottom < window.innerHeight - 10) {
-      anchorY = nroY - 20 - POPUP_ANCHOR_WIDTH
-      this.popupElement.classList.remove('anchor-bottom')
-    } else {
-      anchorY = nroY - popupBounds.height + 20 + POPUP_ANCHOR_WIDTH
-      this.popupElement.classList.add('anchor-bottom')
-    }
-
-    select(this.popupElement).attr('style', 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;')
   }
 
-  nroSelection = () => this.props.data.filter(d => d.location === this.props.nro)[0] || this.props.data[0]
+  getSelectedNroData = () => this.props.data.filter(d => d.location === this.props.nro)[0]
+
+  handleWheel = e => {
+    if (e.deltaY !== 0) {
+      const { data, nro, location, history } = this.props
+      const currentIndex = data.findIndex(d => d.location === nro)
+      let nextIndex = currentIndex + (e.deltaY > 0 ? 1 : -1)
+      if (nextIndex < 0) {
+        nextIndex = data.length - 1
+      } else if (nextIndex > data.length - 1) {
+        nextIndex = 0
+      }
+      if (data[nextIndex]) {
+        selectNro(data[nextIndex].location, location, history)
+      }
+    }
+  }
 }
 
-const MapWithFakeData = ({ location }) => (
-  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} nro="USA" />
+const MapWithFakeData = ({ location, history }) => (
+  <Map
+    data={dataWithCoordinates}
+    dataSelection={getDataSelection(location)}
+    nro={getSelectedNro(location)}
+    location={location}
+    history={history}
+  />
 )
 
 export default withRouter(MapWithFakeData)
