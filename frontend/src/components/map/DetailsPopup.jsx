@@ -4,8 +4,8 @@ import { formatCurrency } from '../../utils'
 import { labels } from '../../utils/fakeData'
 import './DetailsPopup.scss'
 
-const DetailsPopup = ({ data, dataSelection }) => (
-  <div className="details-popup">
+const DetailsPopup = ({ data, dataSelection, popupRef }) => (
+  <div className="details-popup" ref={popupRef}>
     <div className="pie-container">
       <PieChart
         data={data[dataSelection].map((d, i) => ({

@@ -8,6 +8,16 @@
   box-shadow: $shadow-1;
   border-radius: 4px;
 
+  &::before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: transparent $white-transparent transparent transparent;
+    border-width: 15px 15px 15px 0;
+    top: 20px;
+    left: -15px;
+  }
+
   .pie-container {
     padding: 0 20px;
   }

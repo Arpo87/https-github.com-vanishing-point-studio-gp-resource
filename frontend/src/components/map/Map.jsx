@@ -12,9 +12,23 @@ import './Map.scss'
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
+const averageRadius = 2 // Radius of average value as percentage of svg width.
+const scaleFunction = null // E.g. Math.log, Math.log10, or null for linear scale (x => x).
 const dataWithCoordinates = data
   .filter(d => mapCoordinates[d.location])
   .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
+
+const valueToRadius = (value, dataSelection, svgWidth) => {
+  const values = data.map(d => d[dataSelection].reduce((a, b) => a + b, 0))
+  const averageValue = values.reduce((a, b) => a + b, 0) / values.length
+
+  const scaledValue = scaleFunction ? scaleFunction(value) : value
+  const scaledAverageValue = scaleFunction ? scaleFunction(averageValue) : averageValue
+  const averageAreaInPx = Math.PI * Math.pow((svgWidth * averageRadius) / 100, 2)
+  const areaInPx = (scaledValue / scaledAverageValue) * averageAreaInPx
+
+  return Math.sqrt(areaInPx / Math.PI)
+}
 
 class Map extends React.PureComponent {
   componentDidMount() {
@@ -26,8 +40,7 @@ class Map extends React.PureComponent {
   }
 
   render() {
-    const { data, dataSelection, nro } = this.props
-    const detailData = data.filter(d => d.location === nro)[0] || data[0]
+    const { dataSelection, nro } = this.props
     return (
       <div className="map-view">
         <div className="map-container">
@@ -44,13 +57,20 @@ class Map extends React.PureComponent {
               console.log(x, y)
             }}
           />
+          {nro && (
+            <DetailsPopup
+              data={this.nroSelection()}
+              dataSelection={dataSelection}
+              popupRef={e => (this.popupElement = e)}
+            />
+          )}
         </div>
-        {detailData && <DetailsPopup data={detailData} dataSelection={dataSelection} />}
       </div>
     )
   }
 
   draw = () => {
+    const dataSelection = this.props.dataSelection
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
@@ -64,8 +84,22 @@ class Map extends React.PureComponent {
     circles
       .transition()
       .duration(400)
-      .attr('r', 20)
+      .attr('r', d => {
+        if (!d[dataSelection]) {
+          return 0
+        }
+        const total = d[dataSelection].reduce((a, b) => a + b, 0)
+        return valueToRadius(total, dataSelection, width)
+      })
+
+    const nro = this.nroSelection()
+    const popupX = nro.coordinates[0] * width + 20
+    const popupY = nro.coordinates[1] * height - 35
+    const style = 'left: ' + popupX + 'px; top:' + popupY + 'px;'
+    select(this.popupElement).attr('style', style)
   }
+
+  nroSelection = () => this.props.data.filter(d => d.location === this.props.nro)[0] || this.props.data[0]
 }
 
 const MapWithFakeData = ({ location }) => (
