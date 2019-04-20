@@ -3,9 +3,9 @@ import ResizeDetector from 'react-resize-detector'
 import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
-import { getDataSelection, formatCurrency } from '../../utils'
-import { data, labels, mapCoordinates } from '../../utils/fakeData'
-import PieChart from '../pies/PieChart'
+import { getDataSelection } from '../../utils'
+import { data, mapCoordinates } from '../../utils/fakeData'
+import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
@@ -45,29 +45,7 @@ class Map extends React.PureComponent {
             }}
           />
         </div>
-        {detailData && (
-          <div className="details">
-            <div className="pie-container">
-              <PieChart
-                data={detailData[dataSelection].map((d, i) => ({
-                  label: labels[dataSelection][i],
-                  value: d,
-                }))}
-              />
-            </div>
-            <h2>{detailData.location}</h2>
-            <div className="total">{formatCurrency(detailData[dataSelection].reduce((a, b) => a + b, 0))}</div>
-            <div className="line" />
-            <div className="table">
-              {detailData[dataSelection].map((d, i) => (
-                <div key={labels[dataSelection][i]} className="row">
-                  <div className="label">{labels[dataSelection][i]}</div>
-                  <div className="value">{formatCurrency(d)}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {detailData && <DetailsPopup data={detailData} dataSelection={dataSelection} />}
       </div>
     )
   }
