@@ -33,7 +33,8 @@ i {
 }
 
 // Scroll
-.vertical-scroll-container {
+.scroll-container {
+  overflow-x: auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   flex-grow: 1;
@@ -42,6 +43,7 @@ i {
 
   &::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
   }
 
   &::-webkit-scrollbar-thumb {

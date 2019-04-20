@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import PieChart from './PieChart'
 import { data, labels } from '../../utils/fakeData'
-import { getDataSelection } from '../../utils/selectionUtils'
+import { getDataSelection } from '../../utils'
 import './PieGrid.scss'
 
 const PieGrid = ({ data, labels, dataSelection }) => (

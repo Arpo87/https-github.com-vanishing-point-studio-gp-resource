@@ -3,31 +3,18 @@ import ResizeDetector from 'react-resize-detector'
 import { select } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
-import { getDataSelection } from '../../utils/selectionUtils'
-import { data, mapCoordinates } from '../../utils/fakeData'
+import { getDataSelection, formatCurrency } from '../../utils'
+import { data, labels, mapCoordinates } from '../../utils/fakeData'
+import PieChart from '../pies/PieChart'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-const averageRadius = 2 // Radius of average value as percentage of svg width.
-const scaleFunction = null // E.g. Math.log, Math.log10, or null for linear scale (x => x).
 const dataWithCoordinates = data
   .filter(d => mapCoordinates[d.location])
   .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
-
-const valueToRadius = (value, dataSelection, svgWidth) => {
-  const values = data.map(d => d[dataSelection].reduce((a, b) => a + b, 0))
-  const averageValue = values.reduce((a, b) => a + b, 0) / values.length
-
-  const scaledValue = scaleFunction ? scaleFunction(value) : value
-  const scaledAverageValue = scaleFunction ? scaleFunction(averageValue) : averageValue
-  const averageAreaInPx = Math.PI * Math.pow((svgWidth * averageRadius) / 100, 2)
-  const areaInPx = (scaledValue / scaledAverageValue) * averageAreaInPx
-
-  return Math.sqrt(areaInPx / Math.PI)
-}
 
 class Map extends React.PureComponent {
   componentDidMount() {
@@ -39,6 +26,8 @@ class Map extends React.PureComponent {
   }
 
   render() {
+    const { data, dataSelection, nro } = this.props
+    const detailData = data.filter(d => d.location === nro)[0] || data[0]
     return (
       <div className="map-view">
         <div className="map-container">
@@ -55,14 +44,35 @@ class Map extends React.PureComponent {
               console.log(x, y)
             }}
           />
-          <div className="tooltip" ref={e => (this.tooltipElement = e)} />
         </div>
+        {detailData && (
+          <div className="details">
+            <div className="pie-container">
+              <PieChart
+                data={detailData[dataSelection].map((d, i) => ({
+                  label: labels[dataSelection][i],
+                  value: d,
+                }))}
+              />
+            </div>
+            <h2>{detailData.location}</h2>
+            <div className="total">{formatCurrency(detailData[dataSelection].reduce((a, b) => a + b, 0))}</div>
+            <div className="line" />
+            <div className="table">
+              {detailData[dataSelection].map((d, i) => (
+                <div key={labels[dataSelection][i]} className="row">
+                  <div className="label">{labels[dataSelection][i]}</div>
+                  <div className="value">{formatCurrency(d)}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     )
   }
 
   draw = () => {
-    const dataSelection = this.props.dataSelection
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
@@ -76,16 +86,12 @@ class Map extends React.PureComponent {
     circles
       .transition()
       .duration(400)
-      .attr('r', d => {
-        if (!d[dataSelection]) {
-          return 0
-        }
-        const total = d[dataSelection].reduce((a, b) => a + b, 0)
-        return valueToRadius(total, dataSelection, width)
-      })
+      .attr('r', 20)
   }
 }
 
-const MapWithFakeData = ({ location }) => <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} />
+const MapWithFakeData = ({ location }) => (
+  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} nro="Mexico" />
+)
 
 export default withRouter(MapWithFakeData)
