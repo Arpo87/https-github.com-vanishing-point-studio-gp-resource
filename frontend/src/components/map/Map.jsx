@@ -42,7 +42,7 @@ class Map extends React.PureComponent {
   render() {
     const { dataSelection, nro } = this.props
     return (
-      <div className="map-view">
+      <div className="map-view" ref={e => (this.viewElement = e)}>
         <div className="map-container">
           <ResizeDetector handleWidth handleHeight onResize={this.draw} />
           <img src={map} width="100%" alt="" />
@@ -78,8 +78,7 @@ class Map extends React.PureComponent {
       .selectAll('circle')
       .data(this.props.data)
 
-    circles.exit().remove()
-    circles.enter().append('circle')
+    circles.join('circle')
     circles.attr('cx', d => width * d.coordinates[0]).attr('cy', d => height * d.coordinates[1])
     circles
       .transition()
@@ -92,18 +91,28 @@ class Map extends React.PureComponent {
         return valueToRadius(total, dataSelection, width)
       })
 
-    const nro = this.nroSelection()
-    const popupX = nro.coordinates[0] * width + 20
-    const popupY = nro.coordinates[1] * height - 35
-    const style = 'left: ' + popupX + 'px; top:' + popupY + 'px;'
-    select(this.popupElement).attr('style', style)
+    const nroData = this.nroSelection()
+    const nroX = nroData.coordinates[0] * width
+    const nroY = nroData.coordinates[1] * height
+
+    let anchorX
+    if (nroX + 240 < width) {
+      anchorX = nroX + 15
+      this.popupElement.classList.remove('anchor-right')
+    } else {
+      anchorX = nroX - 255
+      this.popupElement.classList.add('anchor-right')
+    }
+    const anchorY = nroY - 35
+
+    select(this.popupElement).attr('style', 'left: ' + anchorX + 'px; top: ' + anchorY + 'px;')
   }
 
   nroSelection = () => this.props.data.filter(d => d.location === this.props.nro)[0] || this.props.data[0]
 }
 
 const MapWithFakeData = ({ location }) => (
-  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} nro="Mexico" />
+  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} nro="New Zealand" />
 )
 
 export default withRouter(MapWithFakeData)

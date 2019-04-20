@@ -53,13 +53,13 @@ const Menu = ({ location }) => {
           <div className="data-selection">
             <div className="title">Data to show</div>
             <div className={'data-links ' + dataSelection}>
-              <Link className="plain" to={location.pathname}>
+              <Link className="plain" to={location.pathname} replace>
                 Income
               </Link>
-              <Link className="plain" to={location.pathname + '?data=expenses'}>
+              <Link className="plain" to={location.pathname + '?data=expenses'} replace>
                 Expenses
               </Link>
-              <Link className="plain" to={location.pathname + '?data=staff'}>
+              <Link className="plain" to={location.pathname + '?data=staff'} replace>
                 Staff
               </Link>
               <span className="selection-indicator" />
