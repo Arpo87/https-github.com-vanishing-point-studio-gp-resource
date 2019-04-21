@@ -39,12 +39,12 @@ i {
 }
 
 .icon .fill {
-  fill: $text-2;
+  fill: darken($border-1, 10%);
   transition: fill 200ms;
 }
 
 button:hover .icon .fill {
-  fill: darken($text-2, 20%);
+  fill: darken($border-1, 30%);
 }
 
 // Scroll
