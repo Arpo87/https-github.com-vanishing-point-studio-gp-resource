@@ -8,6 +8,12 @@ import './NroPage.scss'
 class NroPage extends React.Component {
   state = { dialogOpen: false }
 
+  componentDidUpdate(lastProps) {
+    if (this.props.location.pathname !== lastProps.location.pathname) {
+      this.closeDialog()
+    }
+  }
+
   render() {
     const { location } = this.props
     const { dialogOpen } = this.state
