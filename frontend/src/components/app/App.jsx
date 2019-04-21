@@ -6,7 +6,7 @@ import './App.scss'
 
 WebFont.load({
   google: {
-    families: ['Roboto:400,500,700,900'],
+    families: ['Roboto:300,400,500,700,900'],
   },
 })
 

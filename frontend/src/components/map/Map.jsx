@@ -46,7 +46,7 @@ class Map extends React.PureComponent {
   }
 
   render() {
-    const { dataSelection } = this.props
+    const { dataSelection, openDialog } = this.props
     const nroData = this.getSelectedNroData()
     return (
       <div className="map-view" ref={e => (this.viewElement = e)}>
@@ -69,7 +69,8 @@ class Map extends React.PureComponent {
               data={nroData}
               dataSelection={dataSelection}
               popupRef={e => (this.popupElement = e)}
-              onCloseRequested={this.closePopup}
+              close={this.closePopup}
+              onLinkClick={openDialog}
             />
           )}
         </div>
@@ -170,6 +171,8 @@ class Map extends React.PureComponent {
   }
 }
 
-const MapWithFakeData = ({ location }) => <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} />
+const MapWithFakeData = ({ location, ...rest }) => (
+  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} {...rest} />
+)
 
 export default withRouter(MapWithFakeData)

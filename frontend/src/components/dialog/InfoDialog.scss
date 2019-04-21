@@ -1,0 +1,55 @@
+@import '../app/Variables.scss';
+
+.info-dialog {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $white-transparent;
+  border-left: 1px solid $border-1;
+  padding: 40px 50px;
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .content {
+    display: flex;
+
+    .text {
+      width: 50%;
+      font-size: 24px;
+      font-weight: 300;
+
+      p:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+
+    .images {
+      width: 50%;
+      padding-left: 40px;
+
+      > img {
+        width: 100%;
+
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+}

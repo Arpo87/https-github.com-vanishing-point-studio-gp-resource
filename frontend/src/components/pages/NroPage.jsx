@@ -2,25 +2,37 @@ import React from 'react'
 import { getDataSelection } from '../../utils'
 import Map from '../map/Map'
 import PieGrid from '../pies/PieGrid'
+import InfoDialog from '../dialog/InfoDialog'
 import './NroPage.scss'
 
-const NroPage = ({ location }) => {
-  const dataSelection = getDataSelection(location)
-  const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
-  const breakdowns = location.pathname === '/breakdowns'
-  return (
-    <div className="scroll-container">
-      <div className={'nro-page' + (!breakdowns ? ' map-showing' : '')}>
-        <h1>
-          <span className="light">Showing </span>
-          <span>{dataSelectionCapitalized + ' per NRO'}</span>
-          <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
-          <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
-        </h1>
-        {breakdowns ? <PieGrid /> : <Map />}
+class NroPage extends React.Component {
+  state = { dialogOpen: false }
+
+  render() {
+    const { location } = this.props
+    const { dialogOpen } = this.state
+    const dataSelection = getDataSelection(location)
+    const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
+    const breakdowns = location.pathname === '/breakdowns'
+    return (
+      <div className="scroll-container">
+        <div className={'nro-page' + (!breakdowns ? ' map-showing' : '')}>
+          <h1>
+            <span className="light">Showing </span>
+            <span>{dataSelectionCapitalized + ' per NRO'}</span>
+            <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
+            <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
+          </h1>
+          {breakdowns ? <PieGrid /> : <Map openDialog={this.openDialog} />}
+        </div>
+        {dialogOpen && <InfoDialog close={this.closeDialog} />}
       </div>
-    </div>
-  )
+    )
+  }
+
+  openDialog = () => this.setState({ dialogOpen: true })
+
+  closeDialog = () => this.setState({ dialogOpen: false })
 }
 
 export default NroPage

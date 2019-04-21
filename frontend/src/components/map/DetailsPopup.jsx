@@ -4,13 +4,8 @@ import { formatValue } from '../../utils'
 import { labels } from '../../utils/fakeData'
 import './DetailsPopup.scss'
 
-const FADE_TIME = 150
-
 class DetailsPopup extends React.Component {
-  state = { fadedIn: false, fadedOut: false }
-
   componentDidMount() {
-    setTimeout(() => this.setState({ fadedIn: true }), 1)
     document.addEventListener('click', this.handleDocumentClick)
   }
 
@@ -20,10 +15,9 @@ class DetailsPopup extends React.Component {
 
   render() {
     const { data, dataSelection, popupRef } = this.props
-    const { fadedIn, fadedOut } = this.state
     return (
       <div id="mapDetailsPopup" className="details-popup" ref={popupRef}>
-        <div className={'fade-container' + (fadedIn && !fadedOut ? ' faded-in' : '')}>
+        <div className="inner-container">
           <div className="pie-container">
             <PieChart
               data={data[dataSelection].map((d, i) => ({
@@ -43,6 +37,9 @@ class DetailsPopup extends React.Component {
               </div>
             ))}
           </div>
+          <button className="link" type="button" onClick={this.handleLinkClick}>
+            zoom + context
+          </button>
         </div>
       </div>
     )
@@ -53,13 +50,13 @@ class DetailsPopup extends React.Component {
       !document.getElementById('mainMenu').contains(e.target) &&
       !document.getElementById('mapDetailsPopup').contains(e.target)
     ) {
-      this.startClose()
+      this.props.close()
     }
   }
 
-  startClose = () => {
-    this.setState({ fadedOut: true })
-    setTimeout(() => this.props.onCloseRequested(), FADE_TIME)
+  handleLinkClick = () => {
+    this.props.close()
+    this.props.onLinkClick()
   }
 }
 
