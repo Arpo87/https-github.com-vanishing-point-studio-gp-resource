@@ -21,24 +21,32 @@ class NroPage extends React.Component {
     const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
     const breakdowns = location.pathname === '/breakdowns'
     return (
-      <div className="scroll-container">
-        <div className={'nro-page' + (!breakdowns ? ' map-showing' : '')}>
-          <h1>
-            <span className="light">Showing </span>
-            <span>{dataSelectionCapitalized + ' per NRO'}</span>
-            <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
-            <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
-          </h1>
-          {breakdowns ? <PieGrid /> : <Map openDialog={this.openDialog} />}
+      <div className="nro-page">
+        <div className="scroll-container">
+          <div className="page-content">
+            <h1>
+              <span className="light">Showing </span>
+              <span>{dataSelectionCapitalized + ' per NRO'}</span>
+              <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
+              <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
+            </h1>
+            {breakdowns ? <PieGrid openDialog={this.openDialog} /> : <Map openDialog={this.openDialog} />}
+          </div>
         </div>
         {dialogOpen && <InfoDialog close={this.closeDialog} />}
       </div>
     )
   }
 
-  openDialog = () => this.setState({ dialogOpen: true })
+  openDialog = () => {
+    this.setState({ dialogOpen: true })
+    document.body.classList.add('dialog-open')
+  }
 
-  closeDialog = () => this.setState({ dialogOpen: false })
+  closeDialog = () => {
+    this.setState({ dialogOpen: false })
+    document.body.classList.remove('dialog-open')
+  }
 }
 
 export default NroPage

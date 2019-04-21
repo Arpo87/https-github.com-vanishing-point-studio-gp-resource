@@ -14,9 +14,16 @@
       color: $green-1;
       font-size: 20px;
       font-weight: 700;
-      margin-top: 10px;
+      margin-top: 20px;
       width: 100%;
       text-align: center;
+    }
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
     }
 
     @include desktop-small {

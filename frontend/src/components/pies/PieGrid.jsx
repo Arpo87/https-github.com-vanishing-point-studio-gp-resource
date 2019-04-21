@@ -5,7 +5,7 @@ import { data, labels } from '../../utils/fakeData'
 import { getDataSelection } from '../../utils'
 import './PieGrid.scss'
 
-const PieGrid = ({ data, labels, dataSelection }) => (
+const PieGrid = ({ data, labels, dataSelection, openDialog }) => (
   <div className="pie-grid">
     {data.map(d => (
       <div className="pie-grid-item" key={d.location}>
@@ -16,13 +16,18 @@ const PieGrid = ({ data, labels, dataSelection }) => (
           }))}
         />
         <div className="title">{d.location}</div>
+        <div className="button-container">
+          <button className="link" type="button" onClick={openDialog}>
+            zoom + context
+          </button>
+        </div>
       </div>
     ))}
   </div>
 )
 
-const PieGridWithFakeData = ({ location }) => (
-  <PieGrid data={data} labels={labels} dataSelection={getDataSelection(location)} />
+const PieGridWithFakeData = ({ location, ...rest }) => (
+  <PieGrid data={data} labels={labels} dataSelection={getDataSelection(location)} {...rest} />
 )
 
 export default withRouter(PieGridWithFakeData)
