@@ -61,3 +61,25 @@ export const mapCoordinates = {
   UK: [0.472, 0.162],
   USA: [0.179, 0.317],
 }
+
+export const traversalOrder = [
+  'Canada',
+  'USA',
+  'Mexico',
+  'Brazil',
+  'Andino',
+  'UK',
+  'Nordic',
+  'Fr-Lux',
+  'Germany',
+  'Switzerland',
+  'Spain',
+  'Russia',
+  'CEE',
+  'MENA',
+  'Africa',
+  'SEA',
+  'Japan',
+  'Aus Pac',
+  'New Zealand',
+]

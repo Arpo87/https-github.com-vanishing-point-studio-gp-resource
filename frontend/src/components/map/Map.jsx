@@ -4,7 +4,7 @@ import { select, event } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
-import { data, mapCoordinates } from '../../utils/fakeData'
+import { data, mapCoordinates, traversalOrder } from '../../utils/fakeData'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
 import './Map.scss'
@@ -152,16 +152,16 @@ class Map extends React.PureComponent {
     if (e.deltaY !== 0 && !discard) {
       const { data } = this.props
       const { selectedNro } = this.state
-      const currentIndex = data.findIndex(d => d.location === selectedNro)
+      const currentIndex = traversalOrder.findIndex(nro => nro === selectedNro)
       let nextIndex = currentIndex + (e.deltaY > 0 ? 1 : -1)
       if (nextIndex < 0) {
-        nextIndex = data.length - 1
+        nextIndex = traversalOrder.length - 1
       } else if (nextIndex > data.length - 1) {
         nextIndex = 0
       }
-      if (data[nextIndex]) {
+      if (traversalOrder[nextIndex]) {
         this.timeOfLastWheelChange = Date.now()
-        this.setState({ selectedNro: data[nextIndex].location })
+        this.setState({ selectedNro: traversalOrder[nextIndex] })
       }
     }
   }
