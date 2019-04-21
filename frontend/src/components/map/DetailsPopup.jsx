@@ -14,13 +14,18 @@ class DetailsPopup extends React.Component {
 
   componentDidMount() {
     setTimeout(() => this.setState({ fadedIn: true }), 1)
+    document.addEventListener('click', this.handleDocumentClick)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClick)
   }
 
   render() {
     const { data, dataSelection, popupRef } = this.props
     const { fadedIn, fadedOut } = this.state
     return (
-      <div className="details-popup" ref={popupRef}>
+      <div id="mapDetailsPopup" className="details-popup" ref={popupRef}>
         <div className={'fade-container' + (fadedIn && !fadedOut ? ' faded-in' : '')}>
           <div className="pie-container">
             <PieChart
@@ -30,7 +35,7 @@ class DetailsPopup extends React.Component {
               }))}
             />
           </div>
-          <button className="close-button plain" type="button" onClick={this.handleCloseButtonClick}>
+          <button className="close-button plain" type="button" onClick={this.startClose}>
             <CloseIcon />
           </button>
           <h2>{data.location}</h2>
@@ -49,9 +54,18 @@ class DetailsPopup extends React.Component {
     )
   }
 
-  handleCloseButtonClick = () => {
+  startClose = () => {
     this.setState({ fadedOut: true })
     setTimeout(() => this.props.onCloseRequested(), FADE_TIME)
+  }
+
+  handleDocumentClick = e => {
+    if (
+      !document.getElementById('mainMenu').contains(e.target) &&
+      !document.getElementById('mapDetailsPopup').contains(e.target)
+    ) {
+      this.startClose()
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import ResizeDetector from 'react-resize-detector'
-import { select } from 'd3-selection'
+import { select, event } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
@@ -88,7 +88,10 @@ class Map extends React.PureComponent {
       .join('circle')
       .attr('cx', d => width * d.coordinates[0])
       .attr('cy', d => height * d.coordinates[1])
-      .on('click', d => this.setState({ selectedNro: d.location }))
+      .on('click', d => {
+        this.setState({ selectedNro: d.location })
+        event.stopPropagation()
+      })
       .transition()
       .duration(400)
       .attr('r', d => {
