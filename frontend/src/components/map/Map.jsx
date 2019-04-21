@@ -30,6 +30,7 @@ const valueToRadius = (value, dataSelection, svgWidth) => {
 
 class Map extends React.PureComponent {
   state = { selectedNro: null }
+  timeOfLastWheelChange = 0
 
   componentDidMount() {
     window.addEventListener('wheel', this.handleMouseWheel)
@@ -143,7 +144,9 @@ class Map extends React.PureComponent {
   getSelectedNroData = () => this.props.data.filter(d => d.location === this.state.selectedNro)[0]
 
   handleMouseWheel = e => {
-    if (e.deltaY !== 0) {
+    // Discard event if it's from a trackpad and another change occurred within the last 500ms.
+    const discard = Math.abs(e.wheelDelta) < 50 && Date.now() - this.timeOfLastWheelChange < 500
+    if (e.deltaY !== 0 && !discard) {
       const { data } = this.props
       const { selectedNro } = this.state
       const currentIndex = data.findIndex(d => d.location === selectedNro)
@@ -154,6 +157,7 @@ class Map extends React.PureComponent {
         nextIndex = 0
       }
       if (data[nextIndex]) {
+        this.timeOfLastWheelChange = Date.now()
         this.setState({ selectedNro: data[nextIndex].location })
       }
     }
