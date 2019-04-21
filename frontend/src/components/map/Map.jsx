@@ -79,6 +79,7 @@ class Map extends React.PureComponent {
 
   draw = () => {
     const { dataSelection } = this.props
+    const { selectedNro } = this.state
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
@@ -88,12 +89,14 @@ class Map extends React.PureComponent {
       .join('circle')
       .attr('cx', d => width * d.coordinates[0])
       .attr('cy', d => height * d.coordinates[1])
+      .attr('class', d => (d.location === selectedNro ? 'selected' : undefined))
       .on('click', d => {
         this.setState({ selectedNro: d.location })
         event.stopPropagation()
       })
       .transition()
       .duration(400)
+
       .attr('r', d => {
         if (!d[dataSelection]) {
           return 0

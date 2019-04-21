@@ -34,6 +34,10 @@
       transition: fill 300ms;
 
       &:hover {
+        fill: $green-4;
+      }
+
+      &.selected {
         fill: $green-3;
       }
     }
