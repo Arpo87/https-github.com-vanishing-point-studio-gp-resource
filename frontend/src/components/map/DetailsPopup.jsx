@@ -1,13 +1,10 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
-import CloseIcon from '../../assets/icons/Close'
-import { formatCurrency } from '../../utils'
+import { formatValue } from '../../utils'
 import { labels } from '../../utils/fakeData'
 import './DetailsPopup.scss'
 
 const FADE_TIME = 150
-
-const formatValue = (value, dataSelection) => (dataSelection === 'staff' ? value : formatCurrency(value))
 
 class DetailsPopup extends React.Component {
   state = { fadedIn: false, fadedOut: false }
@@ -35,9 +32,6 @@ class DetailsPopup extends React.Component {
               }))}
             />
           </div>
-          <button className="close-button plain" type="button" onClick={this.startClose}>
-            <CloseIcon />
-          </button>
           <h2>{data.location}</h2>
           <div className="total">{formatValue(data[dataSelection].reduce((a, b) => a + b, 0), dataSelection)}</div>
           <div className="line" />
@@ -54,11 +48,6 @@ class DetailsPopup extends React.Component {
     )
   }
 
-  startClose = () => {
-    this.setState({ fadedOut: true })
-    setTimeout(() => this.props.onCloseRequested(), FADE_TIME)
-  }
-
   handleDocumentClick = e => {
     if (
       !document.getElementById('mainMenu').contains(e.target) &&
@@ -66,6 +55,11 @@ class DetailsPopup extends React.Component {
     ) {
       this.startClose()
     }
+  }
+
+  startClose = () => {
+    this.setState({ fadedOut: true })
+    setTimeout(() => this.props.onCloseRequested(), FADE_TIME)
   }
 }
 

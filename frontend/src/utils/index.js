@@ -5,6 +5,8 @@ export const getDataSelection = location => {
   return types.includes(value) ? value : types[0]
 }
 
+export const formatValue = (value, dataSelection) => (dataSelection === 'staff' ? value : formatCurrency(value))
+
 // Copied from StackOverflow.
 export const formatCurrency = amount => {
   const negativeSign = amount < 0 ? '-' : ''
