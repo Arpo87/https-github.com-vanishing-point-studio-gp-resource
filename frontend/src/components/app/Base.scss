@@ -58,12 +58,12 @@ i {
 }
 
 .icon .fill {
-  fill: darken($border-1, 10%);
+  fill: $border-1;
   transition: fill 200ms;
 }
 
 button:hover .icon .fill {
-  fill: darken($border-1, 30%);
+  fill: darken($border-1, 20%);
 }
 
 // Scroll
