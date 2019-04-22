@@ -16,8 +16,8 @@ class DetailsPopup extends React.Component {
   render() {
     const { data, dataSelection, popupRef } = this.props
     return (
-      <div id="mapDetailsPopup" className="details-popup" ref={popupRef}>
-        <div className="inner-container">
+      <div className="details-popup" ref={popupRef}>
+        <div id="mapDetailsPopup" className="inner-container">
           <div className="pie-container">
             <PieChart
               data={data[dataSelection].map((d, i) => ({

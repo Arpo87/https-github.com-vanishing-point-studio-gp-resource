@@ -6,15 +6,17 @@ import './InfoDialog.scss'
 
 const InfoDialog = ({ children, close }) => (
   <div className="info-dialog">
-    <h1>Greenpeace Mediterranean</h1>
-    <button className="close-button plain" type="button" onClick={close}>
-      <CloseIcon />
-    </button>
-    <div className="content">
-      <div className="text">{children}</div>
-      <div className="images">
-        <img src={image1} alt="" />
-        <img src={image2} alt="" />
+    <div className="dialog-content">
+      <h1>Greenpeace Mediterranean</h1>
+      <button className="close-button plain" type="button" onClick={close}>
+        <CloseIcon />
+      </button>
+      <div className="content">
+        <div className="text">{children}</div>
+        <div className="images">
+          <img src={image1} alt="" />
+          <img src={image2} alt="" />
+        </div>
       </div>
     </div>
   </div>

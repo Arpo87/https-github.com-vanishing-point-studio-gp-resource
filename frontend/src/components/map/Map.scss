@@ -1,4 +1,5 @@
 @import '../app/Variables.scss';
+@import '../app/Mixins.scss';
 
 .map-view {
   position: relative;
@@ -41,5 +42,11 @@
         fill: $green-3;
       }
     }
+  }
+}
+
+@include phone {
+  .map-view {
+    min-width: 1000px;
   }
 }

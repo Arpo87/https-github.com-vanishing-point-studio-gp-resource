@@ -1,3 +1,6 @@
+@import '../app/Variables.scss';
+@import '../app/Mixins.scss';
+
 .title-bar {
   display: flex;
   flex-direction: column;
@@ -13,6 +16,10 @@
     padding-right: 1px;
     user-select: none;
   }
+
+  button {
+    display: none;
+  }
 }
 
 .frame-grower {
@@ -20,5 +27,54 @@
 
   &:nth-child(2) {
     flex-grow: 1;
+  }
+}
+
+.menu-background-overlay {
+  display: none;
+}
+
+@include tablet {
+  .title-bar {
+    position: fixed;
+    z-index: 10;
+    height: 60px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 15px 0 22px;
+
+    button {
+      display: flex;
+      padding: 10px;
+
+      .icon .fill {
+        fill: $text-1;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        .icon .fill {
+          fill: darken($text-1, 20%);
+        }
+      }
+    }
+  }
+
+  .menu-background-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    pointer-events: none;
+    transition: background-color 400ms;
+  }
+
+  .menu-open .menu-background-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
   }
 }

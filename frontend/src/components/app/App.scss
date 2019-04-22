@@ -1,4 +1,5 @@
 @import './Variables.scss';
+@import './Mixins.scss';
 @import './Base.scss';
 
 *,
@@ -15,7 +16,7 @@ body {
   background-color: $bg-1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
@@ -29,5 +30,26 @@ body {
 html.wf-loading {
   #root {
     display: none;
+  }
+}
+
+@include tablet {
+  body {
+    overflow-y: auto;
+
+    &.dialog-open {
+      background-color: white;
+    }
+  }
+
+  #root {
+    flex-direction: column;
+    max-height: unset;
+  }
+}
+
+@include tablet {
+  body {
+    overflow-x: auto;
   }
 }

@@ -1,3 +1,5 @@
+@import '../app/Mixins.scss';
+
 .nro-page {
   flex-grow: 1;
   display: flex;
@@ -13,6 +15,36 @@
       font-size: 16px;
       font-weight: 500;
       padding: 20px 40px;
+    }
+  }
+
+  @include tablet {
+    padding-top: 60px;
+
+    .page-content h1 {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 70px;
+      right: 70px;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+
+      > span:not(:first-child) {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  @include phone {
+    .page-content h1 span:not(.data-selection) {
+      display: none;
+    }
+
+    &.map-showing .page-content {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
   }
 }
