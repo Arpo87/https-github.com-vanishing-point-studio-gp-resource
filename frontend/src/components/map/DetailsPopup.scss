@@ -4,6 +4,7 @@
 .details-popup {
   position: absolute;
   $anchor-width: 10px;
+  z-index: 20;
 
   .inner-container {
     display: flex;
@@ -100,7 +101,6 @@
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 300;
     display: flex;
     flex-direction: column;
     align-items: center;
