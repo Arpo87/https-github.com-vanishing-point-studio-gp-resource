@@ -4,8 +4,8 @@ async function main() {
   const allUsers = await prisma.users()
   console.log(`Users: `, allUsers)
 
-  const allNROs = await prisma.nRoes()
-  console.log(`NROs: `, allNROs)
+  const allNros = await prisma.nroes()
+  console.log(`NROs: `, allNros)
 }
 
 main()

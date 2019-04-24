@@ -2,7 +2,7 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateNRO {
+export const typeDefs = /* GraphQL */ `type AggregateNro {
   count: Int!
 }
 
@@ -17,12 +17,12 @@ type BatchPayload {
 scalar Long
 
 type Mutation {
-  createNRO(data: NROCreateInput!): NRO!
-  updateNRO(data: NROUpdateInput!, where: NROWhereUniqueInput!): NRO
-  updateManyNRoes(data: NROUpdateManyMutationInput!, where: NROWhereInput): BatchPayload!
-  upsertNRO(where: NROWhereUniqueInput!, create: NROCreateInput!, update: NROUpdateInput!): NRO!
-  deleteNRO(where: NROWhereUniqueInput!): NRO
-  deleteManyNRoes(where: NROWhereInput): BatchPayload!
+  createNro(data: NroCreateInput!): Nro!
+  updateNro(data: NroUpdateInput!, where: NroWhereUniqueInput!): Nro
+  updateManyNroes(data: NroUpdateManyMutationInput!, where: NroWhereInput): BatchPayload!
+  upsertNro(where: NroWhereUniqueInput!, create: NroCreateInput!, update: NroUpdateInput!): Nro!
+  deleteNro(where: NroWhereUniqueInput!): Nro
+  deleteManyNroes(where: NroWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -41,7 +41,7 @@ interface Node {
   id: ID!
 }
 
-type NRO {
+type Nro {
   id: ID!
   name: String!
   about: String
@@ -58,13 +58,13 @@ type NRO {
   staffOrgSupport: Int
 }
 
-type NROConnection {
+type NroConnection {
   pageInfo: PageInfo!
-  edges: [NROEdge]!
-  aggregate: AggregateNRO!
+  edges: [NroEdge]!
+  aggregate: AggregateNro!
 }
 
-input NROCreateInput {
+input NroCreateInput {
   id: ID
   name: String!
   about: String
@@ -81,12 +81,12 @@ input NROCreateInput {
   staffOrgSupport: Int
 }
 
-type NROEdge {
-  node: NRO!
+type NroEdge {
+  node: Nro!
   cursor: String!
 }
 
-enum NROOrderByInput {
+enum NroOrderByInput {
   id_ASC
   id_DESC
   name_ASC
@@ -117,7 +117,7 @@ enum NROOrderByInput {
   staffOrgSupport_DESC
 }
 
-type NROPreviousValues {
+type NroPreviousValues {
   id: ID!
   name: String!
   about: String
@@ -134,25 +134,25 @@ type NROPreviousValues {
   staffOrgSupport: Int
 }
 
-type NROSubscriptionPayload {
+type NroSubscriptionPayload {
   mutation: MutationType!
-  node: NRO
+  node: Nro
   updatedFields: [String!]
-  previousValues: NROPreviousValues
+  previousValues: NroPreviousValues
 }
 
-input NROSubscriptionWhereInput {
+input NroSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: NROWhereInput
-  AND: [NROSubscriptionWhereInput!]
-  OR: [NROSubscriptionWhereInput!]
-  NOT: [NROSubscriptionWhereInput!]
+  node: NroWhereInput
+  AND: [NroSubscriptionWhereInput!]
+  OR: [NroSubscriptionWhereInput!]
+  NOT: [NroSubscriptionWhereInput!]
 }
 
-input NROUpdateInput {
+input NroUpdateInput {
   name: String
   about: String
   incomeGrants: Float
@@ -168,7 +168,7 @@ input NROUpdateInput {
   staffOrgSupport: Int
 }
 
-input NROUpdateManyMutationInput {
+input NroUpdateManyMutationInput {
   name: String
   about: String
   incomeGrants: Float
@@ -184,7 +184,7 @@ input NROUpdateManyMutationInput {
   staffOrgSupport: Int
 }
 
-input NROWhereInput {
+input NroWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -315,12 +315,12 @@ input NROWhereInput {
   staffOrgSupport_lte: Int
   staffOrgSupport_gt: Int
   staffOrgSupport_gte: Int
-  AND: [NROWhereInput!]
-  OR: [NROWhereInput!]
-  NOT: [NROWhereInput!]
+  AND: [NroWhereInput!]
+  OR: [NroWhereInput!]
+  NOT: [NroWhereInput!]
 }
 
-input NROWhereUniqueInput {
+input NroWhereUniqueInput {
   id: ID
   name: String
 }
@@ -333,9 +333,9 @@ type PageInfo {
 }
 
 type Query {
-  nRO(where: NROWhereUniqueInput!): NRO
-  nRoes(where: NROWhereInput, orderBy: NROOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [NRO]!
-  nRoesConnection(where: NROWhereInput, orderBy: NROOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NROConnection!
+  nro(where: NroWhereUniqueInput!): Nro
+  nroes(where: NroWhereInput, orderBy: NroOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Nro]!
+  nroesConnection(where: NroWhereInput, orderBy: NroOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NroConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -343,7 +343,7 @@ type Query {
 }
 
 type Subscription {
-  nRO(where: NROSubscriptionWhereInput): NROSubscriptionPayload
+  nro(where: NroSubscriptionWhereInput): NroSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 

@@ -5,7 +5,7 @@ type User {
   name: String!
 }
 
-type NRO {
+type Nro {
   id: ID! @id
   name: String! @unique
   about: String

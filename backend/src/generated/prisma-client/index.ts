@@ -14,7 +14,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
-  nRO: (where?: NROWhereInput) => Promise<boolean>;
+  nro: (where?: NroWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
@@ -37,25 +37,25 @@ export interface Prisma {
    * Queries
    */
 
-  nRO: (where: NROWhereUniqueInput) => NROPromise;
-  nRoes: (args?: {
-    where?: NROWhereInput;
-    orderBy?: NROOrderByInput;
+  nro: (where: NroWhereUniqueInput) => NroPromise;
+  nroes: (args?: {
+    where?: NroWhereInput;
+    orderBy?: NroOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<NRO>;
-  nRoesConnection: (args?: {
-    where?: NROWhereInput;
-    orderBy?: NROOrderByInput;
+  }) => FragmentableArray<Nro>;
+  nroesConnection: (args?: {
+    where?: NroWhereInput;
+    orderBy?: NroOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => NROConnectionPromise;
+  }) => NroConnectionPromise;
   user: (where: UserWhereUniqueInput) => UserPromise;
   users: (args?: {
     where?: UserWhereInput;
@@ -81,22 +81,22 @@ export interface Prisma {
    * Mutations
    */
 
-  createNRO: (data: NROCreateInput) => NROPromise;
-  updateNRO: (args: {
-    data: NROUpdateInput;
-    where: NROWhereUniqueInput;
-  }) => NROPromise;
-  updateManyNRoes: (args: {
-    data: NROUpdateManyMutationInput;
-    where?: NROWhereInput;
+  createNro: (data: NroCreateInput) => NroPromise;
+  updateNro: (args: {
+    data: NroUpdateInput;
+    where: NroWhereUniqueInput;
+  }) => NroPromise;
+  updateManyNroes: (args: {
+    data: NroUpdateManyMutationInput;
+    where?: NroWhereInput;
   }) => BatchPayloadPromise;
-  upsertNRO: (args: {
-    where: NROWhereUniqueInput;
-    create: NROCreateInput;
-    update: NROUpdateInput;
-  }) => NROPromise;
-  deleteNRO: (where: NROWhereUniqueInput) => NROPromise;
-  deleteManyNRoes: (where?: NROWhereInput) => BatchPayloadPromise;
+  upsertNro: (args: {
+    where: NroWhereUniqueInput;
+    create: NroCreateInput;
+    update: NroUpdateInput;
+  }) => NroPromise;
+  deleteNro: (where: NroWhereUniqueInput) => NroPromise;
+  deleteManyNroes: (where?: NroWhereInput) => BatchPayloadPromise;
   createUser: (data: UserCreateInput) => UserPromise;
   updateUser: (args: {
     data: UserUpdateInput;
@@ -122,9 +122,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  nRO: (
-    where?: NROSubscriptionWhereInput
-  ) => NROSubscriptionPayloadSubscription;
+  nro: (
+    where?: NroSubscriptionWhereInput
+  ) => NroSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
@@ -138,7 +138,7 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type NROOrderByInput =
+export type NroOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "name_ASC"
@@ -187,7 +187,7 @@ export interface UserCreateInput {
   name: String;
 }
 
-export interface NROUpdateInput {
+export interface NroUpdateInput {
   name?: String;
   about?: String;
   incomeGrants?: Float;
@@ -203,7 +203,7 @@ export interface NROUpdateInput {
   staffOrgSupport?: Int;
 }
 
-export type NROWhereUniqueInput = AtLeastOne<{
+export type NroWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
   name?: String;
 }>;
@@ -281,7 +281,7 @@ export type UserWhereUniqueInput = AtLeastOne<{
   email?: String;
 }>;
 
-export interface NROCreateInput {
+export interface NroCreateInput {
   id?: ID_Input;
   name: String;
   about?: String;
@@ -298,7 +298,7 @@ export interface NROCreateInput {
   staffOrgSupport?: Int;
 }
 
-export interface NROWhereInput {
+export interface NroWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -429,12 +429,12 @@ export interface NROWhereInput {
   staffOrgSupport_lte?: Int;
   staffOrgSupport_gt?: Int;
   staffOrgSupport_gte?: Int;
-  AND?: NROWhereInput[] | NROWhereInput;
-  OR?: NROWhereInput[] | NROWhereInput;
-  NOT?: NROWhereInput[] | NROWhereInput;
+  AND?: NroWhereInput[] | NroWhereInput;
+  OR?: NroWhereInput[] | NroWhereInput;
+  NOT?: NroWhereInput[] | NroWhereInput;
 }
 
-export interface NROUpdateManyMutationInput {
+export interface NroUpdateManyMutationInput {
   name?: String;
   about?: String;
   incomeGrants?: Float;
@@ -467,15 +467,15 @@ export interface UserUpdateInput {
   name?: String;
 }
 
-export interface NROSubscriptionWhereInput {
+export interface NroSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: NROWhereInput;
-  AND?: NROSubscriptionWhereInput[] | NROSubscriptionWhereInput;
-  OR?: NROSubscriptionWhereInput[] | NROSubscriptionWhereInput;
-  NOT?: NROSubscriptionWhereInput[] | NROSubscriptionWhereInput;
+  node?: NroWhereInput;
+  AND?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
+  OR?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
+  NOT?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
 }
 
 export interface NodeNode {
@@ -547,25 +547,25 @@ export interface UserPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
 }
 
-export interface NROConnection {
+export interface NroConnection {
   pageInfo: PageInfo;
-  edges: NROEdge[];
+  edges: NroEdge[];
 }
 
-export interface NROConnectionPromise
-  extends Promise<NROConnection>,
+export interface NroConnectionPromise
+  extends Promise<NroConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<NROEdge>>() => T;
-  aggregate: <T = AggregateNROPromise>() => T;
+  edges: <T = FragmentableArray<NroEdge>>() => T;
+  aggregate: <T = AggregateNroPromise>() => T;
 }
 
-export interface NROConnectionSubscription
-  extends Promise<AsyncIterator<NROConnection>>,
+export interface NroConnectionSubscription
+  extends Promise<AsyncIterator<NroConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<NROEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateNROSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<NroEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateNroSubscription>() => T;
 }
 
 export interface UserConnection {
@@ -605,48 +605,48 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface AggregateNRO {
+export interface AggregateNro {
   count: Int;
 }
 
-export interface AggregateNROPromise
-  extends Promise<AggregateNRO>,
+export interface AggregateNroPromise
+  extends Promise<AggregateNro>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateNROSubscription
-  extends Promise<AsyncIterator<AggregateNRO>>,
+export interface AggregateNroSubscription
+  extends Promise<AsyncIterator<AggregateNro>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface NROSubscriptionPayload {
+export interface NroSubscriptionPayload {
   mutation: MutationType;
-  node: NRO;
+  node: Nro;
   updatedFields: String[];
-  previousValues: NROPreviousValues;
+  previousValues: NroPreviousValues;
 }
 
-export interface NROSubscriptionPayloadPromise
-  extends Promise<NROSubscriptionPayload>,
+export interface NroSubscriptionPayloadPromise
+  extends Promise<NroSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = NROPromise>() => T;
+  node: <T = NroPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = NROPreviousValuesPromise>() => T;
+  previousValues: <T = NroPreviousValuesPromise>() => T;
 }
 
-export interface NROSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<NROSubscriptionPayload>>,
+export interface NroSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<NroSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = NROSubscription>() => T;
+  node: <T = NroSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = NROPreviousValuesSubscription>() => T;
+  previousValues: <T = NroPreviousValuesSubscription>() => T;
 }
 
-export interface NRO {
+export interface Nro {
   id: ID_Output;
   name: String;
   about?: String;
@@ -663,7 +663,7 @@ export interface NRO {
   staffOrgSupport?: Int;
 }
 
-export interface NROPromise extends Promise<NRO>, Fragmentable {
+export interface NroPromise extends Promise<Nro>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   about: () => Promise<String>;
@@ -680,8 +680,8 @@ export interface NROPromise extends Promise<NRO>, Fragmentable {
   staffOrgSupport: () => Promise<Int>;
 }
 
-export interface NROSubscription
-  extends Promise<AsyncIterator<NRO>>,
+export interface NroSubscription
+  extends Promise<AsyncIterator<Nro>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -715,20 +715,20 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface NROEdge {
-  node: NRO;
+export interface NroEdge {
+  node: Nro;
   cursor: String;
 }
 
-export interface NROEdgePromise extends Promise<NROEdge>, Fragmentable {
-  node: <T = NROPromise>() => T;
+export interface NroEdgePromise extends Promise<NroEdge>, Fragmentable {
+  node: <T = NroPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface NROEdgeSubscription
-  extends Promise<AsyncIterator<NROEdge>>,
+export interface NroEdgeSubscription
+  extends Promise<AsyncIterator<NroEdge>>,
     Fragmentable {
-  node: <T = NROSubscription>() => T;
+  node: <T = NroSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
@@ -755,7 +755,7 @@ export interface UserSubscription
   name: () => Promise<AsyncIterator<String>>;
 }
 
-export interface NROPreviousValues {
+export interface NroPreviousValues {
   id: ID_Output;
   name: String;
   about?: String;
@@ -772,8 +772,8 @@ export interface NROPreviousValues {
   staffOrgSupport?: Int;
 }
 
-export interface NROPreviousValuesPromise
-  extends Promise<NROPreviousValues>,
+export interface NroPreviousValuesPromise
+  extends Promise<NroPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
@@ -791,8 +791,8 @@ export interface NROPreviousValuesPromise
   staffOrgSupport: () => Promise<Int>;
 }
 
-export interface NROPreviousValuesSubscription
-  extends Promise<AsyncIterator<NROPreviousValues>>,
+export interface NroPreviousValuesSubscription
+  extends Promise<AsyncIterator<NroPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -873,7 +873,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "NRO",
+    name: "Nro",
     embedded: false
   }
 ];
