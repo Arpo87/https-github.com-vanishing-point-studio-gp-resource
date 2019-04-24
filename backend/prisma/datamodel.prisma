@@ -1,0 +1,23 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+  name: String!
+}
+
+type NRO {
+  id: ID! @id
+  name: String! @unique
+  about: String
+  incomeGrants: Float
+  incomeFundraising: Float
+  incomeOther: Float
+  expensesCampaigns: Float
+  expensesCampaignSupport: Float
+  expensesContributions: Float
+  expensesOrgSupport: Float
+  staffCampaigns: Int
+  staffCampaignSupport: Int
+  staffFundraising: Int
+  staffOrgSupport: Int
+}
