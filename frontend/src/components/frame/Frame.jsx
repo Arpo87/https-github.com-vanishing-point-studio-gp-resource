@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Menu from '../menu/Menu'
 import MenuIcon from '../../assets/icons/Menu'
 import NroPage from '../pages/NroPage'
@@ -20,7 +20,7 @@ class Frame extends React.Component {
 
   render() {
     return (
-      <Router>
+      <React.Fragment>
         <div className="title-bar">
           <div className="logo">RI</div>
           <button id="showMenuButton" className="plain" type="button" onClick={showMenu}>
@@ -33,7 +33,7 @@ class Frame extends React.Component {
         <div className="frame-grower" />
         <div className="menu-background-overlay" />
         <Menu />
-      </Router>
+      </React.Fragment>
     )
   }
 

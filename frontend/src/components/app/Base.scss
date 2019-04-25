@@ -9,27 +9,34 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+button,
+a,
+input {
+  outline: none !important;
+}
+
 // Buttons
 button {
   cursor: pointer;
-  outline: none;
+  user-select: none;
   font-family: $font-1;
-  text-transform: uppercase;
+  border: none;
+  background-color: $border-1;
+  border-radius: 4px;
+  color: darken($text-2, 20%);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px;
 
   &.plain {
-    background: none;
-    border: none;
     padding: 5px;
   }
 
   &.link {
-    background: none;
-    border: none;
-    padding: 0;
     font-size: 14px;
-    color: $text-2;
+    font-weight: 400;
+    text-transform: uppercase;
     padding: 3px 0;
-    user-select: none;
     border-bottom: 1px solid $border-1;
 
     &:hover,
@@ -41,13 +48,24 @@ button {
 }
 
 // Links
-a {
-  outline: none;
-}
-
 a.plain {
   text-decoration: none;
   color: $text-1;
+}
+
+// Inputs
+input {
+  border: 2px solid $border-1;
+  border-radius: 4px;
+  background-color: white;
+  padding: 10px;
+  font-family: $font-1;
+  font-size: 16px;
+  color: $text-1;
+
+  &::placeholder {
+    color: $text-2;
+  }
 }
 
 // Typography
@@ -55,7 +73,7 @@ a.plain {
   color: $text-2;
 }
 
-//Icons
+// Icons
 i {
   background-size: contain;
   background-repeat: no-repeat;
