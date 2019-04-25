@@ -4,14 +4,14 @@ Greenpeace Resource Insights
 
 ## Development
 
-### Prerequisites:
+### Prerequisites
 
 - Install docker
 - Install node
 - Install yarn (sudo npm i -g yarn)
 - Install prisma (sudo npm i -g prisma)
 
-### Starting the backend:
+### Starting the backend
 
 - cd backend
 - yarn
@@ -19,12 +19,12 @@ Greenpeace Resource Insights
 - prisma deploy (creates database tables and seeds with initial data)
 - yarn start (starts graphql server)
 
-### Querying the backend:
+### Querying the backend
 
 - Go to http://localhost:4000
 - Try a test query, e.g. { nros { name } }
 
-### Starting the frontend:
+### Starting the frontend
 
 - cd frontend
 - yarn
