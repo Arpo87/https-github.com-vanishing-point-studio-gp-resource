@@ -21,29 +21,33 @@ Greenpeace Resource Insights.
 
 ### Querying the backend
 
-- Go to http://localhost:4000
-- Try to log in
-  ```
-  mutation {
-    login(email: "mail@robf.co.nz", password: "password") {
-      token
-    }
+Go to http://localhost:4000 and try to log in
+
+```
+mutation {
+  login(email: "mail@robf.co.nz", password: "password") {
+    token
   }
-  ```
-- Add HTTP headers with the token you get back
-  ```
-  {
-    "Authorization": "Bearer XYZ"
+}
+```
+
+Add HTTP headers with the token you get back
+
+```
+{
+  "Authorization": "Bearer XYZ"
+}
+```
+
+Try a query, e.g.
+
+```
+{
+  nros {
+    name
   }
-  ```
-- Try a query, e.g.
-  ```
-  {
-    nros {
-      name
-    }
-  }
-  ```
+}
+```
 
 ### Starting the frontend
 
