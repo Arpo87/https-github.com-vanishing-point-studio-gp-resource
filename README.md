@@ -31,7 +31,7 @@ mutation {
 }
 ```
 
-Add HTTP headers with the token you get back
+Add HTTP headers with the token you get back, e.g.
 
 ```
 {
