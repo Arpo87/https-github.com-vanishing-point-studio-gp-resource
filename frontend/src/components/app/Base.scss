@@ -21,9 +21,9 @@ button {
   user-select: none;
   font-family: $font-1;
   border: none;
-  background-color: $border-1;
+  background-color: deepskyblue;
   border-radius: 4px;
-  color: darken($text-2, 20%);
+  color: white;
   font-size: 16px;
   font-weight: 700;
   padding: 12px;
@@ -34,7 +34,6 @@ button {
 
   &.link {
     font-size: 14px;
-    font-weight: 400;
     text-transform: uppercase;
     padding: 3px 0;
     border-bottom: 1px solid $border-1;
@@ -55,7 +54,7 @@ a.plain {
 
 // Inputs
 input {
-  border: 2px solid $border-1;
+  border: 1px solid $border-1;
   border-radius: 4px;
   background-color: white;
   padding: 10px;
@@ -65,6 +64,13 @@ input {
 
   &::placeholder {
     color: $text-2;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
   }
 }
 
