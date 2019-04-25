@@ -17,14 +17,16 @@ class Login extends React.Component {
   render() {
     return (
       <Mutation mutation={loginMutation} variables={this.state}>
-        {(login, { loading, error }) => (
+        {(requestLogin, { loading, error }) => (
           <div className="login-page">
             <form
               noValidate
               onSubmit={async e => {
                 e.preventDefault()
                 try {
-                  await login()
+                  const response = await requestLogin()
+                  const token = response.data.login.token
+                  localStorage.setItem('accessToken', token)
                   this.setState({ email: '', password: '' })
                 } catch (e) {}
               }}
