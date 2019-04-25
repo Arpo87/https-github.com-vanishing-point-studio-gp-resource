@@ -17,14 +17,16 @@ class Login extends React.Component {
   render() {
     return (
       <Mutation mutation={loginMutation} variables={this.state}>
-        {(signup, { loading }) => (
+        {(signup, { loading, error }) => (
           <div className="login-page">
             <form
               noValidate
               onSubmit={async e => {
                 e.preventDefault()
-                await signup()
-                this.setState({ email: '', password: '' })
+                try {
+                  await signup()
+                  this.setState({ email: '', password: '' })
+                } catch (e) {}
               }}
             >
               <input
@@ -46,6 +48,7 @@ class Login extends React.Component {
               <button className="form" type="submit">
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>
+              {error && <div className="error">Invalid email or password!</div>}
             </form>
           </div>
         )}
