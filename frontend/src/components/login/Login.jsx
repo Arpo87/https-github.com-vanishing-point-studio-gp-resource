@@ -43,7 +43,9 @@ class Login extends React.Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
               />
-              <button type="submit">{loading ? 'Signing in...' : 'Sign in'}</button>
+              <button className="form" type="submit">
+                {loading ? 'Signing in...' : 'Sign in'}
+              </button>
             </form>
           </div>
         )}
