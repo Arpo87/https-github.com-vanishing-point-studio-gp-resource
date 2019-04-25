@@ -1,3 +1,4 @@
+import { AuthenticationError } from 'apollo-server'
 import { objectType, queryType, mutationType, stringArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { sign } from 'jsonwebtoken'
@@ -50,14 +51,11 @@ export const Mutation = mutationType({
       },
       resolve: async (_parent, { email, password }, ctx) => {
         const user = await ctx.prisma.user({ email: email || undefined })
-        if (!user) {
-          throw new Error(`No user found for email: ${email}`)
+        if (user && (await compare(password, user.password))) {
+          return { token: sign({ userId: user.id, isAdmin: user.isAdmin }, jwtSecret), user }
+        } else {
+          throw new AuthenticationError('Invalid email or password')
         }
-        const passwordValid = await compare(password, user.password)
-        if (!passwordValid) {
-          throw new Error('Invalid password')
-        }
-        return { token: sign({ userId: user.id, isAdmin: user.isAdmin }, jwtSecret), user }
       },
     })
   },
