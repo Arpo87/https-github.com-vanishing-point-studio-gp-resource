@@ -1,35 +1,21 @@
 import { ApolloServer } from 'apollo-server'
-import { queryType } from 'nexus'
-import { makePrismaSchema, prismaObjectType } from 'nexus-prisma'
-import * as path from 'path'
+import { applyMiddleware } from 'graphql-middleware'
+import { makePrismaSchema } from 'nexus-prisma'
+import { join } from 'path'
 import datamodelInfo from './generated/nexus-prisma'
 import { prisma } from './generated/prisma-client'
-
-const Nro = prismaObjectType({
-  name: 'Nro',
-  definition(t) {
-    t.prismaFields(['*'])
-  },
-})
-
-const Query = queryType({
-  definition(t) {
-    t.list.field('nros', {
-      type: 'Nro',
-      resolve: (_parent, _args, ctx) => ctx.prisma.nroes(),
-    })
-  },
-})
+import { resolvers as allTypes } from './resolvers'
+import { permissions } from './permissions'
 
 const schema = makePrismaSchema({
-  types: [Query, Nro],
+  types: allTypes,
   prisma: {
     datamodelInfo,
     client: prisma,
   },
   outputs: {
-    schema: path.join(__dirname, './generated/schema.graphql'),
-    typegen: path.join(__dirname, './generated/nexus.ts'),
+    schema: join(__dirname, './generated/schema.graphql'),
+    typegen: join(__dirname, './generated/nexus.ts'),
   },
   nonNullDefaults: {
     input: false,
@@ -38,7 +24,7 @@ const schema = makePrismaSchema({
   typegenAutoConfig: {
     sources: [
       {
-        source: path.join(__dirname, './types.ts'),
+        source: join(__dirname, './types.ts'),
         alias: 'types',
       },
     ],
@@ -46,6 +32,9 @@ const schema = makePrismaSchema({
   },
 })
 
-const server = new ApolloServer({ schema, context: { prisma } })
+const server = new ApolloServer({
+  schema: applyMiddleware(schema, permissions),
+  context: request => ({ prisma, ...request }),
+})
 
 server.listen({ port: 4000 }, () => console.log('Server ready at http://localhost:4000'))

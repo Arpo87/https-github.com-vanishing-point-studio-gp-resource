@@ -2,6 +2,15 @@
 ### Do not make changes to this file directly
 
 
+type LoginPayload {
+  token: String
+  user: User
+}
+
+type Mutation {
+  login(email: String, password: String): LoginPayload
+}
+
 type Nro {
   about: String
   expensesCampaigns: Float
@@ -20,5 +29,12 @@ type Nro {
 }
 
 type Query {
+  me: User
   nros: [Nro!]
+}
+
+type User {
+  email: String!
+  id: ID!
+  name: String!
 }

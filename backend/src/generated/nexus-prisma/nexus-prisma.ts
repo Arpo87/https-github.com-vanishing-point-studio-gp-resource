@@ -223,12 +223,14 @@ type UserObject =
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'isAdmin', args?: [] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
   | 'email'
   | 'password'
   | 'name'
+  | 'isAdmin'
 
 
 
@@ -261,6 +263,14 @@ export interface UserFieldDetails {
   }
   name: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  isAdmin: {
+    type: 'Boolean'
     args: {}
     description: string
     list: undefined
@@ -1107,12 +1117,14 @@ type UserPreviousValuesObject =
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'isAdmin', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
   | 'email'
   | 'password'
   | 'name'
+  | 'isAdmin'
 
 
 
@@ -1145,6 +1157,14 @@ export interface UserPreviousValuesFieldDetails {
   }
   name: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  isAdmin: {
+    type: 'Boolean'
     args: {}
     description: string
     list: undefined
@@ -1446,6 +1466,8 @@ export interface UserWhereInput {
   name_not_starts_with?: string | null
   name_ends_with?: string | null
   name_not_ends_with?: string | null
+  isAdmin?: boolean | null
+  isAdmin_not?: boolean | null
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
   NOT?: UserWhereInput[]
@@ -1508,6 +1530,8 @@ export type UserWhereInputInputObject =
   | { name: 'name_not_starts_with', alias?: string  } 
   | { name: 'name_ends_with', alias?: string  } 
   | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'isAdmin', alias?: string  } 
+  | { name: 'isAdmin_not', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1796,34 +1820,40 @@ export interface UserCreateInput {
   email?: string
   password?: string
   name?: string
+  isAdmin?: boolean
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'isAdmin', alias?: string  } 
   
 export interface UserUpdateInput {
   email?: string | null
   password?: string | null
   name?: string | null
+  isAdmin?: boolean | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'isAdmin', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
   email?: string | null
   password?: string | null
   name?: string | null
+  isAdmin?: boolean | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'isAdmin', alias?: string  } 
   
 export interface NroCreateInput {
   name?: string
@@ -1970,6 +2000,8 @@ export type UserOrderByInputValues =
   | 'password_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'isAdmin_ASC'
+  | 'isAdmin_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

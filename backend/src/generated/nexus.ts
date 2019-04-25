@@ -17,6 +17,11 @@ export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
+  LoginPayload: { // root type
+    token?: string | null; // String
+    user?: NexusGenRootTypes['User'] | null; // User
+  }
+  Mutation: {};
   Nro: { // root type
     about?: string | null; // String
     expensesCampaigns?: number | null; // Float
@@ -34,6 +39,11 @@ export interface NexusGenRootTypes {
     staffOrgSupport?: number | null; // Int
   }
   Query: {};
+  User: { // root type
+    email: string; // String!
+    id: string; // ID!
+    name: string; // String!
+  }
   String: string;
   Int: number;
   Float: number;
@@ -45,6 +55,13 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
+  LoginPayload: { // field return type
+    token: string | null; // String
+    user: NexusGenRootTypes['User'] | null; // User
+  }
+  Mutation: { // field return type
+    login: NexusGenRootTypes['LoginPayload'] | null; // LoginPayload
+  }
   Nro: { // field return type
     about: string | null; // String
     expensesCampaigns: number | null; // Float
@@ -62,11 +79,23 @@ export interface NexusGenFieldTypes {
     staffOrgSupport: number | null; // Int
   }
   Query: { // field return type
+    me: NexusGenRootTypes['User'] | null; // User
     nros: NexusGenRootTypes['Nro'][] | null; // [Nro!]
+  }
+  User: { // field return type
+    email: string; // String!
+    id: string; // ID!
+    name: string; // String!
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    login: { // args
+      email?: string | null; // String
+      password?: string | null; // String
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -74,7 +103,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Nro" | "Query";
+export type NexusGenObjectNames = "LoginPayload" | "Mutation" | "Nro" | "Query" | "User";
 
 export type NexusGenInputNames = never;
 

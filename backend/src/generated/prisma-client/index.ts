@@ -178,13 +178,16 @@ export type UserOrderByInput =
   | "password_ASC"
   | "password_DESC"
   | "name_ASC"
-  | "name_DESC";
+  | "name_DESC"
+  | "isAdmin_ASC"
+  | "isAdmin_DESC";
 
 export interface UserCreateInput {
   id?: ID_Input;
   email: String;
   password: String;
   name: String;
+  isAdmin: Boolean;
 }
 
 export interface NroUpdateInput {
@@ -212,6 +215,7 @@ export interface UserUpdateManyMutationInput {
   email?: String;
   password?: String;
   name?: String;
+  isAdmin?: Boolean;
 }
 
 export interface UserWhereInput {
@@ -271,6 +275,8 @@ export interface UserWhereInput {
   name_not_starts_with?: String;
   name_ends_with?: String;
   name_not_ends_with?: String;
+  isAdmin?: Boolean;
+  isAdmin_not?: Boolean;
   AND?: UserWhereInput[] | UserWhereInput;
   OR?: UserWhereInput[] | UserWhereInput;
   NOT?: UserWhereInput[] | UserWhereInput;
@@ -465,6 +471,7 @@ export interface UserUpdateInput {
   email?: String;
   password?: String;
   name?: String;
+  isAdmin?: Boolean;
 }
 
 export interface NroSubscriptionWhereInput {
@@ -527,6 +534,7 @@ export interface UserPreviousValues {
   email: String;
   password: String;
   name: String;
+  isAdmin: Boolean;
 }
 
 export interface UserPreviousValuesPromise
@@ -536,6 +544,7 @@ export interface UserPreviousValuesPromise
   email: () => Promise<String>;
   password: () => Promise<String>;
   name: () => Promise<String>;
+  isAdmin: () => Promise<Boolean>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -545,6 +554,7 @@ export interface UserPreviousValuesSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
+  isAdmin: () => Promise<AsyncIterator<Boolean>>;
 }
 
 export interface NroConnection {
@@ -737,6 +747,7 @@ export interface User {
   email: String;
   password: String;
   name: String;
+  isAdmin: Boolean;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -744,6 +755,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   email: () => Promise<String>;
   password: () => Promise<String>;
   name: () => Promise<String>;
+  isAdmin: () => Promise<Boolean>;
 }
 
 export interface UserSubscription
@@ -753,6 +765,7 @@ export interface UserSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
+  isAdmin: () => Promise<AsyncIterator<Boolean>>;
 }
 
 export interface NroPreviousValues {
