@@ -1,6 +1,6 @@
 # GP Resource Insights
 
-Greenpeace Resource Insights
+Greenpeace Resource Insights.
 
 ## Development
 
