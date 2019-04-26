@@ -16,4 +16,12 @@ export const formatCurrency = amount => {
   return '\u20AC' + negativeSign + (j ? i.substr(0, j) + ',' : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1,')
 }
 
-export const formatStaff = value => (Math.round(value) === value ? Math.round(value) : value.toFixed(1))
+export const formatStaff = value => {
+  if (!value) {
+    return ''
+  } else if (Math.round(value) === value) {
+    return value.toFixed(0)
+  } else {
+    return value.toFixed(1)
+  }
+}
