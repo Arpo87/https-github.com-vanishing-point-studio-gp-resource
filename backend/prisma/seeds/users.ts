@@ -1,7 +1,7 @@
 export const users = [
   {
-    name: 'Alan Walker',
-    email: 'alan@vanishingpoint.studio',
+    name: 'Allan Walker',
+    email: 'allan@vanishingpoint.studio',
     password: 'password',
     isAdmin: true,
   },
