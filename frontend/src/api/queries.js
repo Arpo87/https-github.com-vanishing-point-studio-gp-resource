@@ -9,3 +9,23 @@ export const meQuery = gql`
     }
   }
 `
+
+export const nroQuery = gql`
+  {
+    nros {
+      name
+      about
+      incomeGrants
+      incomeFundraising
+      incomeOther
+      expensesCampaigns
+      expensesCampaignSupport
+      expensesContributions
+      expensesOrgSupport
+      staffCampaigns
+      staffCampaignSupport
+      staffFundraising
+      staffOrgSupport
+    }
+  }
+`

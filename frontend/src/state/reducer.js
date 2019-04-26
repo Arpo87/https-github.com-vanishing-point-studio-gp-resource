@@ -8,6 +8,10 @@ const reducer = (state = createInitialState(), action) => {
       return { ...state, loginFailed: action.loginFailed }
     case 'SET_LOGGING_IN':
       return { ...state, loggingIn: action.loggingIn }
+    case 'SET_LOADING_DATA':
+      return { ...state, loadingData: action.loadingData }
+    case 'SET_DATA':
+      return { ...state, data: action.data }
     default:
       return state
   }
@@ -18,6 +22,8 @@ const createInitialState = () => ({
   loggedIn: false,
   loginFailed: false,
   loggingIn: false,
+  loadingData: false,
+  data: [],
 })
 
 export default reducer

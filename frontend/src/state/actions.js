@@ -56,3 +56,7 @@ export const onLoad = () => async dispatch => {
     dispatch(initialized())
   }
 }
+
+export const fetchNros = () => {
+  
+}
