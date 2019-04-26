@@ -1,13 +1,9 @@
 import React from 'react'
 import WebFont from 'webfontloader'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import store from '../../state/store'
 import BrowserCheck from '../browser/BrowserCheck'
-import Frame from '../frame/Frame'
-import Login from '../login/Login'
-import reducer from '../../state/reducer'
+import Root from '../frame/Root'
 import './App.scss'
 
 WebFont.load({
@@ -16,17 +12,10 @@ WebFont.load({
   },
 })
 
-const store = createStore(reducer, applyMiddleware(thunk))
-
 const App = () => (
   <BrowserCheck>
     <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route path="/login" exact component={Login} />
-          <Route path="/" component={Frame} />
-        </Switch>
-      </Router>
+      <Root />
     </Provider>
   </BrowserCheck>
 )

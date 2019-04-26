@@ -42,6 +42,7 @@ export interface NexusGenRootTypes {
   User: { // root type
     email: string; // String!
     id: string; // ID!
+    isAdmin: boolean; // Boolean!
     name: string; // String!
   }
   String: string;
@@ -85,6 +86,7 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     email: string; // String!
     id: string; // ID!
+    isAdmin: boolean; // Boolean!
     name: string; // String!
   }
 }

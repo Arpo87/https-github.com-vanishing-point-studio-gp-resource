@@ -4,8 +4,8 @@ const reducer = (state = createInitialState(), action) => {
       return { ...state, loggedIn: action.loggedIn }
     case 'SET_LOGIN_FAILED':
       return { ...state, loginFailed: action.loginFailed }
-    case 'SET_LOADING':
-      return { ...state, loading: action.loading }
+    case 'SET_LOGGING_IN':
+      return { ...state, loggingIn: action.loggingIn }
     default:
       return state
   }
@@ -14,7 +14,7 @@ const reducer = (state = createInitialState(), action) => {
 const createInitialState = () => ({
   loggedIn: false,
   loginFailed: false,
-  loading: false,
+  loggingIn: false,
 })
 
 export default reducer

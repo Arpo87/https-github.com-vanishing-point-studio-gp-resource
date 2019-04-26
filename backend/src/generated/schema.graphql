@@ -36,5 +36,6 @@ type Query {
 type User {
   email: String!
   id: ID!
+  isAdmin: Boolean!
   name: String!
 }

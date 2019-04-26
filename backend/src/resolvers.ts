@@ -8,7 +8,7 @@ import { jwtSecret, getUserIdFromToken } from './utils'
 const User = prismaObjectType({
   name: 'User',
   definition(t) {
-    t.prismaFields(['id', 'name', 'email'])
+    t.prismaFields(['id', 'name', 'email', 'isAdmin'])
   },
 })
 

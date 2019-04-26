@@ -8,7 +8,7 @@ class Login extends React.Component {
   state = { email: '', password: '' }
 
   render() {
-    const { loggedIn, loginFailed, loading } = this.props
+    const { loggedIn, loginFailed, loggingIn } = this.props
     return loggedIn ? (
       <Redirect to="/" />
     ) : (
@@ -31,7 +31,7 @@ class Login extends React.Component {
             onChange={this.handleInputChange}
           />
           <button className="form" type="submit">
-            {loading ? 'Signing in...' : 'Sign in'}
+            {loggingIn ? 'Signing in...' : 'Sign in'}
           </button>
           {loginFailed && <div className="error">Invalid email or password!</div>}
         </form>
