@@ -17,8 +17,8 @@ type Nro {
   expensesCampaignSupport: Float
   expensesContributions: Float
   expensesOrgSupport: Float
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }

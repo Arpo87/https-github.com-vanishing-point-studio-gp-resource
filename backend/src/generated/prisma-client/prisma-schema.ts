@@ -52,10 +52,10 @@ type Nro {
   expensesCampaignSupport: Float
   expensesContributions: Float
   expensesOrgSupport: Float
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }
 
 type NroConnection {
@@ -75,10 +75,10 @@ input NroCreateInput {
   expensesCampaignSupport: Float
   expensesContributions: Float
   expensesOrgSupport: Float
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }
 
 type NroEdge {
@@ -128,10 +128,10 @@ type NroPreviousValues {
   expensesCampaignSupport: Float
   expensesContributions: Float
   expensesOrgSupport: Float
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }
 
 type NroSubscriptionPayload {
@@ -162,10 +162,10 @@ input NroUpdateInput {
   expensesCampaignSupport: Float
   expensesContributions: Float
   expensesOrgSupport: Float
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }
 
 input NroUpdateManyMutationInput {
@@ -178,10 +178,10 @@ input NroUpdateManyMutationInput {
   expensesCampaignSupport: Float
   expensesContributions: Float
   expensesOrgSupport: Float
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }
 
 input NroWhereInput {
@@ -283,38 +283,38 @@ input NroWhereInput {
   expensesOrgSupport_lte: Float
   expensesOrgSupport_gt: Float
   expensesOrgSupport_gte: Float
-  staffCampaigns: Int
-  staffCampaigns_not: Int
-  staffCampaigns_in: [Int!]
-  staffCampaigns_not_in: [Int!]
-  staffCampaigns_lt: Int
-  staffCampaigns_lte: Int
-  staffCampaigns_gt: Int
-  staffCampaigns_gte: Int
-  staffCampaignSupport: Int
-  staffCampaignSupport_not: Int
-  staffCampaignSupport_in: [Int!]
-  staffCampaignSupport_not_in: [Int!]
-  staffCampaignSupport_lt: Int
-  staffCampaignSupport_lte: Int
-  staffCampaignSupport_gt: Int
-  staffCampaignSupport_gte: Int
-  staffFundraising: Int
-  staffFundraising_not: Int
-  staffFundraising_in: [Int!]
-  staffFundraising_not_in: [Int!]
-  staffFundraising_lt: Int
-  staffFundraising_lte: Int
-  staffFundraising_gt: Int
-  staffFundraising_gte: Int
-  staffOrgSupport: Int
-  staffOrgSupport_not: Int
-  staffOrgSupport_in: [Int!]
-  staffOrgSupport_not_in: [Int!]
-  staffOrgSupport_lt: Int
-  staffOrgSupport_lte: Int
-  staffOrgSupport_gt: Int
-  staffOrgSupport_gte: Int
+  staffCampaigns: Float
+  staffCampaigns_not: Float
+  staffCampaigns_in: [Float!]
+  staffCampaigns_not_in: [Float!]
+  staffCampaigns_lt: Float
+  staffCampaigns_lte: Float
+  staffCampaigns_gt: Float
+  staffCampaigns_gte: Float
+  staffCampaignSupport: Float
+  staffCampaignSupport_not: Float
+  staffCampaignSupport_in: [Float!]
+  staffCampaignSupport_not_in: [Float!]
+  staffCampaignSupport_lt: Float
+  staffCampaignSupport_lte: Float
+  staffCampaignSupport_gt: Float
+  staffCampaignSupport_gte: Float
+  staffFundraising: Float
+  staffFundraising_not: Float
+  staffFundraising_in: [Float!]
+  staffFundraising_not_in: [Float!]
+  staffFundraising_lt: Float
+  staffFundraising_lte: Float
+  staffFundraising_gt: Float
+  staffFundraising_gte: Float
+  staffOrgSupport: Float
+  staffOrgSupport_not: Float
+  staffOrgSupport_in: [Float!]
+  staffOrgSupport_not_in: [Float!]
+  staffOrgSupport_lt: Float
+  staffOrgSupport_lte: Float
+  staffOrgSupport_gt: Float
+  staffOrgSupport_gte: Float
   AND: [NroWhereInput!]
   OR: [NroWhereInput!]
   NOT: [NroWhereInput!]

@@ -33,10 +33,10 @@ export interface NexusGenRootTypes {
     incomeGrants?: number | null; // Float
     incomeOther?: number | null; // Float
     name: string; // String!
-    staffCampaigns?: number | null; // Int
-    staffCampaignSupport?: number | null; // Int
-    staffFundraising?: number | null; // Int
-    staffOrgSupport?: number | null; // Int
+    staffCampaigns?: number | null; // Float
+    staffCampaignSupport?: number | null; // Float
+    staffFundraising?: number | null; // Float
+    staffOrgSupport?: number | null; // Float
   }
   Query: {};
   User: { // root type
@@ -74,10 +74,10 @@ export interface NexusGenFieldTypes {
     incomeGrants: number | null; // Float
     incomeOther: number | null; // Float
     name: string; // String!
-    staffCampaigns: number | null; // Int
-    staffCampaignSupport: number | null; // Int
-    staffFundraising: number | null; // Int
-    staffOrgSupport: number | null; // Int
+    staffCampaigns: number | null; // Float
+    staffCampaignSupport: number | null; // Float
+    staffFundraising: number | null; // Float
+    staffOrgSupport: number | null; // Float
   }
   Query: { // field return type
     me: NexusGenRootTypes['User'] | null; // User

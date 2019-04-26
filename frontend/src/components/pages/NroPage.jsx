@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchNros } from '../../state/actions'
 import { getDataSelection } from '../../utils'
 import Map from '../map/Map'
 import PieGrid from '../pies/PieGrid'
@@ -7,6 +9,10 @@ import './NroPage.scss'
 
 class NroPage extends React.Component {
   state = { dialogOpen: false }
+
+  componentDidMount() {
+    this.props.loadData()
+  }
 
   componentDidUpdate(lastProps) {
     if (this.props.location.pathname !== lastProps.location.pathname) {
@@ -49,4 +55,9 @@ class NroPage extends React.Component {
   }
 }
 
-export default NroPage
+const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchNros()) })
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NroPage)

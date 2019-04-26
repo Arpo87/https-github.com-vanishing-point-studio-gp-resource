@@ -1,6 +1,6 @@
 import { client } from '../api/client'
 import { loginMutation } from '../api/mutations'
-import { meQuery } from '../api/queries'
+import { meQuery, nroQuery } from '../api/queries'
 
 export const initialized = () => ({ type: 'INITIALIZED' })
 
@@ -57,6 +57,19 @@ export const onLoad = () => async dispatch => {
   }
 }
 
-export const fetchNros = () => {
-  
+export const setLoadingData = loadingData => ({ type: 'SET_LOADING_DATA', loadingData })
+
+export const setData = data => ({ type: 'SET_DATA', data })
+
+export const fetchNros = () => async dispatch => {
+  dispatch(setData([]))
+  dispatch(setLoadingData(true))
+  try {
+    const response = await client.query({ query: nroQuery })
+    if (response && response.data && response.data.nros) {
+      dispatch(setData(response.data.nros))
+      console.log(response.data.nros)
+    }
+  } catch (e) {}
+  dispatch(setLoadingData(false))
 }

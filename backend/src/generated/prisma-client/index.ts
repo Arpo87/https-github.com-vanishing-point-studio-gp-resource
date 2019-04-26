@@ -200,109 +200,16 @@ export interface NroUpdateInput {
   expensesCampaignSupport?: Float;
   expensesContributions?: Float;
   expensesOrgSupport?: Float;
-  staffCampaigns?: Int;
-  staffCampaignSupport?: Int;
-  staffFundraising?: Int;
-  staffOrgSupport?: Int;
+  staffCampaigns?: Float;
+  staffCampaignSupport?: Float;
+  staffFundraising?: Float;
+  staffOrgSupport?: Float;
 }
 
 export type NroWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
   name?: String;
 }>;
-
-export interface UserUpdateManyMutationInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  isAdmin?: Boolean;
-}
-
-export interface UserWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  isAdmin?: Boolean;
-  isAdmin_not?: Boolean;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-}>;
-
-export interface NroCreateInput {
-  id?: ID_Input;
-  name: String;
-  about?: String;
-  incomeGrants?: Float;
-  incomeFundraising?: Float;
-  incomeOther?: Float;
-  expensesCampaigns?: Float;
-  expensesCampaignSupport?: Float;
-  expensesContributions?: Float;
-  expensesOrgSupport?: Float;
-  staffCampaigns?: Int;
-  staffCampaignSupport?: Int;
-  staffFundraising?: Int;
-  staffOrgSupport?: Int;
-}
 
 export interface NroWhereInput {
   id?: ID_Input;
@@ -403,41 +310,138 @@ export interface NroWhereInput {
   expensesOrgSupport_lte?: Float;
   expensesOrgSupport_gt?: Float;
   expensesOrgSupport_gte?: Float;
-  staffCampaigns?: Int;
-  staffCampaigns_not?: Int;
-  staffCampaigns_in?: Int[] | Int;
-  staffCampaigns_not_in?: Int[] | Int;
-  staffCampaigns_lt?: Int;
-  staffCampaigns_lte?: Int;
-  staffCampaigns_gt?: Int;
-  staffCampaigns_gte?: Int;
-  staffCampaignSupport?: Int;
-  staffCampaignSupport_not?: Int;
-  staffCampaignSupport_in?: Int[] | Int;
-  staffCampaignSupport_not_in?: Int[] | Int;
-  staffCampaignSupport_lt?: Int;
-  staffCampaignSupport_lte?: Int;
-  staffCampaignSupport_gt?: Int;
-  staffCampaignSupport_gte?: Int;
-  staffFundraising?: Int;
-  staffFundraising_not?: Int;
-  staffFundraising_in?: Int[] | Int;
-  staffFundraising_not_in?: Int[] | Int;
-  staffFundraising_lt?: Int;
-  staffFundraising_lte?: Int;
-  staffFundraising_gt?: Int;
-  staffFundraising_gte?: Int;
-  staffOrgSupport?: Int;
-  staffOrgSupport_not?: Int;
-  staffOrgSupport_in?: Int[] | Int;
-  staffOrgSupport_not_in?: Int[] | Int;
-  staffOrgSupport_lt?: Int;
-  staffOrgSupport_lte?: Int;
-  staffOrgSupport_gt?: Int;
-  staffOrgSupport_gte?: Int;
+  staffCampaigns?: Float;
+  staffCampaigns_not?: Float;
+  staffCampaigns_in?: Float[] | Float;
+  staffCampaigns_not_in?: Float[] | Float;
+  staffCampaigns_lt?: Float;
+  staffCampaigns_lte?: Float;
+  staffCampaigns_gt?: Float;
+  staffCampaigns_gte?: Float;
+  staffCampaignSupport?: Float;
+  staffCampaignSupport_not?: Float;
+  staffCampaignSupport_in?: Float[] | Float;
+  staffCampaignSupport_not_in?: Float[] | Float;
+  staffCampaignSupport_lt?: Float;
+  staffCampaignSupport_lte?: Float;
+  staffCampaignSupport_gt?: Float;
+  staffCampaignSupport_gte?: Float;
+  staffFundraising?: Float;
+  staffFundraising_not?: Float;
+  staffFundraising_in?: Float[] | Float;
+  staffFundraising_not_in?: Float[] | Float;
+  staffFundraising_lt?: Float;
+  staffFundraising_lte?: Float;
+  staffFundraising_gt?: Float;
+  staffFundraising_gte?: Float;
+  staffOrgSupport?: Float;
+  staffOrgSupport_not?: Float;
+  staffOrgSupport_in?: Float[] | Float;
+  staffOrgSupport_not_in?: Float[] | Float;
+  staffOrgSupport_lt?: Float;
+  staffOrgSupport_lte?: Float;
+  staffOrgSupport_gt?: Float;
+  staffOrgSupport_gte?: Float;
   AND?: NroWhereInput[] | NroWhereInput;
   OR?: NroWhereInput[] | NroWhereInput;
   NOT?: NroWhereInput[] | NroWhereInput;
+}
+
+export interface UserWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  email?: String;
+  email_not?: String;
+  email_in?: String[] | String;
+  email_not_in?: String[] | String;
+  email_lt?: String;
+  email_lte?: String;
+  email_gt?: String;
+  email_gte?: String;
+  email_contains?: String;
+  email_not_contains?: String;
+  email_starts_with?: String;
+  email_not_starts_with?: String;
+  email_ends_with?: String;
+  email_not_ends_with?: String;
+  password?: String;
+  password_not?: String;
+  password_in?: String[] | String;
+  password_not_in?: String[] | String;
+  password_lt?: String;
+  password_lte?: String;
+  password_gt?: String;
+  password_gte?: String;
+  password_contains?: String;
+  password_not_contains?: String;
+  password_starts_with?: String;
+  password_not_starts_with?: String;
+  password_ends_with?: String;
+  password_not_ends_with?: String;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  isAdmin?: Boolean;
+  isAdmin_not?: Boolean;
+  AND?: UserWhereInput[] | UserWhereInput;
+  OR?: UserWhereInput[] | UserWhereInput;
+  NOT?: UserWhereInput[] | UserWhereInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+}>;
+
+export interface NroCreateInput {
+  id?: ID_Input;
+  name: String;
+  about?: String;
+  incomeGrants?: Float;
+  incomeFundraising?: Float;
+  incomeOther?: Float;
+  expensesCampaigns?: Float;
+  expensesCampaignSupport?: Float;
+  expensesContributions?: Float;
+  expensesOrgSupport?: Float;
+  staffCampaigns?: Float;
+  staffCampaignSupport?: Float;
+  staffFundraising?: Float;
+  staffOrgSupport?: Float;
+}
+
+export interface NroSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: NroWhereInput;
+  AND?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
+  OR?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
+  NOT?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
 }
 
 export interface NroUpdateManyMutationInput {
@@ -450,10 +454,10 @@ export interface NroUpdateManyMutationInput {
   expensesCampaignSupport?: Float;
   expensesContributions?: Float;
   expensesOrgSupport?: Float;
-  staffCampaigns?: Int;
-  staffCampaignSupport?: Int;
-  staffFundraising?: Int;
-  staffOrgSupport?: Int;
+  staffCampaigns?: Float;
+  staffCampaignSupport?: Float;
+  staffFundraising?: Float;
+  staffOrgSupport?: Float;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -474,15 +478,11 @@ export interface UserUpdateInput {
   isAdmin?: Boolean;
 }
 
-export interface NroSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: NroWhereInput;
-  AND?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
-  OR?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
-  NOT?: NroSubscriptionWhereInput[] | NroSubscriptionWhereInput;
+export interface UserUpdateManyMutationInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  isAdmin?: Boolean;
 }
 
 export interface NodeNode {
@@ -667,10 +667,10 @@ export interface Nro {
   expensesCampaignSupport?: Float;
   expensesContributions?: Float;
   expensesOrgSupport?: Float;
-  staffCampaigns?: Int;
-  staffCampaignSupport?: Int;
-  staffFundraising?: Int;
-  staffOrgSupport?: Int;
+  staffCampaigns?: Float;
+  staffCampaignSupport?: Float;
+  staffFundraising?: Float;
+  staffOrgSupport?: Float;
 }
 
 export interface NroPromise extends Promise<Nro>, Fragmentable {
@@ -684,10 +684,10 @@ export interface NroPromise extends Promise<Nro>, Fragmentable {
   expensesCampaignSupport: () => Promise<Float>;
   expensesContributions: () => Promise<Float>;
   expensesOrgSupport: () => Promise<Float>;
-  staffCampaigns: () => Promise<Int>;
-  staffCampaignSupport: () => Promise<Int>;
-  staffFundraising: () => Promise<Int>;
-  staffOrgSupport: () => Promise<Int>;
+  staffCampaigns: () => Promise<Float>;
+  staffCampaignSupport: () => Promise<Float>;
+  staffFundraising: () => Promise<Float>;
+  staffOrgSupport: () => Promise<Float>;
 }
 
 export interface NroSubscription
@@ -703,10 +703,10 @@ export interface NroSubscription
   expensesCampaignSupport: () => Promise<AsyncIterator<Float>>;
   expensesContributions: () => Promise<AsyncIterator<Float>>;
   expensesOrgSupport: () => Promise<AsyncIterator<Float>>;
-  staffCampaigns: () => Promise<AsyncIterator<Int>>;
-  staffCampaignSupport: () => Promise<AsyncIterator<Int>>;
-  staffFundraising: () => Promise<AsyncIterator<Int>>;
-  staffOrgSupport: () => Promise<AsyncIterator<Int>>;
+  staffCampaigns: () => Promise<AsyncIterator<Float>>;
+  staffCampaignSupport: () => Promise<AsyncIterator<Float>>;
+  staffFundraising: () => Promise<AsyncIterator<Float>>;
+  staffOrgSupport: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface BatchPayload {
@@ -779,10 +779,10 @@ export interface NroPreviousValues {
   expensesCampaignSupport?: Float;
   expensesContributions?: Float;
   expensesOrgSupport?: Float;
-  staffCampaigns?: Int;
-  staffCampaignSupport?: Int;
-  staffFundraising?: Int;
-  staffOrgSupport?: Int;
+  staffCampaigns?: Float;
+  staffCampaignSupport?: Float;
+  staffFundraising?: Float;
+  staffOrgSupport?: Float;
 }
 
 export interface NroPreviousValuesPromise
@@ -798,10 +798,10 @@ export interface NroPreviousValuesPromise
   expensesCampaignSupport: () => Promise<Float>;
   expensesContributions: () => Promise<Float>;
   expensesOrgSupport: () => Promise<Float>;
-  staffCampaigns: () => Promise<Int>;
-  staffCampaignSupport: () => Promise<Int>;
-  staffFundraising: () => Promise<Int>;
-  staffOrgSupport: () => Promise<Int>;
+  staffCampaigns: () => Promise<Float>;
+  staffCampaignSupport: () => Promise<Float>;
+  staffFundraising: () => Promise<Float>;
+  staffOrgSupport: () => Promise<Float>;
 }
 
 export interface NroPreviousValuesSubscription
@@ -817,10 +817,10 @@ export interface NroPreviousValuesSubscription
   expensesCampaignSupport: () => Promise<AsyncIterator<Float>>;
   expensesContributions: () => Promise<AsyncIterator<Float>>;
   expensesOrgSupport: () => Promise<AsyncIterator<Float>>;
-  staffCampaigns: () => Promise<AsyncIterator<Int>>;
-  staffCampaignSupport: () => Promise<AsyncIterator<Int>>;
-  staffFundraising: () => Promise<AsyncIterator<Int>>;
-  staffOrgSupport: () => Promise<AsyncIterator<Int>>;
+  staffCampaigns: () => Promise<AsyncIterator<Float>>;
+  staffCampaignSupport: () => Promise<AsyncIterator<Float>>;
+  staffFundraising: () => Promise<AsyncIterator<Float>>;
+  staffOrgSupport: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface UserSubscriptionPayload {

@@ -22,10 +22,10 @@ type Nro {
   incomeGrants: Float
   incomeOther: Float
   name: String!
-  staffCampaigns: Int
-  staffCampaignSupport: Int
-  staffFundraising: Int
-  staffOrgSupport: Int
+  staffCampaigns: Float
+  staffCampaignSupport: Float
+  staffFundraising: Float
+  staffOrgSupport: Float
 }
 
 type Query {
