@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Menu from '../menu/Menu'
 import MenuIcon from '../../assets/icons/Menu'
 import NroPage from '../pages/NroPage'
+import NotFound from './NotFound'
 import './Frame.scss'
 
 const showMenu = () => document.body.classList.add('menu-open')
@@ -29,6 +30,9 @@ class Frame extends React.Component {
         </div>
         <Switch>
           <Route path="(|/breakdowns)" exact component={NroPage} />
+          <Route path="/program" exact render={() => null} />
+          <Route path="/projects" exact render={() => null} />
+          <Route path="/" component={NotFound} />
         </Switch>
         <div className="frame-grower" />
         <div className="menu-background-overlay" />
