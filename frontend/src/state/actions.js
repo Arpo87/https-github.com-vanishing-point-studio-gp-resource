@@ -68,7 +68,6 @@ export const fetchNros = () => async dispatch => {
     const response = await client.query({ query: nroQuery })
     if (response && response.data && response.data.nros) {
       dispatch(setData(response.data.nros))
-      console.log(response.data.nros)
     }
   } catch (e) {}
   dispatch(setLoadingData(false))

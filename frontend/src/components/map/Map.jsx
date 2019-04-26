@@ -1,10 +1,12 @@
 import React from 'react'
 import ResizeDetector from 'react-resize-detector'
+import { connect } from 'react-redux'
 import { select, event } from 'd3-selection'
 import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
-import { data, mapCoordinates, traversalOrder } from '../../utils/fakeData'
+import { traversalOrder } from '../../utils/coordinates'
+import { getDataWithCoordinates } from '../../state/selectors'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
 import './Map.scss'
@@ -15,18 +17,6 @@ const AVERAGE_RADIUS = 2 // Radius of average value as percentage of svg width.
 
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
-
-const dataWithCoordinates = data
-  .filter(d => mapCoordinates[d.location])
-  .map(d => ({ ...d, coordinates: mapCoordinates[d.location] }))
-
-const valueToRadius = (value, dataSelection, svgWidth) => {
-  const values = data.map(d => d[dataSelection].reduce((a, b) => a + b, 0))
-  const averageValue = values.reduce((a, b) => a + b, 0) / values.length
-  const averageAreaInPx = Math.PI * Math.pow((svgWidth * AVERAGE_RADIUS) / 100, 2)
-  const areaInPx = (value / averageValue) * averageAreaInPx
-  return Math.sqrt(areaInPx / Math.PI)
-}
 
 class Map extends React.PureComponent {
   state = { selectedNro: null }
@@ -79,20 +69,20 @@ class Map extends React.PureComponent {
   }
 
   draw = () => {
-    const { dataSelection } = this.props
+    const { dataSelection, data } = this.props
     const { selectedNro } = this.state
     const width = this.svgElement.clientWidth || this.svgElement.parentNode.clientWidth
     const height = this.svgElement.clientHeight || this.svgElement.parentNode.clientHeight
 
     select(this.svgElement)
       .selectAll('circle')
-      .data(this.props.data)
+      .data(data)
       .join('circle')
       .attr('cx', d => width * d.coordinates[0])
       .attr('cy', d => height * d.coordinates[1])
-      .attr('class', d => (d.location === selectedNro ? 'selected' : undefined))
+      .attr('class', d => (d.name === selectedNro ? 'selected' : undefined))
       .on('click', d => {
-        this.setState({ selectedNro: d.location })
+        this.setState({ selectedNro: d.name })
         event.stopPropagation()
       })
       .transition()
@@ -102,8 +92,7 @@ class Map extends React.PureComponent {
         if (!d[dataSelection]) {
           return 0
         }
-        const total = d[dataSelection].reduce((a, b) => a + b, 0)
-        return valueToRadius(total, dataSelection, width)
+        return this.valueToRadius(d[dataSelection].total, width)
       })
 
     this.positionPopup(width, height)
@@ -115,8 +104,7 @@ class Map extends React.PureComponent {
     if (nroData) {
       const x = nroData.coordinates[0] * width
       const y = nroData.coordinates[1] * height
-      const total = nroData[dataSelection].reduce((a, b) => a + b, 0)
-      const radius = valueToRadius(total, dataSelection, width)
+      const radius = this.valueToRadius(nroData[dataSelection].total, width)
 
       let anchorX
       if (x + POPUP_WIDTH < width) {
@@ -146,9 +134,18 @@ class Map extends React.PureComponent {
     }
   }
 
+  valueToRadius = (value, svgWidth) => {
+    const { data, dataSelection } = this.props
+    const values = data.map(d => d[dataSelection].total)
+    const averageValue = values.reduce((a, b) => a + b, 0) / values.length
+    const averageAreaInPx = Math.PI * Math.pow((svgWidth * AVERAGE_RADIUS) / 100, 2)
+    const areaInPx = (value / averageValue) * averageAreaInPx
+    return Math.sqrt(areaInPx / Math.PI)
+  }
+
   closePopup = () => this.setState({ selectedNro: null })
 
-  getSelectedNroData = () => this.props.data.filter(d => d.location === this.state.selectedNro)[0]
+  getSelectedNroData = () => this.props.data.filter(d => d.name === this.state.selectedNro)[0]
 
   handleMouseWheel = e => {
     // Discard event if it's from a trackpad and another change occurred within the last 500ms.
@@ -171,8 +168,8 @@ class Map extends React.PureComponent {
   }
 }
 
-const MapWithFakeData = ({ location, ...rest }) => (
-  <Map data={dataWithCoordinates} dataSelection={getDataSelection(location)} {...rest} />
-)
+const MapWithDataSelection = ({ location, ...rest }) => <Map dataSelection={getDataSelection(location)} {...rest} />
 
-export default withRouter(MapWithFakeData)
+const mapStateToProps = state => ({ data: getDataWithCoordinates(state) })
+
+export default withRouter(connect(mapStateToProps)(MapWithDataSelection))

@@ -1,7 +1,6 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
 import { formatValue } from '../../utils'
-import { labels } from '../../utils/fakeData'
 import './DetailsPopup.scss'
 
 class DetailsPopup extends React.Component {
@@ -20,20 +19,20 @@ class DetailsPopup extends React.Component {
         <div id="mapDetailsPopup" className="inner-container">
           <div className="pie-container">
             <PieChart
-              data={data[dataSelection].map((d, i) => ({
-                label: labels[dataSelection][i],
-                value: d,
+              data={data[dataSelection].values.map((value, i) => ({
+                label: data[dataSelection].labels[i],
+                value,
               }))}
             />
           </div>
-          <h2>{data.location}</h2>
-          <div className="total">{formatValue(data[dataSelection].reduce((a, b) => a + b, 0), dataSelection)}</div>
+          <h2>{data.name}</h2>
+          <div className="total">{formatValue(data[dataSelection].total, dataSelection)}</div>
           <div className="line" />
           <div className="table">
-            {data[dataSelection].map((d, i) => (
-              <div key={labels[dataSelection][i]} className="row">
-                <div className="label">{labels[dataSelection][i]}</div>
-                <div className="value">{formatValue(d, dataSelection)}</div>
+            {data[dataSelection].values.map((value, i) => (
+              <div key={data[dataSelection].labels[i]} className="row">
+                <div className="label">{data[dataSelection].labels[i]}</div>
+                <div className="value">{formatValue(value, dataSelection)}</div>
               </div>
             ))}
           </div>

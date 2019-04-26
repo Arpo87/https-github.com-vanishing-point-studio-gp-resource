@@ -5,7 +5,8 @@ export const getDataSelection = location => {
   return types.includes(value) ? value : types[0]
 }
 
-export const formatValue = (value, dataSelection) => (dataSelection === 'staff' ? value : formatCurrency(value))
+export const formatValue = (value, dataSelection) =>
+  dataSelection === 'staff' ? formatStaff(value) : formatCurrency(value)
 
 // Copied from StackOverflow.
 export const formatCurrency = amount => {
@@ -14,3 +15,5 @@ export const formatCurrency = amount => {
   let j = i.length > 3 ? i.length % 3 : 0
   return '\u20AC' + negativeSign + (j ? i.substr(0, j) + ',' : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1,')
 }
+
+export const formatStaff = value => (Math.round(value) === value ? Math.round(value) : value.toFixed(1))

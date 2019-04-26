@@ -21,7 +21,7 @@ class NroPage extends React.Component {
   }
 
   render() {
-    const { location } = this.props
+    const { location, loadingData } = this.props
     const { dialogOpen } = this.state
     const dataSelection = getDataSelection(location)
     const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
@@ -29,15 +29,17 @@ class NroPage extends React.Component {
     return (
       <div className={'nro-page' + (!breakdowns ? ' map-showing' : '')}>
         <div className="scroll-container">
-          <div className="page-content">
-            <h1>
-              <span className="light">Showing </span>
-              <span className="data-selection">{dataSelectionCapitalized + ' per NRO'}</span>
-              <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
-              <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
-            </h1>
-            {breakdowns ? <PieGrid openDialog={this.openDialog} /> : <Map openDialog={this.openDialog} />}
-          </div>
+          {loadingData ? null : (
+            <div className="page-content">
+              <h1>
+                <span className="light">Showing </span>
+                <span className="data-selection">{dataSelectionCapitalized + ' per NRO'}</span>
+                <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
+                <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
+              </h1>
+              {breakdowns ? <PieGrid openDialog={this.openDialog} /> : <Map openDialog={this.openDialog} />}
+            </div>
+          )}
         </div>
         {dialogOpen && <InfoDialog close={this.closeDialog} />}
       </div>
@@ -55,9 +57,11 @@ class NroPage extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({ loadingData: state.loadingData })
+
 const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchNros()) })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NroPage)
