@@ -8,9 +8,9 @@ class Login extends React.Component {
   state = { email: '', password: '' }
 
   render() {
-    const { loggedIn, loginFailed, loggingIn } = this.props
+    const { loggedIn, loginFailed, loggingIn, location } = this.props
     return loggedIn ? (
-      <Redirect to="/" />
+      <Redirect to={location.state.from || '/'} />
     ) : (
       <div className="login-page">
         <form noValidate onSubmit={this.handleSubmit}>

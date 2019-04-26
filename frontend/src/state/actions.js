@@ -2,6 +2,8 @@ import { client } from '../api/client'
 import { loginMutation } from '../api/mutations'
 import { meQuery } from '../api/queries'
 
+export const initialized = () => ({ type: 'INITIALIZED' })
+
 export const setLoggedIn = loggedIn => ({ type: 'SET_LOGGED_IN', loggedIn })
 
 export const setLoginFailed = loginFailed => ({ type: 'SET_LOGIN_FAILED', loginFailed })
@@ -37,6 +39,7 @@ export const onLoad = () => async dispatch => {
     // If they have an accessToken, assume it is valid so they will see the logged-in area right away. If the
     // token exists but is expired they will see the logged-in area briefly before being redirected to login.
     dispatch(setLoggedIn(true))
+    dispatch(initialized())
     try {
       const response = await client.query({ query: meQuery })
       if (response && response.data) {
@@ -49,5 +52,7 @@ export const onLoad = () => async dispatch => {
     } catch (e) {
       dispatch(setLoggedIn(false))
     }
+  } else {
+    dispatch(initialized())
   }
 }

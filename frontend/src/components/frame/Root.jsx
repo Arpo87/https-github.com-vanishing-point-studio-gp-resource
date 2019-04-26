@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { onLoad } from '../../state/actions'
 import Frame from '../frame/Frame'
 import Login from '../login/Login'
+import PrivateRoute from './PrivateRoute'
 
 class Root extends React.Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class Root extends React.Component {
       <Router>
         <Switch>
           <Route path="/login" exact component={Login} />
-          <Route path="/" component={Frame} />
+          <PrivateRoute path="/" component={Frame} />
         </Switch>
       </Router>
     )
