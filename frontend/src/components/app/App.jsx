@@ -1,11 +1,13 @@
 import React from 'react'
 import WebFont from 'webfontloader'
-import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost'
-import { ApolloProvider } from 'react-apollo'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import BrowserCheck from '../browser/BrowserCheck'
 import Frame from '../frame/Frame'
 import Login from '../login/Login'
+import reducer from '../../state/reducer'
 import './App.scss'
 
 WebFont.load({
@@ -14,21 +16,18 @@ WebFont.load({
   },
 })
 
-const client = new ApolloClient({
-  link: new HttpLink({ uri: 'http://localhost:4000' }),
-  cache: new InMemoryCache(),
-})
+const store = createStore(reducer, applyMiddleware(thunk))
 
 const App = () => (
   <BrowserCheck>
-    <ApolloProvider client={client}>
+    <Provider store={store}>
       <Router>
         <Switch>
           <Route path="/login" exact component={Login} />
           <Route path="/" component={Frame} />
         </Switch>
       </Router>
-    </ApolloProvider>
+    </Provider>
   </BrowserCheck>
 )
 
