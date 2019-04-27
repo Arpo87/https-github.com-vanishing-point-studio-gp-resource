@@ -79,7 +79,12 @@ const Menu = ({ location, requestLogout }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({ requestLogout: () => dispatch(requestLogout()) })
+const mapDispatchToProps = dispatch => ({
+  requestLogout: () => {
+    document.body.classList.remove('menu-open') // Regular listener will not fire because frame unmounts.
+    dispatch(requestLogout())
+  },
+})
 
 export default withRouter(
   connect(
