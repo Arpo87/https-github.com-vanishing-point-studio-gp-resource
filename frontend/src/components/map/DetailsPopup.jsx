@@ -1,6 +1,6 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
-import { formatValue } from '../../utils'
+import { formatValue, formatPercent } from '../../utils'
 import './DetailsPopup.scss'
 
 class DetailsPopup extends React.Component {
@@ -31,8 +31,9 @@ class DetailsPopup extends React.Component {
           <div className="table">
             {data[dataSelection].values.map((value, i) => (
               <div key={data[dataSelection].labels[i]} className="row">
+                <div className="legend-color" />
                 <div className="label">{data[dataSelection].labels[i]}</div>
-                <div className="value">{formatValue(value, dataSelection)}</div>
+                <div className="value">{formatPercent(value, data[dataSelection].total)}</div>
               </div>
             ))}
           </div>

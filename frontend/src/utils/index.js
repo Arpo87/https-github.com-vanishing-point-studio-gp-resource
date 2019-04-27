@@ -8,6 +8,8 @@ export const getDataSelection = location => {
 export const formatValue = (value, dataSelection) =>
   dataSelection === 'staff' ? formatStaff(value) : formatCurrency(value)
 
+export const formatPercent = (value, total) => Math.round((value / total) * 100) + '%'
+
 // Copied from StackOverflow.
 export const formatCurrency = amount => {
   const negativeSign = amount < 0 ? '-' : ''
@@ -20,7 +22,7 @@ export const formatStaff = value => {
   if (!value) {
     return ''
   } else if (Math.round(value) === value) {
-    return value.toFixed(0)
+    return Math.round(value)
   } else {
     return value.toFixed(1)
   }
