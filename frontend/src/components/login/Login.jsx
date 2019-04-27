@@ -30,7 +30,7 @@ class Login extends React.Component {
             value={this.state.password}
             onChange={this.handleInputChange}
           />
-          <button className="form" type="submit">
+          <button className="form" type="submit" disabled={loggingIn}>
             {loggingIn ? 'Signing in...' : 'Sign in'}
           </button>
           {loginFailed && <div className="error">Invalid email or password!</div>}

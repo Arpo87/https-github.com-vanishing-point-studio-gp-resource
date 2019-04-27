@@ -1,6 +1,6 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Switch, Route } from 'react-router-dom'
 import { requestLogout } from '../../state/actions'
 import Menu from '../menu/Menu'
 import MenuIcon from '../../assets/icons/material/Menu'
@@ -24,7 +24,7 @@ class Frame extends React.Component {
   }
 
   render() {
-    const { admin, logout } = this.props
+    const { admin, requestLogout } = this.props
     return (
       <React.Fragment>
         <div className="title-bar">
@@ -42,7 +42,7 @@ class Frame extends React.Component {
             </div>
           )}
           <div className="anchor">
-            <button className="logout-button plain" type="button" onClick={logout}>
+            <button className="logout-button plain" type="button" onClick={requestLogout}>
               <ExitToAppIcon />
             </button>
             <div className="tooltip">Sign out</div>
@@ -75,7 +75,7 @@ class Frame extends React.Component {
 
 const mapStateToProps = state => ({ admin: state.admin })
 
-const mapDispatchToProps = dispatch => ({ logout: () => dispatch(requestLogout()) })
+const mapDispatchToProps = dispatch => ({ requestLogout: () => dispatch(requestLogout()) })
 
 export default connect(
   mapStateToProps,
