@@ -18,6 +18,9 @@ export const requestLogin = (email, password) => async dispatch => {
     if (response.data && response.data.login && response.data.login.token) {
       localStorage.setItem('accessToken', response.data.login.token)
       dispatch(setLoggedIn(true))
+      if (response.data.login.user && response.data.login.user.isAdmin) {
+        dispatch(setAdmin(true))
+      }
     } else {
       dispatch(setLoginFailed(true))
     }
@@ -30,6 +33,7 @@ export const requestLogin = (email, password) => async dispatch => {
 export const requestLogout = () => dispatch => {
   localStorage.removeItem('accessToken')
   dispatch(setLoggedIn(false))
+  dispatch(setAdmin(false))
 }
 
 export const setAdmin = admin => ({ type: 'SET_ADMIN', admin })
