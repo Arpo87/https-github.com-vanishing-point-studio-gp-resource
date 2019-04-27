@@ -1,7 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { requestLogout } from '../../state/actions'
 import Menu from '../menu/Menu'
-import MenuIcon from '../../assets/icons/Menu'
+import MenuIcon from '../../assets/icons/material/Menu'
+import SettingsIcon from '../../assets/icons/material/Settings'
+import ExitToAppIcon from '../../assets/icons/material/ExitToApp'
 import NroPage from '../pages/NroPage'
 import NotFound from './NotFound'
 import './Frame.scss'
@@ -20,13 +24,29 @@ class Frame extends React.Component {
   }
 
   render() {
+    const { admin, logout } = this.props
     return (
       <React.Fragment>
         <div className="title-bar">
           <div className="logo">RI</div>
-          <button id="showMenuButton" className="plain" type="button" onClick={showMenu}>
+          <div className="grower" />
+          <button id="showMenuButton" className="menu-button plain" type="button" onClick={showMenu}>
             <MenuIcon />
           </button>
+          {admin && (
+            <div className="anchor">
+              <button className="settings-button plain" type="button">
+                <SettingsIcon />
+              </button>
+              <div className="tooltip">Admin Page</div>
+            </div>
+          )}
+          <div className="anchor">
+            <button className="logout-button plain" type="button" onClick={logout}>
+              <ExitToAppIcon />
+            </button>
+            <div className="tooltip">Sign out</div>
+          </div>
         </div>
         <Switch>
           <Route path="(|/breakdowns)" exact component={NroPage} />
@@ -53,4 +73,11 @@ class Frame extends React.Component {
   }
 }
 
-export default Frame
+const mapStateToProps = state => ({ admin: state.admin })
+
+const mapDispatchToProps = dispatch => ({ logout: () => dispatch(requestLogout()) })
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Frame)

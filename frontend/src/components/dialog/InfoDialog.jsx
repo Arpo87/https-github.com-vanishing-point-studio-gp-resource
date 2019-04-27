@@ -1,5 +1,5 @@
 import React from 'react'
-import CloseIcon from '../../assets/icons/Close'
+import CloseIcon from '../../assets/icons/material/Close'
 import image1 from '../../assets/images/m1.png'
 import image2 from '../../assets/images/m2.png'
 import './InfoDialog.scss'

@@ -28,7 +28,7 @@ export const requestLogin = (email, password) => async dispatch => {
 }
 
 export const requestLogout = () => dispatch => {
-  localStorage.setItem('accessToken', null)
+  localStorage.removeItem('accessToken')
   dispatch(setLoggedIn(false))
 }
 
@@ -42,8 +42,8 @@ export const onLoad = () => async dispatch => {
     dispatch(initialized())
     try {
       const response = await client.query({ query: meQuery })
-      if (response && response.data) {
-        if (response.data.isAdmin) {
+      if (response && response.data && response.data.me) {
+        if (response.data.me.isAdmin) {
           dispatch(setAdmin(true))
         }
       } else {

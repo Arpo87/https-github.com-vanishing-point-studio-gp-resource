@@ -2,6 +2,8 @@ const reducer = (state = createInitialState(), action) => {
   switch (action.type) {
     case 'INITIALIZED':
       return { ...state, initializing: false }
+    case 'SET_ADMIN':
+      return { ...state, admin: action.admin }
     case 'SET_LOGGED_IN':
       return { ...state, loggedIn: action.loggedIn }
     case 'SET_LOGIN_FAILED':
@@ -19,6 +21,7 @@ const reducer = (state = createInitialState(), action) => {
 
 const createInitialState = () => ({
   initializing: true,
+  admin: false,
   loggedIn: false,
   loginFailed: false,
   loggingIn: false,

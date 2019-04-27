@@ -8,7 +8,7 @@
   background-color: white;
   width: 70px;
   min-width: 70px;
-  padding-top: 15px;
+  padding: 15px 0 10px 0;
 
   .logo {
     font-weight: 900;
@@ -17,8 +17,56 @@
     user-select: none;
   }
 
-  button {
+  .grower {
+    flex-grow: 1;
+  }
+
+  button.plain {
+    padding: 10px;
+  }
+
+  .menu-button {
     display: none;
+  }
+
+  .settings-icon {
+    margin: 1px -2px -1px 2px;
+  }
+
+  .anchor {
+    position: relative;
+  }
+
+  .tooltip {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    left: 50px;
+    top: 6px;
+    background-color: black;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 120ms;
+
+    &::before {
+      $anchor-width: 4px;
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-color: transparent black transparent transparent;
+      border-width: $anchor-width $anchor-width $anchor-width 0;
+      top: 10px;
+      left: -$anchor-width;
+    }
+  }
+
+  .anchor:hover .tooltip {
+    opacity: 1;
   }
 }
 
@@ -41,12 +89,10 @@
     height: 60px;
     width: 100%;
     flex-direction: row;
-    justify-content: space-between;
     padding: 0 15px 0 22px;
 
-    button {
+    .menu-button {
       display: flex;
-      padding: 10px;
 
       .icon .fill {
         fill: $text-1;
@@ -59,6 +105,11 @@
           fill: darken($text-1, 20%);
         }
       }
+    }
+
+    .settings-button,
+    .logout-button {
+      display: none;
     }
   }
 
