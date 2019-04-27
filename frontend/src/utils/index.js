@@ -6,17 +6,11 @@ export const getDataSelection = location => {
 }
 
 export const formatValue = (value, dataSelection) =>
-  dataSelection === 'staff' ? formatStaff(value) : formatCurrency(value)
+  dataSelection === 'staff' ? formatStaff(value) : formatCurrencyInMillionEuro(value)
 
 export const formatPercent = (value, total) => Math.round((value / total) * 100) + '%'
 
-// Copied from StackOverflow.
-export const formatCurrency = amount => {
-  const negativeSign = amount < 0 ? '-' : ''
-  let i = parseInt((amount = Math.abs(Number(amount) || 0).toFixed(0))).toString()
-  let j = i.length > 3 ? i.length % 3 : 0
-  return '\u20AC' + negativeSign + (j ? i.substr(0, j) + ',' : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1,')
-}
+export const formatCurrencyInMillionEuro = value => '\u20AC' + (value / 1000).toFixed(1) + 'M'
 
 export const formatStaff = value => {
   if (!value) {
