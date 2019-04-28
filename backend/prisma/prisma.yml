@@ -1,4 +1,4 @@
-endpoint: http://localhost:4466
+endpoint: https://gp-resource-prisma-f8934c02a1.herokuapp.com
 
 datamodel: datamodel.prisma
 
