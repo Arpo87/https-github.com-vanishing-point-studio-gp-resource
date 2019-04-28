@@ -19,7 +19,7 @@ const PieGrid = ({ data, dataSelection, openDialog }) => (
         <div className="title">{d.name}</div>
         <div className="button-container">
           <button className="link" type="button" onClick={openDialog}>
-            zoom + context
+            Context
           </button>
         </div>
       </div>

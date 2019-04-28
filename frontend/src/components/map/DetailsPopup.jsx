@@ -38,7 +38,7 @@ class DetailsPopup extends React.Component {
             ))}
           </div>
           <button className="link" type="button" onClick={this.handleLinkClick}>
-            zoom + context
+            Context
           </button>
         </div>
       </div>
