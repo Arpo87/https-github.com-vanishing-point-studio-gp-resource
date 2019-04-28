@@ -10,6 +10,7 @@ type Nro {
   id: ID! @id
   name: String! @unique
   about: String
+  context: String
   incomeGrants: Float
   incomeFundraising: Float
   incomeOther: Float
@@ -21,4 +22,22 @@ type Nro {
   staffCampaignSupport: Float
   staffFundraising: Float
   staffOrgSupport: Float
+  programmeStaffCampaigns: Float
+  programmeStaffCampaignCoordination: Float
+  programmeStaffCampaignUnallocated: Float
+  programmeStaffMediaComms: Float
+  programmeStaffPublicInfoOutreach: Float
+  programmeStaffOperations: Float
+  programmeStaffEngagement: Float
+  programmeStaffPolitical: Float
+  programmeBudgetCampaigns: Float
+  programmeBudgetCampaignCoordination: Float
+  programmeBudgetCampaignUnallocated: Float
+  programmeBudgetMediaComms: Float
+  programmeBudgetPublicInfoOutreach: Float
+  programmeBudgetOperations: Float
+  programmeBudgetEngagement: Float
+  programmeBudgetPolitical: Float
+  programmeBalanceStaff: Float
+  programmeBalanceDirect: Float
 }
