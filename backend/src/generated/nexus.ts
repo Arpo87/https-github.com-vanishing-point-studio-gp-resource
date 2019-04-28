@@ -24,6 +24,7 @@ export interface NexusGenRootTypes {
   Mutation: {};
   Nro: { // root type
     about?: string | null; // String
+    context?: string | null; // String
     expensesCampaigns?: number | null; // Float
     expensesCampaignSupport?: number | null; // Float
     expensesContributions?: number | null; // Float
@@ -33,6 +34,24 @@ export interface NexusGenRootTypes {
     incomeGrants?: number | null; // Float
     incomeOther?: number | null; // Float
     name: string; // String!
+    programmeBalanceDirect?: number | null; // Float
+    programmeBalanceStaff?: number | null; // Float
+    programmeBudgetCampaignCoordination?: number | null; // Float
+    programmeBudgetCampaigns?: number | null; // Float
+    programmeBudgetCampaignUnallocated?: number | null; // Float
+    programmeBudgetEngagement?: number | null; // Float
+    programmeBudgetMediaComms?: number | null; // Float
+    programmeBudgetOperations?: number | null; // Float
+    programmeBudgetPolitical?: number | null; // Float
+    programmeBudgetPublicInfoOutreach?: number | null; // Float
+    programmeStaffCampaignCoordination?: number | null; // Float
+    programmeStaffCampaigns?: number | null; // Float
+    programmeStaffCampaignUnallocated?: number | null; // Float
+    programmeStaffEngagement?: number | null; // Float
+    programmeStaffMediaComms?: number | null; // Float
+    programmeStaffOperations?: number | null; // Float
+    programmeStaffPolitical?: number | null; // Float
+    programmeStaffPublicInfoOutreach?: number | null; // Float
     staffCampaigns?: number | null; // Float
     staffCampaignSupport?: number | null; // Float
     staffFundraising?: number | null; // Float
@@ -65,6 +84,7 @@ export interface NexusGenFieldTypes {
   }
   Nro: { // field return type
     about: string | null; // String
+    context: string | null; // String
     expensesCampaigns: number | null; // Float
     expensesCampaignSupport: number | null; // Float
     expensesContributions: number | null; // Float
@@ -74,6 +94,24 @@ export interface NexusGenFieldTypes {
     incomeGrants: number | null; // Float
     incomeOther: number | null; // Float
     name: string; // String!
+    programmeBalanceDirect: number | null; // Float
+    programmeBalanceStaff: number | null; // Float
+    programmeBudgetCampaignCoordination: number | null; // Float
+    programmeBudgetCampaigns: number | null; // Float
+    programmeBudgetCampaignUnallocated: number | null; // Float
+    programmeBudgetEngagement: number | null; // Float
+    programmeBudgetMediaComms: number | null; // Float
+    programmeBudgetOperations: number | null; // Float
+    programmeBudgetPolitical: number | null; // Float
+    programmeBudgetPublicInfoOutreach: number | null; // Float
+    programmeStaffCampaignCoordination: number | null; // Float
+    programmeStaffCampaigns: number | null; // Float
+    programmeStaffCampaignUnallocated: number | null; // Float
+    programmeStaffEngagement: number | null; // Float
+    programmeStaffMediaComms: number | null; // Float
+    programmeStaffOperations: number | null; // Float
+    programmeStaffPolitical: number | null; // Float
+    programmeStaffPublicInfoOutreach: number | null; // Float
     staffCampaigns: number | null; // Float
     staffCampaignSupport: number | null; // Float
     staffFundraising: number | null; // Float

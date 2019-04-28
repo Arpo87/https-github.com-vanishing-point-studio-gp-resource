@@ -13,6 +13,7 @@ type Mutation {
 
 type Nro {
   about: String
+  context: String
   expensesCampaigns: Float
   expensesCampaignSupport: Float
   expensesContributions: Float
@@ -22,6 +23,24 @@ type Nro {
   incomeGrants: Float
   incomeOther: Float
   name: String!
+  programmeBalanceDirect: Float
+  programmeBalanceStaff: Float
+  programmeBudgetCampaignCoordination: Float
+  programmeBudgetCampaigns: Float
+  programmeBudgetCampaignUnallocated: Float
+  programmeBudgetEngagement: Float
+  programmeBudgetMediaComms: Float
+  programmeBudgetOperations: Float
+  programmeBudgetPolitical: Float
+  programmeBudgetPublicInfoOutreach: Float
+  programmeStaffCampaignCoordination: Float
+  programmeStaffCampaigns: Float
+  programmeStaffCampaignUnallocated: Float
+  programmeStaffEngagement: Float
+  programmeStaffMediaComms: Float
+  programmeStaffOperations: Float
+  programmeStaffPolitical: Float
+  programmeStaffPublicInfoOutreach: Float
   staffCampaigns: Float
   staffCampaignSupport: Float
   staffFundraising: Float
