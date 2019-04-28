@@ -145,6 +145,8 @@ export type NroOrderByInput =
   | "name_DESC"
   | "about_ASC"
   | "about_DESC"
+  | "context_ASC"
+  | "context_DESC"
   | "incomeGrants_ASC"
   | "incomeGrants_DESC"
   | "incomeFundraising_ASC"
@@ -166,7 +168,43 @@ export type NroOrderByInput =
   | "staffFundraising_ASC"
   | "staffFundraising_DESC"
   | "staffOrgSupport_ASC"
-  | "staffOrgSupport_DESC";
+  | "staffOrgSupport_DESC"
+  | "programmeStaffCampaigns_ASC"
+  | "programmeStaffCampaigns_DESC"
+  | "programmeStaffCampaignCoordination_ASC"
+  | "programmeStaffCampaignCoordination_DESC"
+  | "programmeStaffCampaignUnallocated_ASC"
+  | "programmeStaffCampaignUnallocated_DESC"
+  | "programmeStaffMediaComms_ASC"
+  | "programmeStaffMediaComms_DESC"
+  | "programmeStaffPublicInfoOutreach_ASC"
+  | "programmeStaffPublicInfoOutreach_DESC"
+  | "programmeStaffOperations_ASC"
+  | "programmeStaffOperations_DESC"
+  | "programmeStaffEngagement_ASC"
+  | "programmeStaffEngagement_DESC"
+  | "programmeStaffPolitical_ASC"
+  | "programmeStaffPolitical_DESC"
+  | "programmeBudgetCampaigns_ASC"
+  | "programmeBudgetCampaigns_DESC"
+  | "programmeBudgetCampaignCoordination_ASC"
+  | "programmeBudgetCampaignCoordination_DESC"
+  | "programmeBudgetCampaignUnallocated_ASC"
+  | "programmeBudgetCampaignUnallocated_DESC"
+  | "programmeBudgetMediaComms_ASC"
+  | "programmeBudgetMediaComms_DESC"
+  | "programmeBudgetPublicInfoOutreach_ASC"
+  | "programmeBudgetPublicInfoOutreach_DESC"
+  | "programmeBudgetOperations_ASC"
+  | "programmeBudgetOperations_DESC"
+  | "programmeBudgetEngagement_ASC"
+  | "programmeBudgetEngagement_DESC"
+  | "programmeBudgetPolitical_ASC"
+  | "programmeBudgetPolitical_DESC"
+  | "programmeBalanceStaff_ASC"
+  | "programmeBalanceStaff_DESC"
+  | "programmeBalanceDirect_ASC"
+  | "programmeBalanceDirect_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -193,6 +231,7 @@ export interface UserCreateInput {
 export interface NroUpdateInput {
   name?: String;
   about?: String;
+  context?: String;
   incomeGrants?: Float;
   incomeFundraising?: Float;
   incomeOther?: Float;
@@ -204,6 +243,24 @@ export interface NroUpdateInput {
   staffCampaignSupport?: Float;
   staffFundraising?: Float;
   staffOrgSupport?: Float;
+  programmeStaffCampaigns?: Float;
+  programmeStaffCampaignCoordination?: Float;
+  programmeStaffCampaignUnallocated?: Float;
+  programmeStaffMediaComms?: Float;
+  programmeStaffPublicInfoOutreach?: Float;
+  programmeStaffOperations?: Float;
+  programmeStaffEngagement?: Float;
+  programmeStaffPolitical?: Float;
+  programmeBudgetCampaigns?: Float;
+  programmeBudgetCampaignCoordination?: Float;
+  programmeBudgetCampaignUnallocated?: Float;
+  programmeBudgetMediaComms?: Float;
+  programmeBudgetPublicInfoOutreach?: Float;
+  programmeBudgetOperations?: Float;
+  programmeBudgetEngagement?: Float;
+  programmeBudgetPolitical?: Float;
+  programmeBalanceStaff?: Float;
+  programmeBalanceDirect?: Float;
 }
 
 export type NroWhereUniqueInput = AtLeastOne<{
@@ -254,6 +311,20 @@ export interface NroWhereInput {
   about_not_starts_with?: String;
   about_ends_with?: String;
   about_not_ends_with?: String;
+  context?: String;
+  context_not?: String;
+  context_in?: String[] | String;
+  context_not_in?: String[] | String;
+  context_lt?: String;
+  context_lte?: String;
+  context_gt?: String;
+  context_gte?: String;
+  context_contains?: String;
+  context_not_contains?: String;
+  context_starts_with?: String;
+  context_not_starts_with?: String;
+  context_ends_with?: String;
+  context_not_ends_with?: String;
   incomeGrants?: Float;
   incomeGrants_not?: Float;
   incomeGrants_in?: Float[] | Float;
@@ -342,6 +413,150 @@ export interface NroWhereInput {
   staffOrgSupport_lte?: Float;
   staffOrgSupport_gt?: Float;
   staffOrgSupport_gte?: Float;
+  programmeStaffCampaigns?: Float;
+  programmeStaffCampaigns_not?: Float;
+  programmeStaffCampaigns_in?: Float[] | Float;
+  programmeStaffCampaigns_not_in?: Float[] | Float;
+  programmeStaffCampaigns_lt?: Float;
+  programmeStaffCampaigns_lte?: Float;
+  programmeStaffCampaigns_gt?: Float;
+  programmeStaffCampaigns_gte?: Float;
+  programmeStaffCampaignCoordination?: Float;
+  programmeStaffCampaignCoordination_not?: Float;
+  programmeStaffCampaignCoordination_in?: Float[] | Float;
+  programmeStaffCampaignCoordination_not_in?: Float[] | Float;
+  programmeStaffCampaignCoordination_lt?: Float;
+  programmeStaffCampaignCoordination_lte?: Float;
+  programmeStaffCampaignCoordination_gt?: Float;
+  programmeStaffCampaignCoordination_gte?: Float;
+  programmeStaffCampaignUnallocated?: Float;
+  programmeStaffCampaignUnallocated_not?: Float;
+  programmeStaffCampaignUnallocated_in?: Float[] | Float;
+  programmeStaffCampaignUnallocated_not_in?: Float[] | Float;
+  programmeStaffCampaignUnallocated_lt?: Float;
+  programmeStaffCampaignUnallocated_lte?: Float;
+  programmeStaffCampaignUnallocated_gt?: Float;
+  programmeStaffCampaignUnallocated_gte?: Float;
+  programmeStaffMediaComms?: Float;
+  programmeStaffMediaComms_not?: Float;
+  programmeStaffMediaComms_in?: Float[] | Float;
+  programmeStaffMediaComms_not_in?: Float[] | Float;
+  programmeStaffMediaComms_lt?: Float;
+  programmeStaffMediaComms_lte?: Float;
+  programmeStaffMediaComms_gt?: Float;
+  programmeStaffMediaComms_gte?: Float;
+  programmeStaffPublicInfoOutreach?: Float;
+  programmeStaffPublicInfoOutreach_not?: Float;
+  programmeStaffPublicInfoOutreach_in?: Float[] | Float;
+  programmeStaffPublicInfoOutreach_not_in?: Float[] | Float;
+  programmeStaffPublicInfoOutreach_lt?: Float;
+  programmeStaffPublicInfoOutreach_lte?: Float;
+  programmeStaffPublicInfoOutreach_gt?: Float;
+  programmeStaffPublicInfoOutreach_gte?: Float;
+  programmeStaffOperations?: Float;
+  programmeStaffOperations_not?: Float;
+  programmeStaffOperations_in?: Float[] | Float;
+  programmeStaffOperations_not_in?: Float[] | Float;
+  programmeStaffOperations_lt?: Float;
+  programmeStaffOperations_lte?: Float;
+  programmeStaffOperations_gt?: Float;
+  programmeStaffOperations_gte?: Float;
+  programmeStaffEngagement?: Float;
+  programmeStaffEngagement_not?: Float;
+  programmeStaffEngagement_in?: Float[] | Float;
+  programmeStaffEngagement_not_in?: Float[] | Float;
+  programmeStaffEngagement_lt?: Float;
+  programmeStaffEngagement_lte?: Float;
+  programmeStaffEngagement_gt?: Float;
+  programmeStaffEngagement_gte?: Float;
+  programmeStaffPolitical?: Float;
+  programmeStaffPolitical_not?: Float;
+  programmeStaffPolitical_in?: Float[] | Float;
+  programmeStaffPolitical_not_in?: Float[] | Float;
+  programmeStaffPolitical_lt?: Float;
+  programmeStaffPolitical_lte?: Float;
+  programmeStaffPolitical_gt?: Float;
+  programmeStaffPolitical_gte?: Float;
+  programmeBudgetCampaigns?: Float;
+  programmeBudgetCampaigns_not?: Float;
+  programmeBudgetCampaigns_in?: Float[] | Float;
+  programmeBudgetCampaigns_not_in?: Float[] | Float;
+  programmeBudgetCampaigns_lt?: Float;
+  programmeBudgetCampaigns_lte?: Float;
+  programmeBudgetCampaigns_gt?: Float;
+  programmeBudgetCampaigns_gte?: Float;
+  programmeBudgetCampaignCoordination?: Float;
+  programmeBudgetCampaignCoordination_not?: Float;
+  programmeBudgetCampaignCoordination_in?: Float[] | Float;
+  programmeBudgetCampaignCoordination_not_in?: Float[] | Float;
+  programmeBudgetCampaignCoordination_lt?: Float;
+  programmeBudgetCampaignCoordination_lte?: Float;
+  programmeBudgetCampaignCoordination_gt?: Float;
+  programmeBudgetCampaignCoordination_gte?: Float;
+  programmeBudgetCampaignUnallocated?: Float;
+  programmeBudgetCampaignUnallocated_not?: Float;
+  programmeBudgetCampaignUnallocated_in?: Float[] | Float;
+  programmeBudgetCampaignUnallocated_not_in?: Float[] | Float;
+  programmeBudgetCampaignUnallocated_lt?: Float;
+  programmeBudgetCampaignUnallocated_lte?: Float;
+  programmeBudgetCampaignUnallocated_gt?: Float;
+  programmeBudgetCampaignUnallocated_gte?: Float;
+  programmeBudgetMediaComms?: Float;
+  programmeBudgetMediaComms_not?: Float;
+  programmeBudgetMediaComms_in?: Float[] | Float;
+  programmeBudgetMediaComms_not_in?: Float[] | Float;
+  programmeBudgetMediaComms_lt?: Float;
+  programmeBudgetMediaComms_lte?: Float;
+  programmeBudgetMediaComms_gt?: Float;
+  programmeBudgetMediaComms_gte?: Float;
+  programmeBudgetPublicInfoOutreach?: Float;
+  programmeBudgetPublicInfoOutreach_not?: Float;
+  programmeBudgetPublicInfoOutreach_in?: Float[] | Float;
+  programmeBudgetPublicInfoOutreach_not_in?: Float[] | Float;
+  programmeBudgetPublicInfoOutreach_lt?: Float;
+  programmeBudgetPublicInfoOutreach_lte?: Float;
+  programmeBudgetPublicInfoOutreach_gt?: Float;
+  programmeBudgetPublicInfoOutreach_gte?: Float;
+  programmeBudgetOperations?: Float;
+  programmeBudgetOperations_not?: Float;
+  programmeBudgetOperations_in?: Float[] | Float;
+  programmeBudgetOperations_not_in?: Float[] | Float;
+  programmeBudgetOperations_lt?: Float;
+  programmeBudgetOperations_lte?: Float;
+  programmeBudgetOperations_gt?: Float;
+  programmeBudgetOperations_gte?: Float;
+  programmeBudgetEngagement?: Float;
+  programmeBudgetEngagement_not?: Float;
+  programmeBudgetEngagement_in?: Float[] | Float;
+  programmeBudgetEngagement_not_in?: Float[] | Float;
+  programmeBudgetEngagement_lt?: Float;
+  programmeBudgetEngagement_lte?: Float;
+  programmeBudgetEngagement_gt?: Float;
+  programmeBudgetEngagement_gte?: Float;
+  programmeBudgetPolitical?: Float;
+  programmeBudgetPolitical_not?: Float;
+  programmeBudgetPolitical_in?: Float[] | Float;
+  programmeBudgetPolitical_not_in?: Float[] | Float;
+  programmeBudgetPolitical_lt?: Float;
+  programmeBudgetPolitical_lte?: Float;
+  programmeBudgetPolitical_gt?: Float;
+  programmeBudgetPolitical_gte?: Float;
+  programmeBalanceStaff?: Float;
+  programmeBalanceStaff_not?: Float;
+  programmeBalanceStaff_in?: Float[] | Float;
+  programmeBalanceStaff_not_in?: Float[] | Float;
+  programmeBalanceStaff_lt?: Float;
+  programmeBalanceStaff_lte?: Float;
+  programmeBalanceStaff_gt?: Float;
+  programmeBalanceStaff_gte?: Float;
+  programmeBalanceDirect?: Float;
+  programmeBalanceDirect_not?: Float;
+  programmeBalanceDirect_in?: Float[] | Float;
+  programmeBalanceDirect_not_in?: Float[] | Float;
+  programmeBalanceDirect_lt?: Float;
+  programmeBalanceDirect_lte?: Float;
+  programmeBalanceDirect_gt?: Float;
+  programmeBalanceDirect_gte?: Float;
   AND?: NroWhereInput[] | NroWhereInput;
   OR?: NroWhereInput[] | NroWhereInput;
   NOT?: NroWhereInput[] | NroWhereInput;
@@ -420,6 +635,7 @@ export interface NroCreateInput {
   id?: ID_Input;
   name: String;
   about?: String;
+  context?: String;
   incomeGrants?: Float;
   incomeFundraising?: Float;
   incomeOther?: Float;
@@ -431,6 +647,24 @@ export interface NroCreateInput {
   staffCampaignSupport?: Float;
   staffFundraising?: Float;
   staffOrgSupport?: Float;
+  programmeStaffCampaigns?: Float;
+  programmeStaffCampaignCoordination?: Float;
+  programmeStaffCampaignUnallocated?: Float;
+  programmeStaffMediaComms?: Float;
+  programmeStaffPublicInfoOutreach?: Float;
+  programmeStaffOperations?: Float;
+  programmeStaffEngagement?: Float;
+  programmeStaffPolitical?: Float;
+  programmeBudgetCampaigns?: Float;
+  programmeBudgetCampaignCoordination?: Float;
+  programmeBudgetCampaignUnallocated?: Float;
+  programmeBudgetMediaComms?: Float;
+  programmeBudgetPublicInfoOutreach?: Float;
+  programmeBudgetOperations?: Float;
+  programmeBudgetEngagement?: Float;
+  programmeBudgetPolitical?: Float;
+  programmeBalanceStaff?: Float;
+  programmeBalanceDirect?: Float;
 }
 
 export interface NroSubscriptionWhereInput {
@@ -447,6 +681,7 @@ export interface NroSubscriptionWhereInput {
 export interface NroUpdateManyMutationInput {
   name?: String;
   about?: String;
+  context?: String;
   incomeGrants?: Float;
   incomeFundraising?: Float;
   incomeOther?: Float;
@@ -458,6 +693,24 @@ export interface NroUpdateManyMutationInput {
   staffCampaignSupport?: Float;
   staffFundraising?: Float;
   staffOrgSupport?: Float;
+  programmeStaffCampaigns?: Float;
+  programmeStaffCampaignCoordination?: Float;
+  programmeStaffCampaignUnallocated?: Float;
+  programmeStaffMediaComms?: Float;
+  programmeStaffPublicInfoOutreach?: Float;
+  programmeStaffOperations?: Float;
+  programmeStaffEngagement?: Float;
+  programmeStaffPolitical?: Float;
+  programmeBudgetCampaigns?: Float;
+  programmeBudgetCampaignCoordination?: Float;
+  programmeBudgetCampaignUnallocated?: Float;
+  programmeBudgetMediaComms?: Float;
+  programmeBudgetPublicInfoOutreach?: Float;
+  programmeBudgetOperations?: Float;
+  programmeBudgetEngagement?: Float;
+  programmeBudgetPolitical?: Float;
+  programmeBalanceStaff?: Float;
+  programmeBalanceDirect?: Float;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -660,6 +913,7 @@ export interface Nro {
   id: ID_Output;
   name: String;
   about?: String;
+  context?: String;
   incomeGrants?: Float;
   incomeFundraising?: Float;
   incomeOther?: Float;
@@ -671,12 +925,31 @@ export interface Nro {
   staffCampaignSupport?: Float;
   staffFundraising?: Float;
   staffOrgSupport?: Float;
+  programmeStaffCampaigns?: Float;
+  programmeStaffCampaignCoordination?: Float;
+  programmeStaffCampaignUnallocated?: Float;
+  programmeStaffMediaComms?: Float;
+  programmeStaffPublicInfoOutreach?: Float;
+  programmeStaffOperations?: Float;
+  programmeStaffEngagement?: Float;
+  programmeStaffPolitical?: Float;
+  programmeBudgetCampaigns?: Float;
+  programmeBudgetCampaignCoordination?: Float;
+  programmeBudgetCampaignUnallocated?: Float;
+  programmeBudgetMediaComms?: Float;
+  programmeBudgetPublicInfoOutreach?: Float;
+  programmeBudgetOperations?: Float;
+  programmeBudgetEngagement?: Float;
+  programmeBudgetPolitical?: Float;
+  programmeBalanceStaff?: Float;
+  programmeBalanceDirect?: Float;
 }
 
 export interface NroPromise extends Promise<Nro>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   about: () => Promise<String>;
+  context: () => Promise<String>;
   incomeGrants: () => Promise<Float>;
   incomeFundraising: () => Promise<Float>;
   incomeOther: () => Promise<Float>;
@@ -688,6 +961,24 @@ export interface NroPromise extends Promise<Nro>, Fragmentable {
   staffCampaignSupport: () => Promise<Float>;
   staffFundraising: () => Promise<Float>;
   staffOrgSupport: () => Promise<Float>;
+  programmeStaffCampaigns: () => Promise<Float>;
+  programmeStaffCampaignCoordination: () => Promise<Float>;
+  programmeStaffCampaignUnallocated: () => Promise<Float>;
+  programmeStaffMediaComms: () => Promise<Float>;
+  programmeStaffPublicInfoOutreach: () => Promise<Float>;
+  programmeStaffOperations: () => Promise<Float>;
+  programmeStaffEngagement: () => Promise<Float>;
+  programmeStaffPolitical: () => Promise<Float>;
+  programmeBudgetCampaigns: () => Promise<Float>;
+  programmeBudgetCampaignCoordination: () => Promise<Float>;
+  programmeBudgetCampaignUnallocated: () => Promise<Float>;
+  programmeBudgetMediaComms: () => Promise<Float>;
+  programmeBudgetPublicInfoOutreach: () => Promise<Float>;
+  programmeBudgetOperations: () => Promise<Float>;
+  programmeBudgetEngagement: () => Promise<Float>;
+  programmeBudgetPolitical: () => Promise<Float>;
+  programmeBalanceStaff: () => Promise<Float>;
+  programmeBalanceDirect: () => Promise<Float>;
 }
 
 export interface NroSubscription
@@ -696,6 +987,7 @@ export interface NroSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   about: () => Promise<AsyncIterator<String>>;
+  context: () => Promise<AsyncIterator<String>>;
   incomeGrants: () => Promise<AsyncIterator<Float>>;
   incomeFundraising: () => Promise<AsyncIterator<Float>>;
   incomeOther: () => Promise<AsyncIterator<Float>>;
@@ -707,6 +999,24 @@ export interface NroSubscription
   staffCampaignSupport: () => Promise<AsyncIterator<Float>>;
   staffFundraising: () => Promise<AsyncIterator<Float>>;
   staffOrgSupport: () => Promise<AsyncIterator<Float>>;
+  programmeStaffCampaigns: () => Promise<AsyncIterator<Float>>;
+  programmeStaffCampaignCoordination: () => Promise<AsyncIterator<Float>>;
+  programmeStaffCampaignUnallocated: () => Promise<AsyncIterator<Float>>;
+  programmeStaffMediaComms: () => Promise<AsyncIterator<Float>>;
+  programmeStaffPublicInfoOutreach: () => Promise<AsyncIterator<Float>>;
+  programmeStaffOperations: () => Promise<AsyncIterator<Float>>;
+  programmeStaffEngagement: () => Promise<AsyncIterator<Float>>;
+  programmeStaffPolitical: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetCampaigns: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetCampaignCoordination: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetCampaignUnallocated: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetMediaComms: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetPublicInfoOutreach: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetOperations: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetEngagement: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetPolitical: () => Promise<AsyncIterator<Float>>;
+  programmeBalanceStaff: () => Promise<AsyncIterator<Float>>;
+  programmeBalanceDirect: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface BatchPayload {
@@ -772,6 +1082,7 @@ export interface NroPreviousValues {
   id: ID_Output;
   name: String;
   about?: String;
+  context?: String;
   incomeGrants?: Float;
   incomeFundraising?: Float;
   incomeOther?: Float;
@@ -783,6 +1094,24 @@ export interface NroPreviousValues {
   staffCampaignSupport?: Float;
   staffFundraising?: Float;
   staffOrgSupport?: Float;
+  programmeStaffCampaigns?: Float;
+  programmeStaffCampaignCoordination?: Float;
+  programmeStaffCampaignUnallocated?: Float;
+  programmeStaffMediaComms?: Float;
+  programmeStaffPublicInfoOutreach?: Float;
+  programmeStaffOperations?: Float;
+  programmeStaffEngagement?: Float;
+  programmeStaffPolitical?: Float;
+  programmeBudgetCampaigns?: Float;
+  programmeBudgetCampaignCoordination?: Float;
+  programmeBudgetCampaignUnallocated?: Float;
+  programmeBudgetMediaComms?: Float;
+  programmeBudgetPublicInfoOutreach?: Float;
+  programmeBudgetOperations?: Float;
+  programmeBudgetEngagement?: Float;
+  programmeBudgetPolitical?: Float;
+  programmeBalanceStaff?: Float;
+  programmeBalanceDirect?: Float;
 }
 
 export interface NroPreviousValuesPromise
@@ -791,6 +1120,7 @@ export interface NroPreviousValuesPromise
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   about: () => Promise<String>;
+  context: () => Promise<String>;
   incomeGrants: () => Promise<Float>;
   incomeFundraising: () => Promise<Float>;
   incomeOther: () => Promise<Float>;
@@ -802,6 +1132,24 @@ export interface NroPreviousValuesPromise
   staffCampaignSupport: () => Promise<Float>;
   staffFundraising: () => Promise<Float>;
   staffOrgSupport: () => Promise<Float>;
+  programmeStaffCampaigns: () => Promise<Float>;
+  programmeStaffCampaignCoordination: () => Promise<Float>;
+  programmeStaffCampaignUnallocated: () => Promise<Float>;
+  programmeStaffMediaComms: () => Promise<Float>;
+  programmeStaffPublicInfoOutreach: () => Promise<Float>;
+  programmeStaffOperations: () => Promise<Float>;
+  programmeStaffEngagement: () => Promise<Float>;
+  programmeStaffPolitical: () => Promise<Float>;
+  programmeBudgetCampaigns: () => Promise<Float>;
+  programmeBudgetCampaignCoordination: () => Promise<Float>;
+  programmeBudgetCampaignUnallocated: () => Promise<Float>;
+  programmeBudgetMediaComms: () => Promise<Float>;
+  programmeBudgetPublicInfoOutreach: () => Promise<Float>;
+  programmeBudgetOperations: () => Promise<Float>;
+  programmeBudgetEngagement: () => Promise<Float>;
+  programmeBudgetPolitical: () => Promise<Float>;
+  programmeBalanceStaff: () => Promise<Float>;
+  programmeBalanceDirect: () => Promise<Float>;
 }
 
 export interface NroPreviousValuesSubscription
@@ -810,6 +1158,7 @@ export interface NroPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   about: () => Promise<AsyncIterator<String>>;
+  context: () => Promise<AsyncIterator<String>>;
   incomeGrants: () => Promise<AsyncIterator<Float>>;
   incomeFundraising: () => Promise<AsyncIterator<Float>>;
   incomeOther: () => Promise<AsyncIterator<Float>>;
@@ -821,6 +1170,24 @@ export interface NroPreviousValuesSubscription
   staffCampaignSupport: () => Promise<AsyncIterator<Float>>;
   staffFundraising: () => Promise<AsyncIterator<Float>>;
   staffOrgSupport: () => Promise<AsyncIterator<Float>>;
+  programmeStaffCampaigns: () => Promise<AsyncIterator<Float>>;
+  programmeStaffCampaignCoordination: () => Promise<AsyncIterator<Float>>;
+  programmeStaffCampaignUnallocated: () => Promise<AsyncIterator<Float>>;
+  programmeStaffMediaComms: () => Promise<AsyncIterator<Float>>;
+  programmeStaffPublicInfoOutreach: () => Promise<AsyncIterator<Float>>;
+  programmeStaffOperations: () => Promise<AsyncIterator<Float>>;
+  programmeStaffEngagement: () => Promise<AsyncIterator<Float>>;
+  programmeStaffPolitical: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetCampaigns: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetCampaignCoordination: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetCampaignUnallocated: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetMediaComms: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetPublicInfoOutreach: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetOperations: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetEngagement: () => Promise<AsyncIterator<Float>>;
+  programmeBudgetPolitical: () => Promise<AsyncIterator<Float>>;
+  programmeBalanceStaff: () => Promise<AsyncIterator<Float>>;
+  programmeBalanceDirect: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface UserSubscriptionPayload {

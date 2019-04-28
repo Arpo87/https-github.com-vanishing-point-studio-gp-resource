@@ -26,6 +26,24 @@ export const nroQuery = gql`
       staffCampaignSupport
       staffFundraising
       staffOrgSupport
+      programmeStaffCampaigns
+      programmeStaffCampaignCoordination
+      programmeStaffCampaignUnallocated
+      programmeStaffMediaComms
+      programmeStaffPublicInfoOutreach
+      programmeStaffOperations
+      programmeStaffEngagement
+      programmeStaffPolitical
+      programmeBudgetCampaigns
+      programmeBudgetCampaignCoordination
+      programmeBudgetCampaignUnallocated
+      programmeBudgetMediaComms
+      programmeBudgetPublicInfoOutreach
+      programmeBudgetOperations
+      programmeBudgetEngagement
+      programmeBudgetPolitical
+      programmeBalanceStaff
+      programmeBalanceDirect
     }
   }
 `

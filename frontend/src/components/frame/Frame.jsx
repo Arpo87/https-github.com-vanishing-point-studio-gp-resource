@@ -49,7 +49,7 @@ class Frame extends React.Component {
           </div>
         </div>
         <Switch>
-          <Route path="(|/breakdowns)" exact component={NroPage} />
+          <Route path="(|/breakdowns|/program|/program/breakdowns)" exact component={NroPage} />
           <Route path="/program" exact render={() => null} />
           <Route path="/projects" exact render={() => null} />
           <Route path="/" component={NotFound} />
