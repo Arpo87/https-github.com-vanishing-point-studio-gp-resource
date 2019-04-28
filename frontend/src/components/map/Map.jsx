@@ -6,7 +6,7 @@ import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
 import { traversalOrder } from '../../utils/coordinates'
-import { getDataWithCoordinates } from '../../state/selectors'
+import { getDataWithCoordinates, getProgramDataWithCoordinates } from '../../state/selectors'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
 import './Map.scss'
@@ -170,6 +170,9 @@ class Map extends React.PureComponent {
 
 const MapWithDataSelection = ({ location, ...rest }) => <Map dataSelection={getDataSelection(location)} {...rest} />
 
-const mapStateToProps = state => ({ data: getDataWithCoordinates(state) })
-
+const mapStateToProps = (state, ownProps) => ({
+  data: ownProps.location.pathname.includes('program')
+    ? getProgramDataWithCoordinates(state)
+    : getDataWithCoordinates(state),
+})
 export default withRouter(connect(mapStateToProps)(MapWithDataSelection))

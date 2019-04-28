@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getDataSelection } from '../../utils'
-import { getData } from '../../state/selectors'
+import { getData, getProgramData } from '../../state/selectors'
 import PieChart from './PieChart'
 import './PieGrid.scss'
 
@@ -31,6 +31,8 @@ const PieGridWithDataSelection = ({ location, ...rest }) => (
   <PieGrid dataSelection={getDataSelection(location)} {...rest} />
 )
 
-const mapStateToProps = state => ({ data: getData(state) })
+const mapStateToProps = (state, ownProps) => ({
+  data: ownProps.location.pathname.includes('program') ? getProgramData(state) : getData(state),
+})
 
 export default withRouter(connect(mapStateToProps)(PieGridWithDataSelection))

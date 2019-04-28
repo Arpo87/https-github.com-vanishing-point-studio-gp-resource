@@ -25,7 +25,7 @@ class NroPage extends React.Component {
     const { dialogOpen } = this.state
     const dataSelection = getDataSelection(location)
     const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
-    const breakdowns = location.pathname === '/breakdowns'
+    const breakdowns = location.pathname.includes('breakdowns')
     return (
       <div className={'nro-page' + (!breakdowns ? ' map-showing' : '')}>
         <div className="scroll-container">
