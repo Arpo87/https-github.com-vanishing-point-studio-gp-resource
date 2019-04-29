@@ -11,7 +11,9 @@ export const getDataSelection = location => {
 }
 
 export const formatValue = (value, dataSelection) =>
-  dataSelection === 'staff' ? formatStaff(value) : formatCurrencyInMillionEuro(value)
+  dataSelection === 'staff' || dataSelection === 'programmeStaff'
+    ? formatStaff(value)
+    : formatCurrencyInMillionEuro(value)
 
 export const formatPercent = (value, total) => Math.round((value / total) * 100) + '%'
 
