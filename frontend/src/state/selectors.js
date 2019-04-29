@@ -9,12 +9,12 @@ export const getData = state => {
 
     const expenses = {
       values: [d.expensesCampaigns, d.expensesCampaignSupport, d.expensesContributions, d.expensesOrgSupport],
-      labels: ['Campaigns', 'Campaign Support', 'Contributions', 'Organisational Support'],
+      labels: ['Campaigns', 'Campaign support', 'Contributions', 'Organisational support'],
     }
 
     const staff = {
       values: [d.staffCampaigns, d.staffCampaignSupport, d.staffFundraising, d.staffOrgSupport],
-      labels: ['Campaigns', 'Campaign Support', 'Fundraising', 'Organisational Support'],
+      labels: ['Campaigns', 'Campaign support', 'Fundraising', 'Organisational support'],
     }
 
     income.total = income.values.reduce((a, b) => a + b, 0)
@@ -27,26 +27,62 @@ export const getData = state => {
 
 export const getProgrammeData = state => {
   return state.data.map(d => {
-    const income = {
-      values: [d.incomeGrants, d.incomeFundraising, d.incomeOther],
-      labels: ['Grants', 'Fundraising', 'Other'],
+    const programmeStaff = {
+      values: [
+        d.programmeStaffCampaigns,
+        d.programmeStaffCampaignCoordination,
+        d.programmeStaffCampaignUnallocated,
+        d.programmeStaffPolitical,
+        d.programmeStaffMediaComms,
+        d.programmeStaffEngagement,
+        d.programmeStaffPublicInfoOutreach,
+        d.programmeStaffOperations,
+      ],
+      labels: [
+        'Campaigns',
+        'Campaign coordination',
+        'Campaign un-allocated',
+        'Political, science, & business',
+        'Media & comms',
+        'Engagement',
+        'Public info & outreach',
+        'Operations',
+      ],
     }
 
-    const expenses = {
-      values: [d.expensesCampaigns, d.expensesCampaignSupport, d.expensesContributions, d.expensesOrgSupport],
-      labels: ['Campaigns', 'Campaign Support', 'Contributions', 'Organisational Support'],
+    const programmeBudget = {
+      values: [
+        d.programmeBudgetCampaigns,
+        d.programmeBudgetCampaignCoordination,
+        d.programmeBudgetCampaignUnallocated,
+        d.programmeBudgetPolitical,
+        d.programmeBudgetMediaComms,
+        d.programmeBudgetEngagement,
+        d.programmeBudgetPublicInfoOutreach,
+        d.programmeBudgetOperations,
+      ],
+      labels: [
+        'Campaigns',
+        'Campaign coordination',
+        'Campaign un-allocated',
+        'Political, science, & business',
+        'Media & comms',
+        'Engagement',
+        'Public info & outreach',
+        'Operations',
+      ],
     }
 
-    const staff = {
-      values: [d.staffCampaigns, d.staffCampaignSupport, d.staffFundraising, d.staffOrgSupport],
-      labels: ['Campaigns', 'Campaign Support', 'Fundraising', 'Organisational Support'],
+    const programmeBalance = {
+      values: [d.programmeBalanceDirect, d.programmeBalanceStaff],
+      labels: ['Direct', 'Staff'],
     }
 
-    income.total = income.values.reduce((a, b) => a + b, 0)
-    expenses.total = expenses.values.reduce((a, b) => a + b, 0)
-    staff.total = staff.values.reduce((a, b) => a + b, 0)
+    programmeStaff.total = programmeStaff.values.reduce((a, b) => a + b, 0)
+    programmeBudget.total = programmeBudget.values.reduce((a, b) => a + b, 0)
+    programmeBalance.total = programmeBalance.values.reduce((a, b) => a + b, 0)
 
-    return { name: d.name, income, expenses, staff }
+    return { name: d.name, programmeStaff, programmeBudget, programmeBalance }
   })
 }
 
