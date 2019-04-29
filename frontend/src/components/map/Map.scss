@@ -45,6 +45,18 @@
   }
 }
 
+.programme .map-view .data-svg circle {
+  fill: $blue-7-transparent;
+
+  &:hover {
+    fill: $blue-6;
+  }
+
+  &.selected {
+    fill: $blue-5;
+  }
+}
+
 @include phone {
   .map-view {
     min-width: 1000px;
