@@ -6,7 +6,7 @@ import { interpolate } from 'd3-interpolate'
 import { pie, arc } from 'd3-shape'
 import './PieChart.scss'
 
-const MAX_SLICES = 5
+const MAX_SLICES = 8
 
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
@@ -24,7 +24,7 @@ class PieChart extends React.PureComponent {
     return (
       <div className="pie-chart-container">
         <ResizeDetector handleWidth handleHeight onResize={this.draw} />
-        <svg className="data-svg" ref={e => (this.svgElement = e)}>
+        <svg className="data-svg color-scale-paths" ref={e => (this.svgElement = e)}>
           <g ref={e => (this.groupElement = e)} />
         </svg>
       </div>
