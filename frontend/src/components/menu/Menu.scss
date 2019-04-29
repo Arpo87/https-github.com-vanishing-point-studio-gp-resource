@@ -201,9 +201,15 @@
 
       a {
         padding: 10px 0 10px 30px;
+        color: $text-2;
+        transition: color 120ms;
 
         &:not(:first-child) {
           margin-top: 5px;
+        }
+
+        &.selected {
+          color: $text-1;
         }
       }
 
