@@ -12,3 +12,8 @@
     left: 0;
   }
 }
+
+svg path {
+  fill: transparent;
+  transition: fill 200ms;
+}
