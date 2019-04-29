@@ -262,7 +262,7 @@ export const nros = [
     incomeGrants: 14441,
     incomeFundraising: 13559,
     incomeOther: 10,
-    expensesContributions: 88295,
+    expensesContributions: 8829,
     expensesCampaigns: 7001,
     expensesCampaignSupport: 7689,
     expensesOrgSupport: 5345,
