@@ -218,11 +218,11 @@
         transition: transform 200ms ease-in-out;
       }
 
-      &.expenses .selection-indicator {
+      &.selected-index-1 .selection-indicator {
         transform: translateY(44px);
       }
 
-      &.staff .selection-indicator {
+      &.selected-index-2 .selection-indicator {
         transform: translateY(88px);
       }
     }

@@ -1,5 +1,5 @@
 type User {
-  id: ID! @id
+  id: ID! @unique
   email: String! @unique
   password: String!
   name: String!
@@ -7,7 +7,7 @@ type User {
 }
 
 type Nro {
-  id: ID! @id
+  id: ID! @unique
   name: String! @unique
   about: String
   context: String

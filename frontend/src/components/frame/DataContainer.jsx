@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchNros } from '../../state/actions'
-import { getDataSelection } from '../../utils'
+import { fetchData } from '../../state/actions'
 import Map from '../map/Map'
 import PieGrid from '../pies/PieGrid'
+import PageTitle from './PageTitle'
 import InfoDialog from '../dialog/InfoDialog'
-import './NroPage.scss'
+import './DataContainer.scss'
 
-class NroPage extends React.Component {
+class DataContainer extends React.Component {
   state = { dialogOpen: false }
 
   componentDidMount() {
@@ -23,20 +23,14 @@ class NroPage extends React.Component {
   render() {
     const { location, loadingData } = this.props
     const { dialogOpen } = this.state
-    const dataSelection = getDataSelection(location)
-    const dataSelectionCapitalized = dataSelection.charAt(0).toUpperCase() + dataSelection.slice(1)
     const breakdowns = location.pathname.includes('breakdowns')
+    const programme = location.pathname.includes('programme')
     return (
-      <div className={'nro-page' + (!breakdowns ? ' map-showing' : '')}>
+      <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map-showing' : '')}>
         <div className="scroll-container">
           {loadingData ? null : (
             <div className="page-content">
-              <h1>
-                <span className="light">Showing </span>
-                <span className="data-selection">{dataSelectionCapitalized + ' per NRO'}</span>
-                <span className="light">{breakdowns ? ' with ' : ' at a '}</span>
-                <span>{breakdowns ? 'breakdowns' : 'relative scale'}</span>
-              </h1>
+              <PageTitle location={location} />
               {breakdowns ? <PieGrid openDialog={this.openDialog} /> : <Map openDialog={this.openDialog} />}
             </div>
           )}
@@ -59,9 +53,9 @@ class NroPage extends React.Component {
 
 const mapStateToProps = state => ({ loadingData: state.loadingData })
 
-const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchNros()) })
+const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchData()) })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NroPage)
+)(DataContainer)
