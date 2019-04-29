@@ -19,8 +19,8 @@ export const users = [
   },
   {
     name: 'Guest',
-    email: 'sarah.duthie+guest@greenpeace.org',
+    email: 'guest@greenpeace.org',
     password: 'TrueBlue22',
-    isAdmin: true,
+    isAdmin: false,
   },
 ]
