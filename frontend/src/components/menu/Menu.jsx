@@ -41,6 +41,7 @@ const Menu = ({ location, requestLogout }) => {
   const pageLinkSuffix = pathname.includes('breakdowns') ? '/breakdowns' : '/'
   const viewLinkPrefix = pathname.startsWith('/programme') ? '/programme' : ''
   const dataSelection = getDataSelection(location)
+  const selectedIndex = getDataSelectionOptions(location).indexOf(getDataSelection(location))
   return (
     <div id="mainMenu" className="menu">
       <div className="page-selection">
@@ -80,7 +81,7 @@ const Menu = ({ location, requestLogout }) => {
           </div>
           <div className="data-selection">
             <div className="title">Data to show</div>
-            <div className={'data-links ' + dataSelection}>
+            <div className={'data-links selected-index-' + selectedIndex}>
               {getDataSelectionOptions(location).map((option, i) => (
                 <Link key={option} className="plain" to={location.pathname + (i > 0 ? '?data=' + option : '')} replace>
                   {labels[option]}
