@@ -40,7 +40,6 @@ const Menu = ({ location, requestLogout }) => {
   const isNroPage = pathname === '/' || pathname === '/breakdowns' || pathname.startsWith('/programme')
   const pageLinkSuffix = pathname.includes('breakdowns') ? '/breakdowns' : '/'
   const viewLinkPrefix = pathname.startsWith('/programme') ? '/programme' : ''
-  const dataSelection = getDataSelection(location)
   const selectedIndex = getDataSelectionOptions(location).indexOf(getDataSelection(location))
   return (
     <div id="mainMenu" className="menu">
