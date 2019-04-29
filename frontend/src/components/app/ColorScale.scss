@@ -39,7 +39,11 @@
     fill: $green-2;
   }
 
-  path:nth-child(5) {
+  // Children 6-8 are only shown during transitions from programme colors.
+  path:nth-child(5),
+  path:nth-child(6),
+  path:nth-child(7),
+  path:nth-child(8) {
     fill: $green-1;
   }
 }
