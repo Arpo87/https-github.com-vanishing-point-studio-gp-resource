@@ -1,8 +1,13 @@
-const types = ['income', 'expenses', 'staff']
+const nroDataTypes = ['income', 'expenses', 'staff']
+const programmeDataTypes = ['programmeStaff', 'programmeBudget', 'programmeBalance']
+
+export const getDataSelectionOptions = location =>
+  location.pathname.includes('programme') ? programmeDataTypes : nroDataTypes
 
 export const getDataSelection = location => {
   const value = new URLSearchParams(location.search).get('data')
-  return types.includes(value) ? value : types[0]
+  const options = getDataSelectionOptions(location)
+  return options.includes(value) ? value : options[0]
 }
 
 export const formatValue = (value, dataSelection) =>

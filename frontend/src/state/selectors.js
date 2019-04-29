@@ -25,7 +25,7 @@ export const getData = state => {
   })
 }
 
-export const getProgramData = state => {
+export const getProgrammeData = state => {
   return state.data.map(d => {
     const income = {
       values: [d.incomeGrants, d.incomeFundraising, d.incomeOther],
@@ -52,7 +52,7 @@ export const getProgramData = state => {
 
 export const getDataWithCoordinates = state => getWithCoordinates(state, getData)
 
-export const getProgramDataWithCoordinates = state => getWithCoordinates(state, getProgramData)
+export const getProgrammeDataWithCoordinates = state => getWithCoordinates(state, getProgrammeData)
 
 export const getWithCoordinates = (state, dataSelector) =>
   dataSelector(state)

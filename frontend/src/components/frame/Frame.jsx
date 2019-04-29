@@ -6,7 +6,7 @@ import Menu from '../menu/Menu'
 import MenuIcon from '../../assets/icons/material/Menu'
 import SettingsIcon from '../../assets/icons/material/Settings'
 import ExitToAppIcon from '../../assets/icons/material/ExitToApp'
-import NroPage from '../pages/NroPage'
+import DataContainer from './DataContainer'
 import NotFound from './NotFound'
 import './Frame.scss'
 
@@ -49,8 +49,7 @@ class Frame extends React.Component {
           </div>
         </div>
         <Switch>
-          <Route path="(|/breakdowns|/program|/program/breakdowns)" exact component={NroPage} />
-          <Route path="/program" exact render={() => null} />
+          <Route path="(|/breakdowns|/programme|/programme/breakdowns)" exact component={DataContainer} />
           <Route path="/projects" exact render={() => null} />
           <Route path="/" component={NotFound} />
         </Switch>
