@@ -2513,7 +2513,6 @@ export type NroWhereInputInputObject =
   | { name: 'NOT', alias?: string  } 
   
 export interface UserCreateInput {
-  id?: string | null
   email?: string
   password?: string
   name?: string
@@ -2521,7 +2520,6 @@ export interface UserCreateInput {
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
-  | { name: 'id', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'name', alias?: string  } 
@@ -2554,7 +2552,6 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'isAdmin', alias?: string  } 
   
 export interface NroCreateInput {
-  id?: string | null
   name?: string
   about?: string | null
   context?: string | null
@@ -2590,7 +2587,6 @@ export interface NroCreateInput {
 }
 export type NroCreateInputInputObject =
   | Extract<keyof NroCreateInput, string>
-  | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'about', alias?: string  } 
   | { name: 'context', alias?: string  } 

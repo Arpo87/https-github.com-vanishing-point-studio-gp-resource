@@ -52,6 +52,7 @@
     border-radius: 4px;
     opacity: 0;
     transition: opacity 120ms;
+    z-index: 500;
 
     &::before {
       $anchor-width: 4px;

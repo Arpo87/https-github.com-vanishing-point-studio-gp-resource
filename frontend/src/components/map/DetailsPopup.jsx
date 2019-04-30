@@ -30,7 +30,7 @@ class DetailsPopup extends React.Component {
           <div className="line" />
           <div className="table">
             {data[dataSelection].values.map((value, i) => (
-              <div key={data[dataSelection].labels[i]} className="row">
+              <div key={data[dataSelection].labels[i]} className="legend-item">
                 <div className="legend-color" />
                 <div className="label">{data[dataSelection].labels[i]}</div>
                 <div className="value">{formatPercent(value, data[dataSelection].total)}</div>

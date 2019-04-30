@@ -12,6 +12,7 @@
     align-items: center;
     padding: 15px 20px 20px 20px;
     width: 280px;
+    max-width: calc(100vw - 20px);
     background-color: $white-transparent;
     box-shadow: $shadow-1;
     border-radius: 4px;
@@ -46,7 +47,7 @@
     align-items: stretch;
     align-self: stretch;
 
-    .row {
+    .legend-item {
       display: flex;
       align-items: center;
 
@@ -71,26 +72,6 @@
       height: 12px;
       border-radius: 2px;
       margin: 1px 8px 0 0;
-    }
-
-    .row:nth-child(1) .legend-color {
-      background-color: $green-5;
-    }
-
-    .row:nth-child(2) .legend-color {
-      background-color: $green-4;
-    }
-
-    .row:nth-child(3) .legend-color {
-      background-color: $green-3;
-    }
-
-    .row:nth-child(4) .legend-color {
-      background-color: $green-2;
-    }
-
-    .row:nth-child(5) .legend-color {
-      background-color: $green-1;
     }
   }
 
@@ -139,4 +120,8 @@
       display: none;
     }
   }
+}
+
+.programme .details-popup .inner-container {
+  width: 320px;
 }

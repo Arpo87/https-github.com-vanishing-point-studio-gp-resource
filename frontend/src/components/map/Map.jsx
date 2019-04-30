@@ -6,12 +6,13 @@ import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
 import { traversalOrder } from '../../utils/coordinates'
-import { getDataWithCoordinates, getProgramDataWithCoordinates } from '../../state/selectors'
+import { getDataWithCoordinates, getProgrammeDataWithCoordinates } from '../../state/selectors'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
 import './Map.scss'
 
-const POPUP_WIDTH = 260
+const POPUP_WIDTH = 280
+const POPUP_WIDTH_PROGRAMME = 320
 const POPUP_ANCHOR_WIDTH = 10
 const AVERAGE_RADIUS = 2 // Radius of average value as percentage of svg width.
 
@@ -99,7 +100,8 @@ class Map extends React.PureComponent {
   }
 
   positionPopup = (width, height) => {
-    const { dataSelection } = this.props
+    const { dataSelection, programme } = this.props
+    const popupWidth = programme ? POPUP_WIDTH_PROGRAMME : POPUP_WIDTH
     const nroData = this.getSelectedNroData()
     if (nroData) {
       const x = nroData.coordinates[0] * width
@@ -107,11 +109,11 @@ class Map extends React.PureComponent {
       const radius = this.valueToRadius(nroData[dataSelection].total, width)
 
       let anchorX
-      if (x + POPUP_WIDTH < width) {
+      if (x + popupWidth < width) {
         anchorX = x + POPUP_ANCHOR_WIDTH + (radius - 5)
         this.popupElement.classList.remove('anchor-right')
       } else {
-        anchorX = x - POPUP_WIDTH - POPUP_ANCHOR_WIDTH - (radius - 5)
+        anchorX = x - popupWidth - POPUP_ANCHOR_WIDTH - (radius - 5)
         this.popupElement.classList.add('anchor-right')
       }
 
@@ -170,9 +172,11 @@ class Map extends React.PureComponent {
 
 const MapWithDataSelection = ({ location, ...rest }) => <Map dataSelection={getDataSelection(location)} {...rest} />
 
-const mapStateToProps = (state, ownProps) => ({
-  data: ownProps.location.pathname.includes('program')
-    ? getProgramDataWithCoordinates(state)
-    : getDataWithCoordinates(state),
-})
+const mapStateToProps = (state, ownProps) => {
+  const programme = ownProps.location.pathname.includes('programme')
+  return {
+    data: programme ? getProgrammeDataWithCoordinates(state) : getDataWithCoordinates(state),
+    programme,
+  }
+}
 export default withRouter(connect(mapStateToProps)(MapWithDataSelection))

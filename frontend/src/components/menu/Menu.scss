@@ -201,9 +201,15 @@
 
       a {
         padding: 10px 0 10px 30px;
+        color: $text-2;
+        transition: color 120ms;
 
         &:not(:first-child) {
           margin-top: 5px;
+        }
+
+        &.selected {
+          color: $text-1;
         }
       }
 
@@ -218,11 +224,11 @@
         transition: transform 200ms ease-in-out;
       }
 
-      &.expenses .selection-indicator {
+      &.selected-index-1 .selection-indicator {
         transform: translateY(44px);
       }
 
-      &.staff .selection-indicator {
+      &.selected-index-2 .selection-indicator {
         transform: translateY(88px);
       }
     }

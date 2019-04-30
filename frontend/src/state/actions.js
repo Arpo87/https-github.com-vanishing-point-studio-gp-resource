@@ -65,7 +65,7 @@ export const setLoadingData = loadingData => ({ type: 'SET_LOADING_DATA', loadin
 
 export const setData = data => ({ type: 'SET_DATA', data })
 
-export const fetchNros = () => async dispatch => {
+export const fetchData = () => async dispatch => {
   dispatch(setData([]))
   dispatch(setLoadingData(true))
   try {
