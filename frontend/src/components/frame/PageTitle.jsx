@@ -8,7 +8,7 @@ const labels = {
   staff: 'Staff per NRO',
   programmeStaff: 'Programme Staff',
   programmeBudget: 'Programme Budget',
-  programmeBalance: 'Programme Balance',
+  programmeBalance: 'Programme Costs',
 }
 
 const PageTitle = ({ location }) => {

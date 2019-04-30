@@ -14,7 +14,7 @@ const labels = {
   staff: 'Staff',
   programmeStaff: 'Staff',
   programmeBudget: 'Budget',
-  programmeBalance: 'Balance',
+  programmeBalance: 'Costs Ratio',
 }
 
 const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className }) => {
