@@ -113,10 +113,12 @@
     width: 100%;
     height: 100%;
     z-index: 20;
+    pointer-events: none;
     transition: background-color 400ms;
   }
 
   .menu-open .menu-background-overlay {
     background-color: rgba(0, 0, 0, 0.6);
+    pointer-events: all;
   }
 }

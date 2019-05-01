@@ -53,7 +53,7 @@ class Frame extends React.Component {
           <Route path="/projects" exact render={() => <div style={{ flexGrow: 1 }} />} />
           <Route path="/" component={NotFound} />
         </Switch>
-        <div className="menu-background-overlay" onClick={hideMenu} role="button" />
+        <div className="menu-background-overlay" />
         <Menu />
       </React.Fragment>
     )
@@ -64,7 +64,8 @@ class Frame extends React.Component {
       const clickOnButton = document.getElementById('showMenuButton').contains(e.target)
       const clickOnMenu = document.getElementById('mainMenu').contains(e.target)
       const clickOnMenuLink = Array.from(document.querySelectorAll('#mainMenu a')).some(a => a.contains(e.target))
-      if (!clickOnButton && !(clickOnMenu && !clickOnMenuLink)) {
+      const clickOnOverlay = document.querySelector('.menu-background-overlay').contains(e.target)
+      if (clickOnOverlay || (!clickOnButton && !(clickOnMenu && !clickOnMenuLink))) {
         hideMenu()
       }
     }
