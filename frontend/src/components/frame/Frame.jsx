@@ -53,7 +53,7 @@ class Frame extends React.Component {
           <Route path="/projects" exact render={() => <div style={{ flexGrow: 1 }} />} />
           <Route path="/" component={NotFound} />
         </Switch>
-        <div className="menu-background-overlay" />
+        <div className="menu-background-overlay" onClick={hideMenu} role="button" />
         <Menu />
       </React.Fragment>
     )
