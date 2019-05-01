@@ -17,6 +17,7 @@ const hideMenu = () => document.body.classList.remove('menu-open')
 class Frame extends React.Component {
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick)
+    window.scrollTo(0, 0)
   }
 
   componentWillUnmount() {
