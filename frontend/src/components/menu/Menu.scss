@@ -118,7 +118,8 @@
       padding-bottom: 3px;
       transition: color 120ms;
 
-      &.active {
+      &.active,
+      :active {
         color: $text-1;
       }
 
@@ -146,7 +147,8 @@
           }
         }
 
-        &.active .icon-container {
+        &.active .icon-container,
+        :active .icon-container {
           background-color: $bg-2;
 
           .map {
@@ -176,7 +178,8 @@
           }
         }
 
-        &.active .icon-container {
+        &.active .icon-container,
+        :active .icon-container {
           background-color: $bg-2;
 
           > div > span {
@@ -211,7 +214,8 @@
           margin-top: 5px;
         }
 
-        &.selected {
+        &.selected,
+        &:active {
           color: $text-1;
         }
       }
@@ -258,6 +262,18 @@
         fill: darken($border-1, 15%);
       }
     }
+
+    &:active {
+      color: $text-1;
+
+      .icon {
+        margin-left: 10px;
+
+        .fill {
+          fill: $text-1;
+        }
+      }
+    }
   }
 }
 
@@ -302,6 +318,26 @@
 
     .logout-button {
       font-size: 15px;
+    }
+
+    .data-selection {
+      .title {
+        margin-bottom: 15px;
+      }
+
+      .data-links {
+        .selection-indicator {
+          top: 12px;
+        }
+
+        &.selected-index-1 .selection-indicator {
+          transform: translateY(43px);
+        }
+
+        &.selected-index-2 .selection-indicator {
+          transform: translateY(86px);
+        }
+      }
     }
   }
 }
