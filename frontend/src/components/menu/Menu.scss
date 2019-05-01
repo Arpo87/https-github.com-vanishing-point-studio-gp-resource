@@ -12,6 +12,12 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
+  .menu-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
   .page-selection {
     padding: 10px 25px;
     background-color: white;
@@ -260,10 +266,10 @@
 
 @include tablet {
   .menu {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: -320px;
-    bottom: 0;
+    height: 100%;
     border-left: none;
     box-shadow: none;
     transition: all 200ms ease-in;

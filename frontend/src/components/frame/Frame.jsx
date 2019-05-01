@@ -50,10 +50,9 @@ class Frame extends React.Component {
         </div>
         <Switch>
           <Route path="(|/breakdowns|/programme|/programme/breakdowns)" exact component={DataContainer} />
-          <Route path="/projects" exact render={() => null} />
+          <Route path="/projects" exact render={() => <div style={{ flexGrow: 1 }} />} />
           <Route path="/" component={NotFound} />
         </Switch>
-        <div className="frame-grower" />
         <div className="menu-background-overlay" />
         <Menu />
       </React.Fragment>

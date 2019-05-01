@@ -26,7 +26,7 @@ class DataContainer extends React.Component {
     const breakdowns = location.pathname.includes('breakdowns')
     const programme = location.pathname.includes('programme')
     return (
-      <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map-showing' : '')}>
+      <div className={'data-container' + (programme ? ' programme' : '')}>
         <div className="scroll-container">
           {loadingData ? null : (
             <div className="page-content">
@@ -43,6 +43,7 @@ class DataContainer extends React.Component {
   openDialog = () => {
     this.setState({ dialogOpen: true })
     document.body.classList.add('dialog-open')
+    window.scrollTo(0, 0)
   }
 
   closeDialog = () => {

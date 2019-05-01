@@ -37,6 +37,10 @@
     @include phone {
       width: 100%;
     }
+
+    @include big-screen {
+      width: 20%;
+    }
   }
 
   @include tablet {
