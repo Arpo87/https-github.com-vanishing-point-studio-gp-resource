@@ -36,3 +36,9 @@
     }
   }
 }
+
+@include tablet {
+  .dialog-open .scroll-container {
+    display: none;
+  }
+}

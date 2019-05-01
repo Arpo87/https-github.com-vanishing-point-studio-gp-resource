@@ -105,6 +105,10 @@
     }
   }
 
+  .dialog-open .title-bar {
+    opacity: 0;
+  }
+
   .menu-background-overlay {
     display: flex;
     position: absolute;
