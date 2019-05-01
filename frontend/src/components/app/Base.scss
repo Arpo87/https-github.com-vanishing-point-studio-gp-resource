@@ -70,6 +70,7 @@ input {
   font-family: $font-1;
   font-size: 15px;
   color: $text-1;
+  -webkit-appearance: none;
 
   &::placeholder {
     color: $text-2;
