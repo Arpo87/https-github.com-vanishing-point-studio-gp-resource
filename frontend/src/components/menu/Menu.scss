@@ -287,3 +287,24 @@
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
   }
 }
+
+@include phone {
+  .menu {
+    width: 260px;
+    min-width: 260px;
+    font-size: 15px;
+
+    .page-selection a {
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+
+    .view-switch a {
+      font-size: 14px;
+    }
+
+    .logout-button {
+      font-size: 15px;
+    }
+  }
+}
