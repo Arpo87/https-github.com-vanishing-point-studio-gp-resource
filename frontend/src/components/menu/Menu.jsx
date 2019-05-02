@@ -44,64 +44,66 @@ const Menu = ({ location, requestLogout }) => {
   const selectedIndex = getDataSelectionOptions(location).indexOf(currentSelection)
   return (
     <div id="mainMenu" className="menu">
-      <div className="page-selection">
-        <LinkWithIcon to={pageLinkSuffix} text="NROs" icon="nro" matches={['/breakdowns']} />
-        <LinkWithIcon
-          to={'/programme' + pageLinkSuffix}
-          text="Programme"
-          icon="programme"
-          matches={['/programme/breakdowns']}
-        />
-        <LinkWithIcon to="/projects" text="Projects" icon="project" />
+      <div className="menu-content">
+        <div className="page-selection">
+          <LinkWithIcon to={pageLinkSuffix} text="NROs" icon="nro" matches={['/breakdowns']} />
+          <LinkWithIcon
+            to={'/programme' + pageLinkSuffix}
+            text="Programme"
+            icon="programme"
+            matches={['/programme/breakdowns']}
+          />
+          <LinkWithIcon to="/projects" text="Projects" icon="project" />
+        </div>
+        {isNroPage && (
+          <React.Fragment>
+            <div className="view-selection">
+              <div className="title">View</div>
+              <div className="view-switch">
+                <LinkWithIcon
+                  to={viewLinkPrefix + '/' + location.search}
+                  text="Overview"
+                  icon="map"
+                  className="overview"
+                />
+                <LinkWithIcon
+                  to={viewLinkPrefix + '/breakdowns' + location.search}
+                  text="Breakdowns"
+                  icon={
+                    <div>
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  }
+                  className="breakdowns"
+                />
+              </div>
+            </div>
+            <div className="data-selection">
+              <div className="title">Data to show</div>
+              <div className={'data-links selected-index-' + selectedIndex}>
+                {getDataSelectionOptions(location).map((option, i) => (
+                  <Link
+                    key={option}
+                    className={'plain' + (option === currentSelection ? ' selected' : '')}
+                    to={location.pathname + (i > 0 ? '?data=' + option : '')}
+                    replace
+                  >
+                    {labels[option]}
+                  </Link>
+                ))}
+                <span className="selection-indicator" />
+              </div>
+            </div>
+            <div className="grower" />
+            <button className="logout-button plain" onClick={requestLogout}>
+              <span>Sign out</span>
+              <ExitToAppIcon />
+            </button>
+          </React.Fragment>
+        )}
       </div>
-      {isNroPage && (
-        <React.Fragment>
-          <div className="view-selection">
-            <div className="title">View</div>
-            <div className="view-switch">
-              <LinkWithIcon
-                to={viewLinkPrefix + '/' + location.search}
-                text="Overview"
-                icon="map"
-                className="overview"
-              />
-              <LinkWithIcon
-                to={viewLinkPrefix + '/breakdowns' + location.search}
-                text="Breakdowns"
-                icon={
-                  <div>
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                }
-                className="breakdowns"
-              />
-            </div>
-          </div>
-          <div className="data-selection">
-            <div className="title">Data to show</div>
-            <div className={'data-links selected-index-' + selectedIndex}>
-              {getDataSelectionOptions(location).map((option, i) => (
-                <Link
-                  key={option}
-                  className={'plain' + (option === currentSelection ? ' selected' : '')}
-                  to={location.pathname + (i > 0 ? '?data=' + option : '')}
-                  replace
-                >
-                  {labels[option]}
-                </Link>
-              ))}
-              <span className="selection-indicator" />
-            </div>
-          </div>
-          <div className="grower" />
-          <button className="logout-button plain" onClick={requestLogout}>
-            <span>Sign out</span>
-            <ExitToAppIcon />
-          </button>
-        </React.Fragment>
-      )}
     </div>
   )
 }

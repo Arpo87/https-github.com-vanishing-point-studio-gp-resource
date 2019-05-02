@@ -9,8 +9,11 @@
   width: 310px;
   min-width: 310px;
   z-index: 20;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+
+  .menu-content {
+    display: flex;
+    flex-direction: column;
+  }
 
   .page-selection {
     padding: 10px 25px;
@@ -115,7 +118,8 @@
       padding-bottom: 3px;
       transition: color 120ms;
 
-      &.active {
+      &.active,
+      :active {
         color: $text-1;
       }
 
@@ -143,7 +147,8 @@
           }
         }
 
-        &.active .icon-container {
+        &.active .icon-container,
+        :active .icon-container {
           background-color: $bg-2;
 
           .map {
@@ -173,7 +178,8 @@
           }
         }
 
-        &.active .icon-container {
+        &.active .icon-container,
+        :active .icon-container {
           background-color: $bg-2;
 
           > div > span {
@@ -208,7 +214,8 @@
           margin-top: 5px;
         }
 
-        &.selected {
+        &.selected,
+        &:active {
           color: $text-1;
         }
       }
@@ -240,12 +247,12 @@
 
   .logout-button {
     align-self: stretch;
-    border-top: 1px solid $border-1;
-    margin-top: -1px;
+    justify-content: flex-start;
+    border-bottom: 1px solid $border-1;
     font-size: 16px;
     font-weight: 700;
     color: $text-2;
-    padding: 15px;
+    padding: 15px 15px 15px 35px;
     display: none;
 
     .icon {
@@ -255,15 +262,27 @@
         fill: darken($border-1, 15%);
       }
     }
+
+    &:active {
+      color: $text-1;
+
+      .icon {
+        margin-left: 10px;
+
+        .fill {
+          fill: $text-1;
+        }
+      }
+    }
   }
 }
 
 @include tablet {
   .menu {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: -320px;
-    bottom: 0;
+    height: 100%;
     border-left: none;
     box-shadow: none;
     transition: all 200ms ease-in;
@@ -279,5 +298,46 @@
     transition-duration: 400ms;
     transition-timing-function: $bezier-1;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+@include phone {
+  .menu {
+    width: 260px;
+    min-width: 260px;
+    font-size: 15px;
+
+    .page-selection a {
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+
+    .view-switch a {
+      font-size: 14px;
+    }
+
+    .logout-button {
+      font-size: 15px;
+    }
+
+    .data-selection {
+      .title {
+        margin-bottom: 15px;
+      }
+
+      .data-links {
+        .selection-indicator {
+          top: 12px;
+        }
+
+        &.selected-index-1 .selection-indicator {
+          transform: translateY(43px);
+        }
+
+        &.selected-index-2 .selection-indicator {
+          transform: translateY(86px);
+        }
+      }
+    }
   }
 }

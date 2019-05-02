@@ -17,6 +17,7 @@ const hideMenu = () => document.body.classList.remove('menu-open')
 class Frame extends React.Component {
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick)
+    window.scrollTo(0, 0)
   }
 
   componentWillUnmount() {
@@ -50,11 +51,10 @@ class Frame extends React.Component {
         </div>
         <Switch>
           <Route path="(|/breakdowns|/programme|/programme/breakdowns)" exact component={DataContainer} />
-          <Route path="/projects" exact render={() => null} />
+          <Route path="/projects" exact render={() => <div style={{ flexGrow: 1 }} />} />
           <Route path="/" component={NotFound} />
         </Switch>
-        <div className="frame-grower" />
-        <div className="menu-background-overlay" />
+        <div className="menu-background-overlay" onTouchStart={hideMenu} />
         <Menu />
       </React.Fragment>
     )
@@ -63,9 +63,7 @@ class Frame extends React.Component {
   handleDocumentClick = e => {
     if (document.body.classList.contains('menu-open')) {
       const clickOnButton = document.getElementById('showMenuButton').contains(e.target)
-      const clickOnMenu = document.getElementById('mainMenu').contains(e.target)
-      const clickOnMenuLink = Array.from(document.querySelectorAll('#mainMenu a')).some(a => a.contains(e.target))
-      if (!clickOnButton && !(clickOnMenu && !clickOnMenuLink)) {
+      if (!clickOnButton) {
         hideMenu()
       }
     }

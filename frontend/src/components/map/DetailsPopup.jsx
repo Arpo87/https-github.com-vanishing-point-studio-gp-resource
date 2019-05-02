@@ -6,10 +6,12 @@ import './DetailsPopup.scss'
 class DetailsPopup extends React.Component {
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick)
+    document.addEventListener('touchstart', this.handleDocumentTouch)
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleDocumentClick)
+    document.removeEventListener('touchstart', this.handleDocumentTouch)
   }
 
   render() {
@@ -46,11 +48,19 @@ class DetailsPopup extends React.Component {
   }
 
   handleDocumentClick = e => {
-    if (
-      !document.getElementById('mainMenu').contains(e.target) &&
-      !document.getElementById('mapDetailsPopup').contains(e.target)
-    ) {
+    const clickInMenu = document.getElementById('mainMenu').contains(e.target)
+    const clickOnPopup = document.getElementById('mapDetailsPopup').contains(e.target)
+    if (!clickInMenu && !clickOnPopup) {
       this.props.close()
+    }
+  }
+
+  handleDocumentTouch = e => {
+    if (e.changedTouches.length > 0) {
+      const clickOnPopup = document.getElementById('mapDetailsPopup').contains(e.changedTouches[0].target)
+      if (!clickOnPopup) {
+        this.props.close()
+      }
     }
   }
 

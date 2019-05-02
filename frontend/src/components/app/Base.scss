@@ -48,9 +48,13 @@ button {
     border-bottom: 1px solid $border-1;
 
     &:hover,
-    :active,
-    :focus {
+    &:focus {
       color: $text-2;
+    }
+
+    &:active {
+      color: $text-1;
+      border-bottom-color: lighten($text-1, 40%);
     }
   }
 }
@@ -70,6 +74,7 @@ input {
   font-family: $font-1;
   font-size: 15px;
   color: $text-1;
+  -webkit-appearance: none;
 
   &::placeholder {
     color: $text-2;
@@ -138,5 +143,11 @@ button:hover .icon .fill {
   .dialog-open .scroll-container {
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+}
+
+@include tablet {
+  input {
+    font-size: 16px;
   }
 }
