@@ -51,10 +51,10 @@ export const traversalOrder = [
   'CEE',
   'MENA',
   'Africa',
-  'SEA',
+  'GPI',
   'East Asia',
   'Japan',
+  'SEA',
   'Aus Pac',
   'New Zealand',
-  'GPI',
 ]
