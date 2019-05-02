@@ -46,9 +46,25 @@ type User {
   name: String!
 }
 
+type ProjectInfo {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type Project {
+  id: ID! @unique
+  project: ProjectInfo! # relationship to Project
+  nro: NRO! # relationship to NRO
+  staff: Float
+  budget: Float
+}
+
 type Query {
   me: User
   nros: [Nro!]
+  projectsList: [ProjectInfo!]
+  nroProjects: [Project!]
 }
 
 type Mutation {
