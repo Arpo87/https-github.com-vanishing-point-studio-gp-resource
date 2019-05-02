@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { requestLogin } from '../../state/actions'
+import Spinner from '../widgets/Spinner'
 import './Login.scss'
 
 class Login extends React.Component {
@@ -31,7 +32,14 @@ class Login extends React.Component {
             onChange={this.handleInputChange}
           />
           <button className="form" type="submit" disabled={loggingIn}>
-            {loggingIn ? 'Signing in...' : 'Sign in'}
+            {loggingIn ? (
+              <React.Fragment>
+                <Spinner />
+                <span>Signing in...</span>
+              </React.Fragment>
+            ) : (
+              'Sign in'
+            )}
           </button>
           {loginFailed && <div className="error">Invalid email or password!</div>}
         </form>

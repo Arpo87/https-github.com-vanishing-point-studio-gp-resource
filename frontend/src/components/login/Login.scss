@@ -19,6 +19,17 @@
       margin-top: 30px;
     }
 
+    button {
+      .spinner {
+        border-color: rgba(255, 255, 255, 0.4);
+        border-left-color: transparent;
+      }
+
+      span {
+        margin-left: 8px;
+      }
+    }
+
     .error {
       user-select: none;
       left: 0;

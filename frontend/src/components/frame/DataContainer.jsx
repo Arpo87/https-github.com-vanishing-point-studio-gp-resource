@@ -5,6 +5,7 @@ import Map from '../map/Map'
 import PieGrid from '../pies/PieGrid'
 import PageTitle from './PageTitle'
 import InfoDialog from '../dialog/InfoDialog'
+import Spinner from '../widgets/Spinner'
 import './DataContainer.scss'
 
 class DataContainer extends React.Component {
@@ -28,7 +29,9 @@ class DataContainer extends React.Component {
     return (
       <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map' : '')}>
         <div className="main-scroll custom-scrollbar">
-          {loadingData ? null : (
+          {loadingData ? (
+            <Spinner large />
+          ) : (
             <div className="page-content">
               <PageTitle location={location} />
               {breakdowns ? <PieGrid openDialog={this.openDialog} /> : <Map openDialog={this.openDialog} />}
