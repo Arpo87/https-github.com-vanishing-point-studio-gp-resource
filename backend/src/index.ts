@@ -1,40 +1,43 @@
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer, gql, makeExecutableSchema, AuthenticationError } from 'apollo-server'
+import { importSchema } from 'graphql-import'
 import { applyMiddleware } from 'graphql-middleware'
-import { makePrismaSchema } from 'nexus-prisma'
-import { join } from 'path'
-import datamodelInfo from './generated/nexus-prisma'
-import { prisma } from './generated/prisma-client'
-import { resolvers as allTypes } from './resolvers'
+import { sign } from 'jsonwebtoken'
 import { permissions } from './permissions'
+import { nros } from './data/data'
+import { users } from './data/users'
+import { jwtSecret, getUserIdFromToken } from './utils'
 
-const schema = makePrismaSchema({
-  types: allTypes,
-  prisma: {
-    datamodelInfo,
-    client: prisma,
+const typeDefs = gql(importSchema('schema.graphql'))
+
+const resolvers = {
+  Query: {
+    nros: () => nros,
+    me: (_parent: any, _args: any, ctx: any) => users.find(u => u.id === getUserIdFromToken(ctx)),
   },
-  outputs: {
-    schema: join(__dirname, './generated/schema.graphql'),
-    typegen: join(__dirname, './generated/nexus.ts'),
+  Mutation: {
+    login: async (_parent: any, { email, password }: any) => {
+      const user = users.find(u => u.email === email && u.password === password)
+      if (user) {
+        return { token: sign({ userId: user.id, isAdmin: user.isAdmin }, jwtSecret), user }
+      } else {
+        throw new AuthenticationError('Invalid email or password')
+      }
+    },
   },
-  nonNullDefaults: {
-    input: false,
-    output: false,
-  },
-  typegenAutoConfig: {
-    sources: [
-      {
-        source: join(__dirname, './types.ts'),
-        alias: 'types',
-      },
-    ],
-    contextType: 'types.Context',
-  },
+}
+
+const context = async ({ req }: any) => {
+  return { req }
+}
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
 })
 
 const server = new ApolloServer({
   schema: applyMiddleware(schema, permissions),
-  context: request => ({ prisma, ...request }),
+  context,
 })
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {

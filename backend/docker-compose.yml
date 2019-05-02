@@ -1,28 +1,11 @@
 version: '3'
 services:
-  prisma:
-    image: prismagraphql/prisma:1.31
-    restart: always
-    ports:
-      - '4466:4466'
-    environment:
-      PRISMA_CONFIG: |
-        port: 4466
-        databases:
-          default:
-            connector: postgres
-            host: postgres
-            user: prisma
-            password: prisma
-            rawAccess: true
-            port: 5432
-            migrations: true
   postgres:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: prisma
-      POSTGRES_PASSWORD: prisma
+      POSTGRES_USER: gp-resource-admin
+      POSTGRES_PASSWORD: vanishingbudget
     volumes:
       - postgres:/var/lib/postgresql/data
 volumes:
