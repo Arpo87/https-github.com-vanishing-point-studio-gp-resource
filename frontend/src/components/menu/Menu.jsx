@@ -14,7 +14,7 @@ const labels = {
   staff: 'Staff',
   programmeStaff: 'Staff',
   programmeBudget: 'Budget',
-  programmeBalance: 'Balance',
+  programmeBalance: 'Costs Ratio',
 }
 
 const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className }) => {
@@ -40,7 +40,8 @@ const Menu = ({ location, requestLogout }) => {
   const isNroPage = pathname === '/' || pathname === '/breakdowns' || pathname.startsWith('/programme')
   const pageLinkSuffix = pathname.includes('breakdowns') ? '/breakdowns' : '/'
   const viewLinkPrefix = pathname.startsWith('/programme') ? '/programme' : ''
-  const selectedIndex = getDataSelectionOptions(location).indexOf(getDataSelection(location))
+  const currentSelection = getDataSelection(location)
+  const selectedIndex = getDataSelectionOptions(location).indexOf(currentSelection)
   return (
     <div id="mainMenu" className="menu">
       <div className="page-selection">
@@ -82,7 +83,12 @@ const Menu = ({ location, requestLogout }) => {
             <div className="title">Data to show</div>
             <div className={'data-links selected-index-' + selectedIndex}>
               {getDataSelectionOptions(location).map((option, i) => (
-                <Link key={option} className="plain" to={location.pathname + (i > 0 ? '?data=' + option : '')} replace>
+                <Link
+                  key={option}
+                  className={'plain' + (option === currentSelection ? ' selected' : '')}
+                  to={location.pathname + (i > 0 ? '?data=' + option : '')}
+                  replace
+                >
                   {labels[option]}
                 </Link>
               ))}

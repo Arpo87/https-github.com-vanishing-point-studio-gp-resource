@@ -39,7 +39,11 @@
     fill: $green-2;
   }
 
-  path:nth-child(5) {
+  // Children 6-8 are only shown during transitions from programme colors.
+  path:nth-child(5),
+  path:nth-child(6),
+  path:nth-child(7),
+  path:nth-child(8) {
     fill: $green-1;
   }
 }
@@ -47,23 +51,23 @@
 .programme {
   .legend-item {
     &:nth-child(1) .legend-color {
-      background-color: $green-1;
+      background-color: $blue-8;
     }
 
     &:nth-child(2) .legend-color {
-      background-color: $green-2;
+      background-color: $blue-7;
     }
 
     &:nth-child(3) .legend-color {
-      background-color: $green-3;
+      background-color: $blue-6;
     }
 
     &:nth-child(4) .legend-color {
-      background-color: $blue-1;
+      background-color: $blue-5;
     }
 
     &:nth-child(5) .legend-color {
-      background-color: $blue-2;
+      background-color: $blue-4;
     }
 
     &:nth-child(6) .legend-color {
@@ -71,33 +75,33 @@
     }
 
     &:nth-child(7) .legend-color {
-      background-color: $blue-4;
+      background-color: $blue-2;
     }
 
     &:nth-child(8) .legend-color {
-      background-color: $blue-5;
+      background-color: $blue-1;
     }
   }
 
   .color-scale-paths {
     path:nth-child(1) {
-      fill: $green-1;
+      fill: $blue-8;
     }
 
     path:nth-child(2) {
-      fill: $green-2;
+      fill: $blue-7;
     }
 
     path:nth-child(3) {
-      fill: $green-3;
+      fill: $blue-6;
     }
 
     path:nth-child(4) {
-      fill: $blue-1;
+      fill: $blue-5;
     }
 
     path:nth-child(5) {
-      fill: $blue-2;
+      fill: $blue-4;
     }
 
     path:nth-child(6) {
@@ -105,11 +109,11 @@
     }
 
     path:nth-child(7) {
-      fill: $blue-4;
+      fill: $blue-2;
     }
 
     path:nth-child(8) {
-      fill: $blue-5;
+      fill: $blue-1;
     }
   }
 }
