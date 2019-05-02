@@ -28,7 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "serve": "serve -s -l ${PORT:-5000} build"
+    "serve": "serve -s -l ${PORT:-5000} build",
+    "deploy": "git push https://git.heroku.com/gp-resource.git master"
   },
   "eslintConfig": {
     "extends": "react-app"
