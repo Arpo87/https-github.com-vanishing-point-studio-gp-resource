@@ -5,7 +5,7 @@ import image2 from '../../assets/images/m2.png'
 import './InfoDialog.scss'
 
 const InfoDialog = ({ children, close }) => (
-  <div className="info-dialog">
+  <div className="info-dialog custom-scrollbar">
     <div className="dialog-content">
       <h1>Greenpeace Mediterranean</h1>
       <button className="close-button plain" type="button" onClick={close}>

@@ -27,7 +27,7 @@ class DataContainer extends React.Component {
     const programme = location.pathname.includes('programme')
     return (
       <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map' : '')}>
-        <div className="scroll-container">
+        <div className="main-scroll custom-scrollbar">
           {loadingData ? null : (
             <div className="page-content">
               <PageTitle location={location} />

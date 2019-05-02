@@ -108,17 +108,8 @@ button:hover .icon .fill {
   fill: darken($border-1, 20%);
 }
 
-// Scroll
-.scroll-container {
-  position: relative;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 @include desktop {
-  .scroll-container {
-    overflow-x: auto;
+  .custom-scrollbar {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -138,11 +129,6 @@ button:hover .icon .fill {
     // Firefox
     scrollbar-color: $bg-2 transparent;
     scrollbar-width: thin;
-  }
-
-  .dialog-open .scroll-container {
-    overflow-x: hidden;
-    overflow-y: hidden;
   }
 }
 
