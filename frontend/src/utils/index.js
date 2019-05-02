@@ -15,7 +15,7 @@ export const formatValue = (value, dataSelection) =>
     ? formatStaff(value)
     : formatCurrencyInMillionEuro(value)
 
-export const formatPercent = (value, total) => Math.round((value / total) * 100) + '%'
+export const formatPercent = (value, total) => (total === 0 ? '0' : Math.round((value / total) * 100) + '%')
 
 export const formatCurrencyInMillionEuro = value => '\u20AC' + (value / 1000).toFixed(1) + 'M'
 
