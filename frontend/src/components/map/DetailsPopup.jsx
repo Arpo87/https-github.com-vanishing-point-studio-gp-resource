@@ -58,7 +58,8 @@ class DetailsPopup extends React.Component {
   handleDocumentTouch = e => {
     if (e.changedTouches.length > 0) {
       const clickOnPopup = document.getElementById('mapDetailsPopup').contains(e.changedTouches[0].target)
-      if (!clickOnPopup) {
+      const clickOnCircle = e.changedTouches[0].target.nodeName === 'circle'
+      if (!clickOnPopup && !clickOnCircle) {
         this.props.close()
       }
     }
