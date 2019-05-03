@@ -47,3 +47,11 @@ export const nroQuery = gql`
     }
   }
 `
+
+export const projectQuery = gql`
+  {
+    projectsList {
+      name
+    }
+  }
+`

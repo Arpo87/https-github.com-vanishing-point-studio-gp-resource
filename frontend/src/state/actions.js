@@ -1,6 +1,6 @@
 import { client } from '../api/client'
 import { loginMutation } from '../api/mutations'
-import { meQuery, nroQuery } from '../api/queries'
+import { meQuery, nroQuery, projectQuery } from '../api/queries'
 
 export const initialized = () => ({ type: 'INITIALIZED' })
 
@@ -76,3 +76,18 @@ export const fetchData = () => async dispatch => {
   } catch (e) {}
   dispatch(setLoadingData(false))
 }
+
+export const setProjectData = projectData => ({ type: 'SET_PROJECT_DATA', projectData })
+
+export const fetchProjectData = () => async dispatch => {
+  dispatch(setProjectData([]))
+  dispatch(setLoadingData(true))
+  try {
+    const response = await client.query({ query: projectQuery })
+    if (response && response.data && response.data.projectsList) { // NOt sure what I actually want to return here.
+      dispatch(setData(response.data.projectsList))
+    }
+  } catch (e) {}
+  dispatch(setLoadingData(false))
+}
+
