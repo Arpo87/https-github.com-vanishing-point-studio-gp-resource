@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchData } from '../../state/actions'
-import Map from '../map/Map'
-import PieGrid from '../pies/PieGrid'
+import MapView from '../map/MapView'
+import BarsView from '../bars/BarsView'
 import PageTitle from './PageTitle'
 import InfoDialog from '../dialog/InfoDialog'
 import Spinner from '../widgets/Spinner'
@@ -34,7 +34,7 @@ class DataContainer extends React.Component {
           ) : (
             <div className="page-content">
               <PageTitle location={location} />
-              {breakdowns ? <PieGrid openDialog={this.openDialog} /> : <Map openDialog={this.openDialog} />}
+              {breakdowns ? <BarsView openDialog={this.openDialog} /> : <MapView openDialog={this.openDialog} />}
             </div>
           )}
         </div>

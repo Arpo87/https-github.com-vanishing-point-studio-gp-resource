@@ -1,0 +1,37 @@
+@import '../app/Variables.scss';
+
+.bars-view {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 45px 45px 45px;
+
+  .legend-row,
+  .bar-row {
+    display: flex;
+  }
+
+  .legend-row {
+    border-bottom: 1px solid $border-1;
+    padding-bottom: 20px;
+  }
+
+  .column {
+    display: flex;
+
+    &:first-child {
+      width: 220px;
+    }
+  }
+
+  .legend-row .column {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-2;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+}

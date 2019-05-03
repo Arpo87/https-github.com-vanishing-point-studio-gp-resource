@@ -9,7 +9,7 @@ import { traversalOrder } from '../../utils/coordinates'
 import { getNroDataWithCoordinates, getProgrammeDataWithCoordinates } from '../../state/selectors'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
-import './Map.scss'
+import './MapView.scss'
 
 const POPUP_WIDTH = 280
 const POPUP_WIDTH_PROGRAMME = 320
@@ -19,7 +19,7 @@ const AVERAGE_RADIUS = 2 // Radius of average value as percentage of svg width.
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-class Map extends React.PureComponent {
+class MapView extends React.PureComponent {
   state = { selectedNro: null }
   timeOfLastWheelChange = 0
 
@@ -178,4 +178,4 @@ const mapStateToProps = (state, ownProps) => {
     dataSelection: getDataSelection(ownProps.location),
   }
 }
-export default withRouter(connect(mapStateToProps)(Map))
+export default withRouter(connect(mapStateToProps)(MapView))
