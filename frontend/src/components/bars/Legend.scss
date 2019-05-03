@@ -1,14 +1,13 @@
 .legend {
   display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
 
   .legend-item {
     display: flex;
     flex-direction: column;
     width: 100px;
-
-    &:not(:first-child) {
-      margin-left: 8px;
-    }
+    margin: 4px;
 
     .legend-color {
       height: 12px;
@@ -17,6 +16,7 @@
     .legend-text {
       font-size: 13px;
       margin-top: 8px;
+      margin-right: 5px;
     }
   }
 }

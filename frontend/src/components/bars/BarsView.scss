@@ -8,18 +8,20 @@
   .legend-row,
   .bar-row {
     display: flex;
+    align-items: center;
   }
 
   .legend-row {
     border-bottom: 1px solid $border-1;
     padding-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .column {
     display: flex;
 
     &:first-child {
-      width: 220px;
+      width: 280px;
     }
   }
 
@@ -33,5 +35,23 @@
     color: $text-2;
     text-transform: uppercase;
     margin-bottom: 10px;
+  }
+
+  .bar-title {
+    padding: 10px 40px 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 18px;
+    color: $green-1;
+
+    .name {
+      margin-right: 10px;
+      font-weight: 600;
+    }
+
+    .total {
+      font-weight: 300;
+    }
   }
 }
