@@ -1,6 +1,6 @@
 import { mapCoordinates } from '../utils/coordinates'
 
-export const getData = state => {
+export const getNroData = state => {
   return state.data.map(d => {
     const income = {
       values: [d.incomeGrants, d.incomeFundraising, d.incomeOther],
@@ -86,7 +86,7 @@ export const getProgrammeData = state => {
   })
 }
 
-export const getDataWithCoordinates = state => getWithCoordinates(state, getData)
+export const getNroDataWithCoordinates = state => getWithCoordinates(state, getNroData)
 
 export const getProgrammeDataWithCoordinates = state => getWithCoordinates(state, getProgrammeData)
 

@@ -3,10 +3,9 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getDataSelection } from '../../utils'
 import { getNroData, getProgrammeData } from '../../state/selectors'
-import PieChart from './PieChart'
-import './PieGrid.scss'
+import './Bars.scss'
 
-const PieGrid = ({ data, dataSelection, openDialog }) => (
+const Bars = ({ data, dataSelection, openDialog }) => (
   <div className="pie-grid">
     {data.map(d => (
       <div className="pie-grid-item" key={d.name}>
@@ -31,12 +30,9 @@ const PieGrid = ({ data, dataSelection, openDialog }) => (
   </div>
 )
 
-const PieGridWithDataSelection = ({ location, ...rest }) => (
-  <PieGrid dataSelection={getDataSelection(location)} {...rest} />
-)
-
 const mapStateToProps = (state, ownProps) => ({
   data: ownProps.location.pathname.includes('programme') ? getProgrammeData(state) : getNroData(state),
+  dataSelection: getDataSelection(ownProps.location),
 })
 
-export default withRouter(connect(mapStateToProps)(PieGridWithDataSelection))
+export default withRouter(connect(mapStateToProps)(Bars))
