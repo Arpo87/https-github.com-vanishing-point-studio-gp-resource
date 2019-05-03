@@ -54,11 +54,19 @@ type ProjectInfo {
 
 type Project {
   id: ID!
+  meta: String # To add the nro and project name for sanity
   project: ProjectInfo! # relationship to Project
   nro: Nro! # relationship to NRO
-  staff: Float
-  budget: Float
+  staffTotal: Float
+  budgetTotal: Float
   additionalInfo: String
+  staffCampaignCoordination: Float
+  staffCampaigns: Float
+  staffEngagement: Float
+  staffMediaComms: Float
+  staffOperations: Float
+  staffPolitical: Float
+  staffPublicInfoOutreach: Float
 }
 
 type Query {
