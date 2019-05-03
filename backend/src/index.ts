@@ -6,6 +6,7 @@ import { permissions } from './permissions'
 import { nros } from './data/nros'
 import { users } from './data/users'
 import { projectsList } from './data/projectsList'
+import { nroProjects } from './data/nroProjects'
 import { jwtSecret, getUserIdFromToken } from './utils'
 
 const typeDefs = gql(importSchema('schema.graphql'))
@@ -15,6 +16,7 @@ const resolvers = {
     nros: () => nros,
     me: (_parent: any, _args: any, ctx: any) => users.find(u => u.id === getUserIdFromToken(ctx)),
     projectsList: () => projectsList,
+    nroProjects: () => nroProjects,
   },
   Mutation: {
     login: async (_parent: any, { email, password }: any) => {

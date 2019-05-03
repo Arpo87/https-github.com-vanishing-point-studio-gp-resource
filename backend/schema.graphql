@@ -53,11 +53,12 @@ type ProjectInfo {
 }
 
 type Project {
-  id: ID! @unique
+  id: ID!
   project: ProjectInfo! # relationship to Project
-  nro: NRO! # relationship to NRO
+  nro: Nro! # relationship to NRO
   staff: Float
   budget: Float
+  additionalInfo: String
 }
 
 type Query {

@@ -1,5 +1,6 @@
 export const nros = [
   {
+    id: 1,
     name: 'Africa',
     incomeGrants: 5170,
     incomeFundraising: 0,
@@ -32,6 +33,7 @@ export const nros = [
     programmeBalanceDirect: 389,
   },
   {
+    id: 2,
     name: 'Andino',
     incomeGrants: 0,
     incomeFundraising: 7823,
@@ -44,7 +46,6 @@ export const nros = [
     staffFundraising: 27.5,
     staffOrgSupport: 18,
     staffCampaignSupport: 36,
-
     programmeStaffCampaigns: 14,
     programmeStaffCampaignCoordination: 2,
     programmeStaffCampaignUnallocated: 0,
@@ -65,6 +66,7 @@ export const nros = [
     programmeBalanceDirect: 1616,
   },
   {
+    id: 3,
     name: 'Aus Pac',
     incomeGrants: 285,
     incomeFundraising: 6734,
@@ -97,6 +99,7 @@ export const nros = [
     programmeBalanceDirect: 1077,
   },
   {
+    id: 4,
     name: 'Belgium',
     incomeGrants: 0,
     incomeFundraising: 7644,
@@ -129,6 +132,7 @@ export const nros = [
     programmeBalanceDirect: 1135,
   },
   {
+    id: 5,
     name: 'Brazil',
     incomeGrants: 6260,
     incomeFundraising: 2715,
@@ -161,6 +165,7 @@ export const nros = [
     programmeBalanceDirect: 4102,
   },
   {
+    id: 6,
     name: 'Canada',
     incomeGrants: 482,
     incomeFundraising: 3580,
@@ -193,6 +198,7 @@ export const nros = [
     programmeBalanceDirect: 232,
   },
   {
+    id: 7,
     name: 'CEE',
     incomeGrants: 1467,
     incomeFundraising: 8052,
@@ -225,6 +231,7 @@ export const nros = [
     programmeBalanceDirect: 2086,
   },
   {
+    id: 8,
     name: 'Czech',
     incomeGrants: 93,
     incomeFundraising: 403,
@@ -257,6 +264,7 @@ export const nros = [
     programmeBalanceDirect: 204,
   },
   {
+    id: 9,
     name: 'East Asia',
     incomeGrants: 14441,
     incomeFundraising: 13559,
@@ -289,6 +297,7 @@ export const nros = [
     programmeBalanceDirect: 4441,
   },
   {
+    id: 10,
     name: 'EU',
     incomeGrants: 2100,
     incomeFundraising: 0,
@@ -321,6 +330,7 @@ export const nros = [
     programmeBalanceDirect: 0,
   },
   {
+    id: 11,
     name: 'Fr-Lux',
     incomeGrants: 0,
     incomeFundraising: 15884,
@@ -353,6 +363,7 @@ export const nros = [
     programmeBalanceDirect: 2245,
   },
   {
+    id: 12,
     name: 'Germany',
     incomeGrants: 0,
     incomeFundraising: 46361,
@@ -385,6 +396,7 @@ export const nros = [
     programmeBalanceDirect: 10049,
   },
   {
+    id: 13,
     name: 'Greece',
     incomeGrants: 0,
     incomeFundraising: 844,
@@ -417,6 +429,7 @@ export const nros = [
     programmeBalanceDirect: 131,
   },
   {
+    id: 14,
     name: 'Italy',
     incomeGrants: 140,
     incomeFundraising: 4911,
@@ -449,6 +462,7 @@ export const nros = [
     programmeBalanceDirect: 989,
   },
   {
+    id: 15,
     name: 'Japan',
     incomeGrants: 1142,
     incomeFundraising: 691,
@@ -481,6 +495,7 @@ export const nros = [
     programmeBalanceDirect: 695,
   },
   {
+    id: 16,
     name: 'MENA',
     incomeGrants: 779,
     incomeFundraising: 6,
@@ -513,6 +528,7 @@ export const nros = [
     programmeBalanceDirect: 71,
   },
   {
+    id: 17,
     name: 'Mexico',
     incomeGrants: 0,
     incomeFundraising: 2434,
@@ -545,6 +561,7 @@ export const nros = [
     programmeBalanceDirect: 503,
   },
   {
+    id: 18,
     name: 'Nordic',
     incomeGrants: 0,
     incomeFundraising: 14760,
@@ -577,6 +594,7 @@ export const nros = [
     programmeBalanceDirect: 2141,
   },
   {
+    id: 19,
     name: 'New Zealand',
     incomeGrants: 116,
     incomeFundraising: 2844,
@@ -609,6 +627,7 @@ export const nros = [
     programmeBalanceDirect: 408,
   },
   {
+    id: 20,
     name: 'Russia',
     incomeGrants: 3820,
     incomeFundraising: 2,
@@ -641,6 +660,7 @@ export const nros = [
     programmeBalanceDirect: 1633,
   },
   {
+    id: 21,
     name: 'SEA',
     incomeGrants: 6205,
     incomeFundraising: 1042,
@@ -673,6 +693,7 @@ export const nros = [
     programmeBalanceDirect: 2577,
   },
   {
+    id: 22,
     name: 'Spain',
     incomeGrants: 0,
     incomeFundraising: 9036,
@@ -705,6 +726,7 @@ export const nros = [
     programmeBalanceDirect: 2744,
   },
   {
+    id: 23,
     name: 'Switzerland',
     incomeGrants: 0,
     incomeFundraising: 13934,
@@ -737,6 +759,7 @@ export const nros = [
     programmeBalanceDirect: 1639,
   },
   {
+    id: 24,
     name: 'UK',
     incomeGrants: 0,
     incomeFundraising: 17400,
@@ -769,6 +792,7 @@ export const nros = [
     programmeBalanceDirect: 3024,
   },
   {
+    id: 25,
     name: 'USA',
     incomeGrants: 971,
     incomeFundraising: 19563,
@@ -801,6 +825,7 @@ export const nros = [
     programmeBalanceDirect: 2723,
   },
   {
+    id: 26,
     name: 'GPI',
     incomeGrants: 81330,
     incomeFundraising: 0, // NO DATA IN SPREADSHEET
