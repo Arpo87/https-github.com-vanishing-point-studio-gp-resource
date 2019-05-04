@@ -30,6 +30,7 @@
       min-width: 0;
       .value {
         opacity: 0;
+        user-select: none;
       }
     }
   }
