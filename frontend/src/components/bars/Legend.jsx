@@ -4,8 +4,8 @@ import './Legend.scss'
 const Legend = ({ labels }) => (
   <div className="legend">
     {labels.map(label => (
-      <div className="legend-item" key={label}>
-        <div className="legend-color" />
+      <div className="legend-item color-scale-item" key={label}>
+        <div className="legend-color color-scale-background" />
         <div className="legend-text">{label}</div>
       </div>
     ))}

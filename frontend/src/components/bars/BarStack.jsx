@@ -44,8 +44,8 @@ const BarStack = ({ data }) => (
           textOffset = calculateTextOffset(i, data.values, data.total)
         }
         return (
-          <div key={label} className={'bar-stack-item' + (isZero ? ' zero' : '')} style={{ width }}>
-            <div className="bar" />
+          <div key={label} className={'bar-stack-item color-scale-item' + (isZero ? ' zero' : '')} style={{ width }}>
+            <div className="bar color-scale-background" />
             <div className="value" style={textOffset ? { marginLeft: textOffset + 'px' } : undefined}>
               {formattedWidth}
             </div>
