@@ -9,58 +9,30 @@ export const projects = [
   },
   {
     id: 3,
-    name: 'Climate impacts / emergency',
+    name: 'Climate Battleground NROs',
   },
   {
     id: 4,
-    name: 'European Energy Transition',
+    name: 'Climate Europe',
   },
   {
     id: 5,
-    name: 'Meat and Dairy',
+    name: 'Climate - rest of the world',
   },
   {
     id: 6,
-    name: 'Single Use Plastics',
+    name: 'Forests',
   },
   {
     id: 7,
-    name: 'People Vs Arctic Oil',
+    name: 'Oil',
   },
   {
     id: 8,
-    name: '#climate first',
+    name: 'Single USe Plastics',
   },
   {
     id: 9,
-    name: 'Climate',
-  },
-  {
-    id: 10,
-    name: 'Energy Transition/ revolution',
-  },
-  {
-    id: 11,
-    name: 'Amazon',
-  },
-  {
-    id: 12,
-    name: 'C&E work',
-  },
-  {
-    id: 13,
-    name: 'Green New Deal for Canada',
-  },
-  {
-    id: 14,
-    name: 'transportation / mindshifts',
-  },
-  {
-    id: 15,
-    name: 'Urban Revolution',
-  },
-  {
-    id: 16,
-    name: 'Forests',
+    name: 'Other Projects',
   },
 ]
