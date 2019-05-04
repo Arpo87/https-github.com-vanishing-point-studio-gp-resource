@@ -82,15 +82,12 @@
 
 // Hard-coded fragile shit for easy animated heights:
 .data-container {
-  &.nro .bars-view .legend-wrapper {
-    height: 50px;
+  .bars-view .legend-wrapper {
+    height: 55px;
   }
 
-  &.programme .bars-view .legend-wrapper {
+  &.programme-staff .bars-view .legend-wrapper,
+  &.programme-budget .bars-view .legend-wrapper {
     height: 129px;
-  }
-
-  &.programme.programme-balance .bars-view .legend-wrapper {
-    height: 41px;
   }
 }
