@@ -31,28 +31,28 @@
 
     circle {
       cursor: pointer;
-      fill: $green-5-transparent;
+      fill: $green-3-transparent;
       transition: fill 300ms;
 
       &:hover {
-        fill: $green-4;
+        fill: $green-3;
       }
 
       &.selected {
-        fill: $green-3;
+        fill: $green-2;
       }
     }
   }
 }
 
 .programme .map-view .data-svg circle {
-  fill: $blue-7-transparent;
+  fill: $blue-5-transparent;
 
   &:hover {
-    fill: $blue-6;
+    fill: $blue-4;
   }
 
   &.selected {
-    fill: $blue-5;
+    fill: $blue-3;
   }
 }
