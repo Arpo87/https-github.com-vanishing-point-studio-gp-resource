@@ -74,6 +74,10 @@
   &.open {
     > .icon {
       transform: rotate(180deg);
+
+      .fill {
+        fill: lighten($border-1, 5%);
+      }
     }
   }
 }
