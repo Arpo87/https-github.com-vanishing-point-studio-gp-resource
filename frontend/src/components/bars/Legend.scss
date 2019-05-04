@@ -3,6 +3,10 @@
   flex-wrap: wrap;
   margin: -4px;
 
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
   .legend-item {
     display: flex;
     flex-direction: column;

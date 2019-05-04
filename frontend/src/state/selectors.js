@@ -41,7 +41,7 @@ export const getProgrammeData = state => {
       labels: [
         'Campaigns',
         'Campaign coordination',
-        'Campaign un-allocated',
+        'Campaign unallocated',
         'Political, science, & business',
         'Media & comms',
         'Engagement',
@@ -64,7 +64,7 @@ export const getProgrammeData = state => {
       labels: [
         'Campaigns',
         'Campaign coordination',
-        'Campaign un-allocated',
+        'Campaign unallocated',
         'Political, science, & business',
         'Media & comms',
         'Engagement',

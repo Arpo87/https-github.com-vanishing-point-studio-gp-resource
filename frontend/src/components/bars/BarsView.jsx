@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getDataSelection, formatValue } from '../../utils'
 import { getNroData, getProgrammeData } from '../../state/selectors'
-import Legend from './Legend'
+import BarsViewLegend from './BarsViewLegend'
 import BarStack from './BarStack'
 import './BarsView.scss'
 
@@ -13,9 +13,7 @@ const BarsView = ({ data, dataSelection, isProgramme }) => (
       <div className="column" />
       <div className="column">
         <div className="title">Legend</div>
-        {data && data.length > 0 && data[0][dataSelection] && (
-          <Legend labels={data[0][dataSelection].labels} isProgramme={isProgramme} />
-        )}
+        <BarsViewLegend data={data} dataSelection={dataSelection} isProgramme={isProgramme} />
       </div>
     </div>
     {data.map(d => (
