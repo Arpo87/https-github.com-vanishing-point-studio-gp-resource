@@ -61,18 +61,18 @@ export const onLoad = () => async dispatch => {
   }
 }
 
-export const setLoadingData = loadingData => ({ type: 'SET_LOADING_DATA', loadingData })
+export const setLoadingNroData = loadingNroData => ({ type: 'SET_LOADING_NRO_DATA', loadingNroData })
 
-export const setData = data => ({ type: 'SET_DATA', data })
+export const setNroData = nroData => ({ type: 'SET_NRO_DATA', nroData })
 
-export const fetchData = () => async dispatch => {
-  dispatch(setData([]))
-  dispatch(setLoadingData(true))
+export const fetchNroData = () => async dispatch => {
+  dispatch(setNroData([]))
+  dispatch(setLoadingNroData(true))
   try {
     const response = await client.query({ query: nroQuery })
     if (response && response.data && response.data.nros) {
-      dispatch(setData(response.data.nros))
+      dispatch(setNroData(response.data.nros))
     }
   } catch (e) {}
-  dispatch(setLoadingData(false))
+  dispatch(setLoadingNroData(false))
 }

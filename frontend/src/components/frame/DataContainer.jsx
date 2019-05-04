@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchData } from '../../state/actions'
+import { fetchNroData } from '../../state/actions'
 import MapView from '../map/MapView'
 import BarsView from '../bars/BarsView'
 import PageTitle from './PageTitle'
@@ -12,7 +12,7 @@ class DataContainer extends React.Component {
   state = { dialogOpen: false }
 
   componentDidMount() {
-    this.props.loadData()
+    this.props.fetchNroData()
   }
 
   componentDidUpdate(lastProps) {
@@ -22,14 +22,14 @@ class DataContainer extends React.Component {
   }
 
   render() {
-    const { location, loadingData } = this.props
+    const { location, loadingNroData } = this.props
     const { dialogOpen } = this.state
     const breakdowns = location.pathname.includes('breakdowns')
     const programme = location.pathname.includes('programme')
     return (
       <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map' : '')}>
         <div className="main-scroll custom-scrollbar">
-          {loadingData ? (
+          {loadingNroData ? (
             <Spinner large />
           ) : (
             <div className="page-content">
@@ -55,9 +55,9 @@ class DataContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ loadingData: state.loadingData })
+const mapStateToProps = state => ({ loadingNroData: state.loadingNroData })
 
-const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchData()) })
+const mapDispatchToProps = dispatch => ({ fetchNroData: () => dispatch(fetchNroData()) })
 
 export default connect(
   mapStateToProps,

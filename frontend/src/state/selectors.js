@@ -1,7 +1,7 @@
 import { mapCoordinates } from '../utils/coordinates'
 
 export const getNroData = state => {
-  return state.data.map(d => {
+  return state.nroData.map(d => {
     const income = {
       values: [d.incomeGrants, d.incomeFundraising, d.incomeOther],
       labels: ['Grants', 'Fundraising', 'Other'],
@@ -26,7 +26,7 @@ export const getNroData = state => {
 }
 
 export const getProgrammeData = state => {
-  return state.data.map(d => {
+  return state.nroData.map(d => {
     const programmeStaff = {
       values: [
         d.programmeStaffCampaigns,
