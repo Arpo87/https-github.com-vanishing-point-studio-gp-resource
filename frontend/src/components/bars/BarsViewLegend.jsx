@@ -11,7 +11,7 @@ const BarsViewLegend = ({ data, dataSelection, isProgramme }) => {
   ) : (
     <React.Fragment>
       <Legend labels={allLabels.filter((_, i) => i < 3)} />
-      <Legend labels={allLabels.filter((_, i) => i >= 3)} />
+      <Legend labels={allLabels.map((label, i) => (i >= 3 ? label : null))} />
     </React.Fragment>
   )
 }
