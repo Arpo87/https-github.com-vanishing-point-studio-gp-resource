@@ -15,5 +15,9 @@
 
 svg path {
   fill: transparent;
+  stroke: white;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   transition: fill 400ms;
 }

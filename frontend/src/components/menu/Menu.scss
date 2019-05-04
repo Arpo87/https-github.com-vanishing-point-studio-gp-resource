@@ -118,8 +118,7 @@
       padding-bottom: 3px;
       transition: color 120ms;
 
-      &.active,
-      :active {
+      &.active {
         color: $text-1;
       }
 
@@ -147,8 +146,7 @@
           }
         }
 
-        &.active .icon-container,
-        :active .icon-container {
+        &.active .icon-container {
           background-color: $bg-2;
 
           .map {
@@ -178,8 +176,7 @@
           }
         }
 
-        &.active .icon-container,
-        :active .icon-container {
+        &.active .icon-container {
           background-color: $bg-2;
 
           > div > span {

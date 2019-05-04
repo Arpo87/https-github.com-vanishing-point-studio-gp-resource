@@ -1,0 +1,66 @@
+@import '../app/Variables.scss';
+
+.bars-view {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 45px 45px 45px;
+
+  .legend-row,
+  .bar-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .legend-row {
+    border-bottom: 1px solid $border-1;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+  }
+
+  .bar-row {
+    height: 120px;
+    padding-right: 30px;
+  }
+
+  .column {
+    display: flex;
+
+    &:nth-child(1) {
+      width: 220px;
+    }
+
+    &:nth-child(2) {
+      flex-grow: 1;
+    }
+  }
+
+  .legend-row .column {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-2;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .bar-title {
+    padding: 0 40px 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 18px;
+    color: $text-3;
+
+    .name {
+      margin-right: 10px;
+      font-weight: 600;
+    }
+
+    .total {
+      font-weight: 300;
+    }
+  }
+}

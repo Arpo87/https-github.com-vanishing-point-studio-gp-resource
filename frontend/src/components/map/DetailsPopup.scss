@@ -24,14 +24,14 @@
 
   h2 {
     margin-top: 12px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    color: $green-1;
+    color: $text-3;
   }
 
   .total {
-    font-size: 24px;
-    color: $green-1;
+    font-size: 22px;
+    color: $text-3;
   }
 
   .line {
@@ -57,13 +57,13 @@
     }
 
     .label {
-      color: $green-2;
+      color: $text-3;
       padding-right: 10px;
       flex-grow: 1;
     }
 
     .value {
-      color: $green-1;
+      color: $text-3;
       font-weight: 700;
     }
 

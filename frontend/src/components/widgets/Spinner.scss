@@ -1,0 +1,27 @@
+@import '../app/Variables.scss';
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid transparentize($border-1, 0.65);
+  border-left-color: $border-1;
+  transform: translateZ(0);
+  animation: spinner 1000ms infinite linear;
+
+  &.large {
+    width: 50px;
+    height: 50px;
+    border-width: 4px;
+    animation: spinner 1200ms infinite linear;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

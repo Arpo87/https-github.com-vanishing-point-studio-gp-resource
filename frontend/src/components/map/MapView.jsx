@@ -6,10 +6,10 @@ import { transition } from 'd3-transition'
 import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
 import { traversalOrder } from '../../utils/coordinates'
-import { getDataWithCoordinates, getProgrammeDataWithCoordinates } from '../../state/selectors'
+import { getNroDataWithCoordinates, getProgrammeDataWithCoordinates } from '../../state/selectors'
 import DetailsPopup from './DetailsPopup'
 import map from '../../assets/map.svg'
-import './Map.scss'
+import './MapView.scss'
 
 const POPUP_WIDTH = 280
 const POPUP_WIDTH_PROGRAMME = 320
@@ -19,7 +19,7 @@ const AVERAGE_RADIUS = 2 // Radius of average value as percentage of svg width.
 // Need to import transition to be able to call it on a selection for some reason.
 transition()
 
-class Map extends React.PureComponent {
+class MapView extends React.PureComponent {
   state = { selectedNro: null }
   timeOfLastWheelChange = 0
 
@@ -170,13 +170,12 @@ class Map extends React.PureComponent {
   }
 }
 
-const MapWithDataSelection = ({ location, ...rest }) => <Map dataSelection={getDataSelection(location)} {...rest} />
-
 const mapStateToProps = (state, ownProps) => {
   const programme = ownProps.location.pathname.includes('programme')
   return {
-    data: programme ? getProgrammeDataWithCoordinates(state) : getDataWithCoordinates(state),
+    data: programme ? getProgrammeDataWithCoordinates(state) : getNroDataWithCoordinates(state),
     programme,
+    dataSelection: getDataSelection(ownProps.location),
   }
 }
-export default withRouter(connect(mapStateToProps)(MapWithDataSelection))
+export default withRouter(connect(mapStateToProps)(MapView))
