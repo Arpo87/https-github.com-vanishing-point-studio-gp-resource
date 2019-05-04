@@ -2,8 +2,8 @@ export const nroProjects = [
   {
     meta: 'Africa Climate Justice',
     name: '',
-    project: 111,
-    nro: 111,
+    project: 3,
+    nro: 1,
     staffTotal: 5,
     budgetTotal: 95,
     additionalInfo: 'Info',

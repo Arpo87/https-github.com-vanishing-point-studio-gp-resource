@@ -5,7 +5,7 @@ import { sign } from 'jsonwebtoken'
 import { permissions } from './permissions'
 import { nros } from './data/nros'
 import { users } from './data/users'
-import { projects } from './data/projects'
+import { projectGroups } from './data/projectGroups'
 import { nroProjects } from './data/nroProjects'
 import { jwtSecret, getUserIdFromToken } from './utils'
 
@@ -15,7 +15,7 @@ const resolvers = {
   Query: {
     nros: () => nros,
     me: (_parent: any, _args: any, ctx: any) => users.find(u => u.id === getUserIdFromToken(ctx)),
-    projects: () => projects,
+    projectGroups: () => projectGroups,
     nroProjects: () => nroProjects,
   },
   Mutation: {

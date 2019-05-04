@@ -1,4 +1,4 @@
-export const projects = [
+export const projectGroups = [
   {
     id: 1,
     name: 'Ocean Sanctuaries',
@@ -34,5 +34,9 @@ export const projects = [
   {
     id: 9,
     name: 'Other Projects',
+  },
+  {
+    id: 111,
+    name: 'NOT A PROJECT',
   },
 ]
