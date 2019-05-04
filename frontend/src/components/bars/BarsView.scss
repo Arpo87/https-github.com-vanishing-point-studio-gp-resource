@@ -26,7 +26,7 @@
     display: flex;
 
     &:nth-child(1) {
-      width: 220px;
+      width: 120px;
     }
 
     &:nth-child(2) {
@@ -49,14 +49,15 @@
   .bar-title {
     padding: 0 30px 20px 0;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
     width: 100%;
     font-size: 18px;
     color: $text-3;
 
     .name {
-      margin-right: 10px;
       font-weight: 600;
+      text-align: right;
     }
 
     .total {
