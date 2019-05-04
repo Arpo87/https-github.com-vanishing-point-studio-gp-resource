@@ -6,22 +6,18 @@
   .icon {
     position: absolute;
     pointer-events: none;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
     transition: transform 200ms;
     transform-origin: 50% 50%;
     z-index: 210;
-
-    .fill {
-      fill: $text-2;
-    }
   }
 
   button {
     width: 100%;
     justify-content: flex-start;
-    padding: 10px 25px 10px 10px;
-    border-radius: 4px;
+    padding: 15px 30px 15px 17px;
+    border-radius: 3px;
     background-color: darken($bg-1, 5%);
     font-size: 13px;
     text-transform: none;
@@ -47,32 +43,30 @@
     width: 100%;
     top: 0;
     margin: 0;
-    padding: 0;
+    padding: 5px 17px 8px 17px;
     background-color: white;
-    box-shadow: $shadow-1;
-    border-radius: 4px;
+    box-shadow: $shadow-3;
+    border-radius: 3px;
     font-size: 13px;
+    color: $text-2;
 
     li {
       cursor: pointer;
-      display: block;
-      padding: 10px;
+      display: flex;
+      padding: 10px 0;
+      user-select: none;
       white-space: nowrap;
-      transition: background-color 160ms;
+      transition: color 200ms;
 
-      &:hover,
-      &.key-focus {
-        background-color: $bg-1;
+      &.selected {
+        padding-bottom: 15px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid lighten($border-1, 12%);
       }
 
-      &:first-child {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-      }
-
-      &:last-child {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
+      &.selected,
+      &:hover {
+        color: $text-1;
       }
     }
   }
