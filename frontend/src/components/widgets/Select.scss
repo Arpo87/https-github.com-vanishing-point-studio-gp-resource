@@ -1,0 +1,85 @@
+@import '../app/Variables.scss';
+
+.select-wrapper {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    pointer-events: none;
+    top: 5px;
+    right: 5px;
+    transition: transform 200ms;
+    transform-origin: 50% 50%;
+    z-index: 210;
+
+    .fill {
+      fill: $text-2;
+    }
+  }
+
+  button {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 25px 10px 10px;
+    border-radius: 4px;
+    background-color: darken($bg-1, 5%);
+    font-size: 13px;
+    text-transform: none;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .anchor {
+    position: relative;
+    width: 100%;
+    height: 0;
+    z-index: 200;
+  }
+
+  .select-popup {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: $shadow-1;
+    border-radius: 4px;
+    font-size: 13px;
+
+    li {
+      cursor: pointer;
+      display: block;
+      padding: 10px;
+      white-space: nowrap;
+      transition: background-color 160ms;
+
+      &:hover,
+      &.key-focus {
+        background-color: $bg-1;
+      }
+
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+
+  &.open {
+    > .icon {
+      transform: rotate(180deg);
+    }
+  }
+}

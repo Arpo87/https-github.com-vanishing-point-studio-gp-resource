@@ -5,12 +5,18 @@ import { getDataSelection, formatValue } from '../../utils'
 import { getNroData, getProgrammeData } from '../../state/selectors'
 import BarsViewLegend from './BarsViewLegend'
 import BarStack from './BarStack'
+import Select from '../widgets/Select'
 import './BarsView.scss'
+
+const selectOptions = ['Alphabetical', 'Programme Staff Size', 'Budget', 'Battleground NROs', 'Regional NROs']
 
 const BarsView = ({ data, dataSelection, isProgramme }) => (
   <div className="bars-view">
     <div className="legend-row">
-      <div className="column" />
+      <div className="column">
+        <div className="title">Sort</div>
+        <Select options={selectOptions} />
+      </div>
       <div className="column">
         <div className="title">Legend</div>
         <BarsViewLegend data={data} dataSelection={dataSelection} isProgramme={isProgramme} />

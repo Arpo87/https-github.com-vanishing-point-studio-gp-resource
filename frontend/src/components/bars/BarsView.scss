@@ -8,7 +8,6 @@
   .legend-row,
   .bar-row {
     display: flex;
-    align-items: center;
   }
 
   .legend-row {
@@ -18,6 +17,7 @@
   }
 
   .bar-row {
+    align-items: center;
     height: 120px;
     padding-right: 30px;
   }
@@ -26,7 +26,11 @@
     display: flex;
 
     &:nth-child(1) {
-      width: 120px;
+      width: 200px;
+
+      .select-wrapper {
+        margin-right: 30px;
+      }
     }
 
     &:nth-child(2) {
