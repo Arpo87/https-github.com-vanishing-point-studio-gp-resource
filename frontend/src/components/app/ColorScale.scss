@@ -2,15 +2,15 @@
 
 .color-scale-item {
   &:nth-child(1) .color-scale-background {
-    background-color: $green-1;
+    background-color: $scale-1;
   }
 
   &:nth-child(2) .color-scale-background {
-    background-color: $blue-grey-1;
+    background-color: $scale-2;
   }
 
   &:nth-child(3) .color-scale-background {
-    background-color: $yellow-1;
+    background-color: $scale-3;
   }
 
   // Children 5-8 are only shown during transitions from programme colors.
@@ -19,21 +19,21 @@
   &:nth-child(6) .color-scale-background,
   &:nth-child(7) .color-scale-background,
   &:nth-child(8) .color-scale-background {
-    background-color: $yellow-2;
+    background-color: $scale-4;
   }
 }
 
 .color-scale-paths {
   path:nth-child(1) {
-    fill: $green-1;
+    fill: $scale-1;
   }
 
   path:nth-child(2) {
-    fill: $blue-grey-1;
+    fill: $scale-2;
   }
 
   path:nth-child(3) {
-    fill: $yellow-1;
+    fill: $scale-3;
   }
 
   // Children 5-8 are only shown during transitions from programme colors.
@@ -42,76 +42,76 @@
   path:nth-child(6),
   path:nth-child(7),
   path:nth-child(8) {
-    fill: $yellow-2;
+    fill: $scale-4;
   }
 }
 
 .programme {
   .color-scale-item {
     &:nth-child(1) .color-scale-background {
-      background-color: $green-1;
+      background-color: $programme-scale-1;
     }
 
     &:nth-child(2) .color-scale-background {
-      background-color: $green-2;
+      background-color: $programme-scale-2;
     }
 
     &:nth-child(3) .color-scale-background {
-      background-color: $green-3;
+      background-color: $programme-scale-3;
     }
 
     &:nth-child(4) .color-scale-background {
-      background-color: $blue-1;
+      background-color: $programme-scale-4;
     }
 
     &:nth-child(5) .color-scale-background {
-      background-color: $blue-2;
+      background-color: $programme-scale-5;
     }
 
     &:nth-child(6) .color-scale-background {
-      background-color: $blue-3;
+      background-color: $programme-scale-6;
     }
 
     &:nth-child(7) .color-scale-background {
-      background-color: $blue-4;
+      background-color: $programme-scale-7;
     }
 
     &:nth-child(8) .color-scale-background {
-      background-color: $blue-5;
+      background-color: $programme-scale-8;
     }
   }
 
   .color-scale-paths {
     path:nth-child(1) {
-      fill: $green-1;
+      fill: $programme-scale-1;
     }
 
     path:nth-child(2) {
-      fill: $green-2;
+      fill: $programme-scale-2;
     }
 
     path:nth-child(3) {
-      fill: $green-3;
+      fill: $programme-scale-3;
     }
 
     path:nth-child(4) {
-      fill: $blue-1;
+      fill: $programme-scale-4;
     }
 
     path:nth-child(5) {
-      fill: $blue-2;
+      fill: $programme-scale-5;
     }
 
     path:nth-child(6) {
-      fill: $blue-3;
+      fill: $programme-scale-6;
     }
 
     path:nth-child(7) {
-      fill: $blue-4;
+      fill: $programme-scale-7;
     }
 
     path:nth-child(8) {
-      fill: $blue-5;
+      fill: $programme-scale-8;
     }
   }
 }
