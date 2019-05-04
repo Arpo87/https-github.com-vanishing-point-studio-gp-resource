@@ -64,4 +64,24 @@
       font-weight: 300;
     }
   }
+
+  .legend-wrapper {
+    overflow: hidden;
+    transition: height 400ms $bezier-2;
+  }
+}
+
+// Hard-coded fragile shit for easy animated heights:
+.data-container {
+  &.nro .bars-view .legend-wrapper {
+    height: 50px;
+  }
+
+  &.programme .bars-view .legend-wrapper {
+    height: 129px;
+  }
+
+  &.programme.programme-balance .bars-view .legend-wrapper {
+    height: 41px;
+  }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
+import kebabCase from 'lodash/kebabCase'
 import { connect } from 'react-redux'
 import { fetchNroData } from '../../state/actions'
+import { getDataSelection } from '../../utils'
 import MapView from '../map/MapView'
 import BarsView from '../bars/BarsView'
 import PageTitle from './PageTitle'
@@ -26,8 +28,15 @@ class DataContainer extends React.Component {
     const { dialogOpen } = this.state
     const breakdowns = location.pathname.includes('breakdowns')
     const programme = location.pathname.includes('programme')
+
+    let className = 'data-container ' + (programme ? 'programme' : 'nro')
+    if (!breakdowns) {
+      className += ' map'
+    }
+    className += ' ' + kebabCase(getDataSelection(location))
+
     return (
-      <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map' : '')}>
+      <div className={className}>
         <div className="main-scroll custom-scrollbar">
           {loadingNroData ? (
             <Spinner large />
