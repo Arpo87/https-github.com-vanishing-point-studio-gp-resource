@@ -84,8 +84,8 @@ export const fetchProjectData = () => async dispatch => {
   dispatch(setLoadingData(true))
   try {
     const response = await client.query({ query: projectQuery })
-    if (response && response.data && response.data.projectsList) { // NOt sure what I actually want to return here.
-      dispatch(setData(response.data.projectsList))
+    if (response && response.data && response.data.nroProjects) { // NOt sure what I actually want to return here.
+      dispatch(setData(response.data.nroProjects))
     }
   } catch (e) {}
   dispatch(setLoadingData(false))

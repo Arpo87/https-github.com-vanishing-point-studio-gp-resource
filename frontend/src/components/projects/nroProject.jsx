@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchProjectData } from '../../state/actions'
-import './projectsOverview.scss'
+import './nroProject.scss'
 
-class projectsOverview extends React.Component {
+class nroProject extends React.Component {
 
   componentDidMount() {
     this.props.loadData()
@@ -12,26 +12,19 @@ class projectsOverview extends React.Component {
   render() {
     const { loadingData } = this.props
     return (
-      <div className='projects-wrap' style={{ flexGrow: 1 }} >
+      <div className='nro-project-wrap' style={{ flexGrow: 1 }} >
         <div className="main-scroll custom-scrollbar">
           {loadingData ? null : (
             <div className="page-content">
-              <h1>Projects</h1>
-              <div className="list-wrap">
-                <div className="nros-list">
-                  <h3>By <span>NRO</span></h3>
-                  <ul>
-                    <li><a href="projects/nros/name">NRO Name</a></li>
-                  </ul>
+              <h1><a href="/projects">Projects</a> <span className="separator">></span> NRO NAME</h1>
+              <div className="charts-wrap">
+                <div className="nro-chart budget">
+                  BUDGET CHART
                 </div>
 
-                <div className="projects-list">
-                  <h3>By <span>Projects</span></h3>
-                  <ul>
-                    <li><a href="link/to/project">Project Name</a></li>
-                  </ul>
+                <div className="nro-chart budget">
+                  STAFF CHART
                 </div>
-
               </div>
 
             </div>
@@ -52,4 +45,4 @@ const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchProjectD
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(projectsOverview)
+)(nroProject)
