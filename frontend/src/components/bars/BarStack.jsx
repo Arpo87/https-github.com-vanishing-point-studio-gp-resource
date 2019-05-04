@@ -34,7 +34,7 @@ const calculateTextOffset = (currentIndex, values, total) => {
 const BarStack = ({ data }) => {
   return (
     <div className="bar-stack">
-      {data.total > 0 &&
+      {data.total > 0 ? (
         data.values.map((value, i) => {
           const width = (value / data.total) * 100 + '%'
           const formattedWidth = formatPercent(value, data.total)
@@ -52,7 +52,10 @@ const BarStack = ({ data }) => {
               </div>
             </div>
           )
-        })}
+        })
+      ) : (
+        <div className="placeholder-bar " />
+      )}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 @import '../app/Variables.scss';
+@import '../app/Mixins.scss';
 
 .bars-view {
   display: flex;
@@ -55,7 +56,7 @@
   }
 
   .bar-title {
-    padding: 0 20px 20px 0;
+    padding: 0 20px 22px 0;
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -78,14 +79,16 @@
   }
 }
 
-// Hard-coded fragile shit for easy animated heights:
-.data-container {
-  .bars-view .legend-wrapper {
-    height: 55px;
-  }
+@include desktop {
+  // Hard-coded fragile shit for easy animated heights:
+  .data-container {
+    .bars-view .legend-wrapper {
+      height: 55px;
+    }
 
-  &.programme-staff .bars-view .legend-wrapper,
-  &.programme-budget .bars-view .legend-wrapper {
-    height: 129px;
+    &.programme-staff .bars-view .legend-wrapper,
+    &.programme-budget .bars-view .legend-wrapper {
+      height: 129px;
+    }
   }
 }
