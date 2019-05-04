@@ -25,14 +25,6 @@
   .column {
     display: flex;
 
-    &:nth-child(1) {
-      width: 200px;
-
-      .select-wrapper {
-        margin-right: 30px;
-      }
-    }
-
     &:nth-child(2) {
       flex-grow: 1;
     }
@@ -40,6 +32,18 @@
 
   .legend-row .column {
     flex-direction: column;
+
+    &:nth-child(1) {
+      width: 200px;
+    }
+  }
+
+  .bar-row .column:nth-child(1) {
+    width: 200px;
+  }
+
+  .select-wrapper {
+    margin-right: 30px;
   }
 
   .title {
