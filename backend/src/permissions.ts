@@ -13,5 +13,7 @@ export const permissions = shield({
   Query: {
     me: rules.isAuthenticated,
     nros: rules.isAuthenticated,
+    projects: rules.isAuthenticated,
+    nroProjects: rules.isAuthenticated,
   },
 })

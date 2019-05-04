@@ -46,17 +46,17 @@ type User {
   name: String!
 }
 
-type ProjectInfo {
+type Project {
   id: ID!
   name: String!
   description: String
 }
 
-type Project {
+type NroProject {
   id: ID!
   meta: String # To add the nro and project name for sanity
-  project: ProjectInfo! # relationship to Project
-  nro: Nro! # relationship to NRO
+  project: Project!
+  nro: Nro!
   staffTotal: Float
   budgetTotal: Float
   additionalInfo: String
@@ -72,8 +72,8 @@ type Project {
 type Query {
   me: User
   nros: [Nro!]
-  projectsList: [ProjectInfo!]
-  nroProjects: [Project!]
+  projects: [Project!]
+  nroProjects: [NroProject!]
 }
 
 type Mutation {
