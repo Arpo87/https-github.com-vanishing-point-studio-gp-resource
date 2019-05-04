@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getDataSelection, formatValue } from '../../utils'
 import { getNroData, getProgrammeData } from '../../state/selectors'
 import Legend from './Legend'
-import StackedBarChart from './StackedBarChart'
+import BarStack from './BarStack'
 import './BarsView.scss'
 
 const BarsView = ({ data, dataSelection, isProgramme }) => (
@@ -27,7 +27,7 @@ const BarsView = ({ data, dataSelection, isProgramme }) => (
           </div>
         </div>
         <div className="column">
-          <StackedBarChart data={d[dataSelection]} />
+          <BarStack data={d[dataSelection]} />
         </div>
       </div>
     ))}

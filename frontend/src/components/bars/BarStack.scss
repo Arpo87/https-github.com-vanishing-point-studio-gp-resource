@@ -1,0 +1,36 @@
+@import '../app/Variables.scss';
+
+.bar-stack {
+  display: flex;
+  width: 100%;
+  margin: 0 -4px;
+
+  .bar-stack-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 10px;
+    padding: 0 3px;
+
+    .bar {
+      height: 80px;
+      background-color: tomato;
+    }
+
+    .value {
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-2;
+      margin-top: 4px;
+    }
+
+    &.zero {
+      padding: 0;
+      opacity: 0;
+      min-width: 0;
+
+      .value {
+        display: none;
+      }
+    }
+  }
+}
