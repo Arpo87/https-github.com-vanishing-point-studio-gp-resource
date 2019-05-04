@@ -77,7 +77,7 @@ export const fetchData = () => async dispatch => {
   dispatch(setLoadingData(false))
 }
 
-export const setProjectData = projectData => ({ type: 'SET_PROJECT_DATA', projectData })
+export const setProjectData = nroProjectData => ({ type: 'SET_PROJECT_DATA', nroProjectData })
 
 export const fetchProjectData = () => async dispatch => {
   dispatch(setProjectData([]))
