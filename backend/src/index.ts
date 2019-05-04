@@ -16,7 +16,11 @@ const resolvers = {
     nros: () => nros,
     me: (_parent: any, _args: any, ctx: any) => users.find(u => u.id === getUserIdFromToken(ctx)),
     projectGroups: () => projectGroups,
-    nroProjects: () => nroProjects,
+    nroProjects: () =>
+      nroProjects.map(nroProject => ({
+        ...nroProject,
+        project: projectGroups.find(group => group.id === nroProject.project),
+      })),
   },
   Mutation: {
     login: async (_parent: any, { email, password }: any) => {
