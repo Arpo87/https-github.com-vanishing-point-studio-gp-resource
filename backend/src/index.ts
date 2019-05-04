@@ -19,7 +19,7 @@ const resolvers = {
     nroProjects: () =>
       nroProjects.map(nroProject => ({
         ...nroProject,
-        project: projectGroups.find(group => group.id === nroProject.project),
+        projectGroup: projectGroups.find(group => group.id === nroProject.projectGroup),
       })),
   },
   Mutation: {

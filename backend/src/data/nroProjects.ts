@@ -2,7 +2,7 @@ export const nroProjects = [
   {
     meta: 'Africa Climate Justice',
     name: '',
-    project: 3,
+    projectGroup: 3,
     nro: 1,
     staffTotal: 5,
     budgetTotal: 95,
@@ -20,7 +20,7 @@ export const nroProjects = [
   {
     meta: 'Africa Congo',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 7.5,
     budgetTotal: 126,
@@ -38,7 +38,7 @@ export const nroProjects = [
   {
     meta: 'Andino Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -56,7 +56,7 @@ export const nroProjects = [
   {
     meta: 'Aus Pac Energy Transition',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -74,7 +74,7 @@ export const nroProjects = [
   {
     meta: 'Aus Pac Climate Emergency',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -92,7 +92,7 @@ export const nroProjects = [
   {
     meta: 'Aus Pac Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -110,7 +110,7 @@ export const nroProjects = [
   {
     meta: 'Canada Green New Deal',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -128,7 +128,7 @@ export const nroProjects = [
   {
     meta: 'CEE European Energy',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -146,7 +146,7 @@ export const nroProjects = [
   {
     meta: 'Czech C&E Work',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -164,7 +164,7 @@ export const nroProjects = [
   {
     meta: 'Czech Impacts',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -182,7 +182,7 @@ export const nroProjects = [
   {
     meta: 'East Asia Coal',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -200,7 +200,7 @@ export const nroProjects = [
   {
     meta: 'Fr Lux Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -218,7 +218,7 @@ export const nroProjects = [
   {
     meta: 'Germany Amazon',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -236,7 +236,7 @@ export const nroProjects = [
   {
     meta: 'Germany Coal Phase out',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -254,7 +254,7 @@ export const nroProjects = [
   {
     meta: 'Germany Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -272,7 +272,7 @@ export const nroProjects = [
   {
     meta: 'Italy Climate emergency',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -290,7 +290,7 @@ export const nroProjects = [
   {
     meta: 'Italy M&D',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -308,7 +308,7 @@ export const nroProjects = [
   {
     meta: 'Italy Plastic',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -326,7 +326,7 @@ export const nroProjects = [
   {
     meta: 'Japan Energy',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -344,7 +344,7 @@ export const nroProjects = [
   {
     meta: 'Med Energy Transition',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -362,7 +362,7 @@ export const nroProjects = [
   {
     meta: 'Med Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -380,7 +380,7 @@ export const nroProjects = [
   {
     meta: 'Med Transportation',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -398,7 +398,7 @@ export const nroProjects = [
   {
     meta: 'Mexico Plastic',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -416,7 +416,7 @@ export const nroProjects = [
   {
     meta: 'MExico Urban rev',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -434,7 +434,7 @@ export const nroProjects = [
   {
     meta: 'Mexico Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -452,7 +452,7 @@ export const nroProjects = [
   {
     meta: 'Nordic Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -470,7 +470,7 @@ export const nroProjects = [
   {
     meta: 'NOrdic People vs',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -488,7 +488,7 @@ export const nroProjects = [
   {
     meta: 'NOrdic #Climate first',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -506,7 +506,7 @@ export const nroProjects = [
   {
     meta: 'New Zealand Sunset',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -524,7 +524,7 @@ export const nroProjects = [
   {
     meta: 'New Zealand Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -542,7 +542,7 @@ export const nroProjects = [
   {
     meta: 'SEA Transparency Campaign',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -560,7 +560,7 @@ export const nroProjects = [
   {
     meta: 'SEA Indonesia Coal',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -578,7 +578,7 @@ export const nroProjects = [
   {
     meta: 'Switzerland Climate',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -596,7 +596,7 @@ export const nroProjects = [
   {
     meta: 'Switzerland single use',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -614,7 +614,7 @@ export const nroProjects = [
   {
     meta: 'UK CLimate emergency',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -632,7 +632,7 @@ export const nroProjects = [
   {
     meta: 'UK Forests',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -650,7 +650,7 @@ export const nroProjects = [
   {
     meta: 'UK Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -668,7 +668,7 @@ export const nroProjects = [
   {
     meta: 'US plastics',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -686,7 +686,7 @@ export const nroProjects = [
   {
     meta: 'GPI Oceans',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -704,7 +704,7 @@ export const nroProjects = [
   {
     meta: 'GPI CER',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -722,7 +722,7 @@ export const nroProjects = [
   {
     meta: '',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,
@@ -740,7 +740,7 @@ export const nroProjects = [
   {
     meta: '',
     name: '',
-    project: 111,
+    projectGroup: 111,
     nro: 111,
     staffTotal: 0,
     budgetTotal: 0,

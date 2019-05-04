@@ -54,9 +54,9 @@ type ProjectGroup {
 
 type NroProject {
   id: ID!
-  meta: String 
+  meta: String
   name: String!
-  project: ProjectGroup!
+  projectGroup: ProjectGroup!
   nro: Nro!
   staffTotal: Float
   budgetTotal: Float
