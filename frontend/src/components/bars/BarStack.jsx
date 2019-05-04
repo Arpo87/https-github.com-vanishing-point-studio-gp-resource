@@ -4,6 +4,7 @@ import './BarStack.scss'
 
 const THRESHOLD_TO_BUMP_RIGHT = 0.02
 const BUMP_VALUE = 12
+const MAX_SLICES = 8
 
 const findPreviousVisibleValue = (currentIndex, values, total) => {
   for (let i = currentIndex - 1; i >= 0; i--) {
@@ -30,29 +31,37 @@ const calculateTextOffset = (currentIndex, values, total) => {
   return offset
 }
 
-const BarStack = ({ data }) => (
-  <div className="bar-stack">
-    {data.total > 0 &&
-      data.values.map((value, i) => {
-        const label = data.labels[i]
-        const width = (value / data.total) * 100 + '%'
-        const formattedWidth = formatPercent(value, data.total)
-        const isZero = formattedWidth === '0%'
+const BarStack = ({ data }) => {
+  const paddedValues = [...data.values]
+  const paddedLabels = [...data.labels]
+  for (let i = data.values.length - 1; i < MAX_SLICES; i++) {
+    paddedValues.push(0)
+    paddedLabels.push('' + i)
+  }
+  return (
+    <div className="bar-stack">
+      {data.total > 0 &&
+        paddedValues.map((value, i) => {
+          const label = paddedLabels[i]
+          const width = (value / data.total) * 100 + '%'
+          const formattedWidth = formatPercent(value, data.total)
+          const isZero = formattedWidth === '0%'
 
-        let textOffset
-        if (!isZero && i > 0) {
-          textOffset = calculateTextOffset(i, data.values, data.total)
-        }
-        return (
-          <div key={label} className={'bar-stack-item color-scale-item' + (isZero ? ' zero' : '')} style={{ width }}>
-            <div className="bar color-scale-background" />
-            <div className="value" style={textOffset ? { marginLeft: textOffset + 'px' } : undefined}>
-              {formattedWidth}
+          let textOffset
+          if (!isZero && i > 0) {
+            textOffset = calculateTextOffset(i, paddedValues, data.total)
+          }
+          return (
+            <div key={label} className={'bar-stack-item color-scale-item' + (isZero ? ' zero' : '')} style={{ width }}>
+              <div className="bar color-scale-background" />
+              <div className="value" style={textOffset ? { marginLeft: textOffset + 'px' } : undefined}>
+                {formattedWidth}
+              </div>
             </div>
-          </div>
-        )
-      })}
-  </div>
-)
+          )
+        })}
+    </div>
+  )
+}
 
 export default BarStack
