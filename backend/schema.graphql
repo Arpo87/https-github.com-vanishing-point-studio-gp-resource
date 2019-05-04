@@ -67,6 +67,8 @@ type NroProject {
   staffOperations: Float
   staffPolitical: Float
   staffPublicInfoOutreach: Float
+  staffFundraising: Float
+  staffOther: Float
 }
 
 type Query {
