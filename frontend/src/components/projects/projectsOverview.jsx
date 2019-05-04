@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchProjectData, fetchData } from '../../state/actions'
+import { Link, withRouter } from 'react-router-dom'
+import { fetchProjectData, fetchNroData } from '../../state/actions'
+import { getProjectGroups } from '../../state/selectors'
 import './projectsOverview.scss'
 
 class projectsOverview extends React.Component {
@@ -9,8 +11,7 @@ class projectsOverview extends React.Component {
   }
 
   render() {
-    const { loadingData } = this.props
-    console.log(this.props.data)
+    const { loadingData, projectGroups, nroData } = this.props
     return (
       <div className="projects-wrap" style={{ flexGrow: 1 }}>
         <div className="main-scroll custom-scrollbar">
@@ -23,9 +24,17 @@ class projectsOverview extends React.Component {
                     By <span>NRO</span>
                   </h3>
                   <ul>
-                    <li>
-                      <a href="projects/nros/name">NRO Name</a>
-                    </li>
+                    {nroData &&
+                      nroData.map((nro, i) => {
+                        const name = nro.name
+                        const safeName = nro.name.replace(/ /g, '-').toLowerCase()
+
+                        return (
+                          <li key={i}>
+                            <Link to={`projects/nros/${safeName}`}>{name}</Link>
+                          </li>
+                        )
+                      })}
                   </ul>
                 </div>
 
@@ -34,9 +43,17 @@ class projectsOverview extends React.Component {
                     By <span>Projects</span>
                   </h3>
                   <ul>
-                    <li>
-                      <a href="link/to/project">Project Name</a>
-                    </li>
+                    {projectGroups &&
+                      projectGroups.map((projectGroup, i) => {
+                        const name = projectGroup
+                        const safeName = projectGroup.replace(/ /g, '-').toLowerCase()
+
+                        return (
+                          <li key={i}>
+                            <Link to={`projects/priorities/${safeName}`}>{name}</Link>
+                          </li>
+                        )
+                      })}
                   </ul>
                 </div>
               </div>
@@ -52,16 +69,19 @@ const mapStateToProps = state => ({
   loadingData: state.loadingData,
   nroProjectData: state.nroProjectData,
   nroData: state.nroData,
+  projectGroups: getProjectGroups(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   loadData: () => {
     dispatch(fetchProjectData())
-    dispatch(fetchData())
+    dispatch(fetchNroData())
   },
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(projectsOverview)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(projectsOverview)
+)

@@ -53,6 +53,9 @@ export const projectQuery = gql`
     nroProjects {
       name
       meta
+      projectGroup {
+        name
+      }
     }
   }
 `

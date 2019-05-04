@@ -22,14 +22,14 @@ class DataContainer extends React.Component {
   }
 
   render() {
-    const { location, loadingNroData } = this.props
+    const { location, loadingData } = this.props
     const { dialogOpen } = this.state
     const breakdowns = location.pathname.includes('breakdowns')
     const programme = location.pathname.includes('programme')
     return (
       <div className={'data-container' + (programme ? ' programme' : '') + (!breakdowns ? ' map' : '')}>
         <div className="main-scroll custom-scrollbar">
-          {loadingNroData ? (
+          {loadingData ? (
             <Spinner large />
           ) : (
             <div className="page-content">
@@ -55,7 +55,7 @@ class DataContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ loadingNroData: state.loadingNroData })
+const mapStateToProps = state => ({ loadingData: state.loadingData })
 
 const mapDispatchToProps = dispatch => ({ fetchNroData: () => dispatch(fetchNroData()) })
 

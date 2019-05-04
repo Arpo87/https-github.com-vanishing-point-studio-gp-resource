@@ -94,3 +94,8 @@ export const getWithCoordinates = (state, dataSelector) =>
   dataSelector(state)
     .filter(d => !!mapCoordinates[d.name])
     .map(d => ({ ...d, coordinates: mapCoordinates[d.name] }))
+
+export const getProjectGroups = state => {
+  const projectGroups = state.nroProjectData.map(project => project.projectGroup.name)
+  return [...new Set(projectGroups)]
+}

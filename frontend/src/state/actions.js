@@ -61,20 +61,20 @@ export const onLoad = () => async dispatch => {
   }
 }
 
-export const setLoadingNroData = loadingNroData => ({ type: 'SET_LOADING_NRO_DATA', loadingNroData })
+export const setLoadingData = loadingData => ({ type: 'SET_LOADING_DATA', loadingData })
 
 export const setNroData = nroData => ({ type: 'SET_NRO_DATA', nroData })
 
 export const fetchNroData = () => async dispatch => {
   dispatch(setNroData([]))
-  dispatch(setLoadingNroData(true))
+  dispatch(setLoadingData(true))
   try {
     const response = await client.query({ query: nroQuery })
     if (response && response.data && response.data.nros) {
       dispatch(setNroData(response.data.nros))
     }
   } catch (e) {}
-  dispatch(setLoadingNroData(false))
+  dispatch(setLoadingData(false))
 }
 
 export const setProjectData = nroProjectData => ({ type: 'SET_PROJECT_DATA', nroProjectData })
@@ -84,10 +84,10 @@ export const fetchProjectData = () => async dispatch => {
   dispatch(setLoadingData(true))
   try {
     const response = await client.query({ query: projectQuery })
-    if (response && response.data && response.data.nroProjects) { // NOt sure what I actually want to return here.
+    if (response && response.data && response.data.nroProjects) {
+      // NOt sure what I actually want to return here.
       dispatch(setProjectData(response.data.nroProjects))
     }
   } catch (e) {}
   dispatch(setLoadingData(false))
 }
-
