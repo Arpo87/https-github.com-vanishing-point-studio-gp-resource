@@ -1,4 +1,4 @@
-export const projectsList = [
+export const projects = [
   {
     id: 1,
     name: 'Ocean Sanctuaries'
