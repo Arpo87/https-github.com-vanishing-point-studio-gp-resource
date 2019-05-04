@@ -3,14 +3,14 @@ import './Legend.scss'
 
 const Legend = ({ labels }) => (
   <div className="legend">
-    {labels.map(label =>
+    {labels.map((label, i) =>
       label ? (
-        <div className="legend-item color-scale-item" key={label}>
+        <div key={label} className="legend-item color-scale-item">
           <div className="legend-color color-scale-background" />
           <div className="legend-text">{label}</div>
         </div>
       ) : (
-        <div className="legend-placeholder" />
+        <div key={'placeholder-' + i} className="legend-placeholder" />
       )
     )}
   </div>
