@@ -1,48 +1,59 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getDataSelection, formatValue } from '../../utils'
+import { getDataSelection } from '../../utils'
+import { nroSortOptions, programmeSortOptions } from '../../utils/groupings'
 import { getNroData, getProgrammeData } from '../../state/selectors'
 import BarsViewLegend from './BarsViewLegend'
-import BarStack from './BarStack'
+import BarsList from './BarsList'
 import Select from '../widgets/Select'
 import './BarsView.scss'
 
-const selectOptions = ['Alphabetical', 'Programme Staff Size', 'Budget', 'Battleground NROs', 'Regional NROs']
+class BarsView extends React.Component {
+  state = { sortKey: this.props.sortOptions[0].key }
 
-const BarsView = ({ data, dataSelection, isProgramme }) => (
-  <div className="bars-view">
-    <div className="legend-row">
-      <div className="column">
-        <div className="title">Sort</div>
-        <Select options={selectOptions} />
-      </div>
-      <div className="column">
-        <div className="title">Legend</div>
-        <BarsViewLegend data={data} dataSelection={dataSelection} isProgramme={isProgramme} />
-      </div>
-    </div>
-    {data.map(d => (
-      <div className="bar-row" key={d.name}>
-        <div className="column">
-          <div className="bar-title">
-            <div className="name">{d.name}</div>
-            <div className="total">{formatValue(d[dataSelection].total, dataSelection)}</div>
+  componentDidUpdate() {
+    if (this.getSortSelection().key !== this.state.sortKey) {
+      this.updateSortKey(this.getSortSelection().key)
+    }
+  }
+
+  render() {
+    const { data, dataSelection, sortOptions, isProgramme } = this.props
+    const sortSelection = this.getSortSelection()
+    return (
+      <div className="bars-view">
+        <div className="legend-row">
+          <div className="column">
+            <div className="title">Sort</div>
+            <Select options={sortOptions} value={sortSelection.key} onChange={this.updateSortKey} />
+          </div>
+          <div className="column">
+            <div className="title">Legend</div>
+            <BarsViewLegend data={data} dataSelection={dataSelection} isProgramme={isProgramme} />
           </div>
         </div>
-        <div className="column">
-          <BarStack data={d[dataSelection]} />
-        </div>
+        <BarsList data={data} dataSelection={dataSelection} sortBy={sortSelection} />
       </div>
-    ))}
-  </div>
-)
+    )
+  }
+
+  updateSortKey = value => this.setState({ sortKey: value })
+
+  getSortSelection = () => {
+    const { sortOptions } = this.props
+    const { sortKey } = this.state
+    return sortOptions.find(o => o.key === sortKey) || sortOptions[0]
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   const isProgramme = ownProps.location.pathname.includes('programme')
+  const sortOptions = isProgramme ? programmeSortOptions : nroSortOptions
   return {
     data: isProgramme ? getProgrammeData(state) : getNroData(state),
     dataSelection: getDataSelection(ownProps.location),
+    sortOptions,
     isProgramme,
   }
 }

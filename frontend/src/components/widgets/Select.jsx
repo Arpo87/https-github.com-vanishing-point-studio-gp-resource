@@ -3,10 +3,7 @@ import ExpandMoreIcon from '../../assets/icons/material/ExpandMore'
 import './Select.scss'
 
 class Select extends React.Component {
-  state = {
-    open: false,
-    selection: this.props.options.length > 0 ? this.props.options[0] : '',
-  }
+  state = { open: false }
 
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick)
@@ -21,10 +18,11 @@ class Select extends React.Component {
   }
 
   render() {
-    const { options } = this.props
-    const { open, selection } = this.state
+    const { options, value } = this.props
+    const { open } = this.state
+    const selectedOption = options.find(o => o.key === value)
     const sortedOptions = [...options]
-    sortedOptions.sort((first, second) => (first === selection ? -1 : second === selection ? 1 : 0))
+    sortedOptions.sort((first, second) => (first.key === value ? -1 : second.key === value ? 1 : 0))
     return (
       <div className={'select-wrapper' + (open ? ' open' : '')}>
         {open && (
@@ -32,19 +30,19 @@ class Select extends React.Component {
             <ul className="select-popup">
               {sortedOptions.map((option, i) => (
                 <li
-                  key={option}
+                  key={option.key}
                   role="button"
-                  className={'select-item' + (option === selection ? ' selected' : '')}
-                  onClick={() => this.updateSelection(option)}
+                  className={'select-item' + (option.key === value ? ' selected' : '')}
+                  onClick={() => this.updateSelection(option.key)}
                 >
-                  {option}
+                  {option.label}
                 </li>
               ))}
             </ul>
           </div>
         )}
         <button type="button" ref={e => (this.buttonElement = e)}>
-          <span>{selection}</span>
+          <span>{selectedOption ? selectedOption.label : ''}</span>
         </button>
         <ExpandMoreIcon />
       </div>
@@ -53,11 +51,11 @@ class Select extends React.Component {
 
   handleButtonClick = e => {
     e.stopPropagation()
-    this.setState({ open: !this.state.open, keyFocus: -1 })
+    this.setState({ open: !this.state.open })
   }
 
   close = () => {
-    this.setState({ open: false, keyFocus: -1 })
+    this.setState({ open: false })
   }
 
   handleDocumentClick = e => {
@@ -77,8 +75,8 @@ class Select extends React.Component {
     }
   }
 
-  updateSelection = selection => {
-    this.setState({ selection })
+  updateSelection = value => {
+    if (this.props.onChange) this.props.onChange(value)
   }
 }
 
