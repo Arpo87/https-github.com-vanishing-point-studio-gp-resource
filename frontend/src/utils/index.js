@@ -19,9 +19,9 @@ export const formatPercent = (value, total) => (total === 0 ? '0' : Math.round((
 
 export const formatCurrencyInMillionEuro = value => '\u20AC' + (value / 1000).toFixed(1) + 'M'
 
-export const formatStaff = value => {
+export const formatStaff = (value, fallback) => {
   if (!value) {
-    return ''
+    return fallback || ''
   }
   let staff
   if (Math.round(value) === value) {

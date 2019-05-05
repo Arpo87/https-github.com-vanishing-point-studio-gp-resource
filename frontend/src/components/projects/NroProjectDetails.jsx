@@ -3,17 +3,17 @@ import { connect } from 'react-redux'
 import { lookupNroByKey, getNroProjectDetails } from '../../state/selectors'
 import NotFound from '../frame/NotFound'
 import Breadcrumb from './Breadcrumb'
+import ProjectPieChart from '../pies/ProjectPieChart'
 import './NroProjectDetails.scss'
-import LabelledPieChart from '../pies/LabelledPieChart'
 
-const NroProjectDetails = ({ nro, projectDetails }) => {
-  const dataExists = nro && nro.name && projectDetails
+const NroProjectDetails = ({ nro, budgetData, budgetTotal, staffData, staffTotal }) => {
+  const dataExists = nro && nro.name && budgetData && staffData
   return dataExists ? (
     <div className="nro-project-details">
       <Breadcrumb name={nro.name} />
       <div className="pie-charts">
-        <LabelledPieChart title="Budget" data={[]} total={0} staffUnits={false} />
-        <LabelledPieChart title="Staff" data={[]} total={0} staffUnits={true} />
+        <ProjectPieChart title="Budget" data={budgetData} total={budgetTotal} staffUnits={false} />
+        <ProjectPieChart title="Staff" data={staffData} total={staffTotal} staffUnits={true} />
       </div>
     </div>
   ) : (
@@ -23,7 +23,7 @@ const NroProjectDetails = ({ nro, projectDetails }) => {
 
 const mapStateToProps = (state, ownProps) => ({
   nro: lookupNroByKey(state, ownProps.match.params.nro),
-  projectDetails: getNroProjectDetails(state, ownProps.match.params.nro),
+  ...getNroProjectDetails(state, ownProps.match.params.nro),
 })
 
 export default connect(mapStateToProps)(NroProjectDetails)

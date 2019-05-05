@@ -1,7 +1,8 @@
 @import '../app/Variables.scss';
 @import '../app/Mixins.scss';
 
-.labelled-pie-chart {
+.project-pie-chart {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +17,11 @@
   .total {
     font-size: 22px;
     color: $text-3;
+  }
+
+  .pie-container {
+    width: 60%;
+    margin: 0 0 30px 5px;
   }
 
   .line {

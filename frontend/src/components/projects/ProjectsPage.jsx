@@ -16,7 +16,7 @@ class ProjectsPage extends React.Component {
   render() {
     const { loadingData, dataExists } = this.props
     return (
-      <div className="projects-page">
+      <div className="projects projects-page">
         <div className="main-scroll custom-scrollbar">
           {loadingData || !dataExists ? (
             <Spinner large />

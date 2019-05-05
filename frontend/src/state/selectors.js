@@ -112,8 +112,20 @@ export const getNrosWithProjectData = state =>
   state.nroData.filter(nro => state.projectData.some(project => project.nro.name === nro.name)).map(nro => nro.name)
 
 export const getNroProjectDetails = (state, nroKey) => {
-  const projectsForNro = state.projectData.filter(project => sanitize(project.nro.name) === nroKey)
-  console.log(projectsForNro)
-  // const budgetsData =
-  return { projectsForNro }
+  const nro = lookupNroByKey(state, nroKey)
+  const nroData = getProgrammeData(state).find(d => d.name === nro.name)
+  const budgetTotal = nroData.programmeBudget.total
+  const staffTotal = nroData.programmeStaff.total
+
+  const projectsForNro = state.projectData.filter(project => project.nro.name === nro.name)
+  const budgetData = projectsForNro.map(project => ({ value: project.budgetTotal, label: project.name }))
+  const staffData = projectsForNro.map(project => ({ value: project.staffTotal, label: project.name }))
+
+  const budgetRest = budgetTotal - budgetData.reduce((r, d) => r + d.value, 0)
+  const staffRest = staffTotal - staffData.reduce((r, d) => r + d.value, 0)
+
+  budgetData.push({ value: budgetRest, label: '', exclude: true })
+  staffData.push({ value: staffRest, label: '', exclude: true })
+
+  return { budgetData, budgetTotal, staffData, staffTotal }
 }

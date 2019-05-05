@@ -7,9 +7,14 @@
 
   .pie-charts {
     display: flex;
+    padding-top: 40px;
 
-    .labelled-pie-chart {
-      width: 50%;
+    .project-pie-chart {
+      width: 60%;
+
+      &:not(:first-child) {
+        margin-left: 100px;
+      }
     }
   }
 }
