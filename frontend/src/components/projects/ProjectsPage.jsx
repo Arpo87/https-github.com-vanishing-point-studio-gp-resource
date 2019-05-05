@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import { fetchNroData, fetchProjectData } from '../../state/actions'
 import ProjectsOverview from './ProjectsOverview'
 import NroProjectDetails from './NroProjectDetails'
+import ProjectGroupDetails from './ProjectGroupDetails'
 import NotFound from '../frame/NotFound'
 import Spinner from '../widgets/Spinner'
 import './ProjectsPage.scss'
@@ -24,7 +25,7 @@ class ProjectsPage extends React.Component {
             <Switch>
               <Route path="/projects" exact component={ProjectsOverview} />
               <Route path="/projects/nros/:nro" exact component={NroProjectDetails} />
-              <Route path="/projects/priorities/:project" exact render={() => <div style={{ flexGrow: 1 }} />} />
+              <Route path="/projects/groups/:project" exact component={ProjectGroupDetails} />} />
               <Route path="/" component={NotFound} />
             </Switch>
           )}
