@@ -2,11 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { sanitize } from '../../utils'
+import Breadcrumb from './Breadcrumb'
 import './ProjectsOverview.scss'
 
 const ProjectsOverview = ({ loadingData, nroData }) => (
   <div className="projects-overview">
-    <h1>Projects</h1>
+    <Breadcrumb />
     <div className="project-lists">
       <div className="list nro-list">
         <h2>

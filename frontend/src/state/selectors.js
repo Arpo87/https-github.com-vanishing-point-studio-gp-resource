@@ -106,5 +106,7 @@ export const getWithCoordinates = (state, dataSelector) =>
 
 export const getProjectGroups = state => [...new Set(state.projectData.map(project => project.projectGroup.name))]
 
+export const lookupNroByKey = (state, nroKey) => state.nroData.find(nro => sanitize(nro.name) === nroKey)
+
 export const getProjectsForNro = (state, nroKey) =>
   state.projectData.filter(project => sanitize(project.nro.name) === nroKey)
