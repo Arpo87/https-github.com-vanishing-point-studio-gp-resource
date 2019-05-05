@@ -10,12 +10,14 @@ const reducer = (state = createInitialState(), action) => {
       return { ...state, loginFailed: action.loginFailed }
     case 'SET_LOGGING_IN':
       return { ...state, loggingIn: action.loggingIn }
-    case 'SET_LOADING_DATA':
-      return { ...state, loadingData: action.loadingData }
+    case 'SET_LOADING_NRO_DATA':
+      return { ...state, loadingNroData: action.loadingNroData }
     case 'SET_NRO_DATA':
       return { ...state, nroData: action.nroData }
+    case 'SET_LOADING_PROJECT_DATA':
+      return { ...state, loadingProjectData: action.loadingProjectData }
     case 'SET_PROJECT_DATA':
-      return { ...state, nroProjectData: action.nroProjectData }
+      return { ...state, projectData: action.projectData }
     default:
       return state
   }
@@ -29,7 +31,7 @@ const createInitialState = () => ({
   loggingIn: false,
   loadingData: false,
   nroData: [],
-  nroProjectData: [],
+  projectData: [],
 })
 
 export default reducer

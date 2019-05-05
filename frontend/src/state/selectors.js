@@ -1,4 +1,5 @@
 import { mapCoordinates } from '../utils/coordinates'
+import { sanitize } from '../utils'
 
 export const getNroData = state => {
   return state.nroData.map(d => {
@@ -95,11 +96,7 @@ export const getWithCoordinates = (state, dataSelector) =>
     .filter(d => !!mapCoordinates[d.name])
     .map(d => ({ ...d, coordinates: mapCoordinates[d.name] }))
 
-export const getProjectGroups = state => {
-  const projectGroups = state.nroProjectData.map(project => project.projectGroup.name)
-  return [...new Set(projectGroups)]
-}
+export const getProjectGroups = state => [...new Set(state.projectData.map(project => project.projectGroup.name))]
 
-export const getSelectedProjectData = (state, nroKey) => {
-  return state.nroProjectData.filter(nroProject => nroProject.nro.name.replace(/ /g, '-').toLowerCase() === nroKey)
-}
+export const getProjectsForNro = (state, nroKey) =>
+  state.projectData.filter(project => sanitize(project.nro.name) === nroKey)

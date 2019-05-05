@@ -31,3 +31,5 @@ export const formatStaff = value => {
   }
   return staff + ' FTE'
 }
+
+export const sanitize = name => name.replace(/ /g, '-').toLowerCase()

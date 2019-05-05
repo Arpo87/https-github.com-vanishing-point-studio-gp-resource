@@ -7,7 +7,6 @@ import MenuIcon from '../../assets/icons/material/Menu'
 import SettingsIcon from '../../assets/icons/material/Settings'
 import ExitToAppIcon from '../../assets/icons/material/ExitToApp'
 import DataContainer from './DataContainer'
-import projectsOverview from '../projects/projectsOverview'
 import ProjectsPage from '../projects/ProjectsPage'
 import NotFound from './NotFound'
 import './Frame.scss'
@@ -53,7 +52,6 @@ class Frame extends React.Component {
         </div>
         <Switch>
           <Route path="(|/breakdowns|/programme|/programme/breakdowns)" exact component={DataContainer} />
-          <Route path="/projects" exact component={projectsOverview} />
           <Route path="/projects" component={ProjectsPage} />
           <Route path="/" component={NotFound} />
         </Switch>
