@@ -37,7 +37,7 @@ class MapView extends React.PureComponent {
   }
 
   render() {
-    const { dataSelection, openDialog } = this.props
+    const { dataSelection, openDialog, isProgramme } = this.props
     const nroData = this.getSelectedNroData()
     return (
       <div className="map-view" ref={e => (this.viewElement = e)}>
@@ -59,6 +59,7 @@ class MapView extends React.PureComponent {
             <DetailsPopup
               data={nroData}
               dataSelection={dataSelection}
+              isProgramme={isProgramme}
               popupRef={e => (this.popupElement = e)}
               close={this.closePopup}
               onLinkClick={openDialog}
@@ -100,8 +101,8 @@ class MapView extends React.PureComponent {
   }
 
   positionPopup = (width, height) => {
-    const { dataSelection, programme } = this.props
-    const popupWidth = programme ? POPUP_WIDTH_PROGRAMME : POPUP_WIDTH
+    const { dataSelection, isProgramme } = this.props
+    const popupWidth = isProgramme ? POPUP_WIDTH_PROGRAMME : POPUP_WIDTH
     const nroData = this.getSelectedNroData()
     if (nroData) {
       const x = nroData.coordinates[0] * width
@@ -171,10 +172,10 @@ class MapView extends React.PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const programme = ownProps.location.pathname.includes('programme')
+  const isProgramme = ownProps.location.pathname.includes('programme')
   return {
-    data: programme ? getProgrammeDataWithCoordinates(state) : getNroDataWithCoordinates(state),
-    programme,
+    data: isProgramme ? getProgrammeDataWithCoordinates(state) : getNroDataWithCoordinates(state),
+    isProgramme,
     dataSelection: getDataSelection(ownProps.location),
   }
 }
