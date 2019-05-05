@@ -51,7 +51,7 @@ const mapStateToProps = (state, ownProps) => {
   const isProgramme = ownProps.location.pathname.includes('programme')
   const sortOptions = isProgramme ? programmeSortOptions : nroSortOptions
   return {
-    data: isProgramme ? getProgrammeData(state) : getNroData(state),
+    data: isProgramme ? getProgrammeData(state, true) : getNroData(state, true),
     dataSelection: getDataSelection(ownProps.location),
     sortOptions,
     isProgramme,

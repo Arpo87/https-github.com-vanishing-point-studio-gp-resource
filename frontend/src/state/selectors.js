@@ -1,8 +1,8 @@
 import { mapCoordinates } from '../utils/coordinates'
 import { sanitize } from '../utils'
 
-export const getNroData = state => {
-  return state.nroData.map(d => {
+export const getNroData = (state, excludeEmpties) => {
+  const data = state.nroData.map(d => {
     const income = {
       values: [d.incomeGrants, d.incomeFundraising, d.incomeOther],
       labels: ['Grants', 'Fundraising', 'Other'],
@@ -22,12 +22,16 @@ export const getNroData = state => {
     expenses.total = expenses.values.reduce((a, b) => a + b, 0)
     staff.total = staff.values.reduce((a, b) => a + b, 0)
 
-    return { name: d.name, income, expenses, staff }
+    const empty = income.total === 0 && expenses.total === 0 && staff.total === 0
+
+    return { name: d.name, income, expenses, staff, empty }
   })
+
+  return excludeEmpties ? data.filter(d => !d.empty) : data
 }
 
-export const getProgrammeData = state => {
-  return state.nroData.map(d => {
+export const getProgrammeData = (state, excludeEmpties) => {
+  const data = state.nroData.map(d => {
     const programmeStaff = {
       values: [
         d.programmeStaffCampaigns,
@@ -83,8 +87,12 @@ export const getProgrammeData = state => {
     programmeBudget.total = programmeBudget.values.reduce((a, b) => a + b, 0)
     programmeBalance.total = programmeBalance.values.reduce((a, b) => a + b, 0)
 
-    return { name: d.name, programmeStaff, programmeBudget, programmeBalance }
+    const empty = programmeStaff.total === 0 && programmeBudget.total === 0 && programmeBalance.total === 0
+
+    return { name: d.name, programmeStaff, programmeBudget, programmeBalance, empty }
   })
+
+  return excludeEmpties ? data.filter(d => !d.empty) : data
 }
 
 export const getNroDataWithCoordinates = state => getWithCoordinates(state, getNroData)
