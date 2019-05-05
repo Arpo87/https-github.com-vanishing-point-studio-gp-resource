@@ -160,7 +160,7 @@ class MapView extends React.PureComponent {
       let nextIndex = currentIndex + (e.deltaY > 0 ? 1 : -1)
       if (nextIndex < 0) {
         nextIndex = traversalOrder.length - 1
-      } else if (nextIndex > data.length - 1) {
+      } else if (nextIndex > traversalOrder.length - 1) {
         nextIndex = 0
       }
       if (traversalOrder[nextIndex]) {
