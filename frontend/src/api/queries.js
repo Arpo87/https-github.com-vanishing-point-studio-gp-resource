@@ -14,6 +14,7 @@ export const nroQuery = gql`
   {
     nros {
       name
+      id
       about
       incomeGrants
       incomeFundraising
@@ -53,6 +54,10 @@ export const projectQuery = gql`
     nroProjects {
       name
       meta
+      nro {
+        id
+        name
+      }
       projectGroup {
         name
       }

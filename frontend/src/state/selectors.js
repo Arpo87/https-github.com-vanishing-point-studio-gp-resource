@@ -99,3 +99,7 @@ export const getProjectGroups = state => {
   const projectGroups = state.nroProjectData.map(project => project.projectGroup.name)
   return [...new Set(projectGroups)]
 }
+
+export const getSelectedProjectData = (state, nroKey) => {
+  return state.nroProjectData.filter(nroProject => nroProject.nro.name.replace(/ /g, '-').toLowerCase() === nroKey)
+}

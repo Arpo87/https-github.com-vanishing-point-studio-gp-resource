@@ -1,48 +1,39 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchProjectData } from '../../state/actions'
+import { getSelectedProjectData } from '../../state/selectors'
 import './nroProject.scss'
 
 class nroProject extends React.Component {
-
-  componentDidMount() {
-    this.props.loadData()
+  getNroName = () => {
+    return this.props.selectedProjectData[0].nro.name
   }
 
   render() {
-    const { loadingData } = this.props
+    const { selectedProjectData } = this.props
+    console.log(this.props.selectedProjectData)
     return (
-      <div className='nro-project-wrap' style={{ flexGrow: 1 }} >
+      <div className="nro-project-wrap" style={{ flexGrow: 1 }}>
         <div className="main-scroll custom-scrollbar">
-          {loadingData ? null : (
-            <div className="page-content">
-              <h1><a href="/projects">Projects</a> <span className="separator">></span> NRO NAME</h1>
-              <div className="charts-wrap">
-                <div className="nro-chart budget">
-                  BUDGET CHART
-                </div>
+          <div className="page-content">
+            <h1>
+              <a href="/projects">Projects</a> <span className="separator">></span>
+              {this.getNroName()}
+            </h1>
+            <div className="charts-wrap">
+              <div className="nro-chart budget">BUDGET CHART</div>
 
-                <div className="nro-chart budget">
-                  STAFF CHART
-                </div>
-              </div>
-
+              <div className="nro-chart budget">STAFF CHART</div>
             </div>
-          )}
+          </div>
         </div>
-        
       </div>
     )
   }
-
-
 }
 
-const mapStateToProps = state => ({ loadingData: state.loadingData })
+const mapStateToProps = (state, ownProps) => ({
+  loadingData: state.loadingData,
+  selectedProjectData: getSelectedProjectData(state, ownProps.match.params.nro),
+})
 
-const mapDispatchToProps = dispatch => ({ loadData: () => dispatch(fetchProjectData()) })
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(nroProject)
+export default connect(mapStateToProps)(nroProject)

@@ -8,7 +8,7 @@ import SettingsIcon from '../../assets/icons/material/Settings'
 import ExitToAppIcon from '../../assets/icons/material/ExitToApp'
 import DataContainer from './DataContainer'
 import projectsOverview from '../projects/projectsOverview'
-import nroProject from '../projects/nroProject'
+import ProjectsPage from '../projects/ProjectsPage'
 import NotFound from './NotFound'
 import './Frame.scss'
 
@@ -54,8 +54,7 @@ class Frame extends React.Component {
         <Switch>
           <Route path="(|/breakdowns|/programme|/programme/breakdowns)" exact component={DataContainer} />
           <Route path="/projects" exact component={projectsOverview} />
-          <Route path="/projects/nros/:nro" exact component={nroProject} />
-          <Route path="/projects/priorities/:project" exact render={() => <div style={{ flexGrow: 1 }} />} />
+          <Route path="/projects" component={ProjectsPage} />
           <Route path="/" component={NotFound} />
         </Switch>
         <div className="menu-background-overlay" onTouchStart={hideMenu} />
