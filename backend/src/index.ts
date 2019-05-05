@@ -20,6 +20,7 @@ const resolvers = {
       nroProjects.map(nroProject => ({
         ...nroProject,
         projectGroup: projectGroups.find(group => group.id === nroProject.projectGroup),
+        nro: nros.find(nro => nro.id === nroProject.nro),
       })),
   },
   Mutation: {
