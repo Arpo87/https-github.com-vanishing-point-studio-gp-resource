@@ -64,8 +64,8 @@ type NroProject {
   staffCampaignCoordination: Float
   staffCampaigns: Float
   staffEngagement: Float
+  staffMarine: Float
   staffMediaComms: Float
-  staffOperations: Float
   staffPolitical: Float
   staffPublicInfoOutreach: Float
   staffFundraising: Float

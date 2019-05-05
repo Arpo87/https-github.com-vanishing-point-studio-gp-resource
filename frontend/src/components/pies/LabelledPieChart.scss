@@ -1,0 +1,61 @@
+@import '../app/Variables.scss';
+@import '../app/Mixins.scss';
+
+.labelled-pie-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin-top: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: $text-3;
+  }
+
+  .total {
+    font-size: 22px;
+    color: $text-3;
+  }
+
+  .line {
+    background-color: $border-1;
+    width: 100%;
+    height: 1px;
+    margin: 12px 0;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
+
+    .label {
+      color: $text-3;
+      padding-right: 10px;
+      flex-grow: 1;
+    }
+
+    .value {
+      color: $text-3;
+      font-weight: 700;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      margin: 1px 8px 0 0;
+    }
+  }
+}

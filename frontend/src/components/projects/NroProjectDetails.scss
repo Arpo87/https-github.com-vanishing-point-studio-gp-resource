@@ -1,5 +1,15 @@
 @import '../app/Variables.scss';
 
 .nro-project-details {
-  padding: 40px 60px 60px 60px;
+  padding: 30px 50px 50px 50px;
+  display: flex;
+  flex-direction: column;
+
+  .pie-charts {
+    display: flex;
+
+    .labelled-pie-chart {
+      width: 50%;
+    }
+  }
 }

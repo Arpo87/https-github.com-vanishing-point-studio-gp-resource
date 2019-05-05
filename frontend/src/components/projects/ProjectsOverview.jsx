@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { sanitize } from '../../utils'
+import { getNrosWithProjectData } from '../../state/selectors'
 import Breadcrumb from './Breadcrumb'
 import './ProjectsOverview.scss'
 
-const ProjectsOverview = ({ loadingData, nroData }) => (
+const ProjectsOverview = ({ nros }) => (
   <div className="projects-overview">
     <Breadcrumb />
     <div className="project-lists">
@@ -15,9 +16,9 @@ const ProjectsOverview = ({ loadingData, nroData }) => (
           <span>NRO</span>
         </h2>
         <React.Fragment>
-          {nroData.map(nro => (
-            <Link key={nro.name} to={`projects/nros/${sanitize(nro.name)}`}>
-              {nro.name}
+          {nros.map(nro => (
+            <Link key={nro} to={`projects/nros/${sanitize(nro)}`}>
+              {nro}
             </Link>
           ))}
         </React.Fragment>
@@ -32,6 +33,6 @@ const ProjectsOverview = ({ loadingData, nroData }) => (
   </div>
 )
 
-const mapStateToProps = state => ({ nroData: state.nroData })
+const mapStateToProps = state => ({ nros: getNrosWithProjectData(state) })
 
 export default connect(mapStateToProps)(ProjectsOverview)

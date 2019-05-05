@@ -54,6 +54,17 @@ export const projectQuery = gql`
     nroProjects {
       name
       meta
+      staffTotal
+      budgetTotal
+      staffCampaignCoordination
+      staffCampaigns
+      staffEngagement
+      staffMediaComms
+      staffMarine
+      staffPublicInfoOutreach
+      staffFundraising
+      staffOther
+      additionalInfo
       nro {
         id
         name

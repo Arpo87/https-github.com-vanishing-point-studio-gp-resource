@@ -108,5 +108,12 @@ export const getProjectGroups = state => [...new Set(state.projectData.map(proje
 
 export const lookupNroByKey = (state, nroKey) => state.nroData.find(nro => sanitize(nro.name) === nroKey)
 
-export const getProjectsForNro = (state, nroKey) =>
-  state.projectData.filter(project => sanitize(project.nro.name) === nroKey)
+export const getNrosWithProjectData = state =>
+  state.nroData.filter(nro => state.projectData.some(project => project.nro.name === nro.name)).map(nro => nro.name)
+
+export const getNroProjectDetails = (state, nroKey) => {
+  const projectsForNro = state.projectData.filter(project => sanitize(project.nro.name) === nroKey)
+  console.log(projectsForNro)
+  // const budgetsData =
+  return { projectsForNro }
+}
