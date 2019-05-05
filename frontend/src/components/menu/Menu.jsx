@@ -17,14 +17,15 @@ const labels = {
   programmeBalance: 'Costs Ratio',
 }
 
-const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className }) => {
+const LinkWithIcon = withRouter(({ to, text, icon, location, matches, className, exact = true }) => {
   const toPath = to.split('?')[0]
   const pathname = location.pathname
   const active = trimSlash(pathname) === trimSlash(toPath) || (matches && matches.some(m => m === trimSlash(pathname)))
+  const includes = trimSlash(pathname).includes(trimSlash(toPath))
   return (
     <Link
       to={trimSlash(to)}
-      className={'plain' + (active ? ' active' : '') + (className ? ' ' + className : '')}
+      className={'plain' + (active || (!exact && includes) ? ' active' : '') + (className ? ' ' + className : '')}
       onClick={e => {
         if (active) e.preventDefault()
       }}
@@ -53,7 +54,7 @@ const Menu = ({ location, requestLogout }) => {
             icon="programme"
             matches={['/programme/breakdowns']}
           />
-          <LinkWithIcon to="/projects" text="Projects" icon="project" />
+          <LinkWithIcon to="/projects" text="Projects" icon="project" exact={false} />
         </div>
         {isNroPage && (
           <React.Fragment>

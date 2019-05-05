@@ -1,0 +1,44 @@
+@import '../app/Variables.scss';
+
+.projects-overview {
+  padding: 40px 60px 60px 60px;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .project-lists {
+    display: flex;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .priority-list {
+    margin-left: 40px;
+  }
+
+  h2 {
+    font-size: 18px;
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid $border-1;
+  }
+
+  a {
+    color: $text-1;
+    text-decoration: none;
+    padding: 8px 0;
+    min-width: 120px;
+    align-self: flex-start;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
