@@ -10,7 +10,7 @@ const trimSlash = value => (value.endsWith('/') ? value.slice(0, -1) : value)
 
 const labels = {
   income: 'Income',
-  expenses: 'Expenses',
+  expenses: 'Expenditure',
   staff: 'Staff',
   programmeStaff: 'Staff',
   programmeBudget: 'Budget',
