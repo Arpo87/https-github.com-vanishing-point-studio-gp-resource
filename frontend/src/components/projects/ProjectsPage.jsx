@@ -19,7 +19,7 @@ class ProjectsPage extends React.Component {
       <div className="projects-page">
         <div className="main-scroll custom-scrollbar">
           {loadingData || !dataExists ? (
-            <Spinner />
+            <Spinner large />
           ) : (
             <Switch>
               <Route path="/projects" exact component={ProjectsOverview} />
