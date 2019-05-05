@@ -39,9 +39,9 @@ class DetailsPopup extends React.Component {
               </div>
             ))}
           </div>
-          <button className="link" type="button" onClick={this.handleLinkClick}>
+          {/* <button className="link" type="button" onClick={this.handleLinkClick}>
             Context
-          </button>
+          </button> */}
         </div>
       </div>
     )
