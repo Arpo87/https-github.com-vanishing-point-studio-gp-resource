@@ -124,6 +124,12 @@ export const getNroProjectDetails = (state, nroKey) => {
   const budgetRest = budgetTotal - budgetData.reduce((r, d) => r + d.value, 0)
   const staffRest = staffTotal - staffData.reduce((r, d) => r + d.value, 0)
 
+  // Pad with some zero values to make sure the 'rest' pie slice always has the same color.
+  for (let i = projectsForNro.length - 1; i < 4; i++) {
+    budgetData.push({ value: 0, label: '', exclude: true })
+    staffData.push({ value: 0, label: '', exclude: true })
+  }
+
   budgetData.push({ value: budgetRest, label: '', exclude: true })
   staffData.push({ value: staffRest, label: '', exclude: true })
 

@@ -115,3 +115,49 @@
     }
   }
 }
+
+.projects {
+  .color-scale-item {
+    &:nth-child(1) .color-scale-background {
+      background-color: $projects-scale-1;
+    }
+
+    &:nth-child(2) .color-scale-background {
+      background-color: $projects-scale-2;
+    }
+
+    &:nth-child(3) .color-scale-background {
+      background-color: $projects-scale-3;
+    }
+
+    &:nth-child(4) .color-scale-background,
+    &:nth-child(5) .color-scale-background,
+    &:nth-child(6) .color-scale-background,
+    &:nth-child(7) .color-scale-background,
+    &:nth-child(8) .color-scale-background {
+      background-color: $projects-scale-4 !important;
+    }
+  }
+
+  .color-scale-paths {
+    path:nth-child(1) {
+      fill: $projects-scale-1;
+    }
+
+    path:nth-child(2) {
+      fill: $projects-scale-2;
+    }
+
+    path:nth-child(3) {
+      fill: $projects-scale-3;
+    }
+
+    path:nth-child(4),
+    path:nth-child(5),
+    path:nth-child(6),
+    path:nth-child(7),
+    path:nth-child(8) {
+      fill: $projects-scale-4;
+    }
+  }
+}
