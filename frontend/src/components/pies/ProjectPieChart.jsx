@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatStaff, formatCurrencyInMillionEuro } from '../../utils'
+import { formatStaff, formatCurrencyInMillionEuro, formatPercent } from '../../utils'
 import PieChart from './PieChart'
 import './ProjectPieChart.scss'
 
@@ -17,7 +17,7 @@ const ProjectPieChart = ({ data, title, total, staffUnits }) => (
           <div key={d.label} className="legend-item color-scale-item">
             <div className="legend-color color-scale-background" />
             <div className="label">{d.label}</div>
-            <div className="value">{staffUnits ? formatStaff(d.value) : formatCurrencyInMillionEuro(d.value)}</div>
+            <div className="value">{formatPercent(d.value, total)}</div>
           </div>
         ) : null
       )}
