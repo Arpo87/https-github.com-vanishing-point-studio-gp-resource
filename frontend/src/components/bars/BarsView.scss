@@ -1,14 +1,14 @@
 @import '../app/Variables.scss';
+@import '../app/Mixins.scss';
 
 .bars-view {
   display: flex;
   flex-direction: column;
-  padding: 20px 45px 45px 45px;
+  padding: 20px 45px 50px 41px;
 
   .legend-row,
   .bar-row {
     display: flex;
-    align-items: center;
   }
 
   .legend-row {
@@ -18,16 +18,13 @@
   }
 
   .bar-row {
+    align-items: center;
     height: 120px;
-    padding-right: 30px;
+    padding-right: 45px;
   }
 
   .column {
     display: flex;
-
-    &:nth-child(1) {
-      width: 220px;
-    }
 
     &:nth-child(2) {
       flex-grow: 1;
@@ -36,6 +33,18 @@
 
   .legend-row .column {
     flex-direction: column;
+
+    &:nth-child(1) {
+      width: 220px;
+    }
+  }
+
+  .bar-row .column:nth-child(1) {
+    width: 220px;
+  }
+
+  .select-wrapper {
+    margin-right: 30px;
   }
 
   .title {
@@ -46,21 +55,22 @@
     margin-bottom: 10px;
   }
 
-  .bar-title {
-    padding: 0 30px 20px 0;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    font-size: 18px;
-    color: $text-3;
+  .legend-wrapper {
+    overflow: hidden;
+    transition: height 400ms $bezier-2;
+  }
+}
 
-    .name {
-      margin-right: 10px;
-      font-weight: 600;
+@include desktop {
+  // Hard-coded fragile shit for easy animated heights:
+  .data-container {
+    .bars-view .legend-wrapper {
+      height: 55px;
     }
 
-    .total {
-      font-weight: 300;
+    &.programme-staff .bars-view .legend-wrapper,
+    &.programme-budget .bars-view .legend-wrapper {
+      height: 129px;
     }
   }
 }

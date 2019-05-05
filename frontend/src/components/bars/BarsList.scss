@@ -1,0 +1,32 @@
+@import '../app/Variables.scss';
+
+.bar-title {
+  padding: 0 28px 22px 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 18px;
+  color: $text-3;
+
+  .name {
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  .total {
+    font-weight: 300;
+  }
+}
+
+.group-label {
+  color: $text-2;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-right: 53px;
+  text-align: right;
+
+  &:not(.first) {
+    margin-top: 40px;
+  }
+}

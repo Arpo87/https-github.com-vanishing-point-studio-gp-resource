@@ -32,36 +32,42 @@ const calculateTextOffset = (currentIndex, values, total) => {
 }
 
 const BarStack = ({ data }) => {
-  const paddedValues = [...data.values]
-  const paddedLabels = [...data.labels]
-  for (let i = data.values.length - 1; i < MAX_SLICES; i++) {
-    paddedValues.push(0)
-    paddedLabels.push('' + i)
-  }
   return (
     <div className="bar-stack">
-      {data.total > 0 &&
-        paddedValues.map((value, i) => {
-          const label = paddedLabels[i]
+      {data.total > 0 ? (
+        data.values.map((value, i) => {
           const width = (value / data.total) * 100 + '%'
           const formattedWidth = formatPercent(value, data.total)
           const isZero = formattedWidth === '0%'
 
           let textOffset
           if (!isZero && i > 0) {
-            textOffset = calculateTextOffset(i, paddedValues, data.total)
+            textOffset = calculateTextOffset(i, data.values, data.total)
           }
           return (
-            <div key={label} className={'bar-stack-item color-scale-item' + (isZero ? ' zero' : '')} style={{ width }}>
+            <div key={i} className={'bar-stack-item color-scale-item' + (isZero ? ' zero' : '')} style={{ width }}>
               <div className="bar color-scale-background" />
               <div className="value" style={textOffset ? { marginLeft: textOffset + 'px' } : undefined}>
                 {formattedWidth}
               </div>
             </div>
           )
-        })}
+        })
+      ) : (
+        <div className="placeholder-bar " />
+      )}
     </div>
   )
 }
 
-export default BarStack
+const BarStackPadded = ({ data }) => {
+  const values = [...data.values]
+  const labels = [...data.labels]
+  for (let i = data.values.length - 1; i < MAX_SLICES; i++) {
+    values.push(0)
+    labels.push('')
+  }
+  return <BarStack data={{ values, labels, total: data.total }} />
+}
+
+export default BarStackPadded

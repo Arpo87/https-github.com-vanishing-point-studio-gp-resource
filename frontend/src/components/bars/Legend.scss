@@ -1,6 +1,5 @@
 .legend {
   display: flex;
-  flex-wrap: wrap;
   margin: -4px;
 
   &:not(:last-child) {
@@ -22,7 +21,6 @@
       font-size: 13px;
       margin-top: 8px;
       margin-right: 5px;
-      min-height: 30px;
     }
   }
 }
