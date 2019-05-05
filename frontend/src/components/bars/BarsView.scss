@@ -55,24 +55,6 @@
     margin-bottom: 10px;
   }
 
-  .bar-title {
-    padding: 0 28px 22px 0;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    font-size: 18px;
-    color: $text-3;
-
-    .name {
-      font-weight: 600;
-      margin-right: 10px;
-    }
-
-    .total {
-      font-weight: 300;
-    }
-  }
-
   .legend-wrapper {
     overflow: hidden;
     transition: height 400ms $bezier-2;

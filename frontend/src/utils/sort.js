@@ -30,6 +30,7 @@ export const programmeSortOptions = [
   {
     key: 'programmeStaffSize',
     label: 'Programme Staff Size',
+    comparator: (a, b) => a.programmeStaff.total - b.programmeStaff.total,
   },
   {
     key: 'budget',
@@ -39,10 +40,12 @@ export const programmeSortOptions = [
   {
     key: 'battlegroundNros',
     label: 'Battleground NROs',
+    comparator: (a, b) => (a ? a.name.localeCompare(b.name) : 0),
   },
   {
     key: 'regionalNros',
     label: 'Regional NROs',
+    comparator: (a, b) => (a ? a.name.localeCompare(b.name) : 0),
   },
 ]
 
@@ -59,7 +62,7 @@ export const groupings = {
       'Total Programme Staff 75-100',
       'Total Programme Staff 100+',
     ],
-    assignBin: nro => Math.min(Math.floor(nro.programmeStaff / 25), groupings.programmeStaffSize.bins.length - 1),
+    assignBin: nro => Math.min(Math.floor(nro.programmeStaff.total / 25), 4),
   },
   battlegroundNros: {
     bins: ['Battleground NROs', 'Non-Battleground NROs'],
@@ -69,4 +72,17 @@ export const groupings = {
     bins: ['Regional NROs', 'Non-Regional NROs'],
     assignBin: nro => (regionalNros.includes(nro.name) ? 0 : 1),
   },
+}
+
+export const groupExists = sortKey => !!groupings[sortKey]
+
+export const groupBy = (data, key) => {
+  const grouping = groupings[key]
+  const initialBins = grouping.bins.map(label => ({ label, data: [] }))
+  return data.reduce((reduction, nro) => {
+    const binIndex = grouping.assignBin(nro)
+    const bin = reduction[binIndex]
+    bin.data.push(nro)
+    return reduction
+  }, initialBins)
 }
