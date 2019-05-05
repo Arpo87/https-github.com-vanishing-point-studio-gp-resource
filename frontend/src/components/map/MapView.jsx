@@ -154,7 +154,6 @@ class MapView extends React.PureComponent {
     // Discard event if it's from a trackpad and another change occurred within the last 500ms.
     const discard = Math.abs(e.wheelDelta) < 50 && Date.now() - this.timeOfLastWheelChange < 500
     if (e.deltaY !== 0 && !discard) {
-      const { data } = this.props
       const { selectedNro } = this.state
       const currentIndex = traversalOrder.findIndex(nro => nro === selectedNro)
       let nextIndex = currentIndex + (e.deltaY > 0 ? 1 : -1)
