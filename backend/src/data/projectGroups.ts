@@ -29,7 +29,7 @@ export const projectGroups = [
   },
   {
     id: 8,
-    name: 'Single USe Plastics',
+    name: 'Single Use Plastics',
   },
   {
     id: 9,
