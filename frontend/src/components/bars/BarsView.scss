@@ -54,15 +54,15 @@
     text-transform: uppercase;
     margin-bottom: 10px;
   }
-
-  .legend-wrapper {
-    overflow: hidden;
-    transition: height 400ms $bezier-2;
-  }
 }
 
 @include desktop {
   // Hard-coded fragile shit for easy animated heights:
+  .bars-view .legend-wrapper {
+    overflow: hidden;
+    transition: height 400ms $bezier-2;
+  }
+
   .data-container {
     .bars-view .legend-wrapper {
       height: 55px;
