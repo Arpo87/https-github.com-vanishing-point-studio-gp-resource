@@ -6,6 +6,7 @@ h1.breadcrumb {
   color: $text-1;
   display: flex;
   align-items: center;
+  user-select: none;
 
   a {
     color: inherit;
