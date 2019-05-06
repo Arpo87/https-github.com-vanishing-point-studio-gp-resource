@@ -95,6 +95,43 @@ export const getProgrammeData = (state, excludeEmpties) => {
   return excludeEmpties ? data.filter(d => !d.empty) : data
 }
 
+export const getProjectGroupData = (state, projectKey) => {
+  const projects = state.projectData.filter(project => sanitize(project.projectGroup.name) === projectKey)
+
+  const projectChartData = projects.map(project => {
+    return {
+      nro: project.nro.name,
+      projectGroup: project.projectGroup.name,
+      total: project.staffTotal,
+      totalBudget: project.budgetTotal,
+      values: [
+        project.staffCampaigns,
+        project.staffCampaignCoordination,
+        project.staffMarine,
+        project.staffPolitical,
+        project.staffMediaComms,
+        project.staffEngagement,
+        project.staffPublicInfoOutreach,
+        project.staffFundraising,
+        project.staffOther,
+      ],
+      labels: [
+        'Campaigns',
+        'Campaign coordination',
+        'Marine',
+        'Political, science, & business',
+        'Media & comms',
+        'Engagement',
+        'Public info & outreach',
+        'Fundraising',
+        'Other',
+      ],
+    }
+  })
+
+  return projectChartData
+}
+
 export const getNroDataWithCoordinates = state => getWithCoordinates(state, getNroData)
 
 export const getProgrammeDataWithCoordinates = state => getWithCoordinates(state, getProgrammeData)

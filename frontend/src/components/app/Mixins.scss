@@ -1,3 +1,5 @@
+@import '../app/Variables.scss';
+
 @mixin phone {
   @media (max-width: 600px) {
     @content;
@@ -25,5 +27,56 @@
 @mixin big-screen {
   @media (min-width: 2000px) {
     @content;
+  }
+}
+
+@mixin bars-and-legends {
+  .legend-row,
+  .bar-row {
+    display: flex;
+  }
+
+  .legend-row {
+    border-bottom: 1px solid $border-1;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+  }
+
+  .bar-row {
+    align-items: center;
+    height: 120px;
+    padding-right: 45px;
+  }
+
+  .column {
+    display: flex;
+
+    &:nth-child(2) {
+      flex-grow: 1;
+    }
+  }
+
+  .legend-row .column {
+    flex-direction: column;
+
+    &:nth-child(1) {
+      width: 220px;
+    }
+  }
+
+  .bar-row .column:nth-child(1) {
+    width: 220px;
+  }
+
+  .select-wrapper {
+    margin-right: 30px;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-2;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
 }
