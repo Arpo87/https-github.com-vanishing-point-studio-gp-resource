@@ -114,6 +114,17 @@
       fill: $programme-scale-8;
     }
   }
+  &.programme-balance {
+    .color-scale-item {
+      &:nth-child(1) .color-scale-background {
+        background-color: $programme-scale-1;
+      }
+
+      &:nth-child(2) .color-scale-background {
+        background-color: $programme-scale-4;
+      }
+    }
+  }
 }
 
 .projects {
