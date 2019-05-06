@@ -4,21 +4,16 @@ export const nroSortOptions = [
     label: 'Alphabetical',
     comparator: (a, b) => (a ? a.name.localeCompare(b.name) : 0),
   },
-  // {
-  //   key: 'income',
-  //   label: 'Income',
-  //   comparator: (a, b) => a.income.total - b.income.total,
-  // },
-  // {
-  //   key: 'expenses',
-  //   label: 'Expenses',
-  //   comparator: (a, b) => a.expenses.total - b.expenses.total,
-  // },
-  // {
-  //   key: 'staff',
-  //   label: 'Staff',
-  //   comparator: (a, b) => a.staff.total - b.staff.total,
-  // },
+  {
+    key: 'ascending',
+    label: 'Low to High',
+    createComparator: dataSelection => (a, b) => a[dataSelection].total - b[dataSelection].total,
+  },
+  {
+    key: 'descending',
+    label: 'High to Low',
+    createComparator: dataSelection => (a, b) => b[dataSelection].total - a[dataSelection].total,
+  },
 ]
 
 export const programmeSortOptions = [
@@ -26,6 +21,16 @@ export const programmeSortOptions = [
     key: 'alphabetical',
     label: 'Alphabetical',
     comparator: (a, b) => (a ? a.name.localeCompare(b.name) : 0),
+  },
+  {
+    key: 'ascending',
+    label: 'Low to High',
+    createComparator: dataSelection => (a, b) => a[dataSelection].total - b[dataSelection].total,
+  },
+  {
+    key: 'descending',
+    label: 'High to Low',
+    createComparator: dataSelection => (a, b) => b[dataSelection].total - a[dataSelection].total,
   },
   {
     key: 'programmeStaffSize',

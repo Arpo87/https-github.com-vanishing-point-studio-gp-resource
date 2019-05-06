@@ -51,7 +51,7 @@ export const getProgrammeData = (state, excludeEmpties) => {
         'Media & comms',
         'Engagement',
         'Public info & outreach',
-        'Actions, Investigations, Ships',
+        'Actions, investigations, ships',
       ],
     }
 
@@ -74,7 +74,7 @@ export const getProgrammeData = (state, excludeEmpties) => {
         'Media & comms',
         'Engagement',
         'Public info & outreach',
-        'Actions, Investigations, Ships',
+        'Actions, investigations, ships',
       ],
     }
 
