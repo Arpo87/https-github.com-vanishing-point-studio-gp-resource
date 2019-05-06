@@ -137,27 +137,31 @@
 }
 
 .projects {
-  // .color-scale-item {
-  //   &:nth-child(1) .color-scale-background {
-  //     background-color: $projects-scale-1;
-  //   }
+  .project-pie-chart {
+    .color-scale-item {
+      &:nth-child(1) .color-scale-background {
+        background-color: $projects-scale-1;
+      }
 
-  //   &:nth-child(2) .color-scale-background {
-  //     background-color: $projects-scale-2;
-  //   }
+      &:nth-child(2) .color-scale-background {
+        background-color: $projects-scale-2;
+      }
 
-  //   &:nth-child(3) .color-scale-background {
-  //     background-color: $projects-scale-3;
-  //   }
+      &:nth-child(3) .color-scale-background {
+        background-color: $projects-scale-3;
+      }
 
-  //   &:nth-child(4) .color-scale-background,
-  //   &:nth-child(5) .color-scale-background,
-  //   &:nth-child(6) .color-scale-background,
-  //   &:nth-child(7) .color-scale-background,
-  //   &:nth-child(8) .color-scale-background {
-  //     background-color: $projects-scale-4 !important;
-  //   }
-  // }
+      &:nth-child(4) .color-scale-background {
+        background-color: $projects-scale-4;
+      }
+      &:nth-child(5) .color-scale-background,
+      &:nth-child(6) .color-scale-background,
+      &:nth-child(7) .color-scale-background,
+      &:nth-child(8) .color-scale-background {
+        background-color: $projects-scale-5;
+      }
+    }
+  }
   .color-scale-item {
     &:nth-child(1) .color-scale-background {
       background-color: $project-bars-scale-1;
