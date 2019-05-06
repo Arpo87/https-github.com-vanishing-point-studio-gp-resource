@@ -124,6 +124,15 @@
         background-color: $programme-scale-4;
       }
     }
+    .color-scale-paths {
+      path:nth-child(1) {
+        fill: $programme-scale-1;
+      }
+
+      path:nth-child(2) {
+        fill: $programme-scale-4;
+      }
+    }
   }
 }
 
