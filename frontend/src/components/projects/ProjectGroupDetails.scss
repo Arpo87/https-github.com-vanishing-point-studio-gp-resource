@@ -6,4 +6,12 @@
   flex-direction: column;
 
   @include bars-and-legends();
+
+  .legend-row {
+    margin-top: 5px;
+  }
+
+  .bar-row .column:nth-child(2) {
+    position: relative;
+  }
 }
