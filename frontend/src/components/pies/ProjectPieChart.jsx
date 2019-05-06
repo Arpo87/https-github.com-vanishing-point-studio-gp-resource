@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatStaff, formatCurrency, formatPercent } from '../../utils'
+import { formatStaff, formatCurrency } from '../../utils'
 import PieChart from './PieChart'
 import './ProjectPieChart.scss'
 
