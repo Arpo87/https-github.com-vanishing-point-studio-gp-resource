@@ -1,5 +1,9 @@
+@import '../app/Mixins.scss';
+
 .project-group-details {
   padding: 30px 50px 50px 50px;
   display: flex;
   flex-direction: column;
+
+  @include bars-and-legends();
 }

@@ -1,21 +1,44 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { formatValue } from '../../utils'
 import Breadcrumb from './Breadcrumb'
 import BarStack from '../bars/BarStack'
+import ProjectsLegend from './ProjectsLegend'
+
+import { getProjectGroupData } from '../../state/selectors'
 import './ProjectGroupDetails.scss'
 
-const data = {
-  total: 180,
-  values: [ 20, 50, 40, 70 ],
-  labels: [ 20, 50, 40, 70 ],
-}
-const ProjectGroupDetails = () => {
+const ProjectGroupDetails = ({ projects }) => {
   return (
     <div className="project-group-details">
-      <Breadcrumb name="Group" />
-      {/* Add <Legend /> copy BarsViewLegend */}
-      <BarStack data={data}/>
+      <Breadcrumb name={projects[0].projectGroup} />
+
+      <div className="legend-row">
+        <div className="column" />
+        <div className="column">
+          <div className="title">Legend</div>
+          <ProjectsLegend labels={projects[0].labels} />
+        </div>
+      </div>
+      {projects.map(project => (
+        <div className="bar-row" key={project.nro}>
+          <div className="column">
+            <div className="bar-title">
+              <div className="name">{project.nro}</div>
+              <div className="total">{formatValue(project.totalBudget, 'euro')}</div>
+            </div>
+          </div>
+          <div className="column">
+            <BarStack data={project} />
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
 
-export default ProjectGroupDetails
+const mapStateToProps = (state, ownProps) => ({
+  projects: getProjectGroupData(state, ownProps.match.params.project),
+})
+
+export default connect(mapStateToProps)(ProjectGroupDetails)
