@@ -79,8 +79,8 @@ export const getProgrammeData = (state, excludeEmpties) => {
     }
 
     const programmeBalance = {
-      values: [d.programmeBalanceDirect, d.programmeBalanceStaff],
-      labels: ['Direct', 'Staff'],
+      values: [d.programmeBalanceStaff, d.programmeBalanceDirect],
+      labels: ['Staff', 'Direct'],
     }
 
     programmeStaff.total = programmeStaff.values.reduce((a, b) => a + b, 0)
