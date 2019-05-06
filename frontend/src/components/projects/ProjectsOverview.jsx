@@ -26,7 +26,7 @@ const ProjectsOverview = ({ nros, projectGroups }) => (
       <div className="list priority-list">
         <h2>
           <span className="light">By </span>
-          <span>Priority Project</span>
+          <span>Project Group</span>
         </h2>
         <React.Fragment>
           {projectGroups.map(projectGroup => (
