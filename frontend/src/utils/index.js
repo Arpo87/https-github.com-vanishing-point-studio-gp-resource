@@ -11,13 +11,19 @@ export const getDataSelection = location => {
 }
 
 export const formatValue = (value, dataSelection) =>
-  dataSelection === 'staff' || dataSelection === 'programmeStaff'
-    ? formatStaff(value)
-    : formatCurrencyInMillionEuro(value)
+  dataSelection === 'staff' || dataSelection === 'programmeStaff' ? formatStaff(value) : formatCurrency(value)
 
 export const formatPercent = (value, total) => (total === 0 ? '0' : Math.round((value / total) * 100) + '%')
 
-export const formatCurrencyInMillionEuro = value => '\u20AC' + (value / 1000).toFixed(1) + 'M'
+export const formatCurrency = value => {
+  if (value >= 100) {
+    return '\u20AC' + (value / 1000).toFixed(1) + 'M'
+  } else if (value > 0) {
+    return '\u20AC' + value.toFixed(0) + 'K'
+  } else {
+    return '\u20AC' + 0
+  }
+}
 
 export const formatStaff = (value, fallback) => {
   if (!value) {

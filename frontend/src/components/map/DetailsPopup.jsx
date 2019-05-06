@@ -1,6 +1,6 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
-import { formatValue, formatPercent } from '../../utils'
+import { formatValue } from '../../utils'
 import './DetailsPopup.scss'
 
 const hideContext = true
@@ -37,7 +37,7 @@ class DetailsPopup extends React.Component {
               <div key={data[dataSelection].labels[i]} className="legend-item color-scale-item">
                 <div className="legend-color color-scale-background" />
                 <div className="label">{data[dataSelection].labels[i]}</div>
-                <div className="value">{formatPercent(value, data[dataSelection].total)}</div>
+                <div className="value">{formatValue(value, dataSelection)}</div>
               </div>
             ))}
           </div>
