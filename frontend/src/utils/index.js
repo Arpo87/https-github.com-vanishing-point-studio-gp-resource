@@ -10,8 +10,8 @@ export const getDataSelection = location => {
   return options.includes(value) ? value : options[0]
 }
 
-export const formatValue = (value, dataSelection) =>
-  dataSelection === 'staff' || dataSelection === 'programmeStaff' ? formatStaff(value) : formatCurrency(value)
+export const formatValue = (value, dataSelection, hideFTE) =>
+  dataSelection === 'staff' || dataSelection === 'programmeStaff' ? formatStaff(value, hideFTE) : formatCurrency(value)
 
 export const formatPercent = (value, total) => (total === 0 ? '0' : Math.round((value / total) * 100) + '%')
 
@@ -25,17 +25,14 @@ export const formatCurrency = value => {
   }
 }
 
-export const formatStaff = (value, fallback) => {
-  if (value === null || value === undefined) {
-    return fallback || ''
-  }
+export const formatStaff = (value, hideFTE) => {
   let staff
   if (Math.round(value) === value) {
     staff = Math.round(value)
   } else {
     staff = value.toFixed(1)
   }
-  return staff ? staff + ' FTE' : 0
+  return staff ? staff + (hideFTE ? '' : ' FTE') : 0
 }
 
 export const sanitize = name => name.replace(/ /g, '-').toLowerCase()

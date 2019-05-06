@@ -38,7 +38,9 @@ class DetailsPopup extends React.Component {
                 <div className="legend-color color-scale-background" />
                 <div className="label">{data[dataSelection].labels[i]}</div>
                 <div className="value">
-                  {isProgramme ? formatValue(value, dataSelection) : formatPercent(value, data[dataSelection].total)}
+                  {isProgramme
+                    ? formatValue(value, dataSelection, true)
+                    : formatPercent(value, data[dataSelection].total)}
                 </div>
               </div>
             ))}
