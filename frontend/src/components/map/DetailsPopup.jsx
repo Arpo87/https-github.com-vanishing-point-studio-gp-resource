@@ -1,6 +1,6 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
-import { formatValue } from '../../utils'
+import { formatValue, formatPercent } from '../../utils'
 import './DetailsPopup.scss'
 
 const hideContext = true
@@ -17,7 +17,7 @@ class DetailsPopup extends React.Component {
   }
 
   render() {
-    const { data, dataSelection, popupRef } = this.props
+    const { data, dataSelection, isProgramme, popupRef } = this.props
     return (
       <div className="details-popup" ref={popupRef}>
         <div id="mapDetailsPopup" className="inner-container">
@@ -37,7 +37,9 @@ class DetailsPopup extends React.Component {
               <div key={data[dataSelection].labels[i]} className="legend-item color-scale-item">
                 <div className="legend-color color-scale-background" />
                 <div className="label">{data[dataSelection].labels[i]}</div>
-                <div className="value">{formatValue(value, dataSelection)}</div>
+                <div className="value">
+                  {isProgramme ? formatValue(value, dataSelection) : formatPercent(value, data[dataSelection].total)}
+                </div>
               </div>
             ))}
           </div>

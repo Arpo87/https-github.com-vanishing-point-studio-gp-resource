@@ -26,7 +26,7 @@ export const formatCurrency = value => {
 }
 
 export const formatStaff = (value, fallback) => {
-  if (!value) {
+  if (value === null || value === undefined) {
     return fallback || ''
   }
   let staff
@@ -35,7 +35,7 @@ export const formatStaff = (value, fallback) => {
   } else {
     staff = value.toFixed(1)
   }
-  return staff + ' FTE'
+  return staff ? staff + ' FTE' : 0
 }
 
 export const sanitize = name => name.replace(/ /g, '-').toLowerCase()
