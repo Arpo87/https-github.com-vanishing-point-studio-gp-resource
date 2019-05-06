@@ -4,21 +4,21 @@ export const nroSortOptions = [
     label: 'Alphabetical',
     comparator: (a, b) => (a ? a.name.localeCompare(b.name) : 0),
   },
-  {
-    key: 'income',
-    label: 'Income',
-    comparator: (a, b) => a.income.total - b.income.total,
-  },
-  {
-    key: 'expenses',
-    label: 'Expenses',
-    comparator: (a, b) => a.expenses.total - b.expenses.total,
-  },
-  {
-    key: 'staff',
-    label: 'Staff',
-    comparator: (a, b) => a.staff.total - b.staff.total,
-  },
+  // {
+  //   key: 'income',
+  //   label: 'Income',
+  //   comparator: (a, b) => a.income.total - b.income.total,
+  // },
+  // {
+  //   key: 'expenses',
+  //   label: 'Expenses',
+  //   comparator: (a, b) => a.expenses.total - b.expenses.total,
+  // },
+  // {
+  //   key: 'staff',
+  //   label: 'Staff',
+  //   comparator: (a, b) => a.staff.total - b.staff.total,
+  // },
 ]
 
 export const programmeSortOptions = [

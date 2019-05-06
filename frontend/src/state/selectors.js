@@ -51,7 +51,7 @@ export const getProgrammeData = (state, excludeEmpties) => {
         'Media & comms',
         'Engagement',
         'Public info & outreach',
-        'Operations',
+        'Actions, Investigations, Ships',
       ],
     }
 
@@ -74,13 +74,13 @@ export const getProgrammeData = (state, excludeEmpties) => {
         'Media & comms',
         'Engagement',
         'Public info & outreach',
-        'Operations',
+        'Actions, Investigations, Ships',
       ],
     }
 
     const programmeBalance = {
-      values: [d.programmeBalanceDirect, d.programmeBalanceStaff],
-      labels: ['Direct', 'Staff'],
+      values: [d.programmeBalanceStaff, d.programmeBalanceDirect],
+      labels: ['Staff', 'Direct'],
     }
 
     programmeStaff.total = programmeStaff.values.reduce((a, b) => a + b, 0)

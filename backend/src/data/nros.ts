@@ -67,7 +67,7 @@ export const nros = [
   },
   {
     id: 3,
-    name: 'Aus Pac',
+    name: 'Australia Pacific',
     incomeGrants: 285,
     incomeFundraising: 6734,
     incomeOther: 63,
@@ -331,7 +331,7 @@ export const nros = [
   },
   {
     id: 11,
-    name: 'Fr-Lux',
+    name: 'France-Luxembourg',
     incomeGrants: 0,
     incomeFundraising: 15884,
     incomeOther: 26,

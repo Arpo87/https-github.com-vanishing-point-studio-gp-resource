@@ -3,6 +3,8 @@ import PieChart from '../pies/PieChart'
 import { formatValue, formatPercent } from '../../utils'
 import './DetailsPopup.scss'
 
+const hideContext = true
+
 class DetailsPopup extends React.Component {
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick)
@@ -39,9 +41,11 @@ class DetailsPopup extends React.Component {
               </div>
             ))}
           </div>
-          <button className="link" type="button" onClick={this.handleLinkClick}>
-            Context
-          </button>
+          {!hideContext && (
+            <button className="link" type="button" onClick={this.handleLinkClick}>
+              Context
+            </button>
+          )}
         </div>
       </div>
     )

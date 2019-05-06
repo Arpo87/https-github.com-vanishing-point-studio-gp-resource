@@ -4,7 +4,7 @@ import './PageTitle.scss'
 
 const labels = {
   income: 'Income per NRO',
-  expenses: 'Expenses per NRO',
+  expenses: 'Expenditure per NRO',
   staff: 'Staff per NRO',
   programmeStaff: 'Programme Staff',
   programmeBudget: 'Programme Budget',
