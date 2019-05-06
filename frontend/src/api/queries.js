@@ -61,6 +61,7 @@ export const projectQuery = gql`
       staffEngagement
       staffMediaComms
       staffMarine
+      staffPolitical
       staffPublicInfoOutreach
       staffFundraising
       staffOther
