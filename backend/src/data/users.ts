@@ -27,4 +27,11 @@ export const users = [
     password: 'PeachPlumPear',
     isAdmin: false,
   },
+  {
+    id: '5',
+    name: 'Preview',
+    email: 'preview@greenpeace.org',
+    password: 'GlobalResources2019',
+    isAdmin: false,
+  },
 ]

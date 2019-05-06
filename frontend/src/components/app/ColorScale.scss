@@ -124,6 +124,15 @@
         background-color: $programme-scale-4;
       }
     }
+    .color-scale-paths {
+      path:nth-child(1) {
+        fill: $programme-scale-1;
+      }
+
+      path:nth-child(2) {
+        fill: $programme-scale-4;
+      }
+    }
   }
 }
 
@@ -163,12 +172,17 @@
       fill: $projects-scale-3;
     }
 
-    path:nth-child(4),
+    path:nth-child(4) {
+      fill: $projects-scale-4;
+    }
     path:nth-child(5),
     path:nth-child(6),
     path:nth-child(7),
     path:nth-child(8) {
-      fill: $projects-scale-4;
+      fill: $projects-scale-5;
+    }
+    path:last-child {
+      fill: $projects-scale-last;
     }
   }
 }

@@ -64,7 +64,7 @@ class DataContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ loadingData: state.loadingData })
+const mapStateToProps = state => ({ loadingData: state.loadingNroData })
 
 const mapDispatchToProps = dispatch => ({ fetchNroData: () => dispatch(fetchNroData()) })
 

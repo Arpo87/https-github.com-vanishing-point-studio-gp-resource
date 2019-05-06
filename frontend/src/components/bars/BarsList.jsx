@@ -4,6 +4,16 @@ import { groupExists, groupBy } from '../../utils/sort'
 import BarStack from './BarStack'
 import './BarsList.scss'
 
+const sortData = (data, sortBy, dataSelection) => {
+  if (sortBy.createComparator) {
+    const comparator = sortBy.createComparator(dataSelection)
+    return data.sort(comparator)
+  } else if (sortBy.comparator) {
+    return data.sort(sortBy.comparator)
+  }
+  return data
+}
+
 const BarRow = ({ nro, dataSelection }) => (
   <div className="bar-row">
     <div className="column">
@@ -24,7 +34,7 @@ const BarsList = ({ data, dataSelection, sortBy }) => {
     return (
       <React.Fragment>
         {groups.map((g, i) => {
-          const sortedData = sortBy.comparator ? g.data.sort(sortBy.comparator) : g.data
+          const sortedData = sortData(g.data, sortBy, dataSelection)
           return (
             <React.Fragment key={g.label}>
               <div className={'group-label' + (i === 0 ? ' first' : '')}>{g.label}</div>
@@ -37,7 +47,7 @@ const BarsList = ({ data, dataSelection, sortBy }) => {
       </React.Fragment>
     )
   } else {
-    const sortedData = sortBy.comparator ? data.sort(sortBy.comparator) : data
+    const sortedData = sortData(data, sortBy, dataSelection)
     return (
       <React.Fragment>
         {sortedData.map(nro => (
