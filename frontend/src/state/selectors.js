@@ -95,6 +95,10 @@ export const getProgrammeData = (state, excludeEmpties) => {
   return excludeEmpties ? data.filter(d => !d.empty) : data
 }
 
+export const getProjectData = state => {
+  return state.nroProjectData
+}
+
 export const getNroDataWithCoordinates = state => getWithCoordinates(state, getNroData)
 
 export const getProgrammeDataWithCoordinates = state => getWithCoordinates(state, getProgrammeData)
