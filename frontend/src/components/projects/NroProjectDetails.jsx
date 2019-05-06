@@ -12,7 +12,7 @@ const NroProjectDetails = ({ nro, budgetData, budgetTotal, staffData, staffTotal
     <div className="nro-project-details">
       <Breadcrumb name={nro.name} />
       <div className="pie-charts">
-        <ProjectPieChart title="Budget" data={budgetData} total={budgetTotal} staffUnits={false} />
+        <ProjectPieChart title="Budget" data={budgetData} total={budgetTotal} staffUnits={false} isProject="true" />
         <ProjectPieChart title="Staff" data={staffData} total={staffTotal} staffUnits={true} />
       </div>
     </div>

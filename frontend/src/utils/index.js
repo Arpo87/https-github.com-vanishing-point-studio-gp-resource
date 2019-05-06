@@ -10,18 +10,36 @@ export const getDataSelection = location => {
   return options.includes(value) ? value : options[0]
 }
 
-export const formatValue = (value, dataSelection, hideFTE) =>
-  dataSelection === 'staff' || dataSelection === 'programmeStaff' ? formatStaff(value, hideFTE) : formatCurrency(value)
+export const formatValue = (value, dataSelection, hideFTE, isProject) =>
+  dataSelection === 'staff' || dataSelection === 'programmeStaff'
+    ? formatStaff(value, hideFTE)
+    : formatCurrency(value, isProject)
 
 export const formatPercent = (value, total) => (total === 0 ? '0' : Math.round((value / total) * 100) + '%')
 
-export const formatCurrency = value => {
-  if (value >= 100) {
-    return '\u20AC' + (value / 1000).toFixed(1) + 'M'
-  } else if (value > 0) {
-    return '\u20AC' + value.toFixed(0) + 'K'
+export const numberWithCommas = x => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+export const formatCurrency = (value, isProject) => {
+  if (isProject) {
+    if (value >= 1000) {
+      return '\u20AC' + (value / 1000).toFixed(1) + 'M'
+    } else if (value >= 100) {
+      return '\u20AC' + numberWithCommas(value.toFixed(0)) + 'K'
+    } else if (value > 0) {
+      return '\u20AC' + value.toFixed(0) + 'K'
+    } else {
+      return '\u20AC' + 0
+    }
   } else {
-    return '\u20AC' + 0
+    if (value >= 100) {
+      return '\u20AC' + (value / 1000).toFixed(1) + 'M'
+    } else if (value > 0) {
+      return '\u20AC' + value.toFixed(0) + 'K'
+    } else {
+      return '\u20AC' + 0
+    }
   }
 }
 

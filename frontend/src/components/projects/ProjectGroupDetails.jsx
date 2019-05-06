@@ -28,7 +28,7 @@ const ProjectGroupDetails = ({ projects }) => {
             <div className="column">
               <div className="bar-title">
                 <div className="name">{project.nro}</div>
-                <div className="total">{formatValue(project.totalBudget, 'euro')}</div>
+                <div className="total">{formatValue(project.totalBudget, 'euro', false, true)}</div>
               </div>
             </div>
             <div className="column">
