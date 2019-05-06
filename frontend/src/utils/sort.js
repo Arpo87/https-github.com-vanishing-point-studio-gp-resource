@@ -33,11 +33,6 @@ export const programmeSortOptions = [
     comparator: (a, b) => a.programmeStaff.total - b.programmeStaff.total,
   },
   {
-    key: 'budget',
-    label: 'Budget',
-    comparator: (a, b) => a.programmeBudget.total - b.programmeBudget.total,
-  },
-  {
     key: 'battlegroundNros',
     label: 'Battleground NROs',
     comparator: (a, b) => (a ? a.name.localeCompare(b.name) : 0),
