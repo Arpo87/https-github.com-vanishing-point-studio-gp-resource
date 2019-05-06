@@ -12,7 +12,6 @@
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "react": "^16.8.4",
-    "react-apollo": "^2.5.5",
     "react-dom": "^16.8.4",
     "react-redux": "^7.0.2",
     "react-resize-detector": "^4.1.3",
