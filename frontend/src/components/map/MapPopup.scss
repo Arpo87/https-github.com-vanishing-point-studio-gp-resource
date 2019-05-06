@@ -1,7 +1,7 @@
 @import '../app/Variables.scss';
 @import '../app/Mixins.scss';
 
-.details-popup {
+.map-popup {
   position: absolute;
   $anchor-width: 10px;
   z-index: 20;
@@ -124,6 +124,6 @@
   }
 }
 
-.programme .details-popup .inner-container {
+.programme .map-popup .inner-container {
   width: 320px;
 }

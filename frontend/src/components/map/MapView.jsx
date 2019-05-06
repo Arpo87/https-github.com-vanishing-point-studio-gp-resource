@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { getDataSelection } from '../../utils'
 import { traversalOrder } from '../../utils/coordinates'
 import { getNroDataWithCoordinates, getProgrammeDataWithCoordinates } from '../../state/selectors'
-import DetailsPopup from './DetailsPopup'
+import MapPopup from './MapPopup'
 import map from '../../assets/map.svg'
 import './MapView.scss'
 
@@ -56,7 +56,7 @@ class MapView extends React.PureComponent {
             }}
           />
           {nroData && (
-            <DetailsPopup
+            <MapPopup
               data={nroData}
               dataSelection={dataSelection}
               isProgramme={isProgramme}

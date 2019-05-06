@@ -1,11 +1,11 @@
 import React from 'react'
 import PieChart from '../pies/PieChart'
 import { formatValue, formatPercent } from '../../utils'
-import './DetailsPopup.scss'
+import './MapPopup.scss'
 
 const hideContext = true
 
-class DetailsPopup extends React.Component {
+class MapPopup extends React.Component {
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick)
     document.addEventListener('touchstart', this.handleDocumentTouch)
@@ -19,7 +19,7 @@ class DetailsPopup extends React.Component {
   render() {
     const { data, dataSelection, isProgramme, popupRef } = this.props
     return (
-      <div className="details-popup" ref={popupRef}>
+      <div className="map-popup" ref={popupRef}>
         <div id="mapDetailsPopup" className="inner-container">
           <div className="pie-container">
             <PieChart
@@ -79,4 +79,4 @@ class DetailsPopup extends React.Component {
   }
 }
 
-export default DetailsPopup
+export default MapPopup
